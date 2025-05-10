@@ -1,0 +1,4000 @@
+2025-05-10 09:18:33,582 - INFO - 开始执行测试...
+2025-05-10 09:18:33,582 - INFO - 读取val.jsonl文件...
+2025-05-10 09:18:33,584 - INFO - 成功加载10个样本
+2025-05-10 09:18:33,585 - INFO - 将测试10个样本
+2025-05-10 09:18:33,586 - INFO - ===== 测试样本 1/10 =====
+2025-05-10 09:18:33,586 - INFO - ========== 测试开始 ==========
+2025-05-10 09:18:33,586 - INFO - ==== 样本信息 ====
+2025-05-10 09:18:33,586 - INFO - 用户ID: 405
+2025-05-10 09:18:33,586 - INFO - 用户历史电影数量: 20
+2025-05-10 09:18:33,587 - INFO - 候选电影数量: 20
+2025-05-10 09:18:33,587 - INFO - 目标电影: Artemisia (ID: 1695)
+2025-05-10 09:18:33,587 - INFO - ==== 构造提示词 ====
+2025-05-10 09:18:33,587 - INFO - 调用construct_prompt函数...
+2025-05-10 09:18:33,593 - INFO - 生成了6条消息模板
+2025-05-10 09:18:33,593 - INFO - ==== 第一轮调用API(用户分析)结果 ====
+2025-05-10 09:18:33,593 - INFO - 发送了 2 条消息进行用户分析（system + user第一轮消息）
+2025-05-10 09:18:33,593 - INFO - ==== API调用参数 ====
+2025-05-10 09:18:33,593 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:18:33,593 - INFO - 温度: 0
+2025-05-10 09:18:33,593 - INFO - ==== 发送的消息 ====
+2025-05-10 09:18:33,593 - INFO - 消息 1:
+2025-05-10 09:18:33,593 - INFO - 角色: system
+2025-05-10 09:18:33,593 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:18:33,593 - INFO - 消息 2:
+2025-05-10 09:18:33,594 - INFO - 角色: user
+2025-05-10 09:18:33,594 - INFO - 内容: 用户ID: 405
+
+用户观看过的电影列表:
+- Splash (ID: 2100)
+- American Graffiti (ID: 3363)
+- My Best Friend's Wedding (ID: 1569)
+- Apollo 13 (ID: 150)
+- Fish Called Wanda, A (ID: 1079)
+- Absolute Power (ID: 1459)
+- Anna Karenina (ID: 1496)
+- Civil Action, A (ID: 2433)
+- Any Given Sunday (ID: 3173)
+- Mrs. Doubtfire (ID: 500)
+- Fugitive, The (ID: 457)
+- Green Mile, The (ID: 3147)
+- Leaving Las Vegas (ID: 25)
+- Money Pit, The (ID: 2375)
+- Renaissance Man (ID: 516)
+- Speechless (ID: 378)
+- Music of the Heart (ID: 2996)
+- Postino, Il (The Postman) (ID: 58)
+- Antonia's Line (Antonia) (ID: 82)
+- Belle de jour (ID: 154)
+
+请按照以下步骤进行分析：
+1. 分析每部电影属于哪些风格类别，并制作风格归属表格
+2. 统计各风格类别的出现频率，并绘制风格偏好频率表格
+3. 请基于这些类别计算电影类别偏好频率数据：['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+4. 将类别偏好频率输出为JSON格式，请确保数组与类别顺序对应
+请在分析结果最后将用户偏好数据以JSON格式输出，格式必须为：
+```json
+{"类别偏好": [类别1频率, 类别2频率, ...]}
+```
+注意：这个JSON数据将用于后续分析，请确保其格式正确。
+2025-05-10 09:18:33,595 - INFO - ==== 发送API请求 ====
+2025-05-10 09:18:37,609 - INFO - ==== API响应 ====
+2025-05-10 09:18:37,609 - INFO - 响应状态码: 200
+2025-05-10 09:18:37,610 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:18:33 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59a725abc7d6e-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:18:37,610 - INFO - 完整响应JSON: {
+  "id": "gen-1746839913-Ccj29fAMsuVbVcdQtZ5a",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746839913,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n{\n  \"类别偏好\": [0, 8, 1, 1, 6, 2, 3, 4, 10, 2, 1, 1, 1, 0, 2, 1, 1]\n}\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 715,
+    "completion_tokens": 63,
+    "total_tokens": 778,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:18:37,610 - INFO - 模型回复内容:
+```json
+{
+  "类别偏好": [0, 8, 1, 1, 6, 2, 3, 4, 10, 2, 1, 1, 1, 0, 2, 1, 1]
+}
+```
+2025-05-10 09:18:37,610 - INFO - ==== 用量信息 ====
+2025-05-10 09:18:37,610 - INFO - 输入tokens: 715
+2025-05-10 09:18:37,610 - INFO - 输出tokens: 63
+2025-05-10 09:18:37,610 - INFO - 总tokens: 778
+2025-05-10 09:18:37,611 - INFO - ==== 第二轮调用API(候选电影分析)结果 ====
+2025-05-10 09:18:37,611 - INFO - 发送了 3 条消息进行候选电影分析（包含前两轮历史）
+2025-05-10 09:18:37,611 - INFO - ==== API调用参数 ====
+2025-05-10 09:18:37,611 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:18:37,611 - INFO - 温度: 0
+2025-05-10 09:18:37,611 - INFO - ==== 发送的消息 ====
+2025-05-10 09:18:37,611 - INFO - 消息 1:
+2025-05-10 09:18:37,611 - INFO - 角色: system
+2025-05-10 09:18:37,611 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:18:37,611 - INFO - 消息 2:
+2025-05-10 09:18:37,611 - INFO - 角色: assistant
+2025-05-10 09:18:37,611 - INFO - 内容: ```json
+{
+  "类别偏好": [0, 8, 1, 1, 6, 2, 3, 4, 10, 2, 1, 1, 1, 0, 2, 1, 1]
+}
+```
+2025-05-10 09:18:37,612 - INFO - 消息 3:
+2025-05-10 09:18:37,612 - INFO - 角色: user
+2025-05-10 09:18:37,612 - INFO - 内容: 候选电影列表:
+- Cecil B. Demented (ID: 3858)
+- Following (ID: 2579)
+- Artemisia (ID: 1695)
+- Swept from the Sea (ID: 1656)
+- Black Tar Heroin: The Dark End of the Street (ID: 3303)
+- Inspector Gadget (ID: 2720)
+- Source, The (ID: 2813)
+- Mr. Magoo (ID: 1731)
+- Light of Day (ID: 2755)
+- Tales From the Crypt Presents: Demon Knight (ID: 328)
+- All Dogs Go to Heaven (ID: 2123)
+- Live Flesh (ID: 1844)
+- Draughtsman's Contract, The (ID: 3221)
+- Richard III (ID: 41)
+- Bell, Book and Candle (ID: 3516)
+- Max Dugan Returns (ID: 3497)
+- Fall Time (ID: 396)
+- Chinese Box (ID: 1829)
+- Vacation (ID: 2795)
+- On the Town (ID: 3606)
+
+电影风格类别参考: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+
+请按以下步骤分析候选电影：
+1. 分析每部候选电影属于哪些风格类别，并制作风格归属表格
+2. 基于上轮输出的JSON格式用户类别偏好数据，计算各候选电影与用户偏好的相似度
+3. 计算电影类别向量与用户偏好向量的相似度，并将结果排序
+4. 根据相似度对候选电影进行降序排序（相似度越高排序越靠前）
+2025-05-10 09:18:37,612 - INFO - ==== 发送API请求 ====
+2025-05-10 09:18:44,831 - INFO - ==== API响应 ====
+2025-05-10 09:18:44,831 - INFO - 响应状态码: 200
+2025-05-10 09:18:44,831 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:18:37 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59a8b891751f0-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:18:44,831 - INFO - 完整响应JSON: {
+  "id": "gen-1746839917-SGJ9z9jeQmBG5hK9oex2",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746839917,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n  1844,\n  1656,\n  1829,\n  41,\n  1695,\n  2755,\n  2579,\n  3221,\n  328,\n  396,\n  3303,\n  2813,\n  3516,\n  3497,\n  3858,\n  2720,\n  1731,\n  2123,\n  2795,\n  3606\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 722,
+    "completion_tokens": 84,
+    "total_tokens": 806,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:18:44,831 - INFO - 模型回复内容:
+```json
+[
+  1844,
+  1656,
+  1829,
+  41,
+  1695,
+  2755,
+  2579,
+  3221,
+  328,
+  396,
+  3303,
+  2813,
+  3516,
+  3497,
+  3858,
+  2720,
+  1731,
+  2123,
+  2795,
+  3606
+]
+```
+2025-05-10 09:18:44,831 - INFO - ==== 用量信息 ====
+2025-05-10 09:18:44,831 - INFO - 输入tokens: 722
+2025-05-10 09:18:44,832 - INFO - 输出tokens: 84
+2025-05-10 09:18:44,832 - INFO - 总tokens: 806
+2025-05-10 09:18:44,832 - INFO - ==== 第三轮调用API(最终推荐)结果 ====
+2025-05-10 09:18:44,832 - INFO - ==== 发送的消息 (最终推荐请求) ====
+2025-05-10 09:18:44,832 - INFO - [用户第三轮 - 输出要求]:
+  ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:18:44,832 - INFO - ==== API调用参数 ====
+2025-05-10 09:18:44,832 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:18:44,833 - INFO - 温度: 0
+2025-05-10 09:18:44,833 - INFO - ==== 发送的消息 ====
+2025-05-10 09:18:44,833 - INFO - 消息 1:
+2025-05-10 09:18:44,833 - INFO - 角色: system
+2025-05-10 09:18:44,833 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:18:44,833 - INFO - 消息 2:
+2025-05-10 09:18:44,833 - INFO - 角色: assistant
+2025-05-10 09:18:44,833 - INFO - 内容: ```json
+{
+  "类别偏好": [0, 8, 1, 1, 6, 2, 3, 4, 10, 2, 1, 1, 1, 0, 2, 1, 1]
+}
+```
+2025-05-10 09:18:44,833 - INFO - 消息 3:
+2025-05-10 09:18:44,833 - INFO - 角色: assistant
+2025-05-10 09:18:44,834 - INFO - 内容: ```json
+[
+  1844,
+  1656,
+  1829,
+  41,
+  1695,
+  2755,
+  2579,
+  3221,
+  328,
+  396,
+  3303,
+  2813,
+  3516,
+  3497,
+  3858,
+  2720,
+  1731,
+  2123,
+  2795,
+  3606
+]
+```
+2025-05-10 09:18:44,834 - INFO - 消息 4:
+2025-05-10 09:18:44,834 - INFO - 角色: user
+2025-05-10 09:18:44,834 - INFO - 内容: ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:18:44,834 - INFO - ==== 发送API请求 ====
+2025-05-10 09:18:52,155 - INFO - ==== API响应 ====
+2025-05-10 09:18:52,155 - INFO - 响应状态码: 200
+2025-05-10 09:18:52,155 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:18:44 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59ab91cca279a-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:18:52,156 - INFO - 完整响应JSON: {
+  "id": "gen-1746839924-LfHPVLOttvnaTnTxbAyz",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746839924,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n  {\"name\": \"The Shawshank Redemption\", \"id\": 1844},\n  {\"name\": \"The Godfather\", \"id\": 1656},\n  {\"name\": \"Pulp Fiction\", \"id\": 1829},\n  {\"name\": \"The Dark Knight\", \"id\": 41},\n  {\"name\": \"Fight Club\", \"id\": 1695},\n  {\"name\": \"Inception\", \"id\": 2755},\n  {\"name\": \"The Matrix\", \"id\": 2579},\n  {\"name\": \"Interstellar\", \"id\": 3221},\n  {\"name\": \"The Silence of the Lambs\", \"id\": 328},\n  {\"name\": \"Se7en\", \"id\": 396},\n  {\"name\": \"The Prestige\", \"id\": 3303},\n  {\"name\": \"The Departed\", \"id\": 2813},\n  {\"name\": \"The Green Mile\", \"id\": 3516},\n  {\"name\": \"The Pianist\", \"id\": 3497},\n  {\"name\": \"The Usual Suspects\", \"id\": 3858},\n  {\"name\": \"Gladiator\", \"id\": 2720},\n  {\"name\": \"Goodfellas\", \"id\": 1731},\n  {\"name\": \"Schindler's List\", \"id\": 2123},\n  {\"name\": \"The Sixth Sense\", \"id\": 2795},\n  {\"name\": \"The Truman Show\", \"id\": 3606}\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 508,
+    "completion_tokens": 332,
+    "total_tokens": 840,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:18:52,156 - INFO - 模型回复内容:
+```json
+[
+  {"name": "The Shawshank Redemption", "id": 1844},
+  {"name": "The Godfather", "id": 1656},
+  {"name": "Pulp Fiction", "id": 1829},
+  {"name": "The Dark Knight", "id": 41},
+  {"name": "Fight Club", "id": 1695},
+  {"name": "Inception", "id": 2755},
+  {"name": "The Matrix", "id": 2579},
+  {"name": "Interstellar", "id": 3221},
+  {"name": "The Silence of the Lambs", "id": 328},
+  {"name": "Se7en", "id": 396},
+  {"name": "The Prestige", "id": 3303},
+  {"name": "The Departed", "id": 2813},
+  {"name": "The Green Mile", "id": 3516},
+  {"name": "The Pianist", "id": 3497},
+  {"name": "The Usual Suspects", "id": 3858},
+  {"name": "Gladiator", "id": 2720},
+  {"name": "Goodfellas", "id": 1731},
+  {"name": "Schindler's List", "id": 2123},
+  {"name": "The Sixth Sense", "id": 2795},
+  {"name": "The Truman Show", "id": 3606}
+]
+```
+2025-05-10 09:18:52,156 - INFO - ==== 用量信息 ====
+2025-05-10 09:18:52,156 - INFO - 输入tokens: 508
+2025-05-10 09:18:52,156 - INFO - 输出tokens: 332
+2025-05-10 09:18:52,156 - INFO - 总tokens: 840
+2025-05-10 09:18:52,157 - INFO - ==== 解析输出 ====
+2025-05-10 09:18:52,158 - INFO - 调用parse_output函数解析响应...
+2025-05-10 09:18:52,158 - INFO - 解析结果: [1844, 1656, 1829, 41, 1695, 2755, 2579, 3221, 328, 396, 3303, 2813, 3516, 3497, 3858, 2720, 1731, 2123, 2795, 3606]
+2025-05-10 09:18:52,158 - INFO - ==== 计算NDCG ====
+2025-05-10 09:18:52,158 - INFO - 相关性列表: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+2025-05-10 09:18:52,158 - INFO - 位置5的DCG贡献: 1/log2(6) = 0.3869
+2025-05-10 09:18:52,158 - INFO - DCG: 0.3869, IDCG: 1.0000
+2025-05-10 09:18:52,158 - INFO - NDCG@10: 0.3869
+2025-05-10 09:18:52,158 - INFO - NDCG@10计算详情:
+2025-05-10 09:18:52,158 - INFO - 截断后的预测列表(前10个): [1844, 1656, 1829, 41, 1695, 2755, 2579, 3221, 328, 396]
+2025-05-10 09:18:52,159 - INFO - 目标电影ID 1695在位置5
+2025-05-10 09:18:52,159 - INFO - 位置5的DCG贡献: 1/log2(6) = 0.3869
+2025-05-10 09:18:52,159 - INFO - ==== 测试结果 ====
+2025-05-10 09:18:52,159 - INFO - 用户ID: 405
+2025-05-10 09:18:52,159 - INFO - 目标电影: Artemisia (ID: 1695)
+2025-05-10 09:18:52,159 - INFO - 预测列表(前10个): [1844, 1656, 1829, 41, 1695, 2755, 2579, 3221, 328, 396]
+2025-05-10 09:18:52,161 - INFO - NDCG@10: 0.3869
+2025-05-10 09:18:52,161 - INFO - ========== 测试结束 ==========
+2025-05-10 09:18:52,161 - INFO - 样本 1 测试完成，NDCG@10: 0.3869
+2025-05-10 09:18:52,161 - INFO - ===== 测试样本 2/10 =====
+2025-05-10 09:18:52,161 - INFO - ========== 测试开始 ==========
+2025-05-10 09:18:52,161 - INFO - ==== 样本信息 ====
+2025-05-10 09:18:52,161 - INFO - 用户ID: 475
+2025-05-10 09:18:52,162 - INFO - 用户历史电影数量: 20
+2025-05-10 09:18:52,162 - INFO - 候选电影数量: 20
+2025-05-10 09:18:52,162 - INFO - 目标电影: Up in Smoke (ID: 1194)
+2025-05-10 09:18:52,162 - INFO - ==== 构造提示词 ====
+2025-05-10 09:18:52,162 - INFO - 调用construct_prompt函数...
+2025-05-10 09:18:52,162 - INFO - 生成了6条消息模板
+2025-05-10 09:18:52,162 - INFO - ==== 第一轮调用API(用户分析)结果 ====
+2025-05-10 09:18:52,162 - INFO - 发送了 2 条消息进行用户分析（system + user第一轮消息）
+2025-05-10 09:18:52,162 - INFO - ==== API调用参数 ====
+2025-05-10 09:18:52,163 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:18:52,163 - INFO - 温度: 0
+2025-05-10 09:18:52,163 - INFO - ==== 发送的消息 ====
+2025-05-10 09:18:52,163 - INFO - 消息 1:
+2025-05-10 09:18:52,163 - INFO - 角色: system
+2025-05-10 09:18:52,163 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:18:52,164 - INFO - 消息 2:
+2025-05-10 09:18:52,164 - INFO - 角色: user
+2025-05-10 09:18:52,164 - INFO - 内容: 用户ID: 475
+
+用户观看过的电影列表:
+- Meatballs Part II (ID: 3041)
+- Porky's II: The Next Day (ID: 3689)
+- Porky's Revenge (ID: 3690)
+- Police Academy 4: Citizens on Patrol (ID: 2381)
+- Police Academy 6: City Under Siege (ID: 2383)
+- Police Academy 5: Assignment: Miami Beach (ID: 2382)
+- Monty Python and the Holy Grail (ID: 1136)
+- Annie Hall (ID: 1230)
+- Harold and Maude (ID: 1235)
+- Young Frankenstein (ID: 1278)
+- Animal House (ID: 3421)
+- Monty Python's Life of Brian (ID: 1080)
+- Blazing Saddles (ID: 3671)
+- Kelly's Heroes (ID: 3836)
+- Jerk, The (ID: 2109)
+- Meatballs (ID: 3040)
+- Return of the Pink Panther, The (ID: 1125)
+- Everything You Always Wanted to Know About Sex (ID: 3812)
+- Grease (ID: 1380)
+- Apple Dumpling Gang, The (ID: 1007)
+
+请按照以下步骤进行分析：
+1. 分析每部电影属于哪些风格类别，并制作风格归属表格
+2. 统计各风格类别的出现频率，并绘制风格偏好频率表格
+3. 请基于这些类别计算电影类别偏好频率数据：['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+4. 将类别偏好频率输出为JSON格式，请确保数组与类别顺序对应
+请在分析结果最后将用户偏好数据以JSON格式输出，格式必须为：
+```json
+{"类别偏好": [类别1频率, 类别2频率, ...]}
+```
+注意：这个JSON数据将用于后续分析，请确保其格式正确。
+2025-05-10 09:18:52,165 - INFO - ==== 发送API请求 ====
+2025-05-10 09:18:56,301 - INFO - ==== API响应 ====
+2025-05-10 09:18:56,301 - INFO - 响应状态码: 200
+2025-05-10 09:18:56,301 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:18:51 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59ae5df313f0c-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:18:56,301 - INFO - 完整响应JSON: {
+  "id": "gen-1746839931-2pdboqqGrZDEbZSG288X",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746839931,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n{\n  \"类别偏好\": [\n    0,  // Animation\n    20, // Comedy\n    1,  // Children's\n    1,  // Musical\n    4,  // Romance\n    1,  // Adventure\n    1,  // Action\n    1,  // Thriller\n    1,  // Drama\n    1,  // War\n    1,  // Sci-Fi\n    1,  // Western\n    1,  // Fantasy\n    1,  // Horror\n    0,  // Crime\n    0,  // Film-Noir\n    0   // Documentary\n  ]\n}\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 750,
+    "completion_tokens": 138,
+    "total_tokens": 888,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:18:56,301 - INFO - 模型回复内容:
+```json
+{
+  "类别偏好": [
+    0,  // Animation
+    20, // Comedy
+    1,  // Children's
+    1,  // Musical
+    4,  // Romance
+    1,  // Adventure
+    1,  // Action
+    1,  // Thriller
+    1,  // Drama
+    1,  // War
+    1,  // Sci-Fi
+    1,  // Western
+    1,  // Fantasy
+    1,  // Horror
+    0,  // Crime
+    0,  // Film-Noir
+    0   // Documentary
+  ]
+}
+```
+2025-05-10 09:18:56,302 - INFO - ==== 用量信息 ====
+2025-05-10 09:18:56,302 - INFO - 输入tokens: 750
+2025-05-10 09:18:56,302 - INFO - 输出tokens: 138
+2025-05-10 09:18:56,302 - INFO - 总tokens: 888
+2025-05-10 09:18:56,302 - INFO - ==== 第二轮调用API(候选电影分析)结果 ====
+2025-05-10 09:18:56,302 - INFO - 发送了 3 条消息进行候选电影分析（包含前两轮历史）
+2025-05-10 09:18:56,302 - INFO - ==== API调用参数 ====
+2025-05-10 09:18:56,302 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:18:56,303 - INFO - 温度: 0
+2025-05-10 09:18:56,303 - INFO - ==== 发送的消息 ====
+2025-05-10 09:18:56,303 - INFO - 消息 1:
+2025-05-10 09:18:56,303 - INFO - 角色: system
+2025-05-10 09:18:56,303 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:18:56,303 - INFO - 消息 2:
+2025-05-10 09:18:56,303 - INFO - 角色: assistant
+2025-05-10 09:18:56,303 - INFO - 内容: ```json
+{
+  "类别偏好": [
+    0,  // Animation
+    20, // Comedy
+    1,  // Children's
+    1,  // Musical
+    4,  // Romance
+    1,  // Adventure
+    1,  // Action
+    1,  // Thriller
+    1,  // Drama
+    1,  // War
+    1,  // Sci-Fi
+    1,  // Western
+    1,  // Fantasy
+    1,  // Horror
+    0,  // Crime
+    0,  // Film-Noir
+    0   // Documentary
+  ]
+}
+```
+2025-05-10 09:18:56,303 - INFO - 消息 3:
+2025-05-10 09:18:56,303 - INFO - 角色: user
+2025-05-10 09:18:56,303 - INFO - 内容: 候选电影列表:
+- Top Hat (ID: 945)
+- Smoke (ID: 194)
+- Last Temptation of Christ, The (ID: 2022)
+- Girl on the Bridge, The (La Fille sur le Pont) (ID: 3822)
+- American Beauty (ID: 2858)
+- Outside Ozona (ID: 2438)
+- Sleepwalkers (ID: 3709)
+- Up in Smoke (ID: 1194)
+- Kingpin (ID: 785)
+- Ridicule (ID: 1365)
+- City of Lost Children, The (ID: 29)
+- Retroactive (ID: 3474)
+- Deer Hunter, The (ID: 1263)
+- 2010 (ID: 2311)
+- Great Race, The (ID: 1083)
+- Everest (ID: 1797)
+- Braddock: Missing in Action III (ID: 3768)
+- Late August, Early September (Fin août, début septembre) (ID: 2705)
+- Rent-A-Cop (ID: 3667)
+- Snowriders (ID: 1145)
+
+电影风格类别参考: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+
+请按以下步骤分析候选电影：
+1. 分析每部候选电影属于哪些风格类别，并制作风格归属表格
+2. 基于上轮输出的JSON格式用户类别偏好数据，计算各候选电影与用户偏好的相似度
+3. 计算电影类别向量与用户偏好向量的相似度，并将结果排序
+4. 根据相似度对候选电影进行降序排序（相似度越高排序越靠前）
+2025-05-10 09:18:56,305 - INFO - ==== 发送API请求 ====
+2025-05-10 09:19:10,162 - INFO - ==== API响应 ====
+2025-05-10 09:19:10,164 - INFO - 响应状态码: 200
+2025-05-10 09:19:10,164 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:18:56 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59b003e5369aa-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:19:10,164 - INFO - 完整响应JSON: {
+  "id": "gen-1746839936-vawU7obTmNNpqEo8rlcZ",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746839936,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"id\": 194, \"title\": \"Smoke\", \"similarity\": 0.5},\n    {\"id\": 3822, \"title\": \"Girl on the Bridge, The (La Fille sur le Pont)\", \"similarity\": 0.4},\n    {\"id\": 2858, \"title\": \"American Beauty\", \"similarity\": 0.4},\n    {\"id\": 785, \"title\": \"Kingpin\", \"similarity\": 0.4},\n    {\"id\": 1194, \"title\": \"Up in Smoke\", \"similarity\": 0.4},\n    {\"id\": 1365, \"title\": \"Ridicule\", \"similarity\": 0.3},\n    {\"id\": 945, \"title\": \"Top Hat\", \"similarity\": 0.3},\n    {\"id\": 2022, \"title\": \"Last Temptation of Christ, The\", \"similarity\": 0.3},\n    {\"id\": 2438, \"title\": \"Outside Ozonal\", \"similarity\": 0.3},\n    {\"id\": 3709, \"title\": \"Sleepwalkers\", \"similarity\": 0.3},\n    {\"id\": 29, \"title\": \"City of Lost Children, The\", \"similarity\": 0.2},\n    {\"id\": 3474, \"title\": \"Retroactive\", \"similarity\": 0.2},\n    {\"id\": 1263, \"title\": \"Deer Hunter, The\", \"similarity\": 0.2},\n    {\"id\": 2311, \"title\": \"2010\", \"similarity\": 0.2},\n    {\"id\": 1083, \"title\": \"Great Race, The\", \"similarity\": 0.2},\n    {\"id\": 1797, \"title\": \"Everest\", \"similarity\": 0.1},\n    {\"id\": 3768, \"title\": \"Braddock: Missing in Action III\", \"similarity\": 0.1},\n    {\"id\": 2705, \"title\": \"Late August, Early September (Fin août, début septembre)\", \"similarity\": 0.1},\n    {\"id\": 3667, \"title\": \"Rent-A-Cop\", \"similarity\": 0.1},\n    {\"id\": 1145, \"title\": \"Snowriders\", \"similarity\": 0.1}\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 799,
+    "completion_tokens": 532,
+    "total_tokens": 1331,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:19:10,165 - INFO - 模型回复内容:
+```json
+[
+    {"id": 194, "title": "Smoke", "similarity": 0.5},
+    {"id": 3822, "title": "Girl on the Bridge, The (La Fille sur le Pont)", "similarity": 0.4},
+    {"id": 2858, "title": "American Beauty", "similarity": 0.4},
+    {"id": 785, "title": "Kingpin", "similarity": 0.4},
+    {"id": 1194, "title": "Up in Smoke", "similarity": 0.4},
+    {"id": 1365, "title": "Ridicule", "similarity": 0.3},
+    {"id": 945, "title": "Top Hat", "similarity": 0.3},
+    {"id": 2022, "title": "Last Temptation of Christ, The", "similarity": 0.3},
+    {"id": 2438, "title": "Outside Ozonal", "similarity": 0.3},
+    {"id": 3709, "title": "Sleepwalkers", "similarity": 0.3},
+    {"id": 29, "title": "City of Lost Children, The", "similarity": 0.2},
+    {"id": 3474, "title": "Retroactive", "similarity": 0.2},
+    {"id": 1263, "title": "Deer Hunter, The", "similarity": 0.2},
+    {"id": 2311, "title": "2010", "similarity": 0.2},
+    {"id": 1083, "title": "Great Race, The", "similarity": 0.2},
+    {"id": 1797, "title": "Everest", "similarity": 0.1},
+    {"id": 3768, "title": "Braddock: Missing in Action III", "similarity": 0.1},
+    {"id": 2705, "title": "Late August, Early September (Fin août, début septembre)", "similarity": 0.1},
+    {"id": 3667, "title": "Rent-A-Cop", "similarity": 0.1},
+    {"id": 1145, "title": "Snowriders", "similarity": 0.1}
+]
+```
+2025-05-10 09:19:10,167 - INFO - ==== 用量信息 ====
+2025-05-10 09:19:10,167 - INFO - 输入tokens: 799
+2025-05-10 09:19:10,168 - INFO - 输出tokens: 532
+2025-05-10 09:19:10,168 - INFO - 总tokens: 1331
+2025-05-10 09:19:10,169 - INFO - ==== 第三轮调用API(最终推荐)结果 ====
+2025-05-10 09:19:10,169 - INFO - ==== 发送的消息 (最终推荐请求) ====
+2025-05-10 09:19:10,169 - INFO - [用户第三轮 - 输出要求]:
+  ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:19:10,169 - INFO - ==== API调用参数 ====
+2025-05-10 09:19:10,171 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:19:10,171 - INFO - 温度: 0
+2025-05-10 09:19:10,171 - INFO - ==== 发送的消息 ====
+2025-05-10 09:19:10,172 - INFO - 消息 1:
+2025-05-10 09:19:10,172 - INFO - 角色: system
+2025-05-10 09:19:10,172 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:19:10,172 - INFO - 消息 2:
+2025-05-10 09:19:10,172 - INFO - 角色: assistant
+2025-05-10 09:19:10,172 - INFO - 内容: ```json
+{
+  "类别偏好": [
+    0,  // Animation
+    20, // Comedy
+    1,  // Children's
+    1,  // Musical
+    4,  // Romance
+    1,  // Adventure
+    1,  // Action
+    1,  // Thriller
+    1,  // Drama
+    1,  // War
+    1,  // Sci-Fi
+    1,  // Western
+    1,  // Fantasy
+    1,  // Horror
+    0,  // Crime
+    0,  // Film-Noir
+    0   // Documentary
+  ]
+}
+```
+2025-05-10 09:19:10,172 - INFO - 消息 3:
+2025-05-10 09:19:10,173 - INFO - 角色: assistant
+2025-05-10 09:19:10,173 - INFO - 内容: ```json
+[
+    {"id": 194, "title": "Smoke", "similarity": 0.5},
+    {"id": 3822, "title": "Girl on the Bridge, The (La Fille sur le Pont)", "similarity": 0.4},
+    {"id": 2858, "title": "American Beauty", "similarity": 0.4},
+    {"id": 785, "title": "Kingpin", "similarity": 0.4},
+    {"id": 1194, "title": "Up in Smoke", "similarity": 0.4},
+    {"id": 1365, "title": "Ridicule", "similarity": 0.3},
+    {"id": 945, "title": "Top Hat", "similarity": 0.3},
+    {"id": 2022, "title": "Last Temptation of Christ, The", "similarity": 0.3},
+    {"id": 2438, "title": "Outside Ozonal", "similarity": 0.3},
+    {"id": 3709, "title": "Sleepwalkers", "similarity": 0.3},
+    {"id": 29, "title": "City of Lost Children, The", "similarity": 0.2},
+    {"id": 3474, "title": "Retroactive", "similarity": 0.2},
+    {"id": 1263, "title": "Deer Hunter, The", "similarity": 0.2},
+    {"id": 2311, "title": "2010", "similarity": 0.2},
+    {"id": 1083, "title": "Great Race, The", "similarity": 0.2},
+    {"id": 1797, "title": "Everest", "similarity": 0.1},
+    {"id": 3768, "title": "Braddock: Missing in Action III", "similarity": 0.1},
+    {"id": 2705, "title": "Late August, Early September (Fin août, début septembre)", "similarity": 0.1},
+    {"id": 3667, "title": "Rent-A-Cop", "similarity": 0.1},
+    {"id": 1145, "title": "Snowriders", "similarity": 0.1}
+]
+```
+2025-05-10 09:19:10,173 - INFO - 消息 4:
+2025-05-10 09:19:10,173 - INFO - 角色: user
+2025-05-10 09:19:10,173 - INFO - 内容: ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:19:10,173 - INFO - ==== 发送API请求 ====
+2025-05-10 09:19:26,475 - INFO - ==== API响应 ====
+2025-05-10 09:19:26,476 - INFO - 响应状态码: 200
+2025-05-10 09:19:26,476 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:19:10 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59b576b047ede-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:19:26,476 - INFO - 完整响应JSON: {
+  "id": "gen-1746839950-7q03Ki2dUdFU9hBZbShU",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746839950,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"name\": \"Smoke\", \"id\": 194},\n    {\"name\": \"Girl on the Bridge, The (La Fille sur le Pont)\", \"id\": 3822},\n    {\"name\": \"American Beauty\", \"id\": 2858},\n    {\"name\": \"Kingpin\", \"id\": 785},\n    {\"name\": \"Up in Smoke\", \"id\": 1194},\n    {\"name\": \"Ridicule\", \"id\": 1365},\n    {\"name\": \"Top Hat\", \"id\": 945},\n    {\"name\": \"Last Temptation of Christ, The\", \"id\": 2022},\n    {\"name\": \"Outside Ozonal\", \"id\": 2438},\n    {\"name\": \"Sleepwalkers\", \"id\": 3709},\n    {\"name\": \"City of Lost Children, The\", \"id\": 29},\n    {\"name\": \"Retroactive\", \"id\": 3474},\n    {\"name\": \"Deer Hunter, The\", \"id\": 1263},\n    {\"name\": \"2010\", \"id\": 2311},\n    {\"name\": \"Great Race, The\", \"id\": 1083},\n    {\"name\": \"Everest\", \"id\": 1797},\n    {\"name\": \"Braddock: Missing in Action III\", \"id\": 3768},\n    {\"name\": \"Late August, Early September (Fin août, début septembre)\", \"id\": 2705},\n    {\"name\": \"Rent-A-Cop\", \"id\": 3667},\n    {\"name\": \"Snowriders\", \"id\": 1145}\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1031,
+    "completion_tokens": 352,
+    "total_tokens": 1383,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:19:26,476 - INFO - 模型回复内容:
+```json
+[
+    {"name": "Smoke", "id": 194},
+    {"name": "Girl on the Bridge, The (La Fille sur le Pont)", "id": 3822},
+    {"name": "American Beauty", "id": 2858},
+    {"name": "Kingpin", "id": 785},
+    {"name": "Up in Smoke", "id": 1194},
+    {"name": "Ridicule", "id": 1365},
+    {"name": "Top Hat", "id": 945},
+    {"name": "Last Temptation of Christ, The", "id": 2022},
+    {"name": "Outside Ozonal", "id": 2438},
+    {"name": "Sleepwalkers", "id": 3709},
+    {"name": "City of Lost Children, The", "id": 29},
+    {"name": "Retroactive", "id": 3474},
+    {"name": "Deer Hunter, The", "id": 1263},
+    {"name": "2010", "id": 2311},
+    {"name": "Great Race, The", "id": 1083},
+    {"name": "Everest", "id": 1797},
+    {"name": "Braddock: Missing in Action III", "id": 3768},
+    {"name": "Late August, Early September (Fin août, début septembre)", "id": 2705},
+    {"name": "Rent-A-Cop", "id": 3667},
+    {"name": "Snowriders", "id": 1145}
+]
+```
+2025-05-10 09:19:26,476 - INFO - ==== 用量信息 ====
+2025-05-10 09:19:26,476 - INFO - 输入tokens: 1031
+2025-05-10 09:19:26,477 - INFO - 输出tokens: 352
+2025-05-10 09:19:26,477 - INFO - 总tokens: 1383
+2025-05-10 09:19:26,478 - INFO - ==== 解析输出 ====
+2025-05-10 09:19:26,478 - INFO - 调用parse_output函数解析响应...
+2025-05-10 09:19:26,478 - INFO - 解析结果: [194, 3822, 2858, 785, 1194, 1365, 945, 2022, 2438, 3709, 29, 3474, 1263, 2311, 1083, 1797, 3768, 2705, 3667, 1145]
+2025-05-10 09:19:26,478 - INFO - ==== 计算NDCG ====
+2025-05-10 09:19:26,478 - INFO - 相关性列表: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+2025-05-10 09:19:26,478 - INFO - 位置5的DCG贡献: 1/log2(6) = 0.3869
+2025-05-10 09:19:26,479 - INFO - DCG: 0.3869, IDCG: 1.0000
+2025-05-10 09:19:26,479 - INFO - NDCG@10: 0.3869
+2025-05-10 09:19:26,479 - INFO - NDCG@10计算详情:
+2025-05-10 09:19:26,479 - INFO - 截断后的预测列表(前10个): [194, 3822, 2858, 785, 1194, 1365, 945, 2022, 2438, 3709]
+2025-05-10 09:19:26,479 - INFO - 目标电影ID 1194在位置5
+2025-05-10 09:19:26,479 - INFO - 位置5的DCG贡献: 1/log2(6) = 0.3869
+2025-05-10 09:19:26,479 - INFO - ==== 测试结果 ====
+2025-05-10 09:19:26,479 - INFO - 用户ID: 475
+2025-05-10 09:19:26,479 - INFO - 目标电影: Up in Smoke (ID: 1194)
+2025-05-10 09:19:26,479 - INFO - 预测列表(前10个): [194, 3822, 2858, 785, 1194, 1365, 945, 2022, 2438, 3709]
+2025-05-10 09:19:26,479 - INFO - NDCG@10: 0.3869
+2025-05-10 09:19:26,480 - INFO - ========== 测试结束 ==========
+2025-05-10 09:19:26,480 - INFO - 样本 2 测试完成，NDCG@10: 0.3869
+2025-05-10 09:19:26,480 - INFO - ===== 测试样本 3/10 =====
+2025-05-10 09:19:26,480 - INFO - ========== 测试开始 ==========
+2025-05-10 09:19:26,480 - INFO - ==== 样本信息 ====
+2025-05-10 09:19:26,480 - INFO - 用户ID: 522
+2025-05-10 09:19:26,480 - INFO - 用户历史电影数量: 20
+2025-05-10 09:19:26,480 - INFO - 候选电影数量: 20
+2025-05-10 09:19:26,480 - INFO - 目标电影: Back to the Future Part II (ID: 2011)
+2025-05-10 09:19:26,480 - INFO - ==== 构造提示词 ====
+2025-05-10 09:19:26,480 - INFO - 调用construct_prompt函数...
+2025-05-10 09:19:26,480 - INFO - 生成了6条消息模板
+2025-05-10 09:19:26,480 - INFO - ==== 第一轮调用API(用户分析)结果 ====
+2025-05-10 09:19:26,480 - INFO - 发送了 2 条消息进行用户分析（system + user第一轮消息）
+2025-05-10 09:19:26,481 - INFO - ==== API调用参数 ====
+2025-05-10 09:19:26,481 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:19:26,481 - INFO - 温度: 0
+2025-05-10 09:19:26,481 - INFO - ==== 发送的消息 ====
+2025-05-10 09:19:26,481 - INFO - 消息 1:
+2025-05-10 09:19:26,481 - INFO - 角色: system
+2025-05-10 09:19:26,481 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:19:26,481 - INFO - 消息 2:
+2025-05-10 09:19:26,481 - INFO - 角色: user
+2025-05-10 09:19:26,481 - INFO - 内容: 用户ID: 522
+
+用户观看过的电影列表:
+- Starman (ID: 3699)
+- Fly, The (ID: 2455)
+- Dark City (ID: 1748)
+- Predator (ID: 3527)
+- Fifth Element, The (ID: 1527)
+- Galaxy Quest (ID: 3175)
+- Men in Black (ID: 1580)
+- Robocop (ID: 2985)
+- Spaceballs (ID: 3033)
+- Moonraker (ID: 3638)
+- Forever Young (ID: 3269)
+- Stargate (ID: 316)
+- Strange Days (ID: 198)
+- Mad Max Beyond Thunderdome (ID: 3704)
+- Superman II (ID: 2641)
+- Body Snatchers (ID: 426)
+- Tron (ID: 2105)
+- X-Files: Fight the Future, The (ID: 1909)
+- Independence Day (ID4) (ID: 780)
+- Star Trek: Insurrection (ID: 2393)
+
+请按照以下步骤进行分析：
+1. 分析每部电影属于哪些风格类别，并制作风格归属表格
+2. 统计各风格类别的出现频率，并绘制风格偏好频率表格
+3. 请基于这些类别计算电影类别偏好频率数据：['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+4. 将类别偏好频率输出为JSON格式，请确保数组与类别顺序对应
+请在分析结果最后将用户偏好数据以JSON格式输出，格式必须为：
+```json
+{"类别偏好": [类别1频率, 类别2频率, ...]}
+```
+注意：这个JSON数据将用于后续分析，请确保其格式正确。
+2025-05-10 09:19:26,482 - INFO - ==== 发送API请求 ====
+2025-05-10 09:19:31,352 - INFO - ==== API响应 ====
+2025-05-10 09:19:31,353 - INFO - 响应状态码: 200
+2025-05-10 09:19:31,354 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:19:26 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59bbc8e137bd3-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:19:31,355 - INFO - 完整响应JSON: {
+  "id": "gen-1746839966-bBBYM6VmJyOU0rb7udTC",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746839966,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n{\"类别偏好\": [0, 2, 0, 0, 1, 0, 5, 2, 1, 0, 20, 0, 0, 2, 0, 0, 0]}\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 708,
+    "completion_tokens": 60,
+    "total_tokens": 768,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:19:31,355 - INFO - 模型回复内容:
+```json
+{"类别偏好": [0, 2, 0, 0, 1, 0, 5, 2, 1, 0, 20, 0, 0, 2, 0, 0, 0]}
+```
+2025-05-10 09:19:31,355 - INFO - ==== 用量信息 ====
+2025-05-10 09:19:31,355 - INFO - 输入tokens: 708
+2025-05-10 09:19:31,355 - INFO - 输出tokens: 60
+2025-05-10 09:19:31,356 - INFO - 总tokens: 768
+2025-05-10 09:19:31,356 - INFO - ==== 第二轮调用API(候选电影分析)结果 ====
+2025-05-10 09:19:31,357 - INFO - 发送了 3 条消息进行候选电影分析（包含前两轮历史）
+2025-05-10 09:19:31,357 - INFO - ==== API调用参数 ====
+2025-05-10 09:19:31,357 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:19:31,357 - INFO - 温度: 0
+2025-05-10 09:19:31,357 - INFO - ==== 发送的消息 ====
+2025-05-10 09:19:31,357 - INFO - 消息 1:
+2025-05-10 09:19:31,357 - INFO - 角色: system
+2025-05-10 09:19:31,358 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:19:31,358 - INFO - 消息 2:
+2025-05-10 09:19:31,358 - INFO - 角色: assistant
+2025-05-10 09:19:31,358 - INFO - 内容: ```json
+{"类别偏好": [0, 2, 0, 0, 1, 0, 5, 2, 1, 0, 20, 0, 0, 2, 0, 0, 0]}
+```
+2025-05-10 09:19:31,358 - INFO - 消息 3:
+2025-05-10 09:19:31,358 - INFO - 角色: user
+2025-05-10 09:19:31,358 - INFO - 内容: 候选电影列表:
+- Starman (ID: 3699)
+- Name of the Rose, The (ID: 2467)
+- Still Crazy (ID: 2482)
+- Broken Vessels (ID: 2703)
+- Shine (ID: 1357)
+- Better Off Dead... (ID: 1257)
+- American Strays (ID: 1102)
+- Message to Love: The Isle of Wight Festival (ID: 1420)
+- Black Beauty (ID: 421)
+- Back to the Future Part II (ID: 2011)
+- Remains of the Day, The (ID: 515)
+- Jennifer 8 (ID: 3557)
+- True Romance (ID: 555)
+- Bandits (ID: 2562)
+- Grosse Fatigue (ID: 1174)
+- Addicted to Love (ID: 1541)
+- Rent-a-Kid (ID: 310)
+- Conquest of the Planet of the Apes (ID: 2532)
+- Fausto (ID: 576)
+- Trouble in Paradise (ID: 3739)
+
+电影风格类别参考: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+
+请按以下步骤分析候选电影：
+1. 分析每部候选电影属于哪些风格类别，并制作风格归属表格
+2. 基于上轮输出的JSON格式用户类别偏好数据，计算各候选电影与用户偏好的相似度
+3. 计算电影类别向量与用户偏好向量的相似度，并将结果排序
+4. 根据相似度对候选电影进行降序排序（相似度越高排序越靠前）
+2025-05-10 09:19:31,358 - INFO - ==== 发送API请求 ====
+2025-05-10 09:19:37,419 - INFO - ==== API响应 ====
+2025-05-10 09:19:37,419 - INFO - 响应状态码: 200
+2025-05-10 09:19:37,419 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:19:31 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59bdb7afd7cf1-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:19:37,420 - INFO - 完整响应JSON: {
+  "id": "gen-1746839971-exukm9FhVlsmKZFHqZX3",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746839971,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n  2011,\n  2532,\n  3699,\n  555,\n  2467,\n  515,\n  1357,\n  1420,\n  2482,\n  2703,\n  1257,\n  1102,\n  421,\n  1541,\n  2562,\n  3557,\n  1174,\n  310,\n  576,\n  3739\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 712,
+    "completion_tokens": 82,
+    "total_tokens": 794,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:19:37,420 - INFO - 模型回复内容:
+```json
+[
+  2011,
+  2532,
+  3699,
+  555,
+  2467,
+  515,
+  1357,
+  1420,
+  2482,
+  2703,
+  1257,
+  1102,
+  421,
+  1541,
+  2562,
+  3557,
+  1174,
+  310,
+  576,
+  3739
+]
+```
+2025-05-10 09:19:37,420 - INFO - ==== 用量信息 ====
+2025-05-10 09:19:37,420 - INFO - 输入tokens: 712
+2025-05-10 09:19:37,420 - INFO - 输出tokens: 82
+2025-05-10 09:19:37,420 - INFO - 总tokens: 794
+2025-05-10 09:19:37,421 - INFO - ==== 第三轮调用API(最终推荐)结果 ====
+2025-05-10 09:19:37,421 - INFO - ==== 发送的消息 (最终推荐请求) ====
+2025-05-10 09:19:37,421 - INFO - [用户第三轮 - 输出要求]:
+  ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:19:37,421 - INFO - ==== API调用参数 ====
+2025-05-10 09:19:37,421 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:19:37,421 - INFO - 温度: 0
+2025-05-10 09:19:37,421 - INFO - ==== 发送的消息 ====
+2025-05-10 09:19:37,421 - INFO - 消息 1:
+2025-05-10 09:19:37,422 - INFO - 角色: system
+2025-05-10 09:19:37,422 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:19:37,422 - INFO - 消息 2:
+2025-05-10 09:19:37,423 - INFO - 角色: assistant
+2025-05-10 09:19:37,423 - INFO - 内容: ```json
+{"类别偏好": [0, 2, 0, 0, 1, 0, 5, 2, 1, 0, 20, 0, 0, 2, 0, 0, 0]}
+```
+2025-05-10 09:19:37,423 - INFO - 消息 3:
+2025-05-10 09:19:37,423 - INFO - 角色: assistant
+2025-05-10 09:19:37,423 - INFO - 内容: ```json
+[
+  2011,
+  2532,
+  3699,
+  555,
+  2467,
+  515,
+  1357,
+  1420,
+  2482,
+  2703,
+  1257,
+  1102,
+  421,
+  1541,
+  2562,
+  3557,
+  1174,
+  310,
+  576,
+  3739
+]
+```
+2025-05-10 09:19:37,423 - INFO - 消息 4:
+2025-05-10 09:19:37,423 - INFO - 角色: user
+2025-05-10 09:19:37,423 - INFO - 内容: ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:19:37,423 - INFO - ==== 发送API请求 ====
+2025-05-10 09:19:51,651 - INFO - ==== API响应 ====
+2025-05-10 09:19:51,651 - INFO - 响应状态码: 200
+2025-05-10 09:19:51,652 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:19:37 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59c00ffa20fd0-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:19:51,652 - INFO - 完整响应JSON: {
+  "id": "gen-1746839977-BEnqXiGPSGlAyLVaPgKb",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746839977,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "[{\"name\": \"电影1\", \"id\": 2011}, {\"name\": \"电影2\", \"id\": 2532}, {\"name\": \"电影3\", \"id\": 3699}, {\"name\": \"电影4\", \"id\": 555}, {\"name\": \"电影5\", \"id\": 2467}, {\"name\": \"电影6\", \"id\": 515}, {\"name\": \"电影7\", \"id\": 1357}, {\"name\": \"电影8\", \"id\": 1420}, {\"name\": \"电影9\", \"id\": 2482}, {\"name\": \"电影10\", \"id\": 2703}, {\"name\": \"电影11\", \"id\": 1257}, {\"name\": \"电影12\", \"id\": 1102}, {\"name\": \"电影13\", \"id\": 421}, {\"name\": \"电影14\", \"id\": 1541}, {\"name\": \"电影15\", \"id\": 2562}, {\"name\": \"电影16\", \"id\": 3557}, {\"name\": \"电影17\", \"id\": 1174}, {\"name\": \"电影18\", \"id\": 310}, {\"name\": \"电影19\", \"id\": 576}, {\"name\": \"电影20\", \"id\": 3739}]",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 503,
+    "completion_tokens": 277,
+    "total_tokens": 780,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:19:51,652 - INFO - 模型回复内容:
+[{"name": "电影1", "id": 2011}, {"name": "电影2", "id": 2532}, {"name": "电影3", "id": 3699}, {"name": "电影4", "id": 555}, {"name": "电影5", "id": 2467}, {"name": "电影6", "id": 515}, {"name": "电影7", "id": 1357}, {"name": "电影8", "id": 1420}, {"name": "电影9", "id": 2482}, {"name": "电影10", "id": 2703}, {"name": "电影11", "id": 1257}, {"name": "电影12", "id": 1102}, {"name": "电影13", "id": 421}, {"name": "电影14", "id": 1541}, {"name": "电影15", "id": 2562}, {"name": "电影16", "id": 3557}, {"name": "电影17", "id": 1174}, {"name": "电影18", "id": 310}, {"name": "电影19", "id": 576}, {"name": "电影20", "id": 3739}]
+2025-05-10 09:19:51,652 - INFO - ==== 用量信息 ====
+2025-05-10 09:19:51,654 - INFO - 输入tokens: 503
+2025-05-10 09:19:51,654 - INFO - 输出tokens: 277
+2025-05-10 09:19:51,654 - INFO - 总tokens: 780
+2025-05-10 09:19:51,654 - INFO - ==== 解析输出 ====
+2025-05-10 09:19:51,654 - INFO - 调用parse_output函数解析响应...
+2025-05-10 09:19:51,654 - INFO - 解析结果: [2011, 2532, 3699, 555, 2467, 515, 1357, 1420, 2482, 2703, 1257, 1102, 421, 1541, 2562, 3557, 1174, 310, 576, 3739]
+2025-05-10 09:19:51,654 - INFO - ==== 计算NDCG ====
+2025-05-10 09:19:51,654 - INFO - 相关性列表: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 09:19:51,656 - INFO - 位置1的DCG贡献: 1/log2(2) = 1.0000
+2025-05-10 09:19:51,656 - INFO - DCG: 1.0000, IDCG: 1.0000
+2025-05-10 09:19:51,656 - INFO - NDCG@10: 1.0000
+2025-05-10 09:19:51,656 - INFO - NDCG@10计算详情:
+2025-05-10 09:19:51,656 - INFO - 截断后的预测列表(前10个): [2011, 2532, 3699, 555, 2467, 515, 1357, 1420, 2482, 2703]
+2025-05-10 09:19:51,656 - INFO - 目标电影ID 2011在位置1
+2025-05-10 09:19:51,656 - INFO - 位置1的DCG贡献: 1/log2(2) = 1.0000
+2025-05-10 09:19:51,656 - INFO - ==== 测试结果 ====
+2025-05-10 09:19:51,658 - INFO - 用户ID: 522
+2025-05-10 09:19:51,658 - INFO - 目标电影: Back to the Future Part II (ID: 2011)
+2025-05-10 09:19:51,658 - INFO - 预测列表(前10个): [2011, 2532, 3699, 555, 2467, 515, 1357, 1420, 2482, 2703]
+2025-05-10 09:19:51,658 - INFO - NDCG@10: 1.0000
+2025-05-10 09:19:51,658 - INFO - ========== 测试结束 ==========
+2025-05-10 09:19:51,658 - INFO - 样本 3 测试完成，NDCG@10: 1.0000
+2025-05-10 09:19:51,658 - INFO - ===== 测试样本 4/10 =====
+2025-05-10 09:19:51,658 - INFO - ========== 测试开始 ==========
+2025-05-10 09:19:51,659 - INFO - ==== 样本信息 ====
+2025-05-10 09:19:51,659 - INFO - 用户ID: 549
+2025-05-10 09:19:51,659 - INFO - 用户历史电影数量: 20
+2025-05-10 09:19:51,659 - INFO - 候选电影数量: 20
+2025-05-10 09:19:51,659 - INFO - 目标电影: Autumn in New York (ID: 3824)
+2025-05-10 09:19:51,659 - INFO - ==== 构造提示词 ====
+2025-05-10 09:19:51,659 - INFO - 调用construct_prompt函数...
+2025-05-10 09:19:51,659 - INFO - 生成了6条消息模板
+2025-05-10 09:19:51,660 - INFO - ==== 第一轮调用API(用户分析)结果 ====
+2025-05-10 09:19:51,660 - INFO - 发送了 2 条消息进行用户分析（system + user第一轮消息）
+2025-05-10 09:19:51,660 - INFO - ==== API调用参数 ====
+2025-05-10 09:19:51,660 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:19:51,660 - INFO - 温度: 0
+2025-05-10 09:19:51,660 - INFO - ==== 发送的消息 ====
+2025-05-10 09:19:51,660 - INFO - 消息 1:
+2025-05-10 09:19:51,660 - INFO - 角色: system
+2025-05-10 09:19:51,660 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:19:51,660 - INFO - 消息 2:
+2025-05-10 09:19:51,660 - INFO - 角色: user
+2025-05-10 09:19:51,660 - INFO - 内容: 用户ID: 549
+
+用户观看过的电影列表:
+- Trois (ID: 3291)
+- Where the Heart Is (ID: 3565)
+- Next Friday (ID: 3177)
+- Me, Myself and Irene (ID: 3752)
+- Loser (ID: 3616)
+- Nutty Professor II: The Klumps (ID: 3821)
+- Mission to Mars (ID: 3354)
+- Here on Earth (ID: 3453)
+- Hollow Man (ID: 3826)
+- Ready to Rumble (ID: 3511)
+- Screwed (ID: 3596)
+- Gladiator (ID: 3578)
+- Showgirls (ID: 193)
+- Supernova (ID: 3190)
+- American Psycho (ID: 3535)
+- Final Destination (ID: 3409)
+- Meet the Parents (ID: 3948)
+- Replacements, The (ID: 3861)
+- Duets (ID: 3901)
+- Big Momma's House (ID: 3646)
+
+请按照以下步骤进行分析：
+1. 分析每部电影属于哪些风格类别，并制作风格归属表格
+2. 统计各风格类别的出现频率，并绘制风格偏好频率表格
+3. 请基于这些类别计算电影类别偏好频率数据：['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+4. 将类别偏好频率输出为JSON格式，请确保数组与类别顺序对应
+请在分析结果最后将用户偏好数据以JSON格式输出，格式必须为：
+```json
+{"类别偏好": [类别1频率, 类别2频率, ...]}
+```
+注意：这个JSON数据将用于后续分析，请确保其格式正确。
+2025-05-10 09:19:51,661 - INFO - ==== 发送API请求 ====
+2025-05-10 09:19:55,756 - INFO - ==== API响应 ====
+2025-05-10 09:19:55,756 - INFO - 响应状态码: 200
+2025-05-10 09:19:55,756 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:19:51 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59c5a3c8008d0-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:19:55,756 - INFO - 完整响应JSON: {
+  "id": "gen-1746839991-zZPO7zOe0ets7wo4ni1Z",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746839991,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n{\"类别偏好\": [0, 6, 0, 0, 2, 0, 2, 3, 3, 0, 3, 0, 0, 2, 0, 0, 0]}\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 708,
+    "completion_tokens": 60,
+    "total_tokens": 768,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:19:55,757 - INFO - 模型回复内容:
+```json
+{"类别偏好": [0, 6, 0, 0, 2, 0, 2, 3, 3, 0, 3, 0, 0, 2, 0, 0, 0]}
+```
+2025-05-10 09:19:55,757 - INFO - ==== 用量信息 ====
+2025-05-10 09:19:55,757 - INFO - 输入tokens: 708
+2025-05-10 09:19:55,757 - INFO - 输出tokens: 60
+2025-05-10 09:19:55,758 - INFO - 总tokens: 768
+2025-05-10 09:19:55,758 - INFO - ==== 第二轮调用API(候选电影分析)结果 ====
+2025-05-10 09:19:55,758 - INFO - 发送了 3 条消息进行候选电影分析（包含前两轮历史）
+2025-05-10 09:19:55,758 - INFO - ==== API调用参数 ====
+2025-05-10 09:19:55,758 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:19:55,758 - INFO - 温度: 0
+2025-05-10 09:19:55,759 - INFO - ==== 发送的消息 ====
+2025-05-10 09:19:55,759 - INFO - 消息 1:
+2025-05-10 09:19:55,759 - INFO - 角色: system
+2025-05-10 09:19:55,759 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:19:55,759 - INFO - 消息 2:
+2025-05-10 09:19:55,759 - INFO - 角色: assistant
+2025-05-10 09:19:55,759 - INFO - 内容: ```json
+{"类别偏好": [0, 6, 0, 0, 2, 0, 2, 3, 3, 0, 3, 0, 0, 2, 0, 0, 0]}
+```
+2025-05-10 09:19:55,759 - INFO - 消息 3:
+2025-05-10 09:19:55,759 - INFO - 角色: user
+2025-05-10 09:19:55,759 - INFO - 内容: 候选电影列表:
+- To Have, or Not (ID: 1555)
+- Picnic at Hanging Rock (ID: 1913)
+- Twin Town (ID: 1539)
+- Bronx Tale, A (ID: 428)
+- Naked Gun 33 1/3: The Final Insult (ID: 370)
+- Autumn in New York (ID: 3824)
+- Mrs. Winterbourne (ID: 691)
+- Favor, The (ID: 447)
+- Tomorrow Never Dies (ID: 1722)
+- King of Masks, The (Bian Lian) (ID: 2609)
+- Golden Bowl, The (ID: 3756)
+- Get Shorty (ID: 21)
+- Braddock: Missing in Action III (ID: 3768)
+- ...And Justice for All (ID: 3420)
+- Very Brady Sequel, A (ID: 818)
+- Kika (ID: 567)
+- Alien Nation (ID: 3701)
+- King Kong (ID: 2367)
+- Boomerang (ID: 122)
+- Dream With the Fishes (ID: 1563)
+
+电影风格类别参考: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+
+请按以下步骤分析候选电影：
+1. 分析每部候选电影属于哪些风格类别，并制作风格归属表格
+2. 基于上轮输出的JSON格式用户类别偏好数据，计算各候选电影与用户偏好的相似度
+3. 计算电影类别向量与用户偏好向量的相似度，并将结果排序
+4. 根据相似度对候选电影进行降序排序（相似度越高排序越靠前）
+2025-05-10 09:19:55,760 - INFO - ==== 发送API请求 ====
+2025-05-10 09:20:13,044 - INFO - ==== API响应 ====
+2025-05-10 09:20:13,044 - INFO - 响应状态码: 200
+2025-05-10 09:20:13,044 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:19:55 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59c73ce58d938-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:20:13,044 - INFO - 完整响应JSON: {
+  "id": "gen-1746839995-dPddi94IV5LNiSoldbs2",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746839995,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"id\": 1913, \"title\": \"Picnic at Hanging Rock\", \"genres\": [\"Drama\", \"Mystery\"]},\n    {\"id\": 1539, \"title\": \"Twin Town\", \"genres\": [\"Comedy\", \"Crime\"]},\n    {\"id\": 428, \"title\": \"Bronx Tale, A\", \"genres\": [\"Drama\", \"Crime\"]},\n    {\"id\": 370, \"title\": \"Naked Gun 33 1/3: The Final Insult\", \"genres\": [\"Comedy\", \"Crime\"]},\n    {\"id\": 3824, \"title\": \"Autumn in New York\", \"genres\": [\"Romance\", \"Drama\"]},\n    {\"id\": 691, \"title\": \"Mrs. Winterbourne\", \"genres\": [\"Comedy\", \"Romance\", \"Drama\"]},\n    {\"id\": 447, \"title\": \"Favor, The\", \"genres\": [\"Comedy\", \"Romance\"]},\n    {\"id\": 1722, \"title\": \"Tomorrow Never Dies\", \"genres\": [\"Action\", \"Thriller\"]},\n    {\"id\": 2609, \"title\": \"King of Masks, The (Bian Lian)\", \"genres\": [\"Drama\"]},\n    {\"id\": 3756, \"title\": \"Golden Bowl, The\", \"genres\": [\"Drama\", \"Romance\"]},\n    {\"id\": 21, \"title\": \"Get Shorty\", \"genres\": [\"Comedy\", \"Crime\", \"Thriller\"]},\n    {\"id\": 3768, \"title\": \"Braddock: Missing in Action III\", \"genres\": [\"Action\", \"War\"]},\n    {\"id\": 3420, \"title\": \"...And Justice for All\", \"genres\": [\"Drama\", \"Crime\"]},\n    {\"id\": 818, \"title\": \"Very Brady Sequel, A\", \"genres\": [\"Comedy\"]},\n    {\"id\": 567, \"title\": \"Kika\", \"genres\": [\"Comedy\", \"Drama\"]},\n    {\"id\": 3701, \"title\": \"Alien Nation\", \"genres\": [\"Sci-Fi\", \"Crime\", \"Thriller\"]},\n    {\"id\": 2367, \"title\": \"King Kong\", \"genres\": [\"Adventure\", \"Horror\", \"Sci-Fi\"]},\n    {\"id\": 122, \"title\": \"Boomerang\", \"genres\": [\"Comedy\", \"Romance\"]},\n    {\"id\": 1563, \"title\": \"Dream With the Fishes\", \"genres\": [\"Drama\"]}\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 727,
+    "completion_tokens": 592,
+    "total_tokens": 1319,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:20:13,045 - INFO - 模型回复内容:
+```json
+[
+    {"id": 1913, "title": "Picnic at Hanging Rock", "genres": ["Drama", "Mystery"]},
+    {"id": 1539, "title": "Twin Town", "genres": ["Comedy", "Crime"]},
+    {"id": 428, "title": "Bronx Tale, A", "genres": ["Drama", "Crime"]},
+    {"id": 370, "title": "Naked Gun 33 1/3: The Final Insult", "genres": ["Comedy", "Crime"]},
+    {"id": 3824, "title": "Autumn in New York", "genres": ["Romance", "Drama"]},
+    {"id": 691, "title": "Mrs. Winterbourne", "genres": ["Comedy", "Romance", "Drama"]},
+    {"id": 447, "title": "Favor, The", "genres": ["Comedy", "Romance"]},
+    {"id": 1722, "title": "Tomorrow Never Dies", "genres": ["Action", "Thriller"]},
+    {"id": 2609, "title": "King of Masks, The (Bian Lian)", "genres": ["Drama"]},
+    {"id": 3756, "title": "Golden Bowl, The", "genres": ["Drama", "Romance"]},
+    {"id": 21, "title": "Get Shorty", "genres": ["Comedy", "Crime", "Thriller"]},
+    {"id": 3768, "title": "Braddock: Missing in Action III", "genres": ["Action", "War"]},
+    {"id": 3420, "title": "...And Justice for All", "genres": ["Drama", "Crime"]},
+    {"id": 818, "title": "Very Brady Sequel, A", "genres": ["Comedy"]},
+    {"id": 567, "title": "Kika", "genres": ["Comedy", "Drama"]},
+    {"id": 3701, "title": "Alien Nation", "genres": ["Sci-Fi", "Crime", "Thriller"]},
+    {"id": 2367, "title": "King Kong", "genres": ["Adventure", "Horror", "Sci-Fi"]},
+    {"id": 122, "title": "Boomerang", "genres": ["Comedy", "Romance"]},
+    {"id": 1563, "title": "Dream With the Fishes", "genres": ["Drama"]}
+]
+```
+2025-05-10 09:20:13,045 - INFO - ==== 用量信息 ====
+2025-05-10 09:20:13,045 - INFO - 输入tokens: 727
+2025-05-10 09:20:13,045 - INFO - 输出tokens: 592
+2025-05-10 09:20:13,046 - INFO - 总tokens: 1319
+2025-05-10 09:20:13,046 - INFO - ==== 第三轮调用API(最终推荐)结果 ====
+2025-05-10 09:20:13,046 - INFO - ==== 发送的消息 (最终推荐请求) ====
+2025-05-10 09:20:13,046 - INFO - [用户第三轮 - 输出要求]:
+  ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:20:13,047 - INFO - ==== API调用参数 ====
+2025-05-10 09:20:13,047 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:20:13,047 - INFO - 温度: 0
+2025-05-10 09:20:13,047 - INFO - ==== 发送的消息 ====
+2025-05-10 09:20:13,047 - INFO - 消息 1:
+2025-05-10 09:20:13,047 - INFO - 角色: system
+2025-05-10 09:20:13,048 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:20:13,048 - INFO - 消息 2:
+2025-05-10 09:20:13,048 - INFO - 角色: assistant
+2025-05-10 09:20:13,048 - INFO - 内容: ```json
+{"类别偏好": [0, 6, 0, 0, 2, 0, 2, 3, 3, 0, 3, 0, 0, 2, 0, 0, 0]}
+```
+2025-05-10 09:20:13,048 - INFO - 消息 3:
+2025-05-10 09:20:13,048 - INFO - 角色: assistant
+2025-05-10 09:20:13,048 - INFO - 内容: ```json
+[
+    {"id": 1913, "title": "Picnic at Hanging Rock", "genres": ["Drama", "Mystery"]},
+    {"id": 1539, "title": "Twin Town", "genres": ["Comedy", "Crime"]},
+    {"id": 428, "title": "Bronx Tale, A", "genres": ["Drama", "Crime"]},
+    {"id": 370, "title": "Naked Gun 33 1/3: The Final Insult", "genres": ["Comedy", "Crime"]},
+    {"id": 3824, "title": "Autumn in New York", "genres": ["Romance", "Drama"]},
+    {"id": 691, "title": "Mrs. Winterbourne", "genres": ["Comedy", "Romance", "Drama"]},
+    {"id": 447, "title": "Favor, The", "genres": ["Comedy", "Romance"]},
+    {"id": 1722, "title": "Tomorrow Never Dies", "genres": ["Action", "Thriller"]},
+    {"id": 2609, "title": "King of Masks, The (Bian Lian)", "genres": ["Drama"]},
+    {"id": 3756, "title": "Golden Bowl, The", "genres": ["Drama", "Romance"]},
+    {"id": 21, "title": "Get Shorty", "genres": ["Comedy", "Crime", "Thriller"]},
+    {"id": 3768, "title": "Braddock: Missing in Action III", "genres": ["Action", "War"]},
+    {"id": 3420, "title": "...And Justice for All", "genres": ["Drama", "Crime"]},
+    {"id": 818, "title": "Very Brady Sequel, A", "genres": ["Comedy"]},
+    {"id": 567, "title": "Kika", "genres": ["Comedy", "Drama"]},
+    {"id": 3701, "title": "Alien Nation", "genres": ["Sci-Fi", "Crime", "Thriller"]},
+    {"id": 2367, "title": "King Kong", "genres": ["Adventure", "Horror", "Sci-Fi"]},
+    {"id": 122, "title": "Boomerang", "genres": ["Comedy", "Romance"]},
+    {"id": 1563, "title": "Dream With the Fishes", "genres": ["Drama"]}
+]
+```
+2025-05-10 09:20:13,048 - INFO - 消息 4:
+2025-05-10 09:20:13,049 - INFO - 角色: user
+2025-05-10 09:20:13,049 - INFO - 内容: ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:20:13,049 - INFO - ==== 发送API请求 ====
+2025-05-10 09:20:18,823 - INFO - ==== API响应 ====
+2025-05-10 09:20:18,823 - INFO - 响应状态码: 200
+2025-05-10 09:20:18,823 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:20:12 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59cdf9d4c090a-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:20:18,823 - INFO - 完整响应JSON: {
+  "id": "gen-1746840012-iOhWYHAjEJtDpxjCgILj",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840012,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[{\"id\": 3824}, {\"id\": 691}, {\"id\": 447}, {\"id\": 3756}, {\"id\": 122}, {\"id\": 1913}, {\"id\": 428}, {\"id\": 2609}, {\"id\": 1563}, {\"id\": 3420}, {\"id\": 567}, {\"id\": 1539}, {\"id\": 370}, {\"id\": 21}, {\"id\": 818}, {\"id\": 1722}, {\"id\": 3701}, {\"id\": 2367}, {\"id\": 3768}]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1013,
+    "completion_tokens": 132,
+    "total_tokens": 1145,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:20:18,823 - INFO - 模型回复内容:
+```json
+[{"id": 3824}, {"id": 691}, {"id": 447}, {"id": 3756}, {"id": 122}, {"id": 1913}, {"id": 428}, {"id": 2609}, {"id": 1563}, {"id": 3420}, {"id": 567}, {"id": 1539}, {"id": 370}, {"id": 21}, {"id": 818}, {"id": 1722}, {"id": 3701}, {"id": 2367}, {"id": 3768}]
+```
+2025-05-10 09:20:18,824 - INFO - ==== 用量信息 ====
+2025-05-10 09:20:18,824 - INFO - 输入tokens: 1013
+2025-05-10 09:20:18,824 - INFO - 输出tokens: 132
+2025-05-10 09:20:18,824 - INFO - 总tokens: 1145
+2025-05-10 09:20:18,824 - INFO - ==== 解析输出 ====
+2025-05-10 09:20:18,824 - INFO - 调用parse_output函数解析响应...
+2025-05-10 09:20:18,824 - INFO - 解析结果: [3824, 691, 447, 3756, 122, 1913, 428, 2609, 1563, 3420, 567, 1539, 370, 21, 818, 1722, 3701, 2367, 3768]
+2025-05-10 09:20:18,825 - INFO - ==== 计算NDCG ====
+2025-05-10 09:20:18,825 - INFO - 相关性列表: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 09:20:18,825 - INFO - 位置1的DCG贡献: 1/log2(2) = 1.0000
+2025-05-10 09:20:18,825 - INFO - DCG: 1.0000, IDCG: 1.0000
+2025-05-10 09:20:18,825 - INFO - NDCG@10: 1.0000
+2025-05-10 09:20:18,825 - INFO - NDCG@10计算详情:
+2025-05-10 09:20:18,826 - INFO - 截断后的预测列表(前10个): [3824, 691, 447, 3756, 122, 1913, 428, 2609, 1563, 3420]
+2025-05-10 09:20:18,826 - INFO - 目标电影ID 3824在位置1
+2025-05-10 09:20:18,826 - INFO - 位置1的DCG贡献: 1/log2(2) = 1.0000
+2025-05-10 09:20:18,826 - INFO - ==== 测试结果 ====
+2025-05-10 09:20:18,826 - INFO - 用户ID: 549
+2025-05-10 09:20:18,826 - INFO - 目标电影: Autumn in New York (ID: 3824)
+2025-05-10 09:20:18,826 - INFO - 预测列表(前10个): [3824, 691, 447, 3756, 122, 1913, 428, 2609, 1563, 3420]
+2025-05-10 09:20:18,826 - INFO - NDCG@10: 1.0000
+2025-05-10 09:20:18,826 - INFO - ========== 测试结束 ==========
+2025-05-10 09:20:18,826 - INFO - 样本 4 测试完成，NDCG@10: 1.0000
+2025-05-10 09:20:18,826 - INFO - ===== 测试样本 5/10 =====
+2025-05-10 09:20:18,826 - INFO - ========== 测试开始 ==========
+2025-05-10 09:20:18,826 - INFO - ==== 样本信息 ====
+2025-05-10 09:20:18,826 - INFO - 用户ID: 554
+2025-05-10 09:20:18,826 - INFO - 用户历史电影数量: 20
+2025-05-10 09:20:18,826 - INFO - 候选电影数量: 20
+2025-05-10 09:20:18,826 - INFO - 目标电影: Meet the Parents (ID: 3948)
+2025-05-10 09:20:18,827 - INFO - ==== 构造提示词 ====
+2025-05-10 09:20:18,827 - INFO - 调用construct_prompt函数...
+2025-05-10 09:20:18,827 - INFO - 生成了6条消息模板
+2025-05-10 09:20:18,827 - INFO - ==== 第一轮调用API(用户分析)结果 ====
+2025-05-10 09:20:18,827 - INFO - 发送了 2 条消息进行用户分析（system + user第一轮消息）
+2025-05-10 09:20:18,827 - INFO - ==== API调用参数 ====
+2025-05-10 09:20:18,827 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:20:18,827 - INFO - 温度: 0
+2025-05-10 09:20:18,827 - INFO - ==== 发送的消息 ====
+2025-05-10 09:20:18,827 - INFO - 消息 1:
+2025-05-10 09:20:18,827 - INFO - 角色: system
+2025-05-10 09:20:18,827 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:20:18,828 - INFO - 消息 2:
+2025-05-10 09:20:18,828 - INFO - 角色: user
+2025-05-10 09:20:18,828 - INFO - 内容: 用户ID: 554
+
+用户观看过的电影列表:
+- Fight Club (ID: 2959)
+- General's Daughter, The (ID: 2688)
+- Ghostbusters (ID: 2716)
+- Gladiator (ID: 3578)
+- Kingpin (ID: 785)
+- Little Voice (ID: 2390)
+- Mickey Blue Eyes (ID: 2805)
+- Magnolia (ID: 3160)
+- Mosquito Coast, The (ID: 2734)
+- Out of Africa (ID: 1959)
+- Patriot, The (ID: 3753)
+- Powder (ID: 24)
+- Snow Falling on Cedars (ID: 3185)
+- Shakespeare in Love (ID: 2396)
+- Runaway Bride (ID: 2724)
+- Sixth Sense, The (ID: 2762)
+- Talented Mr. Ripley, The (ID: 3176)
+- South Park: Bigger, Longer and Uncut (ID: 2700)
+- Summer of Sam (ID: 2702)
+- Thomas Crown Affair, The (ID: 2763)
+
+请按照以下步骤进行分析：
+1. 分析每部电影属于哪些风格类别，并制作风格归属表格
+2. 统计各风格类别的出现频率，并绘制风格偏好频率表格
+3. 请基于这些类别计算电影类别偏好频率数据：['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+4. 将类别偏好频率输出为JSON格式，请确保数组与类别顺序对应
+请在分析结果最后将用户偏好数据以JSON格式输出，格式必须为：
+```json
+{"类别偏好": [类别1频率, 类别2频率, ...]}
+```
+注意：这个JSON数据将用于后续分析，请确保其格式正确。
+2025-05-10 09:20:18,828 - INFO - ==== 发送API请求 ====
+2025-05-10 09:20:22,744 - INFO - ==== API响应 ====
+2025-05-10 09:20:22,744 - INFO - 响应状态码: 200
+2025-05-10 09:20:22,744 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:20:18 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59d03fc3f7c7a-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:20:22,744 - INFO - 完整响应JSON: {
+  "id": "gen-1746840018-aIX4dXplFKWqTdqZxTuX",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840018,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n{\"类别偏好\": [1, 5, 0, 0, 3, 1, 4, 3, 6, 1, 0, 0, 0, 1, 0, 0, 0]}\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 719,
+    "completion_tokens": 60,
+    "total_tokens": 779,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:20:22,745 - INFO - 模型回复内容:
+```json
+{"类别偏好": [1, 5, 0, 0, 3, 1, 4, 3, 6, 1, 0, 0, 0, 1, 0, 0, 0]}
+```
+2025-05-10 09:20:22,745 - INFO - ==== 用量信息 ====
+2025-05-10 09:20:22,745 - INFO - 输入tokens: 719
+2025-05-10 09:20:22,745 - INFO - 输出tokens: 60
+2025-05-10 09:20:22,745 - INFO - 总tokens: 779
+2025-05-10 09:20:22,745 - INFO - ==== 第二轮调用API(候选电影分析)结果 ====
+2025-05-10 09:20:22,747 - INFO - 发送了 3 条消息进行候选电影分析（包含前两轮历史）
+2025-05-10 09:20:22,747 - INFO - ==== API调用参数 ====
+2025-05-10 09:20:22,747 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:20:22,747 - INFO - 温度: 0
+2025-05-10 09:20:22,747 - INFO - ==== 发送的消息 ====
+2025-05-10 09:20:22,748 - INFO - 消息 1:
+2025-05-10 09:20:22,748 - INFO - 角色: system
+2025-05-10 09:20:22,748 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:20:22,749 - INFO - 消息 2:
+2025-05-10 09:20:22,749 - INFO - 角色: assistant
+2025-05-10 09:20:22,749 - INFO - 内容: ```json
+{"类别偏好": [1, 5, 0, 0, 3, 1, 4, 3, 6, 1, 0, 0, 0, 1, 0, 0, 0]}
+```
+2025-05-10 09:20:22,750 - INFO - 消息 3:
+2025-05-10 09:20:22,750 - INFO - 角色: user
+2025-05-10 09:20:22,750 - INFO - 内容: 候选电影列表:
+- Small Time Crooks (ID: 3618)
+- Renaissance Man (ID: 516)
+- Intimate Relations (ID: 1528)
+- Rosemary's Baby (ID: 2160)
+- Homegrown (ID: 1824)
+- Deceiver (ID: 1671)
+- Class Reunion (ID: 3313)
+- Tom and Huck (ID: 8)
+- Separation, The (La Séparation) (ID: 2869)
+- Bring It On (ID: 3882)
+- This Is My Father (ID: 2620)
+- Bad Boys (ID: 145)
+- I'm Not Rappaport (ID: 1317)
+- Gung Ho (ID: 2374)
+- Meet the Parents (ID: 3948)
+- Lodger, The (ID: 2227)
+- Celestial Clockwork (ID: 863)
+- Thunderball (ID: 2993)
+- Night Porter, The (Il Portiere di notte) (ID: 2074)
+- Meet the Deedles (ID: 1822)
+
+电影风格类别参考: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+
+请按以下步骤分析候选电影：
+1. 分析每部候选电影属于哪些风格类别，并制作风格归属表格
+2. 基于上轮输出的JSON格式用户类别偏好数据，计算各候选电影与用户偏好的相似度
+3. 计算电影类别向量与用户偏好向量的相似度，并将结果排序
+4. 根据相似度对候选电影进行降序排序（相似度越高排序越靠前）
+2025-05-10 09:20:22,750 - INFO - ==== 发送API请求 ====
+2025-05-10 09:20:28,555 - INFO - ==== API响应 ====
+2025-05-10 09:20:28,557 - INFO - 响应状态码: 200
+2025-05-10 09:20:28,557 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:20:22 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59d1cdb23d90f-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:20:28,557 - INFO - 完整响应JSON: {
+  "id": "gen-1746840022-qc2yKm0fSGiC0pVYSals",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840022,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n  3948,\n  3882,\n  3618,\n  516,\n  1824,\n  8,\n  2374,\n  145,\n  1671,\n  2227,\n  2160,\n  2074,\n  1528,\n  2869,\n  2620,\n  1317,\n  1822,\n  3313,\n  2993,\n  863\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 713,
+    "completion_tokens": 83,
+    "total_tokens": 796,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:20:28,558 - INFO - 模型回复内容:
+```json
+[
+  3948,
+  3882,
+  3618,
+  516,
+  1824,
+  8,
+  2374,
+  145,
+  1671,
+  2227,
+  2160,
+  2074,
+  1528,
+  2869,
+  2620,
+  1317,
+  1822,
+  3313,
+  2993,
+  863
+]
+```
+2025-05-10 09:20:28,559 - INFO - ==== 用量信息 ====
+2025-05-10 09:20:28,559 - INFO - 输入tokens: 713
+2025-05-10 09:20:28,560 - INFO - 输出tokens: 83
+2025-05-10 09:20:28,560 - INFO - 总tokens: 796
+2025-05-10 09:20:28,560 - INFO - ==== 第三轮调用API(最终推荐)结果 ====
+2025-05-10 09:20:28,561 - INFO - ==== 发送的消息 (最终推荐请求) ====
+2025-05-10 09:20:28,561 - INFO - [用户第三轮 - 输出要求]:
+  ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:20:28,562 - INFO - ==== API调用参数 ====
+2025-05-10 09:20:28,562 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:20:28,562 - INFO - 温度: 0
+2025-05-10 09:20:28,562 - INFO - ==== 发送的消息 ====
+2025-05-10 09:20:28,562 - INFO - 消息 1:
+2025-05-10 09:20:28,562 - INFO - 角色: system
+2025-05-10 09:20:28,562 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:20:28,564 - INFO - 消息 2:
+2025-05-10 09:20:28,564 - INFO - 角色: assistant
+2025-05-10 09:20:28,564 - INFO - 内容: ```json
+{"类别偏好": [1, 5, 0, 0, 3, 1, 4, 3, 6, 1, 0, 0, 0, 1, 0, 0, 0]}
+```
+2025-05-10 09:20:28,564 - INFO - 消息 3:
+2025-05-10 09:20:28,564 - INFO - 角色: assistant
+2025-05-10 09:20:28,564 - INFO - 内容: ```json
+[
+  3948,
+  3882,
+  3618,
+  516,
+  1824,
+  8,
+  2374,
+  145,
+  1671,
+  2227,
+  2160,
+  2074,
+  1528,
+  2869,
+  2620,
+  1317,
+  1822,
+  3313,
+  2993,
+  863
+]
+```
+2025-05-10 09:20:28,564 - INFO - 消息 4:
+2025-05-10 09:20:28,564 - INFO - 角色: user
+2025-05-10 09:20:28,564 - INFO - 内容: ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:20:28,565 - INFO - ==== 发送API请求 ====
+2025-05-10 09:20:37,183 - INFO - ==== API响应 ====
+2025-05-10 09:20:37,183 - INFO - 响应状态码: 200
+2025-05-10 09:20:37,184 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:20:28 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59d410f272df4-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:20:37,184 - INFO - 完整响应JSON: {
+  "id": "gen-1746840028-hLUk96YzgcGzOdcRRsh4",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840028,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n  {\"name\": \"The Dark Knight\", \"id\": 1824},\n  {\"name\": \"Inception\", \"id\": 8},\n  {\"name\": \"The Matrix\", \"id\": 145},\n  {\"name\": \"Interstellar\", \"id\": 157336},\n  {\"name\": \"Pulp Fiction\", \"id\": 680},\n  {\"name\": \"Fight Club\", \"id\": 550},\n  {\"name\": \"The Shawshank Redemption\", \"id\": 278},\n  {\"name\": \"The Godfather\", \"id\": 238},\n  {\"name\": \"The Godfather: Part II\", \"id\": 240},\n  {\"name\": \"The Lord of the Rings: The Fellowship of the Ring\", \"id\": 120},\n  {\"name\": \"The Lord of the Rings: The Two Towers\", \"id\": 121},\n  {\"name\": \"The Lord of the Rings: The Return of the King\", \"id\": 122},\n  {\"name\": \"Forrest Gump\", \"id\": 13},\n  {\"name\": \"Schindler's List\", \"id\": 424},\n  {\"name\": \"The Silence of the Lambs\", \"id\": 274},\n  {\"name\": \"Se7en\", \"id\": 807},\n  {\"name\": \"The Usual Suspects\", \"id\": 629},\n  {\"name\": \"Goodfellas\", \"id\": 769},\n  {\"name\": \"The Departed\", \"id\": 1422},\n  {\"name\": \"Gladiator\", \"id\": 98}\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 504,
+    "completion_tokens": 344,
+    "total_tokens": 848,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:20:37,184 - INFO - 模型回复内容:
+```json
+[
+  {"name": "The Dark Knight", "id": 1824},
+  {"name": "Inception", "id": 8},
+  {"name": "The Matrix", "id": 145},
+  {"name": "Interstellar", "id": 157336},
+  {"name": "Pulp Fiction", "id": 680},
+  {"name": "Fight Club", "id": 550},
+  {"name": "The Shawshank Redemption", "id": 278},
+  {"name": "The Godfather", "id": 238},
+  {"name": "The Godfather: Part II", "id": 240},
+  {"name": "The Lord of the Rings: The Fellowship of the Ring", "id": 120},
+  {"name": "The Lord of the Rings: The Two Towers", "id": 121},
+  {"name": "The Lord of the Rings: The Return of the King", "id": 122},
+  {"name": "Forrest Gump", "id": 13},
+  {"name": "Schindler's List", "id": 424},
+  {"name": "The Silence of the Lambs", "id": 274},
+  {"name": "Se7en", "id": 807},
+  {"name": "The Usual Suspects", "id": 629},
+  {"name": "Goodfellas", "id": 769},
+  {"name": "The Departed", "id": 1422},
+  {"name": "Gladiator", "id": 98}
+]
+```
+2025-05-10 09:20:37,184 - INFO - ==== 用量信息 ====
+2025-05-10 09:20:37,184 - INFO - 输入tokens: 504
+2025-05-10 09:20:37,184 - INFO - 输出tokens: 344
+2025-05-10 09:20:37,184 - INFO - 总tokens: 848
+2025-05-10 09:20:37,185 - INFO - ==== 解析输出 ====
+2025-05-10 09:20:37,185 - INFO - 调用parse_output函数解析响应...
+2025-05-10 09:20:37,185 - INFO - 解析结果: [1824, 8, 145, 157336, 680, 550, 278, 238, 240, 120, 121, 122, 13, 424, 274, 807, 629, 769, 1422, 98]
+2025-05-10 09:20:37,185 - INFO - ==== 计算NDCG ====
+2025-05-10 09:20:37,185 - INFO - 相关性列表: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 09:20:37,185 - INFO - 目标电影不在预测列表中，NDCG=0
+2025-05-10 09:20:37,185 - INFO - NDCG@10计算详情:
+2025-05-10 09:20:37,185 - INFO - 截断后的预测列表(前10个): [1824, 8, 145, 157336, 680, 550, 278, 238, 240, 120]
+2025-05-10 09:20:37,185 - INFO - 目标电影ID 3948不在前10个预测列表中
+2025-05-10 09:20:37,185 - INFO - ==== 测试结果 ====
+2025-05-10 09:20:37,185 - INFO - 用户ID: 554
+2025-05-10 09:20:37,185 - INFO - 目标电影: Meet the Parents (ID: 3948)
+2025-05-10 09:20:37,185 - INFO - 预测列表(前10个): [1824, 8, 145, 157336, 680, 550, 278, 238, 240, 120]
+2025-05-10 09:20:37,185 - INFO - NDCG@10: 0.0000
+2025-05-10 09:20:37,185 - INFO - ========== 测试结束 ==========
+2025-05-10 09:20:37,185 - INFO - 样本 5 测试完成，NDCG@10: 0.0000
+2025-05-10 09:20:37,185 - INFO - ===== 测试样本 6/10 =====
+2025-05-10 09:20:37,185 - INFO - ========== 测试开始 ==========
+2025-05-10 09:20:37,185 - INFO - ==== 样本信息 ====
+2025-05-10 09:20:37,185 - INFO - 用户ID: 659
+2025-05-10 09:20:37,185 - INFO - 用户历史电影数量: 20
+2025-05-10 09:20:37,185 - INFO - 候选电影数量: 20
+2025-05-10 09:20:37,187 - INFO - 目标电影: Shadowlands (ID: 534)
+2025-05-10 09:20:37,187 - INFO - ==== 构造提示词 ====
+2025-05-10 09:20:37,187 - INFO - 调用construct_prompt函数...
+2025-05-10 09:20:37,187 - INFO - 生成了6条消息模板
+2025-05-10 09:20:37,187 - INFO - ==== 第一轮调用API(用户分析)结果 ====
+2025-05-10 09:20:37,187 - INFO - 发送了 2 条消息进行用户分析（system + user第一轮消息）
+2025-05-10 09:20:37,187 - INFO - ==== API调用参数 ====
+2025-05-10 09:20:37,187 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:20:37,187 - INFO - 温度: 0
+2025-05-10 09:20:37,187 - INFO - ==== 发送的消息 ====
+2025-05-10 09:20:37,187 - INFO - 消息 1:
+2025-05-10 09:20:37,187 - INFO - 角色: system
+2025-05-10 09:20:37,187 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:20:37,187 - INFO - 消息 2:
+2025-05-10 09:20:37,187 - INFO - 角色: user
+2025-05-10 09:20:37,188 - INFO - 内容: 用户ID: 659
+
+用户观看过的电影列表:
+- In the Name of the Father (ID: 475)
+- American History X (ID: 2329)
+- Dead Man Walking (ID: 36)
+- Thelma & Louise (ID: 3418)
+- Contact (ID: 1584)
+- Crimson Tide (ID: 161)
+- Babe (ID: 34)
+- Swing Kids (ID: 2106)
+- Miller's Crossing (ID: 1245)
+- Truman Show, The (ID: 1682)
+- American President, The (ID: 11)
+- Client, The (ID: 350)
+- Twelve Monkeys (ID: 32)
+- Thousand Acres, A (ID: 1624)
+- Of Mice and Men (ID: 3271)
+- Cider House Rules, The (ID: 3148)
+- Sliding Doors (ID: 1680)
+- Ever After: A Cinderella Story (ID: 2125)
+- Great Expectations (ID: 1735)
+- Philadelphia (ID: 508)
+
+请按照以下步骤进行分析：
+1. 分析每部电影属于哪些风格类别，并制作风格归属表格
+2. 统计各风格类别的出现频率，并绘制风格偏好频率表格
+3. 请基于这些类别计算电影类别偏好频率数据：['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+4. 将类别偏好频率输出为JSON格式，请确保数组与类别顺序对应
+请在分析结果最后将用户偏好数据以JSON格式输出，格式必须为：
+```json
+{"类别偏好": [类别1频率, 类别2频率, ...]}
+```
+注意：这个JSON数据将用于后续分析，请确保其格式正确。
+2025-05-10 09:20:37,188 - INFO - ==== 发送API请求 ====
+2025-05-10 09:20:41,292 - INFO - ==== API响应 ====
+2025-05-10 09:20:41,292 - INFO - 响应状态码: 200
+2025-05-10 09:20:41,292 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:20:37 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59d776b5d0fe7-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:20:41,292 - INFO - 完整响应JSON: {
+  "id": "gen-1746840037-tzbN2VqkDyhXA8UGAdtd",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840037,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n{\"类别偏好\": [0, 2, 0, 0, 2, 0, 1, 2, 15, 0, 2, 0, 0, 0, 2, 0, 0]}\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 705,
+    "completion_tokens": 60,
+    "total_tokens": 765,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:20:41,292 - INFO - 模型回复内容:
+```json
+{"类别偏好": [0, 2, 0, 0, 2, 0, 1, 2, 15, 0, 2, 0, 0, 0, 2, 0, 0]}
+```
+2025-05-10 09:20:41,292 - INFO - ==== 用量信息 ====
+2025-05-10 09:20:41,292 - INFO - 输入tokens: 705
+2025-05-10 09:20:41,292 - INFO - 输出tokens: 60
+2025-05-10 09:20:41,292 - INFO - 总tokens: 765
+2025-05-10 09:20:41,293 - INFO - ==== 第二轮调用API(候选电影分析)结果 ====
+2025-05-10 09:20:41,293 - INFO - 发送了 3 条消息进行候选电影分析（包含前两轮历史）
+2025-05-10 09:20:41,294 - INFO - ==== API调用参数 ====
+2025-05-10 09:20:41,294 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:20:41,294 - INFO - 温度: 0
+2025-05-10 09:20:41,294 - INFO - ==== 发送的消息 ====
+2025-05-10 09:20:41,294 - INFO - 消息 1:
+2025-05-10 09:20:41,294 - INFO - 角色: system
+2025-05-10 09:20:41,294 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:20:41,294 - INFO - 消息 2:
+2025-05-10 09:20:41,295 - INFO - 角色: assistant
+2025-05-10 09:20:41,295 - INFO - 内容: ```json
+{"类别偏好": [0, 2, 0, 0, 2, 0, 1, 2, 15, 0, 2, 0, 0, 0, 2, 0, 0]}
+```
+2025-05-10 09:20:41,295 - INFO - 消息 3:
+2025-05-10 09:20:41,295 - INFO - 角色: user
+2025-05-10 09:20:41,295 - INFO - 内容: 候选电影列表:
+- Touch (ID: 1458)
+- Sister Act (ID: 3247)
+- Dracula (ID: 2644)
+- Third Miracle, The (ID: 3183)
+- Airplane! (ID: 2791)
+- Collectionneuse, La (ID: 823)
+- Groove (ID: 3790)
+- Truth or Consequences, N.M. (ID: 1523)
+- Century (ID: 607)
+- Naked Gun 33 1/3: The Final Insult (ID: 370)
+- Max Dugan Returns (ID: 3497)
+- Shadowlands (ID: 534)
+- Good Mother, The (ID: 3449)
+- Blood In, Blood Out (a.k.a. Bound by Honor) (ID: 3761)
+- Murder in the First (ID: 280)
+- Stalker (ID: 1232)
+- One Crazy Summer (ID: 2261)
+- Sirens (ID: 537)
+- Passion Fish (ID: 1187)
+- Anatomy of a Murder (ID: 3801)
+
+电影风格类别参考: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+
+请按以下步骤分析候选电影：
+1. 分析每部候选电影属于哪些风格类别，并制作风格归属表格
+2. 基于上轮输出的JSON格式用户类别偏好数据，计算各候选电影与用户偏好的相似度
+3. 计算电影类别向量与用户偏好向量的相似度，并将结果排序
+4. 根据相似度对候选电影进行降序排序（相似度越高排序越靠前）
+2025-05-10 09:20:41,295 - INFO - ==== 发送API请求 ====
+2025-05-10 09:20:45,759 - INFO - ==== API响应 ====
+2025-05-10 09:20:45,759 - INFO - 响应状态码: 200
+2025-05-10 09:20:45,760 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:20:41 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59d900e260fb7-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:20:45,760 - INFO - 完整响应JSON: {
+  "id": "gen-1746840041-98Cc7P5tHUUDnnITbc2X",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840041,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[3449, 534, 1187, 537, 3183, 607, 823, 1458, 280, 1232, 2644, 3761, 370, 2261, 2791, 3247, 3497, 1523, 3790, 3801]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 717,
+    "completion_tokens": 79,
+    "total_tokens": 796,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:20:45,761 - INFO - 模型回复内容:
+```json
+[3449, 534, 1187, 537, 3183, 607, 823, 1458, 280, 1232, 2644, 3761, 370, 2261, 2791, 3247, 3497, 1523, 3790, 3801]
+```
+2025-05-10 09:20:45,761 - INFO - ==== 用量信息 ====
+2025-05-10 09:20:45,761 - INFO - 输入tokens: 717
+2025-05-10 09:20:45,761 - INFO - 输出tokens: 79
+2025-05-10 09:20:45,762 - INFO - 总tokens: 796
+2025-05-10 09:20:45,762 - INFO - ==== 第三轮调用API(最终推荐)结果 ====
+2025-05-10 09:20:45,762 - INFO - ==== 发送的消息 (最终推荐请求) ====
+2025-05-10 09:20:45,762 - INFO - [用户第三轮 - 输出要求]:
+  ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:20:45,763 - INFO - ==== API调用参数 ====
+2025-05-10 09:20:45,763 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:20:45,763 - INFO - 温度: 0
+2025-05-10 09:20:45,763 - INFO - ==== 发送的消息 ====
+2025-05-10 09:20:45,763 - INFO - 消息 1:
+2025-05-10 09:20:45,763 - INFO - 角色: system
+2025-05-10 09:20:45,763 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:20:45,764 - INFO - 消息 2:
+2025-05-10 09:20:45,764 - INFO - 角色: assistant
+2025-05-10 09:20:45,764 - INFO - 内容: ```json
+{"类别偏好": [0, 2, 0, 0, 2, 0, 1, 2, 15, 0, 2, 0, 0, 0, 2, 0, 0]}
+```
+2025-05-10 09:20:45,764 - INFO - 消息 3:
+2025-05-10 09:20:45,764 - INFO - 角色: assistant
+2025-05-10 09:20:45,764 - INFO - 内容: ```json
+[3449, 534, 1187, 537, 3183, 607, 823, 1458, 280, 1232, 2644, 3761, 370, 2261, 2791, 3247, 3497, 1523, 3790, 3801]
+```
+2025-05-10 09:20:45,764 - INFO - 消息 4:
+2025-05-10 09:20:45,764 - INFO - 角色: user
+2025-05-10 09:20:45,764 - INFO - 内容: ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:20:45,765 - INFO - ==== 发送API请求 ====
+2025-05-10 09:21:01,734 - INFO - ==== API响应 ====
+2025-05-10 09:21:01,735 - INFO - 响应状态码: 200
+2025-05-10 09:21:01,735 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:20:45 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59dac6d55cb9f-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:21:01,736 - INFO - 完整响应JSON: {
+  "id": "gen-1746840045-AeHumadxJADcMHtmvR8O",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840045,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[3449, 534, 1187, 537, 3183, 607, 823, 1458, 280, 1232, 2644, 3761, 370, 2261, 2791, 3247, 3497, 1523, 3790, 3801]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 563,
+    "completion_tokens": 79,
+    "total_tokens": 642,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:21:01,736 - INFO - 模型回复内容:
+```json
+[3449, 534, 1187, 537, 3183, 607, 823, 1458, 280, 1232, 2644, 3761, 370, 2261, 2791, 3247, 3497, 1523, 3790, 3801]
+```
+2025-05-10 09:21:01,736 - INFO - ==== 用量信息 ====
+2025-05-10 09:21:01,737 - INFO - 输入tokens: 563
+2025-05-10 09:21:01,737 - INFO - 输出tokens: 79
+2025-05-10 09:21:01,737 - INFO - 总tokens: 642
+2025-05-10 09:21:01,738 - INFO - ==== 解析输出 ====
+2025-05-10 09:21:01,738 - INFO - 调用parse_output函数解析响应...
+2025-05-10 09:21:01,739 - INFO - 解析结果: [3449, 534, 1187, 537, 3183, 607, 823, 1458, 280, 1232, 2644, 3761, 370, 2261, 2791, 3247, 3497, 1523, 3790, 3801]
+2025-05-10 09:21:01,739 - INFO - ==== 计算NDCG ====
+2025-05-10 09:21:01,740 - INFO - 相关性列表: [0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 09:21:01,740 - INFO - 位置2的DCG贡献: 1/log2(3) = 0.6309
+2025-05-10 09:21:01,740 - INFO - DCG: 0.6309, IDCG: 1.0000
+2025-05-10 09:21:01,740 - INFO - NDCG@10: 0.6309
+2025-05-10 09:21:01,741 - INFO - NDCG@10计算详情:
+2025-05-10 09:21:01,741 - INFO - 截断后的预测列表(前10个): [3449, 534, 1187, 537, 3183, 607, 823, 1458, 280, 1232]
+2025-05-10 09:21:01,741 - INFO - 目标电影ID 534在位置2
+2025-05-10 09:21:01,741 - INFO - 位置2的DCG贡献: 1/log2(3) = 0.6309
+2025-05-10 09:21:01,742 - INFO - ==== 测试结果 ====
+2025-05-10 09:21:01,742 - INFO - 用户ID: 659
+2025-05-10 09:21:01,742 - INFO - 目标电影: Shadowlands (ID: 534)
+2025-05-10 09:21:01,742 - INFO - 预测列表(前10个): [3449, 534, 1187, 537, 3183, 607, 823, 1458, 280, 1232]
+2025-05-10 09:21:01,743 - INFO - NDCG@10: 0.6309
+2025-05-10 09:21:01,743 - INFO - ========== 测试结束 ==========
+2025-05-10 09:21:01,743 - INFO - 样本 6 测试完成，NDCG@10: 0.6309
+2025-05-10 09:21:01,743 - INFO - ===== 测试样本 7/10 =====
+2025-05-10 09:21:01,744 - INFO - ========== 测试开始 ==========
+2025-05-10 09:21:01,744 - INFO - ==== 样本信息 ====
+2025-05-10 09:21:01,744 - INFO - 用户ID: 706
+2025-05-10 09:21:01,744 - INFO - 用户历史电影数量: 20
+2025-05-10 09:21:01,744 - INFO - 候选电影数量: 20
+2025-05-10 09:21:01,744 - INFO - 目标电影: Reality Bites (ID: 372)
+2025-05-10 09:21:01,745 - INFO - ==== 构造提示词 ====
+2025-05-10 09:21:01,745 - INFO - 调用construct_prompt函数...
+2025-05-10 09:21:01,745 - INFO - 生成了6条消息模板
+2025-05-10 09:21:01,745 - INFO - ==== 第一轮调用API(用户分析)结果 ====
+2025-05-10 09:21:01,745 - INFO - 发送了 2 条消息进行用户分析（system + user第一轮消息）
+2025-05-10 09:21:01,745 - INFO - ==== API调用参数 ====
+2025-05-10 09:21:01,746 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:21:01,746 - INFO - 温度: 0
+2025-05-10 09:21:01,746 - INFO - ==== 发送的消息 ====
+2025-05-10 09:21:01,746 - INFO - 消息 1:
+2025-05-10 09:21:01,746 - INFO - 角色: system
+2025-05-10 09:21:01,746 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:21:01,747 - INFO - 消息 2:
+2025-05-10 09:21:01,747 - INFO - 角色: user
+2025-05-10 09:21:01,747 - INFO - 内容: 用户ID: 706
+
+用户观看过的电影列表:
+- Sweet and Lowdown (ID: 3129)
+- Dream With the Fishes (ID: 1563)
+- Tango (ID: 2573)
+- League of Their Own, A (ID: 3255)
+- Misérables, Les (ID: 73)
+- I Shot Andy Warhol (ID: 766)
+- Wings of the Dove, The (ID: 1683)
+- Death and the Maiden (ID: 229)
+- Hurricane, The (ID: 3178)
+- Crimson Tide (ID: 161)
+- Sleepers (ID: 1061)
+- Last Days of Disco, The (ID: 1836)
+- Spitfire Grill, The (ID: 848)
+- SLC Punk! (ID: 2596)
+- Love and Death on Long Island (ID: 1794)
+- Secret Garden, The (ID: 531)
+- Angels and Insects (ID: 85)
+- Little Women (ID: 261)
+- High Art (ID: 1897)
+- Cop Land (ID: 1589)
+
+请按照以下步骤进行分析：
+1. 分析每部电影属于哪些风格类别，并制作风格归属表格
+2. 统计各风格类别的出现频率，并绘制风格偏好频率表格
+3. 请基于这些类别计算电影类别偏好频率数据：['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+4. 将类别偏好频率输出为JSON格式，请确保数组与类别顺序对应
+请在分析结果最后将用户偏好数据以JSON格式输出，格式必须为：
+```json
+{"类别偏好": [类别1频率, 类别2频率, ...]}
+```
+注意：这个JSON数据将用于后续分析，请确保其格式正确。
+2025-05-10 09:21:01,748 - INFO - ==== 发送API请求 ====
+2025-05-10 09:21:05,830 - INFO - ==== API响应 ====
+2025-05-10 09:21:05,831 - INFO - 响应状态码: 200
+2025-05-10 09:21:05,831 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:21:01 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59e0fbf0ee9e3-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:21:05,831 - INFO - 完整响应JSON: {
+  "id": "gen-1746840061-HsmEucqwDs5NCjbVwT9c",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840061,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n{\"类别偏好\": [0, 2, 0, 0, 3, 0, 1, 2, 12, 0, 0, 0, 0, 0, 2, 0, 0]}\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 718,
+    "completion_tokens": 60,
+    "total_tokens": 778,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:21:05,832 - INFO - 模型回复内容:
+```json
+{"类别偏好": [0, 2, 0, 0, 3, 0, 1, 2, 12, 0, 0, 0, 0, 0, 2, 0, 0]}
+```
+2025-05-10 09:21:05,832 - INFO - ==== 用量信息 ====
+2025-05-10 09:21:05,832 - INFO - 输入tokens: 718
+2025-05-10 09:21:05,832 - INFO - 输出tokens: 60
+2025-05-10 09:21:05,832 - INFO - 总tokens: 778
+2025-05-10 09:21:05,833 - INFO - ==== 第二轮调用API(候选电影分析)结果 ====
+2025-05-10 09:21:05,833 - INFO - 发送了 3 条消息进行候选电影分析（包含前两轮历史）
+2025-05-10 09:21:05,833 - INFO - ==== API调用参数 ====
+2025-05-10 09:21:05,834 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:21:05,834 - INFO - 温度: 0
+2025-05-10 09:21:05,834 - INFO - ==== 发送的消息 ====
+2025-05-10 09:21:05,834 - INFO - 消息 1:
+2025-05-10 09:21:05,834 - INFO - 角色: system
+2025-05-10 09:21:05,834 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:21:05,835 - INFO - 消息 2:
+2025-05-10 09:21:05,835 - INFO - 角色: assistant
+2025-05-10 09:21:05,835 - INFO - 内容: ```json
+{"类别偏好": [0, 2, 0, 0, 3, 0, 1, 2, 12, 0, 0, 0, 0, 0, 2, 0, 0]}
+```
+2025-05-10 09:21:05,835 - INFO - 消息 3:
+2025-05-10 09:21:05,835 - INFO - 角色: user
+2025-05-10 09:21:05,835 - INFO - 内容: 候选电影列表:
+- 8 1/2 Women (ID: 3626)
+- My Blue Heaven (ID: 2249)
+- Reality Bites (ID: 372)
+- Net, The (ID: 185)
+- Stand by Me (ID: 1259)
+- Ogre, The (Der Unhold) (ID: 3378)
+- McCullochs, The (ID: 3312)
+- Agnes of God (ID: 3251)
+- Beefcake (ID: 2960)
+- I Like It Like That (ID: 359)
+- Talk of Angels (ID: 887)
+- Eden (ID: 1815)
+- Honeymoon in Vegas (ID: 3614)
+- Gate II: Trespassers, The (ID: 2452)
+- Star Trek III: The Search for Spock (ID: 1375)
+- Rocky II (ID: 2409)
+- Losing Isaiah (ID: 271)
+- Charlotte's Web (ID: 2137)
+- Eyes of Tammy Faye, The (ID: 3859)
+- Jar, The (Khomreh) (ID: 758)
+
+电影风格类别参考: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+
+请按以下步骤分析候选电影：
+1. 分析每部候选电影属于哪些风格类别，并制作风格归属表格
+2. 基于上轮输出的JSON格式用户类别偏好数据，计算各候选电影与用户偏好的相似度
+3. 计算电影类别向量与用户偏好向量的相似度，并将结果排序
+4. 根据相似度对候选电影进行降序排序（相似度越高排序越靠前）
+2025-05-10 09:21:05,836 - INFO - ==== 发送API请求 ====
+2025-05-10 09:21:09,964 - INFO - ==== API响应 ====
+2025-05-10 09:21:09,965 - INFO - 响应状态码: 200
+2025-05-10 09:21:09,965 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:21:05 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59e2a18942ae1-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:21:09,966 - INFO - 完整响应JSON: {
+  "id": "gen-1746840065-PApMOivAD6mEWPzusSza",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840065,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n  1259,\n  372,\n  185,\n  2409,\n  1375,\n  2249,\n  3614,\n  359,\n  271,\n  3251,\n  3626,\n  887,\n  1815,\n  2452,\n  2137,\n  3378,\n  3312,\n  2960,\n  3859,\n  758\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 727,
+    "completion_tokens": 81,
+    "total_tokens": 808,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:21:09,966 - INFO - 模型回复内容:
+```json
+[
+  1259,
+  372,
+  185,
+  2409,
+  1375,
+  2249,
+  3614,
+  359,
+  271,
+  3251,
+  3626,
+  887,
+  1815,
+  2452,
+  2137,
+  3378,
+  3312,
+  2960,
+  3859,
+  758
+]
+```
+2025-05-10 09:21:09,967 - INFO - ==== 用量信息 ====
+2025-05-10 09:21:09,967 - INFO - 输入tokens: 727
+2025-05-10 09:21:09,967 - INFO - 输出tokens: 81
+2025-05-10 09:21:09,968 - INFO - 总tokens: 808
+2025-05-10 09:21:09,969 - INFO - ==== 第三轮调用API(最终推荐)结果 ====
+2025-05-10 09:21:09,969 - INFO - ==== 发送的消息 (最终推荐请求) ====
+2025-05-10 09:21:09,969 - INFO - [用户第三轮 - 输出要求]:
+  ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:21:09,970 - INFO - ==== API调用参数 ====
+2025-05-10 09:21:09,970 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:21:09,971 - INFO - 温度: 0
+2025-05-10 09:21:09,971 - INFO - ==== 发送的消息 ====
+2025-05-10 09:21:09,971 - INFO - 消息 1:
+2025-05-10 09:21:09,972 - INFO - 角色: system
+2025-05-10 09:21:09,972 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:21:09,972 - INFO - 消息 2:
+2025-05-10 09:21:09,972 - INFO - 角色: assistant
+2025-05-10 09:21:09,972 - INFO - 内容: ```json
+{"类别偏好": [0, 2, 0, 0, 3, 0, 1, 2, 12, 0, 0, 0, 0, 0, 2, 0, 0]}
+```
+2025-05-10 09:21:09,973 - INFO - 消息 3:
+2025-05-10 09:21:09,973 - INFO - 角色: assistant
+2025-05-10 09:21:09,973 - INFO - 内容: ```json
+[
+  1259,
+  372,
+  185,
+  2409,
+  1375,
+  2249,
+  3614,
+  359,
+  271,
+  3251,
+  3626,
+  887,
+  1815,
+  2452,
+  2137,
+  3378,
+  3312,
+  2960,
+  3859,
+  758
+]
+```
+2025-05-10 09:21:09,973 - INFO - 消息 4:
+2025-05-10 09:21:09,973 - INFO - 角色: user
+2025-05-10 09:21:09,973 - INFO - 内容: ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:21:09,974 - INFO - ==== 发送API请求 ====
+2025-05-10 09:21:20,241 - INFO - ==== API响应 ====
+2025-05-10 09:21:20,241 - INFO - 响应状态码: 200
+2025-05-10 09:21:20,241 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:21:09 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59e43ea9b7ea5-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:21:20,242 - INFO - 完整响应JSON: {
+  "id": "gen-1746840069-sOPwrFndsRHP2V8IUFXI",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840069,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "**[{\"name\": \"The Shawshank Redemption\", \"id\": 185}, {\"name\": \"The Godfather\", \"id\": 2409}, {\"name\": \"Pulp Fiction\", \"id\": 1375}, {\"name\": \"The Dark Knight\", \"id\": 2249}, {\"name\": \"Fight Club\", \"id\": 3614}, {\"name\": \"Inception\", \"id\": 359}, {\"name\": \"The Matrix\", \"id\": 271}, {\"name\": \"Interstellar\", \"id\": 3251}, {\"name\": \"The Silence of the Lambs\", \"id\": 3626}, {\"name\": \"Se7en\", \"id\": 887}, {\"name\": \"The Prestige\", \"id\": 1815}, {\"name\": \"The Departed\", \"id\": 2452}, {\"name\": \"The Usual Suspects\", \"id\": 2137}, {\"name\": \"Memento\", \"id\": 3378}, {\"name\": \"The Green Mile\", \"id\": 3312}, {\"name\": \"The Pianist\", \"id\": 2960}, {\"name\": \"The Intouchables\", \"id\": 3859}, {\"name\": \"Whiplash\", \"id\": 758}]**",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 502,
+    "completion_tokens": 274,
+    "total_tokens": 776,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:21:20,242 - INFO - 模型回复内容:
+**[{"name": "The Shawshank Redemption", "id": 185}, {"name": "The Godfather", "id": 2409}, {"name": "Pulp Fiction", "id": 1375}, {"name": "The Dark Knight", "id": 2249}, {"name": "Fight Club", "id": 3614}, {"name": "Inception", "id": 359}, {"name": "The Matrix", "id": 271}, {"name": "Interstellar", "id": 3251}, {"name": "The Silence of the Lambs", "id": 3626}, {"name": "Se7en", "id": 887}, {"name": "The Prestige", "id": 1815}, {"name": "The Departed", "id": 2452}, {"name": "The Usual Suspects", "id": 2137}, {"name": "Memento", "id": 3378}, {"name": "The Green Mile", "id": 3312}, {"name": "The Pianist", "id": 2960}, {"name": "The Intouchables", "id": 3859}, {"name": "Whiplash", "id": 758}]**
+2025-05-10 09:21:20,243 - INFO - ==== 用量信息 ====
+2025-05-10 09:21:20,243 - INFO - 输入tokens: 502
+2025-05-10 09:21:20,243 - INFO - 输出tokens: 274
+2025-05-10 09:21:20,243 - INFO - 总tokens: 776
+2025-05-10 09:21:20,244 - INFO - ==== 解析输出 ====
+2025-05-10 09:21:20,244 - INFO - 调用parse_output函数解析响应...
+2025-05-10 09:21:20,244 - INFO - 解析结果: [185, 2409, 1375, 2249, 3614, 359, 271, 3251, 3626, 887, 1815, 2452, 2137, 3378, 3312, 2960, 3859, 758]
+2025-05-10 09:21:20,245 - INFO - ==== 计算NDCG ====
+2025-05-10 09:21:20,245 - INFO - 相关性列表: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 09:21:20,245 - INFO - 目标电影不在预测列表中，NDCG=0
+2025-05-10 09:21:20,245 - INFO - NDCG@10计算详情:
+2025-05-10 09:21:20,246 - INFO - 截断后的预测列表(前10个): [185, 2409, 1375, 2249, 3614, 359, 271, 3251, 3626, 887]
+2025-05-10 09:21:20,246 - INFO - 目标电影ID 372不在前10个预测列表中
+2025-05-10 09:21:20,246 - INFO - ==== 测试结果 ====
+2025-05-10 09:21:20,246 - INFO - 用户ID: 706
+2025-05-10 09:21:20,246 - INFO - 目标电影: Reality Bites (ID: 372)
+2025-05-10 09:21:20,246 - INFO - 预测列表(前10个): [185, 2409, 1375, 2249, 3614, 359, 271, 3251, 3626, 887]
+2025-05-10 09:21:20,246 - INFO - NDCG@10: 0.0000
+2025-05-10 09:21:20,247 - INFO - ========== 测试结束 ==========
+2025-05-10 09:21:20,247 - INFO - 样本 7 测试完成，NDCG@10: 0.0000
+2025-05-10 09:21:20,247 - INFO - ===== 测试样本 8/10 =====
+2025-05-10 09:21:20,247 - INFO - ========== 测试开始 ==========
+2025-05-10 09:21:20,247 - INFO - ==== 样本信息 ====
+2025-05-10 09:21:20,247 - INFO - 用户ID: 729
+2025-05-10 09:21:20,248 - INFO - 用户历史电影数量: 20
+2025-05-10 09:21:20,248 - INFO - 候选电影数量: 20
+2025-05-10 09:21:20,248 - INFO - 目标电影: Talented Mr. Ripley, The (ID: 3176)
+2025-05-10 09:21:20,248 - INFO - ==== 构造提示词 ====
+2025-05-10 09:21:20,249 - INFO - 调用construct_prompt函数...
+2025-05-10 09:21:20,249 - INFO - 生成了6条消息模板
+2025-05-10 09:21:20,249 - INFO - ==== 第一轮调用API(用户分析)结果 ====
+2025-05-10 09:21:20,249 - INFO - 发送了 2 条消息进行用户分析（system + user第一轮消息）
+2025-05-10 09:21:20,249 - INFO - ==== API调用参数 ====
+2025-05-10 09:21:20,250 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:21:20,250 - INFO - 温度: 0
+2025-05-10 09:21:20,250 - INFO - ==== 发送的消息 ====
+2025-05-10 09:21:20,251 - INFO - 消息 1:
+2025-05-10 09:21:20,251 - INFO - 角色: system
+2025-05-10 09:21:20,251 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:21:20,251 - INFO - 消息 2:
+2025-05-10 09:21:20,252 - INFO - 角色: user
+2025-05-10 09:21:20,252 - INFO - 内容: 用户ID: 729
+
+用户观看过的电影列表:
+- Young Sherlock Holmes (ID: 2414)
+- Single White Female (ID: 3274)
+- Tron (ID: 2105)
+- Star Trek: Insurrection (ID: 2393)
+- Speed (ID: 377)
+- Star Trek III: The Search for Spock (ID: 1375)
+- Blade (ID: 2167)
+- Mission: Impossible 2 (ID: 3623)
+- Natural Born Killers (ID: 288)
+- Star Trek: The Motion Picture (ID: 1371)
+- Golden Voyage of Sinbad, The (ID: 3771)
+- Eraser (ID: 786)
+- Air Force One (ID: 1608)
+- Arachnophobia (ID: 2699)
+- Jewel of the Nile, The (ID: 2405)
+- Mummy, The (ID: 2617)
+- Godfather: Part III, The (ID: 2023)
+- Crow, The (ID: 353)
+- Dances with Wolves (ID: 590)
+- JFK (ID: 3386)
+
+请按照以下步骤进行分析：
+1. 分析每部电影属于哪些风格类别，并制作风格归属表格
+2. 统计各风格类别的出现频率，并绘制风格偏好频率表格
+3. 请基于这些类别计算电影类别偏好频率数据：['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+4. 将类别偏好频率输出为JSON格式，请确保数组与类别顺序对应
+请在分析结果最后将用户偏好数据以JSON格式输出，格式必须为：
+```json
+{"类别偏好": [类别1频率, 类别2频率, ...]}
+```
+注意：这个JSON数据将用于后续分析，请确保其格式正确。
+2025-05-10 09:21:20,252 - INFO - ==== 发送API请求 ====
+2025-05-10 09:21:23,072 - INFO - ==== API响应 ====
+2025-05-10 09:21:23,072 - INFO - 响应状态码: 200
+2025-05-10 09:21:23,072 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:21:20 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59e846b148afe-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:21:23,074 - INFO - 完整响应JSON: {
+  "id": "gen-1746840080-q6M8Pl06cg3osp0hkFdp",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840080,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n{\n  \"类别偏好\": [0, 2, 0, 0, 1, 3, 8, 6, 4, 1, 6, 1, 2, 2, 1, 0, 0]\n}\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 721,
+    "completion_tokens": 63,
+    "total_tokens": 784,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:21:23,074 - INFO - 模型回复内容:
+```json
+{
+  "类别偏好": [0, 2, 0, 0, 1, 3, 8, 6, 4, 1, 6, 1, 2, 2, 1, 0, 0]
+}
+```
+2025-05-10 09:21:23,075 - INFO - ==== 用量信息 ====
+2025-05-10 09:21:23,075 - INFO - 输入tokens: 721
+2025-05-10 09:21:23,075 - INFO - 输出tokens: 63
+2025-05-10 09:21:23,075 - INFO - 总tokens: 784
+2025-05-10 09:21:23,076 - INFO - ==== 第二轮调用API(候选电影分析)结果 ====
+2025-05-10 09:21:23,076 - INFO - 发送了 3 条消息进行候选电影分析（包含前两轮历史）
+2025-05-10 09:21:23,077 - INFO - ==== API调用参数 ====
+2025-05-10 09:21:23,077 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:21:23,077 - INFO - 温度: 0
+2025-05-10 09:21:23,078 - INFO - ==== 发送的消息 ====
+2025-05-10 09:21:23,078 - INFO - 消息 1:
+2025-05-10 09:21:23,079 - INFO - 角色: system
+2025-05-10 09:21:23,079 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:21:23,079 - INFO - 消息 2:
+2025-05-10 09:21:23,080 - INFO - 角色: assistant
+2025-05-10 09:21:23,080 - INFO - 内容: ```json
+{
+  "类别偏好": [0, 2, 0, 0, 1, 3, 8, 6, 4, 1, 6, 1, 2, 2, 1, 0, 0]
+}
+```
+2025-05-10 09:21:23,081 - INFO - 消息 3:
+2025-05-10 09:21:23,081 - INFO - 角色: user
+2025-05-10 09:21:23,081 - INFO - 内容: 候选电影列表:
+- Saltmen of Tibet, The (ID: 2129)
+- Repo Man (ID: 1965)
+- Mission: Impossible 2 (ID: 3623)
+- Indochine (ID: 2943)
+- X: The Unknown (ID: 3878)
+- Walking and Talking (ID: 803)
+- My Own Private Idaho (ID: 1611)
+- Matrix, The (ID: 2571)
+- Amazing Panda Adventure, The (ID: 146)
+- Lords of Flatbush, The (ID: 3590)
+- Hoosiers (ID: 3360)
+- Haunting, The (ID: 2550)
+- Immortal Beloved (ID: 249)
+- When a Man Loves a Woman (ID: 381)
+- How Stella Got Her Groove Back (ID: 2154)
+- Crash (ID: 1483)
+- Low Life, The (ID: 730)
+- Fright Night (ID: 2867)
+- Talented Mr. Ripley, The (ID: 3176)
+- Pacific Heights (ID: 3219)
+
+电影风格类别参考: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+
+请按以下步骤分析候选电影：
+1. 分析每部候选电影属于哪些风格类别，并制作风格归属表格
+2. 基于上轮输出的JSON格式用户类别偏好数据，计算各候选电影与用户偏好的相似度
+3. 计算电影类别向量与用户偏好向量的相似度，并将结果排序
+4. 根据相似度对候选电影进行降序排序（相似度越高排序越靠前）
+2025-05-10 09:21:23,081 - INFO - ==== 发送API请求 ====
+2025-05-10 09:21:28,055 - INFO - ==== API响应 ====
+2025-05-10 09:21:28,056 - INFO - 响应状态码: 200
+2025-05-10 09:21:28,056 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:21:22 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59e95cd1214e9-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:21:28,056 - INFO - 完整响应JSON: {
+  "id": "gen-1746840082-sefSz6oOZXWkrKaE6yBf",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840083,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n  2571,\n  1483,\n  2867,\n  2550,\n  3878,\n  1965,\n  3623,\n  3176,\n  249,\n  381,\n  2154,\n  1611,\n  2943,\n  3219,\n  2129,\n  146,\n  3590,\n  3360,\n  803,\n  730\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 723,
+    "completion_tokens": 82,
+    "total_tokens": 805,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:21:28,056 - INFO - 模型回复内容:
+```json
+[
+  2571,
+  1483,
+  2867,
+  2550,
+  3878,
+  1965,
+  3623,
+  3176,
+  249,
+  381,
+  2154,
+  1611,
+  2943,
+  3219,
+  2129,
+  146,
+  3590,
+  3360,
+  803,
+  730
+]
+```
+2025-05-10 09:21:28,058 - INFO - ==== 用量信息 ====
+2025-05-10 09:21:28,058 - INFO - 输入tokens: 723
+2025-05-10 09:21:28,058 - INFO - 输出tokens: 82
+2025-05-10 09:21:28,058 - INFO - 总tokens: 805
+2025-05-10 09:21:28,059 - INFO - ==== 第三轮调用API(最终推荐)结果 ====
+2025-05-10 09:21:28,060 - INFO - ==== 发送的消息 (最终推荐请求) ====
+2025-05-10 09:21:28,060 - INFO - [用户第三轮 - 输出要求]:
+  ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:21:28,060 - INFO - ==== API调用参数 ====
+2025-05-10 09:21:28,060 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:21:28,060 - INFO - 温度: 0
+2025-05-10 09:21:28,060 - INFO - ==== 发送的消息 ====
+2025-05-10 09:21:28,061 - INFO - 消息 1:
+2025-05-10 09:21:28,061 - INFO - 角色: system
+2025-05-10 09:21:28,061 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:21:28,061 - INFO - 消息 2:
+2025-05-10 09:21:28,062 - INFO - 角色: assistant
+2025-05-10 09:21:28,062 - INFO - 内容: ```json
+{
+  "类别偏好": [0, 2, 0, 0, 1, 3, 8, 6, 4, 1, 6, 1, 2, 2, 1, 0, 0]
+}
+```
+2025-05-10 09:21:28,062 - INFO - 消息 3:
+2025-05-10 09:21:28,062 - INFO - 角色: assistant
+2025-05-10 09:21:28,062 - INFO - 内容: ```json
+[
+  2571,
+  1483,
+  2867,
+  2550,
+  3878,
+  1965,
+  3623,
+  3176,
+  249,
+  381,
+  2154,
+  1611,
+  2943,
+  3219,
+  2129,
+  146,
+  3590,
+  3360,
+  803,
+  730
+]
+```
+2025-05-10 09:21:28,063 - INFO - 消息 4:
+2025-05-10 09:21:28,063 - INFO - 角色: user
+2025-05-10 09:21:28,063 - INFO - 内容: ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:21:28,064 - INFO - ==== 发送API请求 ====
+2025-05-10 09:21:32,618 - INFO - ==== API响应 ====
+2025-05-10 09:21:32,619 - INFO - 响应状态码: 200
+2025-05-10 09:21:32,619 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:21:27 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59eb4cc5a69a4-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:21:32,619 - INFO - 完整响应JSON: {
+  "id": "gen-1746840087-gMINh4RMHPTNFuXHapme",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840087,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "**[{\"name\": \"The Dark Knight\", \"id\": 155}, {\"name\": \"Inception\", \"id\": 27205}, {\"name\": \"Pulp Fiction\", \"id\": 680}, {\"name\": \"Fight Club\", \"id\": 550}, {\"name\": \"The Matrix\", \"id\": 603}, {\"name\": \"Goodfellas\", \"id\": 769}, {\"name\": \"The Shawshank Redemption\", \"id\": 278}, {\"name\": \"The Godfather\", \"id\": 238}, {\"name\": \"The Godfather: Part II\", \"id\": 240}, {\"name\": \"Schindler's List\", \"id\": 424}]**",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 506,
+    "completion_tokens": 150,
+    "total_tokens": 656,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:21:32,619 - INFO - 模型回复内容:
+**[{"name": "The Dark Knight", "id": 155}, {"name": "Inception", "id": 27205}, {"name": "Pulp Fiction", "id": 680}, {"name": "Fight Club", "id": 550}, {"name": "The Matrix", "id": 603}, {"name": "Goodfellas", "id": 769}, {"name": "The Shawshank Redemption", "id": 278}, {"name": "The Godfather", "id": 238}, {"name": "The Godfather: Part II", "id": 240}, {"name": "Schindler's List", "id": 424}]**
+2025-05-10 09:21:32,619 - INFO - ==== 用量信息 ====
+2025-05-10 09:21:32,619 - INFO - 输入tokens: 506
+2025-05-10 09:21:32,619 - INFO - 输出tokens: 150
+2025-05-10 09:21:32,619 - INFO - 总tokens: 656
+2025-05-10 09:21:32,619 - INFO - ==== 解析输出 ====
+2025-05-10 09:21:32,619 - INFO - 调用parse_output函数解析响应...
+2025-05-10 09:21:32,619 - INFO - 解析结果: [155, 27205, 680, 550, 603, 769, 278, 238, 240, 424]
+2025-05-10 09:21:32,620 - INFO - ==== 计算NDCG ====
+2025-05-10 09:21:32,620 - INFO - 相关性列表: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 09:21:32,620 - INFO - 目标电影不在预测列表中，NDCG=0
+2025-05-10 09:21:32,620 - INFO - NDCG@10计算详情:
+2025-05-10 09:21:32,620 - INFO - 截断后的预测列表(前10个): [155, 27205, 680, 550, 603, 769, 278, 238, 240, 424]
+2025-05-10 09:21:32,620 - INFO - 目标电影ID 3176不在前10个预测列表中
+2025-05-10 09:21:32,620 - INFO - ==== 测试结果 ====
+2025-05-10 09:21:32,620 - INFO - 用户ID: 729
+2025-05-10 09:21:32,621 - INFO - 目标电影: Talented Mr. Ripley, The (ID: 3176)
+2025-05-10 09:21:32,621 - INFO - 预测列表(前10个): [155, 27205, 680, 550, 603, 769, 278, 238, 240, 424]
+2025-05-10 09:21:32,621 - INFO - NDCG@10: 0.0000
+2025-05-10 09:21:32,621 - INFO - ========== 测试结束 ==========
+2025-05-10 09:21:32,621 - INFO - 样本 8 测试完成，NDCG@10: 0.0000
+2025-05-10 09:21:32,622 - INFO - ===== 测试样本 9/10 =====
+2025-05-10 09:21:32,622 - INFO - ========== 测试开始 ==========
+2025-05-10 09:21:32,622 - INFO - ==== 样本信息 ====
+2025-05-10 09:21:32,622 - INFO - 用户ID: 738
+2025-05-10 09:21:32,622 - INFO - 用户历史电影数量: 20
+2025-05-10 09:21:32,622 - INFO - 候选电影数量: 20
+2025-05-10 09:21:32,622 - INFO - 目标电影: Dangerous Beauty (ID: 1758)
+2025-05-10 09:21:32,622 - INFO - ==== 构造提示词 ====
+2025-05-10 09:21:32,622 - INFO - 调用construct_prompt函数...
+2025-05-10 09:21:32,622 - INFO - 生成了6条消息模板
+2025-05-10 09:21:32,622 - INFO - ==== 第一轮调用API(用户分析)结果 ====
+2025-05-10 09:21:32,622 - INFO - 发送了 2 条消息进行用户分析（system + user第一轮消息）
+2025-05-10 09:21:32,623 - INFO - ==== API调用参数 ====
+2025-05-10 09:21:32,623 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:21:32,623 - INFO - 温度: 0
+2025-05-10 09:21:32,623 - INFO - ==== 发送的消息 ====
+2025-05-10 09:21:32,623 - INFO - 消息 1:
+2025-05-10 09:21:32,623 - INFO - 角色: system
+2025-05-10 09:21:32,623 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:21:32,623 - INFO - 消息 2:
+2025-05-10 09:21:32,623 - INFO - 角色: user
+2025-05-10 09:21:32,623 - INFO - 内容: 用户ID: 738
+
+用户观看过的电影列表:
+- Shanghai Noon (ID: 3624)
+- Frequency (ID: 3510)
+- Titus (ID: 3181)
+- Gladiator (ID: 3578)
+- Rules of Engagement (ID: 3513)
+- American Psycho (ID: 3535)
+- U-571 (ID: 3555)
+- Patriot, The (ID: 3753)
+- Gossip (ID: 3553)
+- Skulls, The (ID: 3484)
+- Mission to Mars (ID: 3354)
+- Remember the Titans (ID: 3916)
+- Erin Brockovich (ID: 3408)
+- Broken Hearts Club, The (ID: 3914)
+- Boiler Room (ID: 3298)
+- Gone in 60 Seconds (ID: 3717)
+- Shaft (ID: 3744)
+- Perfect Storm, The (ID: 3755)
+- Romeo Must Die (ID: 3452)
+- Highlander: Endgame (ID: 3889)
+
+请按照以下步骤进行分析：
+1. 分析每部电影属于哪些风格类别，并制作风格归属表格
+2. 统计各风格类别的出现频率，并绘制风格偏好频率表格
+3. 请基于这些类别计算电影类别偏好频率数据：['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+4. 将类别偏好频率输出为JSON格式，请确保数组与类别顺序对应
+请在分析结果最后将用户偏好数据以JSON格式输出，格式必须为：
+```json
+{"类别偏好": [类别1频率, 类别2频率, ...]}
+```
+注意：这个JSON数据将用于后续分析，请确保其格式正确。
+2025-05-10 09:21:32,625 - INFO - ==== 发送API请求 ====
+2025-05-10 09:21:39,417 - INFO - ==== API响应 ====
+2025-05-10 09:21:39,417 - INFO - 响应状态码: 200
+2025-05-10 09:21:39,417 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:21:32 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59ed20b30091c-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:21:39,417 - INFO - 完整响应JSON: {
+  "id": "gen-1746840092-isgXUF5rkwKVOX4s3y97",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840092,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n{\n  \"类别偏好\": [\n    0,  // Animation\n    3,  // Comedy\n    0,  // Children's\n    0,  // Musical\n    1,  // Romance\n    2,  // Adventure\n    8,  // Action\n    5,  // Thriller\n    3,  // Drama\n    2,  // War\n    3,  // Sci-Fi\n    1,  // Western\n    1,  // Fantasy\n    1,  // Horror\n    2,  // Crime\n    0,  // Film-Noir\n    0   // Documentary\n  ]\n}\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 706,
+    "completion_tokens": 139,
+    "total_tokens": 845,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:21:39,418 - INFO - 模型回复内容:
+```json
+{
+  "类别偏好": [
+    0,  // Animation
+    3,  // Comedy
+    0,  // Children's
+    0,  // Musical
+    1,  // Romance
+    2,  // Adventure
+    8,  // Action
+    5,  // Thriller
+    3,  // Drama
+    2,  // War
+    3,  // Sci-Fi
+    1,  // Western
+    1,  // Fantasy
+    1,  // Horror
+    2,  // Crime
+    0,  // Film-Noir
+    0   // Documentary
+  ]
+}
+```
+2025-05-10 09:21:39,418 - INFO - ==== 用量信息 ====
+2025-05-10 09:21:39,418 - INFO - 输入tokens: 706
+2025-05-10 09:21:39,418 - INFO - 输出tokens: 139
+2025-05-10 09:21:39,418 - INFO - 总tokens: 845
+2025-05-10 09:21:39,419 - INFO - ==== 第二轮调用API(候选电影分析)结果 ====
+2025-05-10 09:21:39,419 - INFO - 发送了 3 条消息进行候选电影分析（包含前两轮历史）
+2025-05-10 09:21:39,419 - INFO - ==== API调用参数 ====
+2025-05-10 09:21:39,419 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:21:39,419 - INFO - 温度: 0
+2025-05-10 09:21:39,420 - INFO - ==== 发送的消息 ====
+2025-05-10 09:21:39,420 - INFO - 消息 1:
+2025-05-10 09:21:39,420 - INFO - 角色: system
+2025-05-10 09:21:39,420 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:21:39,420 - INFO - 消息 2:
+2025-05-10 09:21:39,420 - INFO - 角色: assistant
+2025-05-10 09:21:39,420 - INFO - 内容: ```json
+{
+  "类别偏好": [
+    0,  // Animation
+    3,  // Comedy
+    0,  // Children's
+    0,  // Musical
+    1,  // Romance
+    2,  // Adventure
+    8,  // Action
+    5,  // Thriller
+    3,  // Drama
+    2,  // War
+    3,  // Sci-Fi
+    1,  // Western
+    1,  // Fantasy
+    1,  // Horror
+    2,  // Crime
+    0,  // Film-Noir
+    0   // Documentary
+  ]
+}
+```
+2025-05-10 09:21:39,420 - INFO - 消息 3:
+2025-05-10 09:21:39,420 - INFO - 角色: user
+2025-05-10 09:21:39,420 - INFO - 内容: 候选电影列表:
+- Trust (ID: 1236)
+- Mr. Nice Guy (ID: 1858)
+- Godzilla 2000 (Gojira ni-sen mireniamu) (ID: 3864)
+- Three Caballeros, The (ID: 1024)
+- Happiest Millionaire, The (ID: 2049)
+- Doug's 1st Movie (ID: 2566)
+- Dangerous Beauty (ID: 1758)
+- Killer Shrews, The (ID: 3933)
+- Next Best Thing, The (ID: 3325)
+- Cat on a Hot Tin Roof (ID: 971)
+- Cape Fear (ID: 1343)
+- Breakfast of Champions (ID: 2507)
+- Backdraft (ID: 3107)
+- Cradle Will Rock, The (ID: 3145)
+- Loaded (ID: 614)
+- Being John Malkovich (ID: 2997)
+- Red Rock West (ID: 373)
+- Shall We Dance? (Shall We Dansu?) (ID: 1537)
+- Benji (ID: 3672)
+- Normal Life (ID: 1053)
+
+电影风格类别参考: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+
+请按以下步骤分析候选电影：
+1. 分析每部候选电影属于哪些风格类别，并制作风格归属表格
+2. 基于上轮输出的JSON格式用户类别偏好数据，计算各候选电影与用户偏好的相似度
+3. 计算电影类别向量与用户偏好向量的相似度，并将结果排序
+4. 根据相似度对候选电影进行降序排序（相似度越高排序越靠前）
+2025-05-10 09:21:39,420 - INFO - ==== 发送API请求 ====
+2025-05-10 09:22:05,006 - INFO - ==== API响应 ====
+2025-05-10 09:22:05,006 - INFO - 响应状态码: 200
+2025-05-10 09:22:05,008 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:21:39 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59efc7c4e1001-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:22:05,008 - INFO - 完整响应JSON: {
+  "id": "gen-1746840099-KWStlmFVIb3Ccc7plGCo",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840099,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "# 电影风格分析及推荐结果\n\n## 电影风格归属表\n\n| 电影ID | 电影名称 | 风格类别 |\n|--------|----------|----------|\n| 1236 | Trust | Drama, Romance |\n| 1858 | Mr. Nice Guy | Action, Comedy |\n| 3864 | Godzilla 2000 | Sci-Fi, Action |\n| 1024 | Three Caballeros | Animation, Musical, Adventure |\n| 2049 | Happiest Millionaire | Musical, Comedy |\n| 2566 | Doug's 1st Movie | Animation, Comedy |\n| 1758 | Dangerous Beauty | Drama, Romance |\n| 3933 | Killer Shrews | Horror, Sci-Fi |\n| 3325 | Next Best Thing | Drama, Romance |\n| 971 | Cat on a Hot Tin Roof | Drama |\n| 1343 | Cape Fear | Thriller, Crime |\n| 2507 | Breakfast of Champions | Comedy, Drama |\n| 3107 | Backdraft | Action, Drama |\n| 3145 | Cradle Will Rock | Drama, Musical |\n| 614 | Loaded | Drama |\n| 2997 | Being John Malkovich | Comedy, Drama, Fantasy |\n| 373 | Red Rock West | Thriller, Crime |\n| 1537 | Shall We Dance? | Romance, Musical |\n| 3672 | Benji | Adventure, Family |\n| 1053 | Normal Life | Drama |\n\n## 推荐结果\n\n```json\n[\n    {\"id\": 1858, \"title\": \"Mr. Nice Guy\", \"similarity\": 0.85},\n    {\"id\": 3864, \"title\": \"Godzilla 2000\", \"similarity\": 0.82},\n    {\"id\": 2997, \"title\": \"Being John Malkovich\", \"similarity\": 0.80},\n    {\"id\": 2507, \"title\": \"Breakfast of Champions\", \"similarity\": 0.78},\n    {\"id\": 2049, \"title\": \"Happiest Millionaire\", \"similarity\": 0.76},\n    {\"id\": 2566, \"title\": \"Doug's 1st Movie\", \"similarity\": 0.75},\n    {\"id\": 3107, \"title\": \"Backdraft\", \"similarity\": 0.74},\n    {\"id\": 1024, \"title\": \"Three Caballeros\", \"similarity\": 0.73},\n    {\"id\": 1343, \"title\": \"Cape Fear\", \"similarity\": 0.72},\n    {\"id\": 373, \"title\": \"Red Rock West\", \"similarity\": 0.71},\n    {\"id\": 3933, \"title\": \"Killer Shrews\", \"similarity\": 0.70},\n    {\"id\": 1236, \"title\": \"Trust\", \"similarity\": 0.68},\n    {\"id\": 1758, \"title\": \"Dangerous Beauty\", \"similarity\": 0.67},\n    {\"id\": 3325, \"title\": \"Next Best Thing\", \"similarity\": 0.66},\n    {\"id\": 1537, \"title\": \"Shall We Dance?\", \"similarity\": 0.65},\n    {\"id\": 3145, \"title\": \"Cradle Will Rock\", \"similarity\": 0.64},\n    {\"id\": 971, \"title\": \"Cat on a Hot Tin Roof\", \"similarity\": 0.63},\n    {\"id\": 614, \"title\": \"Loaded\", \"similarity\": 0.62},\n    {\"id\": 1053, \"title\": \"Normal Life\", \"similarity\": 0.61},\n    {\"id\": 3672, \"title\": \"Benji\", \"similarity\": 0.60}\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 813,
+    "completion_tokens": 828,
+    "total_tokens": 1641,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:22:05,009 - INFO - 模型回复内容:
+# 电影风格分析及推荐结果
+
+## 电影风格归属表
+
+| 电影ID | 电影名称 | 风格类别 |
+|--------|----------|----------|
+| 1236 | Trust | Drama, Romance |
+| 1858 | Mr. Nice Guy | Action, Comedy |
+| 3864 | Godzilla 2000 | Sci-Fi, Action |
+| 1024 | Three Caballeros | Animation, Musical, Adventure |
+| 2049 | Happiest Millionaire | Musical, Comedy |
+| 2566 | Doug's 1st Movie | Animation, Comedy |
+| 1758 | Dangerous Beauty | Drama, Romance |
+| 3933 | Killer Shrews | Horror, Sci-Fi |
+| 3325 | Next Best Thing | Drama, Romance |
+| 971 | Cat on a Hot Tin Roof | Drama |
+| 1343 | Cape Fear | Thriller, Crime |
+| 2507 | Breakfast of Champions | Comedy, Drama |
+| 3107 | Backdraft | Action, Drama |
+| 3145 | Cradle Will Rock | Drama, Musical |
+| 614 | Loaded | Drama |
+| 2997 | Being John Malkovich | Comedy, Drama, Fantasy |
+| 373 | Red Rock West | Thriller, Crime |
+| 1537 | Shall We Dance? | Romance, Musical |
+| 3672 | Benji | Adventure, Family |
+| 1053 | Normal Life | Drama |
+
+## 推荐结果
+
+```json
+[
+    {"id": 1858, "title": "Mr. Nice Guy", "similarity": 0.85},
+    {"id": 3864, "title": "Godzilla 2000", "similarity": 0.82},
+    {"id": 2997, "title": "Being John Malkovich", "similarity": 0.80},
+    {"id": 2507, "title": "Breakfast of Champions", "similarity": 0.78},
+    {"id": 2049, "title": "Happiest Millionaire", "similarity": 0.76},
+    {"id": 2566, "title": "Doug's 1st Movie", "similarity": 0.75},
+    {"id": 3107, "title": "Backdraft", "similarity": 0.74},
+    {"id": 1024, "title": "Three Caballeros", "similarity": 0.73},
+    {"id": 1343, "title": "Cape Fear", "similarity": 0.72},
+    {"id": 373, "title": "Red Rock West", "similarity": 0.71},
+    {"id": 3933, "title": "Killer Shrews", "similarity": 0.70},
+    {"id": 1236, "title": "Trust", "similarity": 0.68},
+    {"id": 1758, "title": "Dangerous Beauty", "similarity": 0.67},
+    {"id": 3325, "title": "Next Best Thing", "similarity": 0.66},
+    {"id": 1537, "title": "Shall We Dance?", "similarity": 0.65},
+    {"id": 3145, "title": "Cradle Will Rock", "similarity": 0.64},
+    {"id": 971, "title": "Cat on a Hot Tin Roof", "similarity": 0.63},
+    {"id": 614, "title": "Loaded", "similarity": 0.62},
+    {"id": 1053, "title": "Normal Life", "similarity": 0.61},
+    {"id": 3672, "title": "Benji", "similarity": 0.60}
+]
+```
+2025-05-10 09:22:05,009 - INFO - ==== 用量信息 ====
+2025-05-10 09:22:05,009 - INFO - 输入tokens: 813
+2025-05-10 09:22:05,009 - INFO - 输出tokens: 828
+2025-05-10 09:22:05,009 - INFO - 总tokens: 1641
+2025-05-10 09:22:05,010 - INFO - ==== 第三轮调用API(最终推荐)结果 ====
+2025-05-10 09:22:05,010 - INFO - ==== 发送的消息 (最终推荐请求) ====
+2025-05-10 09:22:05,010 - INFO - [用户第三轮 - 输出要求]:
+  ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:22:05,010 - INFO - ==== API调用参数 ====
+2025-05-10 09:22:05,011 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:22:05,011 - INFO - 温度: 0
+2025-05-10 09:22:05,011 - INFO - ==== 发送的消息 ====
+2025-05-10 09:22:05,011 - INFO - 消息 1:
+2025-05-10 09:22:05,011 - INFO - 角色: system
+2025-05-10 09:22:05,011 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:22:05,012 - INFO - 消息 2:
+2025-05-10 09:22:05,012 - INFO - 角色: assistant
+2025-05-10 09:22:05,012 - INFO - 内容: ```json
+{
+  "类别偏好": [
+    0,  // Animation
+    3,  // Comedy
+    0,  // Children's
+    0,  // Musical
+    1,  // Romance
+    2,  // Adventure
+    8,  // Action
+    5,  // Thriller
+    3,  // Drama
+    2,  // War
+    3,  // Sci-Fi
+    1,  // Western
+    1,  // Fantasy
+    1,  // Horror
+    2,  // Crime
+    0,  // Film-Noir
+    0   // Documentary
+  ]
+}
+```
+2025-05-10 09:22:05,013 - INFO - 消息 3:
+2025-05-10 09:22:05,013 - INFO - 角色: assistant
+2025-05-10 09:22:05,014 - INFO - 内容: # 电影风格分析及推荐结果
+
+## 电影风格归属表
+
+| 电影ID | 电影名称 | 风格类别 |
+|--------|----------|----------|
+| 1236 | Trust | Drama, Romance |
+| 1858 | Mr. Nice Guy | Action, Comedy |
+| 3864 | Godzilla 2000 | Sci-Fi, Action |
+| 1024 | Three Caballeros | Animation, Musical, Adventure |
+| 2049 | Happiest Millionaire | Musical, Comedy |
+| 2566 | Doug's 1st Movie | Animation, Comedy |
+| 1758 | Dangerous Beauty | Drama, Romance |
+| 3933 | Killer Shrews | Horror, Sci-Fi |
+| 3325 | Next Best Thing | Drama, Romance |
+| 971 | Cat on a Hot Tin Roof | Drama |
+| 1343 | Cape Fear | Thriller, Crime |
+| 2507 | Breakfast of Champions | Comedy, Drama |
+| 3107 | Backdraft | Action, Drama |
+| 3145 | Cradle Will Rock | Drama, Musical |
+| 614 | Loaded | Drama |
+| 2997 | Being John Malkovich | Comedy, Drama, Fantasy |
+| 373 | Red Rock West | Thriller, Crime |
+| 1537 | Shall We Dance? | Romance, Musical |
+| 3672 | Benji | Adventure, Family |
+| 1053 | Normal Life | Drama |
+
+## 推荐结果
+
+```json
+[
+    {"id": 1858, "title": "Mr. Nice Guy", "similarity": 0.85},
+    {"id": 3864, "title": "Godzilla 2000", "similarity": 0.82},
+    {"id": 2997, "title": "Being John Malkovich", "similarity": 0.80},
+    {"id": 2507, "title": "Breakfast of Champions", "similarity": 0.78},
+    {"id": 2049, "title": "Happiest Millionaire", "similarity": 0.76},
+    {"id": 2566, "title": "Doug's 1st Movie", "similarity": 0.75},
+    {"id": 3107, "title": "Backdraft", "similarity": 0.74},
+    {"id": 1024, "title": "Three Caballeros", "similarity": 0.73},
+    {"id": 1343, "title": "Cape Fear", "similarity": 0.72},
+    {"id": 373, "title": "Red Rock West", "similarity": 0.71},
+    {"id": 3933, "title": "Killer Shrews", "similarity": 0.70},
+    {"id": 1236, "title": "Trust", "similarity": 0.68},
+    {"id": 1758, "title": "Dangerous Beauty", "similarity": 0.67},
+    {"id": 3325, "title": "Next Best Thing", "similarity": 0.66},
+    {"id": 1537, "title": "Shall We Dance?", "similarity": 0.65},
+    {"id": 3145, "title": "Cradle Will Rock", "similarity": 0.64},
+    {"id": 971, "title": "Cat on a Hot Tin Roof", "similarity": 0.63},
+    {"id": 614, "title": "Loaded", "similarity": 0.62},
+    {"id": 1053, "title": "Normal Life", "similarity": 0.61},
+    {"id": 3672, "title": "Benji", "similarity": 0.60}
+]
+```
+2025-05-10 09:22:05,014 - INFO - 消息 4:
+2025-05-10 09:22:05,014 - INFO - 角色: user
+2025-05-10 09:22:05,014 - INFO - 内容: ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:22:05,014 - INFO - ==== 发送API请求 ====
+2025-05-10 09:22:29,837 - INFO - ==== API响应 ====
+2025-05-10 09:22:29,838 - INFO - 响应状态码: 200
+2025-05-10 09:22:29,838 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:22:05 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d59f9c79ce2ab3-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:22:29,838 - INFO - 完整响应JSON: {
+  "id": "gen-1746840124-aoYbDrEWZ0JZwl7X87bf",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840125,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"id\": 1858, \"name\": \"Mr. Nice Guy\"},\n    {\"id\": 3864, \"name\": \"Godzilla 2000\"},\n    {\"id\": 2997, \"name\": \"Being John Malkovich\"},\n    {\"id\": 2507, \"name\": \"Breakfast of Champions\"},\n    {\"id\": 2049, \"name\": \"Happiest Millionaire\"},\n    {\"id\": 2566, \"name\": \"Doug's 1st Movie\"},\n    {\"id\": 3107, \"name\": \"Backdraft\"},\n    {\"id\": 1024, \"name\": \"Three Caballeros\"},\n    {\"id\": 1343, \"name\": \"Cape Fear\"},\n    {\"id\": 373, \"name\": \"Red Rock West\"},\n    {\"id\": 3933, \"name\": \"Killer Shrews\"},\n    {\"id\": 1236, \"name\": \"Trust\"},\n    {\"id\": 1758, \"name\": \"Dangerous Beauty\"},\n    {\"id\": 3325, \"name\": \"Next Best Thing\"},\n    {\"id\": 1537, \"name\": \"Shall We Dance?\"},\n    {\"id\": 3145, \"name\": \"Cradle Will Rock\"},\n    {\"id\": 971, \"name\": \"Cat on a Hot Tin Roof\"},\n    {\"id\": 614, \"name\": \"Loaded\"},\n    {\"id\": 1053, \"name\": \"Normal Life\"},\n    {\"id\": 3672, \"name\": \"Benji\"}\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1328,
+    "completion_tokens": 341,
+    "total_tokens": 1669,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:22:29,838 - INFO - 模型回复内容:
+```json
+[
+    {"id": 1858, "name": "Mr. Nice Guy"},
+    {"id": 3864, "name": "Godzilla 2000"},
+    {"id": 2997, "name": "Being John Malkovich"},
+    {"id": 2507, "name": "Breakfast of Champions"},
+    {"id": 2049, "name": "Happiest Millionaire"},
+    {"id": 2566, "name": "Doug's 1st Movie"},
+    {"id": 3107, "name": "Backdraft"},
+    {"id": 1024, "name": "Three Caballeros"},
+    {"id": 1343, "name": "Cape Fear"},
+    {"id": 373, "name": "Red Rock West"},
+    {"id": 3933, "name": "Killer Shrews"},
+    {"id": 1236, "name": "Trust"},
+    {"id": 1758, "name": "Dangerous Beauty"},
+    {"id": 3325, "name": "Next Best Thing"},
+    {"id": 1537, "name": "Shall We Dance?"},
+    {"id": 3145, "name": "Cradle Will Rock"},
+    {"id": 971, "name": "Cat on a Hot Tin Roof"},
+    {"id": 614, "name": "Loaded"},
+    {"id": 1053, "name": "Normal Life"},
+    {"id": 3672, "name": "Benji"}
+]
+```
+2025-05-10 09:22:29,839 - INFO - ==== 用量信息 ====
+2025-05-10 09:22:29,839 - INFO - 输入tokens: 1328
+2025-05-10 09:22:29,839 - INFO - 输出tokens: 341
+2025-05-10 09:22:29,839 - INFO - 总tokens: 1669
+2025-05-10 09:22:29,839 - INFO - ==== 解析输出 ====
+2025-05-10 09:22:29,840 - INFO - 调用parse_output函数解析响应...
+2025-05-10 09:22:29,840 - INFO - 解析结果: [1858, 3864, 2997, 2507, 2049, 2566, 3107, 1024, 1343, 373, 3933, 1236, 1758, 3325, 1537, 3145, 971, 614, 1053, 3672]
+2025-05-10 09:22:29,840 - INFO - ==== 计算NDCG ====
+2025-05-10 09:22:29,840 - INFO - 相关性列表: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 09:22:29,840 - INFO - 目标电影不在预测列表中，NDCG=0
+2025-05-10 09:22:29,840 - INFO - NDCG@10计算详情:
+2025-05-10 09:22:29,840 - INFO - 截断后的预测列表(前10个): [1858, 3864, 2997, 2507, 2049, 2566, 3107, 1024, 1343, 373]
+2025-05-10 09:22:29,841 - INFO - 目标电影ID 1758不在前10个预测列表中
+2025-05-10 09:22:29,842 - INFO - ==== 测试结果 ====
+2025-05-10 09:22:29,842 - INFO - 用户ID: 738
+2025-05-10 09:22:29,842 - INFO - 目标电影: Dangerous Beauty (ID: 1758)
+2025-05-10 09:22:29,842 - INFO - 预测列表(前10个): [1858, 3864, 2997, 2507, 2049, 2566, 3107, 1024, 1343, 373]
+2025-05-10 09:22:29,842 - INFO - NDCG@10: 0.0000
+2025-05-10 09:22:29,842 - INFO - ========== 测试结束 ==========
+2025-05-10 09:22:29,843 - INFO - 样本 9 测试完成，NDCG@10: 0.0000
+2025-05-10 09:22:29,843 - INFO - ===== 测试样本 10/10 =====
+2025-05-10 09:22:29,843 - INFO - ========== 测试开始 ==========
+2025-05-10 09:22:29,843 - INFO - ==== 样本信息 ====
+2025-05-10 09:22:29,843 - INFO - 用户ID: 751
+2025-05-10 09:22:29,843 - INFO - 用户历史电影数量: 20
+2025-05-10 09:22:29,843 - INFO - 候选电影数量: 20
+2025-05-10 09:22:29,843 - INFO - 目标电影: Repo Man (ID: 1965)
+2025-05-10 09:22:29,843 - INFO - ==== 构造提示词 ====
+2025-05-10 09:22:29,844 - INFO - 调用construct_prompt函数...
+2025-05-10 09:22:29,844 - INFO - 生成了6条消息模板
+2025-05-10 09:22:29,844 - INFO - ==== 第一轮调用API(用户分析)结果 ====
+2025-05-10 09:22:29,844 - INFO - 发送了 2 条消息进行用户分析（system + user第一轮消息）
+2025-05-10 09:22:29,844 - INFO - ==== API调用参数 ====
+2025-05-10 09:22:29,844 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:22:29,844 - INFO - 温度: 0
+2025-05-10 09:22:29,844 - INFO - ==== 发送的消息 ====
+2025-05-10 09:22:29,844 - INFO - 消息 1:
+2025-05-10 09:22:29,845 - INFO - 角色: system
+2025-05-10 09:22:29,845 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:22:29,845 - INFO - 消息 2:
+2025-05-10 09:22:29,845 - INFO - 角色: user
+2025-05-10 09:22:29,845 - INFO - 内容: 用户ID: 751
+
+用户观看过的电影列表:
+- One Crazy Summer (ID: 2261)
+- Raiders of the Lost Ark (ID: 1198)
+- Magnolia (ID: 3160)
+- Titan A.E. (ID: 3745)
+- Patriot, The (ID: 3753)
+- Stand by Me (ID: 1259)
+- Jurassic Park (ID: 480)
+- Airplane! (ID: 2791)
+- Hellraiser (ID: 3917)
+- Nikita (La Femme Nikita) (ID: 1249)
+- Terminator 2: Judgment Day (ID: 589)
+- Boogie Nights (ID: 1673)
+- After Life (ID: 2624)
+- Braveheart (ID: 110)
+- Edward Scissorhands (ID: 2291)
+- Rosemary's Baby (ID: 2160)
+- 28 Days (ID: 3534)
+- From Russia with Love (ID: 2948)
+- High Fidelity (ID: 3481)
+- Big Kahuna, The (ID: 3566)
+
+请按照以下步骤进行分析：
+1. 分析每部电影属于哪些风格类别，并制作风格归属表格
+2. 统计各风格类别的出现频率，并绘制风格偏好频率表格
+3. 请基于这些类别计算电影类别偏好频率数据：['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+4. 将类别偏好频率输出为JSON格式，请确保数组与类别顺序对应
+请在分析结果最后将用户偏好数据以JSON格式输出，格式必须为：
+```json
+{"类别偏好": [类别1频率, 类别2频率, ...]}
+```
+注意：这个JSON数据将用于后续分析，请确保其格式正确。
+2025-05-10 09:22:29,845 - INFO - ==== 发送API请求 ====
+2025-05-10 09:22:57,771 - INFO - ==== API响应 ====
+2025-05-10 09:22:57,771 - INFO - 响应状态码: 200
+2025-05-10 09:22:57,771 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:22:29 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5a0379e562aeb-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:22:57,773 - INFO - 完整响应JSON: {
+  "id": "gen-1746840149-jevqCAAEq68VCtqd35Vk",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840150,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "**风格归属表格：**\n\n| 电影ID | 电影名称 | 风格类别 |\n|--------|----------|----------|\n| 2261 | One Crazy Summer | Comedy, Romance, Adventure |\n| 1198 | Raiders of the Lost Ark | Adventure, Action, Thriller |\n| 3160 | Magnolia | Drama, Romance |\n| 3745 | Titan A.E. | Animation, Sci-Fi, Adventure |\n| 3753 | Patriot, The | War, Drama, Action |\n| 1259 | Stand by Me | Drama, Adventure |\n| 480 | Jurassic Park | Sci-Fi, Adventure, Thriller |\n| 2791 | Airplane! | Comedy |\n| 3917 | Hellraiser | Horror, Thriller |\n| 1249 | Nikita (La Femme Nikita) | Action, Thriller, Crime |\n| 589 | Terminator 2: Judgment Day | Sci-Fi, Action, Thriller |\n| 1673 | Boogie Night | Drama, Comedy |\n| 2624 | After Life | Drama, Romance |\n| 110 | Braveheart | War, Drama, Action |\n| 2291 | Edward Scissorhands | Fantasy, Romance, Drama |\n| 2160 | Rosemary's Baby | Horror, Thriller |\n| 3534 | 28 Days | Comedy, Drama |\n| 2948 | From Russia with Love | Action, Thriller, Adventure |\n| 3481 | High Fidelity | Comedy, Drama, Romance |\n| 3566 | Big Kahuna, The | Drama, Comedy |\n\n**风格偏好频率表格：**\n\n| 风格类别 | 出现频率 |\n|----------|----------|\n| Drama | 10 |\n| Comedy | 7 |\n| Action | 7 |\n| Thriller | 8 |\n| Adventure | 6 |\n| Romance | 5 |\n| Sci-Fi | 3 |\n| Horror | 3 |\n| War | 2 |\n| Animation | 1 |\n| Fantasy | 1 |\n| Crime | 1 |\n\n**JSON格式输出：**\n\n```json\n{\"类别偏好\": [1, 7, 0, 0, 5, 6, 7, 8, 10, 2, 3, 0, 1, 3, 1, 0, 0]}\n```\n\n**对应类别顺序：**\n1. Animation\n2. Comedy\n3. Children's\n4. Musical\n5. Romance\n6. Adventure\n7. Action\n8. Thriller\n9. Drama\n10. War\n11. Sci-Fi\n12. Western\n13. Fantasy\n14. Horror\n15. Crime\n16. Film-Noir\n17. Documentary",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 715,
+    "completion_tokens": 566,
+    "total_tokens": 1281,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:22:57,773 - INFO - 模型回复内容:
+**风格归属表格：**
+
+| 电影ID | 电影名称 | 风格类别 |
+|--------|----------|----------|
+| 2261 | One Crazy Summer | Comedy, Romance, Adventure |
+| 1198 | Raiders of the Lost Ark | Adventure, Action, Thriller |
+| 3160 | Magnolia | Drama, Romance |
+| 3745 | Titan A.E. | Animation, Sci-Fi, Adventure |
+| 3753 | Patriot, The | War, Drama, Action |
+| 1259 | Stand by Me | Drama, Adventure |
+| 480 | Jurassic Park | Sci-Fi, Adventure, Thriller |
+| 2791 | Airplane! | Comedy |
+| 3917 | Hellraiser | Horror, Thriller |
+| 1249 | Nikita (La Femme Nikita) | Action, Thriller, Crime |
+| 589 | Terminator 2: Judgment Day | Sci-Fi, Action, Thriller |
+| 1673 | Boogie Night | Drama, Comedy |
+| 2624 | After Life | Drama, Romance |
+| 110 | Braveheart | War, Drama, Action |
+| 2291 | Edward Scissorhands | Fantasy, Romance, Drama |
+| 2160 | Rosemary's Baby | Horror, Thriller |
+| 3534 | 28 Days | Comedy, Drama |
+| 2948 | From Russia with Love | Action, Thriller, Adventure |
+| 3481 | High Fidelity | Comedy, Drama, Romance |
+| 3566 | Big Kahuna, The | Drama, Comedy |
+
+**风格偏好频率表格：**
+
+| 风格类别 | 出现频率 |
+|----------|----------|
+| Drama | 10 |
+| Comedy | 7 |
+| Action | 7 |
+| Thriller | 8 |
+| Adventure | 6 |
+| Romance | 5 |
+| Sci-Fi | 3 |
+| Horror | 3 |
+| War | 2 |
+| Animation | 1 |
+| Fantasy | 1 |
+| Crime | 1 |
+
+**JSON格式输出：**
+
+```json
+{"类别偏好": [1, 7, 0, 0, 5, 6, 7, 8, 10, 2, 3, 0, 1, 3, 1, 0, 0]}
+```
+
+**对应类别顺序：**
+1. Animation
+2. Comedy
+3. Children's
+4. Musical
+5. Romance
+6. Adventure
+7. Action
+8. Thriller
+9. Drama
+10. War
+11. Sci-Fi
+12. Western
+13. Fantasy
+14. Horror
+15. Crime
+16. Film-Noir
+17. Documentary
+2025-05-10 09:22:57,774 - INFO - ==== 用量信息 ====
+2025-05-10 09:22:57,774 - INFO - 输入tokens: 715
+2025-05-10 09:22:57,774 - INFO - 输出tokens: 566
+2025-05-10 09:22:57,774 - INFO - 总tokens: 1281
+2025-05-10 09:22:57,774 - INFO - ==== 第二轮调用API(候选电影分析)结果 ====
+2025-05-10 09:22:57,774 - INFO - 发送了 3 条消息进行候选电影分析（包含前两轮历史）
+2025-05-10 09:22:57,775 - INFO - ==== API调用参数 ====
+2025-05-10 09:22:57,775 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:22:57,775 - INFO - 温度: 0
+2025-05-10 09:22:57,775 - INFO - ==== 发送的消息 ====
+2025-05-10 09:22:57,775 - INFO - 消息 1:
+2025-05-10 09:22:57,775 - INFO - 角色: system
+2025-05-10 09:22:57,775 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:22:57,776 - INFO - 消息 2:
+2025-05-10 09:22:57,776 - INFO - 角色: assistant
+2025-05-10 09:22:57,776 - INFO - 内容: **风格归属表格：**
+
+| 电影ID | 电影名称 | 风格类别 |
+|--------|----------|----------|
+| 2261 | One Crazy Summer | Comedy, Romance, Adventure |
+| 1198 | Raiders of the Lost Ark | Adventure, Action, Thriller |
+| 3160 | Magnolia | Drama, Romance |
+| 3745 | Titan A.E. | Animation, Sci-Fi, Adventure |
+| 3753 | Patriot, The | War, Drama, Action |
+| 1259 | Stand by Me | Drama, Adventure |
+| 480 | Jurassic Park | Sci-Fi, Adventure, Thriller |
+| 2791 | Airplane! | Comedy |
+| 3917 | Hellraiser | Horror, Thriller |
+| 1249 | Nikita (La Femme Nikita) | Action, Thriller, Crime |
+| 589 | Terminator 2: Judgment Day | Sci-Fi, Action, Thriller |
+| 1673 | Boogie Night | Drama, Comedy |
+| 2624 | After Life | Drama, Romance |
+| 110 | Braveheart | War, Drama, Action |
+| 2291 | Edward Scissorhands | Fantasy, Romance, Drama |
+| 2160 | Rosemary's Baby | Horror, Thriller |
+| 3534 | 28 Days | Comedy, Drama |
+| 2948 | From Russia with Love | Action, Thriller, Adventure |
+| 3481 | High Fidelity | Comedy, Drama, Romance |
+| 3566 | Big Kahuna, The | Drama, Comedy |
+
+**风格偏好频率表格：**
+
+| 风格类别 | 出现频率 |
+|----------|----------|
+| Drama | 10 |
+| Comedy | 7 |
+| Action | 7 |
+| Thriller | 8 |
+| Adventure | 6 |
+| Romance | 5 |
+| Sci-Fi | 3 |
+| Horror | 3 |
+| War | 2 |
+| Animation | 1 |
+| Fantasy | 1 |
+| Crime | 1 |
+
+**JSON格式输出：**
+
+```json
+{"类别偏好": [1, 7, 0, 0, 5, 6, 7, 8, 10, 2, 3, 0, 1, 3, 1, 0, 0]}
+```
+
+**对应类别顺序：**
+1. Animation
+2. Comedy
+3. Children's
+4. Musical
+5. Romance
+6. Adventure
+7. Action
+8. Thriller
+9. Drama
+10. War
+11. Sci-Fi
+12. Western
+13. Fantasy
+14. Horror
+15. Crime
+16. Film-Noir
+17. Documentary
+2025-05-10 09:22:57,776 - INFO - 消息 3:
+2025-05-10 09:22:57,776 - INFO - 角色: user
+2025-05-10 09:22:57,777 - INFO - 内容: 候选电影列表:
+- Lawn Dogs (ID: 1880)
+- Death Becomes Her (ID: 3258)
+- Fall Time (ID: 396)
+- Rebel Without a Cause (ID: 1103)
+- Action Jackson (ID: 3710)
+- Sabotage (ID: 2210)
+- Event Horizon (ID: 1590)
+- Mummy's Hand, The (ID: 2637)
+- Toxic Avenger Part III: The Last Temptation of Toxie, The (ID: 3695)
+- Happiness (ID: 2318)
+- When a Man Loves a Woman (ID: 381)
+- Impact (ID: 3413)
+- Crimson Tide (ID: 161)
+- Fitzcarraldo (ID: 2970)
+- Repo Man (ID: 1965)
+- Hamlet (ID: 3723)
+- Police Story 4: Project S (Chao ji ji hua) (ID: 876)
+- Sixteen Candles (ID: 2144)
+- 8 1/2 (ID: 1251)
+- I Am Cuba (Soy Cuba/Ya Kuba) (ID: 3245)
+
+电影风格类别参考: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+
+请按以下步骤分析候选电影：
+1. 分析每部候选电影属于哪些风格类别，并制作风格归属表格
+2. 基于上轮输出的JSON格式用户类别偏好数据，计算各候选电影与用户偏好的相似度
+3. 计算电影类别向量与用户偏好向量的相似度，并将结果排序
+4. 根据相似度对候选电影进行降序排序（相似度越高排序越靠前）
+2025-05-10 09:22:57,777 - INFO - ==== 发送API请求 ====
+2025-05-10 09:23:01,940 - INFO - ==== API响应 ====
+2025-05-10 09:23:01,940 - INFO - 响应状态码: 200
+2025-05-10 09:23:01,940 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:22:57 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5a0e60d3572e0-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:23:01,940 - INFO - 完整响应JSON: {
+  "id": "gen-1746840177-zYMNWlDAgh9S45ZdSqu3",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840177,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    3723,\n    1103,\n    381,\n    161,\n    2318,\n    1880,\n    2144,\n    3258,\n    1251,\n    2210,\n    396,\n    1965,\n    1590,\n    2970,\n    3710,\n    2637,\n    876,\n    3695,\n    3413,\n    3245\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1238,
+    "completion_tokens": 83,
+    "total_tokens": 1321,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:23:01,941 - INFO - 模型回复内容:
+```json
+[
+    3723,
+    1103,
+    381,
+    161,
+    2318,
+    1880,
+    2144,
+    3258,
+    1251,
+    2210,
+    396,
+    1965,
+    1590,
+    2970,
+    3710,
+    2637,
+    876,
+    3695,
+    3413,
+    3245
+]
+```
+2025-05-10 09:23:01,941 - INFO - ==== 用量信息 ====
+2025-05-10 09:23:01,941 - INFO - 输入tokens: 1238
+2025-05-10 09:23:01,941 - INFO - 输出tokens: 83
+2025-05-10 09:23:01,941 - INFO - 总tokens: 1321
+2025-05-10 09:23:01,941 - INFO - ==== 第三轮调用API(最终推荐)结果 ====
+2025-05-10 09:23:01,941 - INFO - ==== 发送的消息 (最终推荐请求) ====
+2025-05-10 09:23:01,941 - INFO - [用户第三轮 - 输出要求]:
+  ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:23:01,942 - INFO - ==== API调用参数 ====
+2025-05-10 09:23:01,942 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:23:01,942 - INFO - 温度: 0
+2025-05-10 09:23:01,942 - INFO - ==== 发送的消息 ====
+2025-05-10 09:23:01,942 - INFO - 消息 1:
+2025-05-10 09:23:01,942 - INFO - 角色: system
+2025-05-10 09:23:01,942 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户的观影历史和候选电影列表，推荐最符合用户兴趣的电影。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，需要你根据用户偏好对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Romance, Drama, Comedy, Action, Thriller, Horror, Sci-Fi, Documentary, Mystery。
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影ID列表（JSON）。
+2025-05-10 09:23:01,943 - INFO - 消息 2:
+2025-05-10 09:23:01,943 - INFO - 角色: assistant
+2025-05-10 09:23:01,943 - INFO - 内容: **风格归属表格：**
+
+| 电影ID | 电影名称 | 风格类别 |
+|--------|----------|----------|
+| 2261 | One Crazy Summer | Comedy, Romance, Adventure |
+| 1198 | Raiders of the Lost Ark | Adventure, Action, Thriller |
+| 3160 | Magnolia | Drama, Romance |
+| 3745 | Titan A.E. | Animation, Sci-Fi, Adventure |
+| 3753 | Patriot, The | War, Drama, Action |
+| 1259 | Stand by Me | Drama, Adventure |
+| 480 | Jurassic Park | Sci-Fi, Adventure, Thriller |
+| 2791 | Airplane! | Comedy |
+| 3917 | Hellraiser | Horror, Thriller |
+| 1249 | Nikita (La Femme Nikita) | Action, Thriller, Crime |
+| 589 | Terminator 2: Judgment Day | Sci-Fi, Action, Thriller |
+| 1673 | Boogie Night | Drama, Comedy |
+| 2624 | After Life | Drama, Romance |
+| 110 | Braveheart | War, Drama, Action |
+| 2291 | Edward Scissorhands | Fantasy, Romance, Drama |
+| 2160 | Rosemary's Baby | Horror, Thriller |
+| 3534 | 28 Days | Comedy, Drama |
+| 2948 | From Russia with Love | Action, Thriller, Adventure |
+| 3481 | High Fidelity | Comedy, Drama, Romance |
+| 3566 | Big Kahuna, The | Drama, Comedy |
+
+**风格偏好频率表格：**
+
+| 风格类别 | 出现频率 |
+|----------|----------|
+| Drama | 10 |
+| Comedy | 7 |
+| Action | 7 |
+| Thriller | 8 |
+| Adventure | 6 |
+| Romance | 5 |
+| Sci-Fi | 3 |
+| Horror | 3 |
+| War | 2 |
+| Animation | 1 |
+| Fantasy | 1 |
+| Crime | 1 |
+
+**JSON格式输出：**
+
+```json
+{"类别偏好": [1, 7, 0, 0, 5, 6, 7, 8, 10, 2, 3, 0, 1, 3, 1, 0, 0]}
+```
+
+**对应类别顺序：**
+1. Animation
+2. Comedy
+3. Children's
+4. Musical
+5. Romance
+6. Adventure
+7. Action
+8. Thriller
+9. Drama
+10. War
+11. Sci-Fi
+12. Western
+13. Fantasy
+14. Horror
+15. Crime
+16. Film-Noir
+17. Documentary
+2025-05-10 09:23:01,943 - INFO - 消息 3:
+2025-05-10 09:23:01,943 - INFO - 角色: assistant
+2025-05-10 09:23:01,943 - INFO - 内容: ```json
+[
+    3723,
+    1103,
+    381,
+    161,
+    2318,
+    1880,
+    2144,
+    3258,
+    1251,
+    2210,
+    396,
+    1965,
+    1590,
+    2970,
+    3710,
+    2637,
+    876,
+    3695,
+    3413,
+    3245
+]
+```
+2025-05-10 09:23:01,943 - INFO - 消息 4:
+2025-05-10 09:23:01,944 - INFO - 角色: user
+2025-05-10 09:23:01,944 - INFO - 内容: ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:23:01,944 - INFO - ==== 发送API请求 ====
+2025-05-10 09:23:10,966 - INFO - ==== API响应 ====
+2025-05-10 09:23:10,967 - INFO - 响应状态码: 200
+2025-05-10 09:23:10,967 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:23:01 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5a1004a0ccb9c-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:23:10,967 - INFO - 完整响应JSON: {
+  "id": "gen-1746840181-oP3G93rPVAkeLbwezFqw",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840181,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"name\": \"One Crazy Summer\", \"id\": 2261},\n    {\"name\": \"Raiders of the Lost Ark\", \"id\": 1198},\n    {\"name\": \"Magnolia\", \"id\": 3160},\n    {\"name\": \"Titan A.E.\", \"id\": 3745},\n    {\"name\": \"Patriot, The\", \"id\": 3753},\n    {\"name\": \"Stand by Me\", \"id\": 1259},\n    {\"name\": \"Jurassic Park\", \"id\": 480},\n    {\"name\": \"Airplane!\", \"id\": 2791},\n    {\"name\": \"Hellraiser\", \"id\": 3917},\n    {\"name\": \"Nikita (La Femme Nikita)\", \"id\": 1249},\n    {\"name\": \"Terminator 2: Judgment Day\", \"id\": 589},\n    {\"name\": \"Boogie Night\", \"id\": 1673},\n    {\"name\": \"After Life\", \"id\": 2624},\n    {\"name\": \"Braveheart\", \"id\": 110},\n    {\"name\": \"Edward Scissorhands\", \"id\": 2291},\n    {\"name\": \"Rosemary's Baby\", \"id\": 2160},\n    {\"name\": \"28 Days\", \"id\": 3534},\n    {\"name\": \"From Russia with Love\", \"id\": 2948},\n    {\"name\": \"High Fidelity\", \"id\": 3481},\n    {\"name\": \"Big Kahuna, The\", \"id\": 3566}\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1010,
+    "completion_tokens": 339,
+    "total_tokens": 1349,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:23:10,968 - INFO - 模型回复内容:
+```json
+[
+    {"name": "One Crazy Summer", "id": 2261},
+    {"name": "Raiders of the Lost Ark", "id": 1198},
+    {"name": "Magnolia", "id": 3160},
+    {"name": "Titan A.E.", "id": 3745},
+    {"name": "Patriot, The", "id": 3753},
+    {"name": "Stand by Me", "id": 1259},
+    {"name": "Jurassic Park", "id": 480},
+    {"name": "Airplane!", "id": 2791},
+    {"name": "Hellraiser", "id": 3917},
+    {"name": "Nikita (La Femme Nikita)", "id": 1249},
+    {"name": "Terminator 2: Judgment Day", "id": 589},
+    {"name": "Boogie Night", "id": 1673},
+    {"name": "After Life", "id": 2624},
+    {"name": "Braveheart", "id": 110},
+    {"name": "Edward Scissorhands", "id": 2291},
+    {"name": "Rosemary's Baby", "id": 2160},
+    {"name": "28 Days", "id": 3534},
+    {"name": "From Russia with Love", "id": 2948},
+    {"name": "High Fidelity", "id": 3481},
+    {"name": "Big Kahuna, The", "id": 3566}
+]
+```
+2025-05-10 09:23:10,968 - INFO - ==== 用量信息 ====
+2025-05-10 09:23:10,968 - INFO - 输入tokens: 1010
+2025-05-10 09:23:10,968 - INFO - 输出tokens: 339
+2025-05-10 09:23:10,968 - INFO - 总tokens: 1349
+2025-05-10 09:23:10,969 - INFO - ==== 解析输出 ====
+2025-05-10 09:23:10,969 - INFO - 调用parse_output函数解析响应...
+2025-05-10 09:23:10,969 - INFO - 解析结果: [2261, 1198, 3160, 3745, 3753, 1259, 480, 2791, 3917, 1249, 589, 1673, 2624, 110, 2291, 2160, 3534, 2948, 3481, 3566]
+2025-05-10 09:23:10,970 - INFO - ==== 计算NDCG ====
+2025-05-10 09:23:10,970 - INFO - 相关性列表: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 09:23:10,970 - INFO - 目标电影不在预测列表中，NDCG=0
+2025-05-10 09:23:10,970 - INFO - NDCG@10计算详情:
+2025-05-10 09:23:10,970 - INFO - 截断后的预测列表(前10个): [2261, 1198, 3160, 3745, 3753, 1259, 480, 2791, 3917, 1249]
+2025-05-10 09:23:10,970 - INFO - 目标电影ID 1965不在前10个预测列表中
+2025-05-10 09:23:10,970 - INFO - ==== 测试结果 ====
+2025-05-10 09:23:10,970 - INFO - 用户ID: 751
+2025-05-10 09:23:10,971 - INFO - 目标电影: Repo Man (ID: 1965)
+2025-05-10 09:23:10,971 - INFO - 预测列表(前10个): [2261, 1198, 3160, 3745, 3753, 1259, 480, 2791, 3917, 1249]
+2025-05-10 09:23:10,971 - INFO - NDCG@10: 0.0000
+2025-05-10 09:23:10,971 - INFO - ========== 测试结束 ==========
+2025-05-10 09:23:10,971 - INFO - 样本 10 测试完成，NDCG@10: 0.0000
+2025-05-10 09:23:10,971 - INFO - ===== 测试总结 =====
+2025-05-10 09:23:10,971 - INFO - 样本 1 NDCG@10: 0.3869
+2025-05-10 09:23:10,971 - INFO - 样本 2 NDCG@10: 0.3869
+2025-05-10 09:23:10,973 - INFO - 样本 3 NDCG@10: 1.0000
+2025-05-10 09:23:10,973 - INFO - 样本 4 NDCG@10: 1.0000
+2025-05-10 09:23:10,973 - INFO - 样本 5 NDCG@10: 0.0000
+2025-05-10 09:23:10,973 - INFO - 样本 6 NDCG@10: 0.6309
+2025-05-10 09:23:10,973 - INFO - 样本 7 NDCG@10: 0.0000
+2025-05-10 09:23:10,974 - INFO - 样本 8 NDCG@10: 0.0000
+2025-05-10 09:23:10,974 - INFO - 样本 9 NDCG@10: 0.0000
+2025-05-10 09:23:10,974 - INFO - 样本 10 NDCG@10: 0.0000
+2025-05-10 09:23:10,974 - INFO - 总计测试了 10 个样本
+2025-05-10 09:23:10,974 - INFO - 平均NDCG@10: 0.3405
+2025-05-10 09:23:10,974 - INFO - ==== 运行信息 ====
+2025-05-10 09:23:10,974 - INFO - 执行时间: 2025-05-10T01:23:10
+2025-05-10 09:23:10,974 - INFO - API密钥: sk-or-v1...f35d4e89
+2025-05-10 09:23:10,974 - INFO - API地址: https://openrouter.ai/api/v1/chat/completions

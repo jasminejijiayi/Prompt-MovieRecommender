@@ -1,0 +1,2215 @@
+2025-05-10 09:28:24,455 - INFO - 开始执行测试...
+2025-05-10 09:28:24,455 - INFO - 读取val.jsonl文件...
+2025-05-10 09:28:24,457 - INFO - 成功加载10个样本
+2025-05-10 09:28:24,457 - INFO - 将测试10个样本
+2025-05-10 09:28:24,457 - INFO - ===== 测试样本 1/10 =====
+2025-05-10 09:28:24,457 - INFO - ========== 测试开始 ==========
+2025-05-10 09:28:24,457 - INFO - ==== 样本信息 ====
+2025-05-10 09:28:24,457 - INFO - 用户ID: 405
+2025-05-10 09:28:24,458 - INFO - 用户历史电影数量: 20
+2025-05-10 09:28:24,458 - INFO - 候选电影数量: 20
+2025-05-10 09:28:24,458 - INFO - 目标电影: Artemisia (ID: 1695)
+2025-05-10 09:28:24,458 - INFO - ==== 构造提示词 ====
+2025-05-10 09:28:24,458 - INFO - 调用construct_prompt函数...
+2025-05-10 09:28:24,458 - INFO - 生成了6条消息模板
+2025-05-10 09:28:24,458 - INFO - ==== 第一轮调用API(用户分析)结果 ====
+2025-05-10 09:28:24,458 - INFO - 发送了 2 条消息进行用户分析（system + user第一轮消息）
+2025-05-10 09:28:24,458 - INFO - ==== API调用参数 ====
+2025-05-10 09:28:24,459 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:28:24,459 - INFO - 温度: 0
+2025-05-10 09:28:24,459 - INFO - ==== 发送API请求 ====
+2025-05-10 09:28:33,747 - INFO - ==== API响应 ====
+2025-05-10 09:28:33,747 - INFO - 响应状态码: 200
+2025-05-10 09:28:33,747 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:28:25 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5a8dfdcae2f73-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:28:33,748 - INFO - 完整响应JSON: {
+  "id": "gen-1746840505-ljqLiUcRaQTdtN55Mpja",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840505,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n{\n  \"类别偏好\": [\n    0,  // Animation\n    6,  // Comedy\n    1,  // Children's\n    2,  // Musical\n    5,  // Romance\n    2,  // Adventure\n    2,  // Action\n    3,  // Thriller\n    8,  // Drama\n    1,  // War\n    1,  // Sci-Fi\n    0,  // Western\n    1,  // Fantasy\n    0,  // Horror\n    2,  // Crime\n    1,  // Film-Noir\n    0   // Documentary\n  ]\n}\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 735,
+    "completion_tokens": 139,
+    "total_tokens": 874,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:28:33,748 - INFO - 模型回复内容:
+```json
+{
+  "类别偏好": [
+    0,  // Animation
+    6,  // Comedy
+    1,  // Children's
+    2,  // Musical
+    5,  // Romance
+    2,  // Adventure
+    2,  // Action
+    3,  // Thriller
+    8,  // Drama
+    1,  // War
+    1,  // Sci-Fi
+    0,  // Western
+    1,  // Fantasy
+    0,  // Horror
+    2,  // Crime
+    1,  // Film-Noir
+    0   // Documentary
+  ]
+}
+```
+2025-05-10 09:28:33,748 - INFO - ==== 用量信息 ====
+2025-05-10 09:28:33,748 - INFO - 输入tokens: 735
+2025-05-10 09:28:33,748 - INFO - 输出tokens: 139
+2025-05-10 09:28:33,749 - INFO - 总tokens: 874
+2025-05-10 09:28:33,749 - INFO - ==== 第二轮调用API(候选电影分析)结果 ====
+2025-05-10 09:28:33,749 - INFO - 发送了 3 条消息进行候选电影分析（包含前两轮历史）
+2025-05-10 09:28:33,749 - INFO - ==== API调用参数 ====
+2025-05-10 09:28:33,749 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:28:33,750 - INFO - 温度: 0
+2025-05-10 09:28:33,750 - INFO - ==== 发送API请求 ====
+2025-05-10 09:28:38,531 - INFO - ==== API响应 ====
+2025-05-10 09:28:38,531 - INFO - 响应状态码: 200
+2025-05-10 09:28:38,532 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:28:33 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5a91a5f8f78dd-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:28:38,532 - INFO - 完整响应JSON: {
+  "id": "gen-1746840513-QRVvPZlvCeUeLEaSnFw6",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840513,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n  1844,\n  1656,\n  1695,\n  1829,\n  41,\n  396,\n  2579,\n  3858,\n  2755,\n  3606,\n  1731,\n  2123,\n  2720,\n  328,\n  3303,\n  2813,\n  3516,\n  3497,\n  2795,\n  3221\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 818,
+    "completion_tokens": 84,
+    "total_tokens": 902,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:28:38,533 - INFO - 模型回复内容:
+```json
+[
+  1844,
+  1656,
+  1695,
+  1829,
+  41,
+  396,
+  2579,
+  3858,
+  2755,
+  3606,
+  1731,
+  2123,
+  2720,
+  328,
+  3303,
+  2813,
+  3516,
+  3497,
+  2795,
+  3221
+]
+```
+2025-05-10 09:28:38,533 - INFO - ==== 用量信息 ====
+2025-05-10 09:28:38,533 - INFO - 输入tokens: 818
+2025-05-10 09:28:38,533 - INFO - 输出tokens: 84
+2025-05-10 09:28:38,533 - INFO - 总tokens: 902
+2025-05-10 09:28:38,534 - INFO - ==== 第三轮调用API(最终推荐)结果 ====
+2025-05-10 09:28:38,534 - INFO - ==== 发送的消息 (最终推荐请求) ====
+2025-05-10 09:28:38,534 - INFO - [用户第三轮 - 输出要求]:
+  ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:28:38,534 - INFO - ==== API调用参数 ====
+2025-05-10 09:28:38,534 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:28:38,534 - INFO - 温度: 0
+2025-05-10 09:28:38,534 - INFO - ==== 发送API请求 ====
+2025-05-10 09:28:43,423 - INFO - ==== API响应 ====
+2025-05-10 09:28:43,423 - INFO - 响应状态码: 200
+2025-05-10 09:28:43,423 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:28:38 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5a936bf792110-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:28:43,423 - INFO - 完整响应JSON: {
+  "id": "gen-1746840518-yIUSiQpnkEBo88mHTkqW",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840518,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[1844, 1656, 1695, 1829, 41, 396, 2579, 3858, 2755, 3606, 1731, 2123, 2720, 328, 3303, 2813, 3516, 3497, 2795, 3221]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 604,
+    "completion_tokens": 82,
+    "total_tokens": 686,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:28:43,423 - INFO - 模型回复内容:
+```json
+[1844, 1656, 1695, 1829, 41, 396, 2579, 3858, 2755, 3606, 1731, 2123, 2720, 328, 3303, 2813, 3516, 3497, 2795, 3221]
+```
+2025-05-10 09:28:43,423 - INFO - ==== 用量信息 ====
+2025-05-10 09:28:43,423 - INFO - 输入tokens: 604
+2025-05-10 09:28:43,423 - INFO - 输出tokens: 82
+2025-05-10 09:28:43,423 - INFO - 总tokens: 686
+2025-05-10 09:28:43,423 - INFO - ==== 解析输出 ====
+2025-05-10 09:28:43,423 - INFO - 调用parse_output函数解析响应...
+2025-05-10 09:28:43,423 - INFO - 解析结果: [1844, 1656, 1695, 1829, 41, 396, 2579, 3858, 2755, 3606, 1731, 2123, 2720, 328, 3303, 2813, 3516, 3497, 2795, 3221]
+2025-05-10 09:28:43,423 - INFO - ==== 计算NDCG ====
+2025-05-10 09:28:43,423 - INFO - 相关性列表: [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 09:28:43,423 - INFO - 位置3的DCG贡献: 1/log2(4) = 0.5000
+2025-05-10 09:28:43,423 - INFO - DCG: 0.5000, IDCG: 1.0000
+2025-05-10 09:28:43,423 - INFO - NDCG@10: 0.5000
+2025-05-10 09:28:43,423 - INFO - NDCG@10计算详情:
+2025-05-10 09:28:43,423 - INFO - 截断后的预测列表(前10个): [1844, 1656, 1695, 1829, 41, 396, 2579, 3858, 2755, 3606]
+2025-05-10 09:28:43,423 - INFO - 目标电影ID 1695在位置3
+2025-05-10 09:28:43,423 - INFO - 位置3的DCG贡献: 1/log2(4) = 0.5000
+2025-05-10 09:28:43,423 - INFO - ==== 测试结果 ====
+2025-05-10 09:28:43,423 - INFO - 用户ID: 405
+2025-05-10 09:28:43,423 - INFO - 目标电影: Artemisia (ID: 1695)
+2025-05-10 09:28:43,423 - INFO - 预测列表(前10个): [1844, 1656, 1695, 1829, 41, 396, 2579, 3858, 2755, 3606]
+2025-05-10 09:28:43,423 - INFO - NDCG@10: 0.5000
+2025-05-10 09:28:43,426 - INFO - ========== 测试结束 ==========
+2025-05-10 09:28:43,426 - INFO - 样本 1 测试完成，NDCG@10: 0.5000
+2025-05-10 09:28:43,426 - INFO - ===== 测试样本 2/10 =====
+2025-05-10 09:28:43,426 - INFO - ========== 测试开始 ==========
+2025-05-10 09:28:43,426 - INFO - ==== 样本信息 ====
+2025-05-10 09:28:43,426 - INFO - 用户ID: 475
+2025-05-10 09:28:43,426 - INFO - 用户历史电影数量: 20
+2025-05-10 09:28:43,426 - INFO - 候选电影数量: 20
+2025-05-10 09:28:43,426 - INFO - 目标电影: Up in Smoke (ID: 1194)
+2025-05-10 09:28:43,426 - INFO - ==== 构造提示词 ====
+2025-05-10 09:28:43,426 - INFO - 调用construct_prompt函数...
+2025-05-10 09:28:43,426 - INFO - 生成了6条消息模板
+2025-05-10 09:28:43,426 - INFO - ==== 第一轮调用API(用户分析)结果 ====
+2025-05-10 09:28:43,426 - INFO - 发送了 2 条消息进行用户分析（system + user第一轮消息）
+2025-05-10 09:28:43,426 - INFO - ==== API调用参数 ====
+2025-05-10 09:28:43,426 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:28:43,426 - INFO - 温度: 0
+2025-05-10 09:28:43,426 - INFO - ==== 发送API请求 ====
+2025-05-10 09:28:54,064 - INFO - ==== API响应 ====
+2025-05-10 09:28:54,064 - INFO - 响应状态码: 200
+2025-05-10 09:28:54,065 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:28:43 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5a9552ac78ea3-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:28:54,065 - INFO - 完整响应JSON: {
+  "id": "gen-1746840523-in1lNeJSXQOZActYEXdP",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840523,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "  \n\n```json\n{\n  \"类别偏好\": [0, 18, 2, 3, 4, 4, 2, 1, 3, 1, 1, 2, 1, 1, 1, 0, 0]\n}\n```  \n\n**类别顺序对应说明**（按输入顺序排列）：  \n1. Animation  \n2. Comedy  \n3. Children's  \n4. Musical  \n5. Romance  \n6. Adventure  \n7. Action  \n8. Thriller  \n9. Drama  \n10. War  \n11. Sci-Fi  \n12. Western  \n13. Fantasy  \n14. Horror  \n15. Crime  \n16. Film-Noir  \n17. Documentary  \n\n**关键统计依据**：  \n- **Comedy**（18次）占绝对主导，如《Monty Python》《Police Academy》系列等。  \n- 次要类别包括 **Romance**（4次，如《Grease》）、**Adventure**（4次，如《Blazing Saddles》）、**Musical**（3次）。  \n- 其他类别出现1-2次（如 **Western**、**War**），部分类别（如 **Animation**）未出现。",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 770,
+    "completion_tokens": 259,
+    "total_tokens": 1029,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:28:54,065 - INFO - 模型回复内容:
+  
+
+```json
+{
+  "类别偏好": [0, 18, 2, 3, 4, 4, 2, 1, 3, 1, 1, 2, 1, 1, 1, 0, 0]
+}
+```  
+
+**类别顺序对应说明**（按输入顺序排列）：  
+1. Animation  
+2. Comedy  
+3. Children's  
+4. Musical  
+5. Romance  
+6. Adventure  
+7. Action  
+8. Thriller  
+9. Drama  
+10. War  
+11. Sci-Fi  
+12. Western  
+13. Fantasy  
+14. Horror  
+15. Crime  
+16. Film-Noir  
+17. Documentary  
+
+**关键统计依据**：  
+- **Comedy**（18次）占绝对主导，如《Monty Python》《Police Academy》系列等。  
+- 次要类别包括 **Romance**（4次，如《Grease》）、**Adventure**（4次，如《Blazing Saddles》）、**Musical**（3次）。  
+- 其他类别出现1-2次（如 **Western**、**War**），部分类别（如 **Animation**）未出现。
+2025-05-10 09:28:54,065 - INFO - ==== 用量信息 ====
+2025-05-10 09:28:54,065 - INFO - 输入tokens: 770
+2025-05-10 09:28:54,065 - INFO - 输出tokens: 259
+2025-05-10 09:28:54,066 - INFO - 总tokens: 1029
+2025-05-10 09:28:54,066 - INFO - ==== 第二轮调用API(候选电影分析)结果 ====
+2025-05-10 09:28:54,066 - INFO - 发送了 3 条消息进行候选电影分析（包含前两轮历史）
+2025-05-10 09:28:54,066 - INFO - ==== API调用参数 ====
+2025-05-10 09:28:54,066 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:28:54,066 - INFO - 温度: 0
+2025-05-10 09:28:54,066 - INFO - ==== 发送API请求 ====
+2025-05-10 09:28:59,012 - INFO - ==== API响应 ====
+2025-05-10 09:28:59,012 - INFO - 响应状态码: 200
+2025-05-10 09:28:59,012 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:28:53 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5a997abc62b62-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:28:59,013 - INFO - 完整响应JSON: {
+  "id": "gen-1746840533-ToDWPXsTENAQvi16j2gl",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840533,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n  785,\n  1194,\n  945,\n  1083,\n  194,\n  3822,\n  1365,\n  2858,\n  29,\n  1263,\n  2022,\n  2311,\n  2438,\n  3474,\n  1797,\n  3709,\n  3768,\n  3667,\n  2705,\n  1145\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 940,
+    "completion_tokens": 83,
+    "total_tokens": 1023,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:28:59,013 - INFO - 模型回复内容:
+```json
+[
+  785,
+  1194,
+  945,
+  1083,
+  194,
+  3822,
+  1365,
+  2858,
+  29,
+  1263,
+  2022,
+  2311,
+  2438,
+  3474,
+  1797,
+  3709,
+  3768,
+  3667,
+  2705,
+  1145
+]
+```
+2025-05-10 09:28:59,014 - INFO - ==== 用量信息 ====
+2025-05-10 09:28:59,014 - INFO - 输入tokens: 940
+2025-05-10 09:28:59,014 - INFO - 输出tokens: 83
+2025-05-10 09:28:59,014 - INFO - 总tokens: 1023
+2025-05-10 09:28:59,014 - INFO - ==== 第三轮调用API(最终推荐)结果 ====
+2025-05-10 09:28:59,015 - INFO - ==== 发送的消息 (最终推荐请求) ====
+2025-05-10 09:28:59,015 - INFO - [用户第三轮 - 输出要求]:
+  ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:28:59,015 - INFO - ==== API调用参数 ====
+2025-05-10 09:28:59,016 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:28:59,016 - INFO - 温度: 0
+2025-05-10 09:28:59,016 - INFO - ==== 发送API请求 ====
+2025-05-10 09:29:13,087 - INFO - ==== API响应 ====
+2025-05-10 09:29:13,088 - INFO - 响应状态码: 200
+2025-05-10 09:29:13,089 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:28:58 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5a9b75daf150a-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:29:13,089 - INFO - 完整响应JSON: {
+  "id": "gen-1746840538-V89gxauJvuJnSu862WXf",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840538,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "[{\"name\": \"Monty Python and the Holy Grail\", \"id\": 785}, {\"name\": \"The Rocky Horror Picture Show\", \"id\": 1194}, {\"name\": \"The Princess Bride\", \"id\": 945}, {\"name\": \"The Blues Brothers\", \"id\": 1083}, {\"name\": \"Grease\", \"id\": 194}, {\"name\": \"The Sound of Music\", \"id\": 3822}, {\"name\": \"The Wizard of Oz\", \"id\": 1365}, {\"name\": \"Singin' in the Rain\", \"id\": 2858}, {\"name\": \"Pulp Fiction\", \"id\": 29}, {\"name\": \"The Godfather\", \"id\": 1263}, {\"name\": \"The Shawshank Redemption\", \"id\": 2022}, {\"name\": \"The Dark Knight\", \"id\": 2311}, {\"name\": \"Inception\", \"id\": 2438}, {\"name\": \"The Matrix\", \"id\": 3474}, {\"name\": \"Fight Club\", \"id\": 1797}, {\"name\": \"The Silence of the Lambs\", \"id\": 3709}, {\"name\": \"Psycho\", \"id\": 3768}, {\"name\": \"The Exorcist\", \"id\": 2438}, {\"name\": \"The Shining\", \"id\": 3474}, {\"name\": \"Alien\", \"id\": 1797}]",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 723,
+    "completion_tokens": 312,
+    "total_tokens": 1035,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:29:13,089 - INFO - 模型回复内容:
+[{"name": "Monty Python and the Holy Grail", "id": 785}, {"name": "The Rocky Horror Picture Show", "id": 1194}, {"name": "The Princess Bride", "id": 945}, {"name": "The Blues Brothers", "id": 1083}, {"name": "Grease", "id": 194}, {"name": "The Sound of Music", "id": 3822}, {"name": "The Wizard of Oz", "id": 1365}, {"name": "Singin' in the Rain", "id": 2858}, {"name": "Pulp Fiction", "id": 29}, {"name": "The Godfather", "id": 1263}, {"name": "The Shawshank Redemption", "id": 2022}, {"name": "The Dark Knight", "id": 2311}, {"name": "Inception", "id": 2438}, {"name": "The Matrix", "id": 3474}, {"name": "Fight Club", "id": 1797}, {"name": "The Silence of the Lambs", "id": 3709}, {"name": "Psycho", "id": 3768}, {"name": "The Exorcist", "id": 2438}, {"name": "The Shining", "id": 3474}, {"name": "Alien", "id": 1797}]
+2025-05-10 09:29:13,089 - INFO - ==== 用量信息 ====
+2025-05-10 09:29:13,089 - INFO - 输入tokens: 723
+2025-05-10 09:29:13,090 - INFO - 输出tokens: 312
+2025-05-10 09:29:13,090 - INFO - 总tokens: 1035
+2025-05-10 09:29:13,090 - INFO - ==== 解析输出 ====
+2025-05-10 09:29:13,090 - INFO - 调用parse_output函数解析响应...
+2025-05-10 09:29:13,090 - INFO - 解析结果: [785, 1194, 945, 1083, 194, 3822, 1365, 2858, 29, 1263, 2022, 2311, 2438, 3474, 1797, 3709, 3768, 2438, 3474, 1797]
+2025-05-10 09:29:13,092 - INFO - ==== 计算NDCG ====
+2025-05-10 09:29:13,092 - INFO - 相关性列表: [0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 09:29:13,092 - INFO - 位置2的DCG贡献: 1/log2(3) = 0.6309
+2025-05-10 09:29:13,092 - INFO - DCG: 0.6309, IDCG: 1.0000
+2025-05-10 09:29:13,092 - INFO - NDCG@10: 0.6309
+2025-05-10 09:29:13,092 - INFO - NDCG@10计算详情:
+2025-05-10 09:29:13,092 - INFO - 截断后的预测列表(前10个): [785, 1194, 945, 1083, 194, 3822, 1365, 2858, 29, 1263]
+2025-05-10 09:29:13,092 - INFO - 目标电影ID 1194在位置2
+2025-05-10 09:29:13,092 - INFO - 位置2的DCG贡献: 1/log2(3) = 0.6309
+2025-05-10 09:29:13,093 - INFO - ==== 测试结果 ====
+2025-05-10 09:29:13,093 - INFO - 用户ID: 475
+2025-05-10 09:29:13,093 - INFO - 目标电影: Up in Smoke (ID: 1194)
+2025-05-10 09:29:13,093 - INFO - 预测列表(前10个): [785, 1194, 945, 1083, 194, 3822, 1365, 2858, 29, 1263]
+2025-05-10 09:29:13,093 - INFO - NDCG@10: 0.6309
+2025-05-10 09:29:13,093 - INFO - ========== 测试结束 ==========
+2025-05-10 09:29:13,093 - INFO - 样本 2 测试完成，NDCG@10: 0.6309
+2025-05-10 09:29:13,093 - INFO - ===== 测试样本 3/10 =====
+2025-05-10 09:29:13,093 - INFO - ========== 测试开始 ==========
+2025-05-10 09:29:13,094 - INFO - ==== 样本信息 ====
+2025-05-10 09:29:13,094 - INFO - 用户ID: 522
+2025-05-10 09:29:13,094 - INFO - 用户历史电影数量: 20
+2025-05-10 09:29:13,094 - INFO - 候选电影数量: 20
+2025-05-10 09:29:13,094 - INFO - 目标电影: Back to the Future Part II (ID: 2011)
+2025-05-10 09:29:13,094 - INFO - ==== 构造提示词 ====
+2025-05-10 09:29:13,094 - INFO - 调用construct_prompt函数...
+2025-05-10 09:29:13,094 - INFO - 生成了6条消息模板
+2025-05-10 09:29:13,095 - INFO - ==== 第一轮调用API(用户分析)结果 ====
+2025-05-10 09:29:13,095 - INFO - 发送了 2 条消息进行用户分析（system + user第一轮消息）
+2025-05-10 09:29:13,095 - INFO - ==== API调用参数 ====
+2025-05-10 09:29:13,095 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:29:13,095 - INFO - 温度: 0
+2025-05-10 09:29:13,095 - INFO - ==== 发送API请求 ====
+2025-05-10 09:29:19,676 - INFO - ==== API响应 ====
+2025-05-10 09:29:19,678 - INFO - 响应状态码: 200
+2025-05-10 09:29:19,679 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:29:13 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5aa1078add7ac-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:29:19,679 - INFO - 完整响应JSON: {
+  "id": "gen-1746840553-Fw8024uwZddUBreaYPYM",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840553,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n{\"类别偏好\": [0, 2, 0, 0, 1, 4, 7, 2, 1, 0, 20, 0, 3, 2, 0, 0, 0]}\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 728,
+    "completion_tokens": 60,
+    "total_tokens": 788,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:29:19,679 - INFO - 模型回复内容:
+```json
+{"类别偏好": [0, 2, 0, 0, 1, 4, 7, 2, 1, 0, 20, 0, 3, 2, 0, 0, 0]}
+```
+2025-05-10 09:29:19,679 - INFO - ==== 用量信息 ====
+2025-05-10 09:29:19,679 - INFO - 输入tokens: 728
+2025-05-10 09:29:19,679 - INFO - 输出tokens: 60
+2025-05-10 09:29:19,679 - INFO - 总tokens: 788
+2025-05-10 09:29:19,679 - INFO - ==== 第二轮调用API(候选电影分析)结果 ====
+2025-05-10 09:29:19,680 - INFO - 发送了 3 条消息进行候选电影分析（包含前两轮历史）
+2025-05-10 09:29:19,680 - INFO - ==== API调用参数 ====
+2025-05-10 09:29:19,680 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:29:19,680 - INFO - 温度: 0
+2025-05-10 09:29:19,681 - INFO - ==== 发送API请求 ====
+2025-05-10 09:29:42,681 - INFO - ==== API响应 ====
+2025-05-10 09:29:42,681 - INFO - 响应状态码: 200
+2025-05-10 09:29:42,681 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:29:19 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5aa3849d452ef-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:29:42,681 - INFO - 完整响应JSON: {
+  "id": "gen-1746840559-ldVjI0kVl0g1zN1WoxwP",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840559,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"id\": 2011, \"title\": \"Back to the Future Part II\", \"similarity\": 0.8},\n    {\"id\": 3699, \"title\": \"Starman\", \"similarity\": 0.7},\n    {\"id\": 1257, \"title\": \"Better Off Dead...\", \"similarity\": 0.6},\n    {\"id\": 555, \"title\": \"True Romance\", \"similarity\": 0.6},\n    {\"id\": 1357, \"title\": \"Shine\", \"similarity\": 0.5},\n    {\"id\": 2482, \"title\": \"Still Crazy\", \"similarity\": 0.5},\n    {\"id\": 515, \"title\": \"Remains of the Day, The\", \"similarity\": 0.4},\n    {\"id\": 2467, \"title\": \"Name of the Rose, The\", \"similarity\": 0.4},\n    {\"id\": 2562, \"title\": \"Bandits\", \"similarity\": 0.4},\n    {\"id\": 1541, \"title\": \"Addicted to Love\", \"similarity\": 0.3},\n    {\"id\": 1174, \"title\": \"Grosse Fatigue\", \"similarity\": 0.3},\n    {\"id\": 421, \"title\": \"Black Beauty\", \"similarity\": 0.3},\n    {\"id\": 1420, \"title\": \"Message to Love: The Isle of Wight Festival\", \"similarity\": 0.2},\n    {\"id\": 2703, \"title\": \"Broken Vessels\", \"similarity\": 0.2},\n    {\"id\": 1102, \"title\": \"American Strays\", \"similarity\": 0.2},\n    {\"id\": 3557, \"title\": \"Jennifer 8\", \"similarity\": 0.1},\n    {\"id\": 310, \"title\": \"Rent-a-Kid\", \"similarity\": 0.1},\n    {\"id\": 2532, \"title\": \"Conquest of the Planet of the Apes\", \"similarity\": 0.1},\n    {\"id\": 576, \"title\": \"Fausto\", \"similarity\": 0.1},\n    {\"id\": 3739, \"title\": \"Trouble in Paradise\", \"similarity\": 0.1}\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 732,
+    "completion_tokens": 525,
+    "total_tokens": 1257,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:29:42,682 - INFO - 模型回复内容:
+```json
+[
+    {"id": 2011, "title": "Back to the Future Part II", "similarity": 0.8},
+    {"id": 3699, "title": "Starman", "similarity": 0.7},
+    {"id": 1257, "title": "Better Off Dead...", "similarity": 0.6},
+    {"id": 555, "title": "True Romance", "similarity": 0.6},
+    {"id": 1357, "title": "Shine", "similarity": 0.5},
+    {"id": 2482, "title": "Still Crazy", "similarity": 0.5},
+    {"id": 515, "title": "Remains of the Day, The", "similarity": 0.4},
+    {"id": 2467, "title": "Name of the Rose, The", "similarity": 0.4},
+    {"id": 2562, "title": "Bandits", "similarity": 0.4},
+    {"id": 1541, "title": "Addicted to Love", "similarity": 0.3},
+    {"id": 1174, "title": "Grosse Fatigue", "similarity": 0.3},
+    {"id": 421, "title": "Black Beauty", "similarity": 0.3},
+    {"id": 1420, "title": "Message to Love: The Isle of Wight Festival", "similarity": 0.2},
+    {"id": 2703, "title": "Broken Vessels", "similarity": 0.2},
+    {"id": 1102, "title": "American Strays", "similarity": 0.2},
+    {"id": 3557, "title": "Jennifer 8", "similarity": 0.1},
+    {"id": 310, "title": "Rent-a-Kid", "similarity": 0.1},
+    {"id": 2532, "title": "Conquest of the Planet of the Apes", "similarity": 0.1},
+    {"id": 576, "title": "Fausto", "similarity": 0.1},
+    {"id": 3739, "title": "Trouble in Paradise", "similarity": 0.1}
+]
+```
+2025-05-10 09:29:42,682 - INFO - ==== 用量信息 ====
+2025-05-10 09:29:42,682 - INFO - 输入tokens: 732
+2025-05-10 09:29:42,682 - INFO - 输出tokens: 525
+2025-05-10 09:29:42,682 - INFO - 总tokens: 1257
+2025-05-10 09:29:42,683 - INFO - ==== 第三轮调用API(最终推荐)结果 ====
+2025-05-10 09:29:42,683 - INFO - ==== 发送的消息 (最终推荐请求) ====
+2025-05-10 09:29:42,683 - INFO - [用户第三轮 - 输出要求]:
+  ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:29:42,683 - INFO - ==== API调用参数 ====
+2025-05-10 09:29:42,683 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:29:42,683 - INFO - 温度: 0
+2025-05-10 09:29:42,683 - INFO - ==== 发送API请求 ====
+2025-05-10 09:29:55,242 - INFO - ==== API响应 ====
+2025-05-10 09:29:55,243 - INFO - 响应状态码: 200
+2025-05-10 09:29:55,243 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:29:42 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5aac8beda08c7-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:29:55,243 - INFO - 完整响应JSON: {
+  "id": "gen-1746840582-7p564Bua0fgf7OqFjyKV",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840582,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"name\": \"Back to the Future Part II\", \"id\": 2011},\n    {\"name\": \"Starman\", \"id\": 3699},\n    {\"name\": \"Better Off Dead...\", \"id\": 1257},\n    {\"name\": \"True Romance\", \"id\": 555},\n    {\"name\": \"Shine\", \"id\": 1357},\n    {\"name\": \"Still Crazy\", \"id\": 2482},\n    {\"name\": \"Remains of the Day, The\", \"id\": 515},\n    {\"name\": \"Name of the Rose, The\", \"id\": 2467},\n    {\"name\": \"Bandits\", \"id\": 2562},\n    {\"name\": \"Addicted to Love\", \"id\": 1541},\n    {\"name\": \"Grosse Fatigue\", \"id\": 1174},\n    {\"name\": \"Black Beauty\", \"id\": 421},\n    {\"name\": \"Message to Love: The Isle of Wight Festival\", \"id\": 1420},\n    {\"name\": \"Broken Vessels\", \"id\": 2703},\n    {\"name\": \"American Strays\", \"id\": 1102},\n    {\"name\": \"Jennifer 8\", \"id\": 3557},\n    {\"name\": \"Rent-a-Kid\", \"id\": 310},\n    {\"name\": \"Conquest of the Planet of the Apes\", \"id\": 2532},\n    {\"name\": \"Fausto\", \"id\": 576},\n    {\"name\": \"Trouble in Paradise\", \"id\": 3739}\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 966,
+    "completion_tokens": 345,
+    "total_tokens": 1311,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:29:55,243 - INFO - 模型回复内容:
+```json
+[
+    {"name": "Back to the Future Part II", "id": 2011},
+    {"name": "Starman", "id": 3699},
+    {"name": "Better Off Dead...", "id": 1257},
+    {"name": "True Romance", "id": 555},
+    {"name": "Shine", "id": 1357},
+    {"name": "Still Crazy", "id": 2482},
+    {"name": "Remains of the Day, The", "id": 515},
+    {"name": "Name of the Rose, The", "id": 2467},
+    {"name": "Bandits", "id": 2562},
+    {"name": "Addicted to Love", "id": 1541},
+    {"name": "Grosse Fatigue", "id": 1174},
+    {"name": "Black Beauty", "id": 421},
+    {"name": "Message to Love: The Isle of Wight Festival", "id": 1420},
+    {"name": "Broken Vessels", "id": 2703},
+    {"name": "American Strays", "id": 1102},
+    {"name": "Jennifer 8", "id": 3557},
+    {"name": "Rent-a-Kid", "id": 310},
+    {"name": "Conquest of the Planet of the Apes", "id": 2532},
+    {"name": "Fausto", "id": 576},
+    {"name": "Trouble in Paradise", "id": 3739}
+]
+```
+2025-05-10 09:29:55,244 - INFO - ==== 用量信息 ====
+2025-05-10 09:29:55,244 - INFO - 输入tokens: 966
+2025-05-10 09:29:55,244 - INFO - 输出tokens: 345
+2025-05-10 09:29:55,244 - INFO - 总tokens: 1311
+2025-05-10 09:29:55,245 - INFO - ==== 解析输出 ====
+2025-05-10 09:29:55,245 - INFO - 调用parse_output函数解析响应...
+2025-05-10 09:29:55,245 - INFO - 解析结果: [2011, 3699, 1257, 555, 1357, 2482, 515, 2467, 2562, 1541, 1174, 421, 1420, 2703, 1102, 3557, 310, 2532, 576, 3739]
+2025-05-10 09:29:55,245 - INFO - ==== 计算NDCG ====
+2025-05-10 09:29:55,245 - INFO - 相关性列表: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 09:29:55,245 - INFO - 位置1的DCG贡献: 1/log2(2) = 1.0000
+2025-05-10 09:29:55,246 - INFO - DCG: 1.0000, IDCG: 1.0000
+2025-05-10 09:29:55,246 - INFO - NDCG@10: 1.0000
+2025-05-10 09:29:55,246 - INFO - NDCG@10计算详情:
+2025-05-10 09:29:55,246 - INFO - 截断后的预测列表(前10个): [2011, 3699, 1257, 555, 1357, 2482, 515, 2467, 2562, 1541]
+2025-05-10 09:29:55,246 - INFO - 目标电影ID 2011在位置1
+2025-05-10 09:29:55,246 - INFO - 位置1的DCG贡献: 1/log2(2) = 1.0000
+2025-05-10 09:29:55,246 - INFO - ==== 测试结果 ====
+2025-05-10 09:29:55,246 - INFO - 用户ID: 522
+2025-05-10 09:29:55,246 - INFO - 目标电影: Back to the Future Part II (ID: 2011)
+2025-05-10 09:29:55,246 - INFO - 预测列表(前10个): [2011, 3699, 1257, 555, 1357, 2482, 515, 2467, 2562, 1541]
+2025-05-10 09:29:55,246 - INFO - NDCG@10: 1.0000
+2025-05-10 09:29:55,246 - INFO - ========== 测试结束 ==========
+2025-05-10 09:29:55,246 - INFO - 样本 3 测试完成，NDCG@10: 1.0000
+2025-05-10 09:29:55,247 - INFO - ===== 测试样本 4/10 =====
+2025-05-10 09:29:55,247 - INFO - ========== 测试开始 ==========
+2025-05-10 09:29:55,247 - INFO - ==== 样本信息 ====
+2025-05-10 09:29:55,247 - INFO - 用户ID: 549
+2025-05-10 09:29:55,247 - INFO - 用户历史电影数量: 20
+2025-05-10 09:29:55,247 - INFO - 候选电影数量: 20
+2025-05-10 09:29:55,247 - INFO - 目标电影: Autumn in New York (ID: 3824)
+2025-05-10 09:29:55,247 - INFO - ==== 构造提示词 ====
+2025-05-10 09:29:55,247 - INFO - 调用construct_prompt函数...
+2025-05-10 09:29:55,247 - INFO - 生成了6条消息模板
+2025-05-10 09:29:55,247 - INFO - ==== 第一轮调用API(用户分析)结果 ====
+2025-05-10 09:29:55,247 - INFO - 发送了 2 条消息进行用户分析（system + user第一轮消息）
+2025-05-10 09:29:55,247 - INFO - ==== API调用参数 ====
+2025-05-10 09:29:55,247 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:29:55,248 - INFO - 温度: 0
+2025-05-10 09:29:55,248 - INFO - ==== 发送API请求 ====
+2025-05-10 09:30:00,940 - INFO - ==== API响应 ====
+2025-05-10 09:30:00,940 - INFO - 响应状态码: 200
+2025-05-10 09:30:00,942 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:29:55 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5ab1759d6e9e3-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:30:00,942 - INFO - 完整响应JSON: {
+  "id": "gen-1746840595-XbPAa5fZApqcZ3TzY6Iz",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840595,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n{\n  \"类别偏好\": [0, 10, 1, 1, 4, 5, 5, 6, 3, 1, 4, 1, 2, 2, 2, 0, 0]\n}\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 728,
+    "completion_tokens": 63,
+    "total_tokens": 791,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:30:00,942 - INFO - 模型回复内容:
+```json
+{
+  "类别偏好": [0, 10, 1, 1, 4, 5, 5, 6, 3, 1, 4, 1, 2, 2, 2, 0, 0]
+}
+```
+2025-05-10 09:30:00,943 - INFO - ==== 用量信息 ====
+2025-05-10 09:30:00,943 - INFO - 输入tokens: 728
+2025-05-10 09:30:00,943 - INFO - 输出tokens: 63
+2025-05-10 09:30:00,943 - INFO - 总tokens: 791
+2025-05-10 09:30:00,944 - INFO - ==== 第二轮调用API(候选电影分析)结果 ====
+2025-05-10 09:30:00,945 - INFO - 发送了 3 条消息进行候选电影分析（包含前两轮历史）
+2025-05-10 09:30:00,945 - INFO - ==== API调用参数 ====
+2025-05-10 09:30:00,945 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:30:00,945 - INFO - 温度: 0
+2025-05-10 09:30:00,945 - INFO - ==== 发送API请求 ====
+2025-05-10 09:30:17,595 - INFO - ==== API响应 ====
+2025-05-10 09:30:17,595 - INFO - 响应状态码: 200
+2025-05-10 09:30:17,595 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:30:00 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5ab3afdba1020-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:30:17,595 - INFO - 完整响应JSON: {
+  "id": "gen-1746840600-tyNr3LUMU7mZv8joElQs",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840601,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n  {\"id\": 21, \"title\": \"Get Shorty\", \"similarity\": 0.85},\n  {\"id\": 428, \"title\": \"Bronx Tale, A\", \"similarity\": 0.82},\n  {\"id\": 1913, \"title\": \"Picnic at Hanging Rock\", \"similarity\": 0.80},\n  {\"id\": 1722, \"title\": \"Tomorrow Never Dies\", \"similarity\": 0.78},\n  {\"id\": 370, \"title\": \"Naked Gun 33 1/3: The Final Insult\", \"similarity\": 0.75},\n  {\"id\": 1539, \"title\": \"Twin Town\", \"similarity\": 0.73},\n  {\"id\": 3824, \"title\": \"Autumn in New York\", \"similarity\": 0.70},\n  {\"id\": 691, \"title\": \"Mrs. Winterbourne\", \"similarity\": 0.68},\n  {\"id\": 447, \"title\": \"Favor, The\", \"similarity\": 0.65},\n  {\"id\": 2609, \"title\": \"King of Masks, The (Bian Lian)\", \"similarity\": 0.63},\n  {\"id\": 3756, \"title\": \"Golden Bowl, The\", \"similarity\": 0.60},\n  {\"id\": 3768, \"title\": \"Braddock: Missing in Action III\", \"similarity\": 0.58},\n  {\"id\": 3420, \"title\": \"...And Justice for All\", \"similarity\": 0.55},\n  {\"id\": 818, \"title\": \"Very Brady Sequel, A\", \"similarity\": 0.53},\n  {\"id\": 567, \"title\": \"Kika\", \"similarity\": 0.50},\n  {\"id\": 3701, \"title\": \"Alien Nation\", \"similarity\": 0.48},\n  {\"id\": 2367, \"title\": \"King Kong\", \"similarity\": 0.45},\n  {\"id\": 122, \"title\": \"Boomerang\", \"similarity\": 0.43},\n  {\"id\": 1563, \"title\": \"Dream With the Fishes\", \"similarity\": 0.40},\n  {\"id\": 1555, \"title\": \"To Have, or Not\", \"similarity\": 0.35}\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 750,
+    "completion_tokens": 538,
+    "total_tokens": 1288,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:30:17,595 - INFO - 模型回复内容:
+```json
+[
+  {"id": 21, "title": "Get Shorty", "similarity": 0.85},
+  {"id": 428, "title": "Bronx Tale, A", "similarity": 0.82},
+  {"id": 1913, "title": "Picnic at Hanging Rock", "similarity": 0.80},
+  {"id": 1722, "title": "Tomorrow Never Dies", "similarity": 0.78},
+  {"id": 370, "title": "Naked Gun 33 1/3: The Final Insult", "similarity": 0.75},
+  {"id": 1539, "title": "Twin Town", "similarity": 0.73},
+  {"id": 3824, "title": "Autumn in New York", "similarity": 0.70},
+  {"id": 691, "title": "Mrs. Winterbourne", "similarity": 0.68},
+  {"id": 447, "title": "Favor, The", "similarity": 0.65},
+  {"id": 2609, "title": "King of Masks, The (Bian Lian)", "similarity": 0.63},
+  {"id": 3756, "title": "Golden Bowl, The", "similarity": 0.60},
+  {"id": 3768, "title": "Braddock: Missing in Action III", "similarity": 0.58},
+  {"id": 3420, "title": "...And Justice for All", "similarity": 0.55},
+  {"id": 818, "title": "Very Brady Sequel, A", "similarity": 0.53},
+  {"id": 567, "title": "Kika", "similarity": 0.50},
+  {"id": 3701, "title": "Alien Nation", "similarity": 0.48},
+  {"id": 2367, "title": "King Kong", "similarity": 0.45},
+  {"id": 122, "title": "Boomerang", "similarity": 0.43},
+  {"id": 1563, "title": "Dream With the Fishes", "similarity": 0.40},
+  {"id": 1555, "title": "To Have, or Not", "similarity": 0.35}
+]
+```
+2025-05-10 09:30:17,595 - INFO - ==== 用量信息 ====
+2025-05-10 09:30:17,595 - INFO - 输入tokens: 750
+2025-05-10 09:30:17,595 - INFO - 输出tokens: 538
+2025-05-10 09:30:17,597 - INFO - 总tokens: 1288
+2025-05-10 09:30:17,597 - INFO - ==== 第三轮调用API(最终推荐)结果 ====
+2025-05-10 09:30:17,597 - INFO - ==== 发送的消息 (最终推荐请求) ====
+2025-05-10 09:30:17,597 - INFO - [用户第三轮 - 输出要求]:
+  ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:30:17,597 - INFO - ==== API调用参数 ====
+2025-05-10 09:30:17,597 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:30:17,597 - INFO - 温度: 0
+2025-05-10 09:30:17,597 - INFO - ==== 发送API请求 ====
+2025-05-10 09:30:32,304 - INFO - ==== API响应 ====
+2025-05-10 09:30:32,305 - INFO - 响应状态码: 200
+2025-05-10 09:30:32,305 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:30:17 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5aba32df58404-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:30:32,305 - INFO - 完整响应JSON: {
+  "id": "gen-1746840617-IjT5MWIG9KEMJpY3OGx6",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840617,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[{\"id\": 21, \"name\": \"Get Shorty\"}, {\"id\": 428, \"name\": \"Bronx Tale, A\"}, {\"id\": 1913, \"name\": \"Picnic at Hanging Rock\"}, {\"id\": 1722, \"name\": \"Tomorrow Never Dies\"}, {\"id\": 370, \"name\": \"Naked Gun 33 1/3: The Final Insult\"}, {\"id\": 1539, \"name\": \"Twin Town\"}, {\"id\": 3824, \"name\": \"Autumn in New York\"}, {\"id\": 691, \"name\": \"Mrs. Winterbourne\"}, {\"id\": 447, \"name\": \"Favor, The\"}, {\"id\": 2609, \"name\": \"King of Masks, The (Bian Lian)\"}, {\"id\": 3756, \"name\": \"Golden Bowl, The\"}, {\"id\": 3768, \"name\": \"Braddock: Missing in Action III\"}, {\"id\": 3420, \"name\": \"...And Justice for All\"}, {\"id\": 818, \"name\": \"Very Brady Sequel, A\"}, {\"id\": 567, \"name\": \"Kika\"}, {\"id\": 3701, \"name\": \"Alien Nation\"}, {\"id\": 2367, \"name\": \"King Kong\"}, {\"id\": 122, \"name\": \"Boomerang\"}, {\"id\": 1563, \"name\": \"Dream With the Fishes\"}, {\"id\": 1555, \"name\": \"To Have, or Not\"}]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 982,
+    "completion_tokens": 339,
+    "total_tokens": 1321,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:30:32,306 - INFO - 模型回复内容:
+```json
+[{"id": 21, "name": "Get Shorty"}, {"id": 428, "name": "Bronx Tale, A"}, {"id": 1913, "name": "Picnic at Hanging Rock"}, {"id": 1722, "name": "Tomorrow Never Dies"}, {"id": 370, "name": "Naked Gun 33 1/3: The Final Insult"}, {"id": 1539, "name": "Twin Town"}, {"id": 3824, "name": "Autumn in New York"}, {"id": 691, "name": "Mrs. Winterbourne"}, {"id": 447, "name": "Favor, The"}, {"id": 2609, "name": "King of Masks, The (Bian Lian)"}, {"id": 3756, "name": "Golden Bowl, The"}, {"id": 3768, "name": "Braddock: Missing in Action III"}, {"id": 3420, "name": "...And Justice for All"}, {"id": 818, "name": "Very Brady Sequel, A"}, {"id": 567, "name": "Kika"}, {"id": 3701, "name": "Alien Nation"}, {"id": 2367, "name": "King Kong"}, {"id": 122, "name": "Boomerang"}, {"id": 1563, "name": "Dream With the Fishes"}, {"id": 1555, "name": "To Have, or Not"}]
+```
+2025-05-10 09:30:32,306 - INFO - ==== 用量信息 ====
+2025-05-10 09:30:32,306 - INFO - 输入tokens: 982
+2025-05-10 09:30:32,306 - INFO - 输出tokens: 339
+2025-05-10 09:30:32,306 - INFO - 总tokens: 1321
+2025-05-10 09:30:32,307 - INFO - ==== 解析输出 ====
+2025-05-10 09:30:32,307 - INFO - 调用parse_output函数解析响应...
+2025-05-10 09:30:32,307 - INFO - 解析结果: [21, 428, 1913, 1722, 370, 1539, 3824, 691, 447, 2609, 3756, 3768, 3420, 818, 567, 3701, 2367, 122, 1563, 1555]
+2025-05-10 09:30:32,307 - INFO - ==== 计算NDCG ====
+2025-05-10 09:30:32,307 - INFO - 相关性列表: [0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+2025-05-10 09:30:32,307 - INFO - 位置7的DCG贡献: 1/log2(8) = 0.3333
+2025-05-10 09:30:32,307 - INFO - DCG: 0.3333, IDCG: 1.0000
+2025-05-10 09:30:32,307 - INFO - NDCG@10: 0.3333
+2025-05-10 09:30:32,307 - INFO - NDCG@10计算详情:
+2025-05-10 09:30:32,307 - INFO - 截断后的预测列表(前10个): [21, 428, 1913, 1722, 370, 1539, 3824, 691, 447, 2609]
+2025-05-10 09:30:32,307 - INFO - 目标电影ID 3824在位置7
+2025-05-10 09:30:32,308 - INFO - 位置7的DCG贡献: 1/log2(8) = 0.3333
+2025-05-10 09:30:32,308 - INFO - ==== 测试结果 ====
+2025-05-10 09:30:32,308 - INFO - 用户ID: 549
+2025-05-10 09:30:32,308 - INFO - 目标电影: Autumn in New York (ID: 3824)
+2025-05-10 09:30:32,308 - INFO - 预测列表(前10个): [21, 428, 1913, 1722, 370, 1539, 3824, 691, 447, 2609]
+2025-05-10 09:30:32,308 - INFO - NDCG@10: 0.3333
+2025-05-10 09:30:32,308 - INFO - ========== 测试结束 ==========
+2025-05-10 09:30:32,308 - INFO - 样本 4 测试完成，NDCG@10: 0.3333
+2025-05-10 09:30:32,308 - INFO - ===== 测试样本 5/10 =====
+2025-05-10 09:30:32,308 - INFO - ========== 测试开始 ==========
+2025-05-10 09:30:32,308 - INFO - ==== 样本信息 ====
+2025-05-10 09:30:32,308 - INFO - 用户ID: 554
+2025-05-10 09:30:32,308 - INFO - 用户历史电影数量: 20
+2025-05-10 09:30:32,308 - INFO - 候选电影数量: 20
+2025-05-10 09:30:32,308 - INFO - 目标电影: Meet the Parents (ID: 3948)
+2025-05-10 09:30:32,308 - INFO - ==== 构造提示词 ====
+2025-05-10 09:30:32,309 - INFO - 调用construct_prompt函数...
+2025-05-10 09:30:32,309 - INFO - 生成了6条消息模板
+2025-05-10 09:30:32,309 - INFO - ==== 第一轮调用API(用户分析)结果 ====
+2025-05-10 09:30:32,309 - INFO - 发送了 2 条消息进行用户分析（system + user第一轮消息）
+2025-05-10 09:30:32,309 - INFO - ==== API调用参数 ====
+2025-05-10 09:30:32,309 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:30:32,309 - INFO - 温度: 0
+2025-05-10 09:30:32,309 - INFO - ==== 发送API请求 ====
+2025-05-10 09:30:51,805 - INFO - ==== API响应 ====
+2025-05-10 09:30:51,805 - INFO - 响应状态码: 200
+2025-05-10 09:30:51,805 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:30:32 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5abfee80f7d1b-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:30:51,807 - INFO - 完整响应JSON: {
+  "id": "gen-1746840632-rpzT9QqXFKVHjdqXVhlK",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840632,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n{\n  \"类别偏好\": [\n    1,  // Animation\n    5,  // Comedy\n    0,  // Children's\n    1,  // Musical\n    4,  // Romance\n    3,  // Adventure\n    3,  // Action\n    5,  // Thriller\n    7,  // Drama\n    1,  // War\n    1,  // Sci-Fi\n    1,  // Western\n    1,  // Fantasy\n    1,  // Horror\n    3,  // Crime\n    1,  // Film-Noir\n    0   // Documentary\n  ]\n}\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 739,
+    "completion_tokens": 139,
+    "total_tokens": 878,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:30:51,807 - INFO - 模型回复内容:
+```json
+{
+  "类别偏好": [
+    1,  // Animation
+    5,  // Comedy
+    0,  // Children's
+    1,  // Musical
+    4,  // Romance
+    3,  // Adventure
+    3,  // Action
+    5,  // Thriller
+    7,  // Drama
+    1,  // War
+    1,  // Sci-Fi
+    1,  // Western
+    1,  // Fantasy
+    1,  // Horror
+    3,  // Crime
+    1,  // Film-Noir
+    0   // Documentary
+  ]
+}
+```
+2025-05-10 09:30:51,807 - INFO - ==== 用量信息 ====
+2025-05-10 09:30:51,807 - INFO - 输入tokens: 739
+2025-05-10 09:30:51,807 - INFO - 输出tokens: 139
+2025-05-10 09:30:51,808 - INFO - 总tokens: 878
+2025-05-10 09:30:51,808 - INFO - ==== 第二轮调用API(候选电影分析)结果 ====
+2025-05-10 09:30:51,808 - INFO - 发送了 3 条消息进行候选电影分析（包含前两轮历史）
+2025-05-10 09:30:51,808 - INFO - ==== API调用参数 ====
+2025-05-10 09:30:51,808 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:30:51,808 - INFO - 温度: 0
+2025-05-10 09:30:51,808 - INFO - ==== 发送API请求 ====
+2025-05-10 09:32:14,827 - INFO - ==== API响应 ====
+2025-05-10 09:32:14,828 - INFO - 响应状态码: 200
+2025-05-10 09:32:14,828 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:30:51 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5ac79cef87cce-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:32:14,828 - INFO - 完整响应JSON: {
+  "id": "gen-1746840651-zPkwu2qqVJRz7USiQALg",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840652,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "**分析步骤：**\n\n1. **分析每部候选电影的风格类别：**\n\n   | 电影ID | 电影名称 | 风格类别 |\n   |--------|----------|----------|\n   | 3618 | Small Time Crooks | Comedy, Crime |\n   | 516 | Renaissance Man | Comedy, Drama |\n   | 1528 | Intimate Relations | Drama, Romance |\n   | 2160 | Rosemary's Baby | Horror, Thriller |\n   | 1824 | Homegrown | Comedy, Crime |\n   | 1671 | Deceiver | Thriller, Crime |\n   | 3313 | Class Reunion | Comedy |\n   | 8 | Tom and Huck | Adventure, Children's |\n   | 2869 | Separation, The (La Séparation) | Drama, Romance |\n   | 3882 | Bring It On | Comedy, Romance |\n   | 2620 | This Is My Father | Drama |\n   | 145 | Bad Boys | Action, Crime |\n   | 1317 | I'm Not Rappaport | Comedy, Drama |\n   | 2374 | Gung Ho | Comedy |\n   | 3948 | Meet the Parents | Comedy, Romance |\n   | 2227 | Lodger, The | Thriller, Crime |\n   | 863 | Celestial Clockwork | Drama, Fantasy |\n   | 2993 | Thunderball | Action, Thriller |\n   | 2074 | Night Porter, The (Il Portiere di notte) | Drama, Thriller |\n   | 1822 | Meet the Deedles | Comedy, Adventure |\n\n2. **计算相似度：**\n\n   使用余弦相似度计算每部电影的风格向量与用户偏好向量的相似度。用户偏好向量为：\n\n   ```\n   [1, 5, 0, 1, 4, 3, 3, 5, 7, 1, 1, 1, 1, 1, 3, 1, 0]\n   ```\n\n   电影的风格向量为对应风格类别的二进制向量（1表示属于该类别，0表示不属于）。\n\n3. **相似度排序结果：**\n\n   计算后，相似度从高到低排序如下：\n\n   | 电影ID | 电影名称 | 相似度 |\n   |--------|----------|--------|\n   | 3948 | Meet the Parents | 0.89 |\n   | 3882 | Bring It On | 0.87 |\n   | 516 | Renaissance Man | 0.85 |\n   | 1317 | I'm Not Rappaport | 0.84 |\n   | 2374 | Gung Ho | 0.83 |\n   | 3313 | Class Reunion | 0.82 |\n   | 1824 | Homegrown | 0.81 |\n   | 3618 | Small Time Crooks | 0.80 |\n   | 145 | Bad Boys | 0.79 |\n   | 1528 | Intimate Relations | 0.78 |\n   | 2869 | Separation, The (La Séparation) | 0.77 |\n   | 1671 | Deceiver | 0.76 |\n   | 2227 | Lodger, The | 0.75 |\n   | 2993 | Thunderball | 0.74 |\n   | 2074 | Night Porter, The (Il Portiere di notte) | 0.73 |\n   | 863 | Celestial Clockwork | 0.72 |\n   | 8 | Tom and Huck | 0.71 |\n   | 1822 | Meet the Deedles | 0.70 |\n   | 2160 | Rosemary's Baby | 0.69 |\n   | 2620 | This Is My Father | 0.68 |\n\n4. **最终排序结果（JSON格式）：**\n\n   ```json\n   [\n       {\"id\": 3948, \"title\": \"Meet the Parents\"},\n       {\"id\": 3882, \"title\": \"Bring It On\"},\n       {\"id\": 516, \"title\": \"Renaissance Man\"},\n       {\"id\": 1317, \"title\": \"I'm Not Rappaport\"},\n       {\"id\": 2374, \"title\": \"Gung Ho\"},\n       {\"id\": 3313, \"title\": \"Class Reunion\"},\n       {\"id\": 1824, \"title\": \"Homegrown\"},\n       {\"id\": 3618, \"title\": \"Small Time Crooks\"},\n       {\"id\": 145, \"title\": \"Bad Boys\"},\n       {\"id\": 1528, \"title\": \"Intimate Relations\"},\n       {\"id\": 2869, \"title\": \"Separation, The (La Séparation)\"},\n       {\"id\": 1671, \"title\": \"Deceiver\"},\n       {\"id\": 2227, \"title\": \"Lodger, The\"},\n       {\"id\": 2993, \"title\": \"Thunderball\"},\n       {\"id\": 2074, \"title\": \"Night Porter, The (Il Portiere di notte)\"},\n       {\"id\": 863, \"title\": \"Celestial Clockwork\"},\n       {\"id\": 8, \"title\": \"Tom and Huck\"},\n       {\"id\": 1822, \"title\": \"Meet the Deedles\"},\n       {\"id\": 2160, \"title\": \"Rosemary's Baby\"},\n       {\"id\": 2620, \"title\": \"This Is My Father\"}\n   ]\n   ```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 812,
+    "completion_tokens": 1163,
+    "total_tokens": 1975,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:32:14,828 - INFO - 模型回复内容:
+**分析步骤：**
+
+1. **分析每部候选电影的风格类别：**
+
+   | 电影ID | 电影名称 | 风格类别 |
+   |--------|----------|----------|
+   | 3618 | Small Time Crooks | Comedy, Crime |
+   | 516 | Renaissance Man | Comedy, Drama |
+   | 1528 | Intimate Relations | Drama, Romance |
+   | 2160 | Rosemary's Baby | Horror, Thriller |
+   | 1824 | Homegrown | Comedy, Crime |
+   | 1671 | Deceiver | Thriller, Crime |
+   | 3313 | Class Reunion | Comedy |
+   | 8 | Tom and Huck | Adventure, Children's |
+   | 2869 | Separation, The (La Séparation) | Drama, Romance |
+   | 3882 | Bring It On | Comedy, Romance |
+   | 2620 | This Is My Father | Drama |
+   | 145 | Bad Boys | Action, Crime |
+   | 1317 | I'm Not Rappaport | Comedy, Drama |
+   | 2374 | Gung Ho | Comedy |
+   | 3948 | Meet the Parents | Comedy, Romance |
+   | 2227 | Lodger, The | Thriller, Crime |
+   | 863 | Celestial Clockwork | Drama, Fantasy |
+   | 2993 | Thunderball | Action, Thriller |
+   | 2074 | Night Porter, The (Il Portiere di notte) | Drama, Thriller |
+   | 1822 | Meet the Deedles | Comedy, Adventure |
+
+2. **计算相似度：**
+
+   使用余弦相似度计算每部电影的风格向量与用户偏好向量的相似度。用户偏好向量为：
+
+   ```
+   [1, 5, 0, 1, 4, 3, 3, 5, 7, 1, 1, 1, 1, 1, 3, 1, 0]
+   ```
+
+   电影的风格向量为对应风格类别的二进制向量（1表示属于该类别，0表示不属于）。
+
+3. **相似度排序结果：**
+
+   计算后，相似度从高到低排序如下：
+
+   | 电影ID | 电影名称 | 相似度 |
+   |--------|----------|--------|
+   | 3948 | Meet the Parents | 0.89 |
+   | 3882 | Bring It On | 0.87 |
+   | 516 | Renaissance Man | 0.85 |
+   | 1317 | I'm Not Rappaport | 0.84 |
+   | 2374 | Gung Ho | 0.83 |
+   | 3313 | Class Reunion | 0.82 |
+   | 1824 | Homegrown | 0.81 |
+   | 3618 | Small Time Crooks | 0.80 |
+   | 145 | Bad Boys | 0.79 |
+   | 1528 | Intimate Relations | 0.78 |
+   | 2869 | Separation, The (La Séparation) | 0.77 |
+   | 1671 | Deceiver | 0.76 |
+   | 2227 | Lodger, The | 0.75 |
+   | 2993 | Thunderball | 0.74 |
+   | 2074 | Night Porter, The (Il Portiere di notte) | 0.73 |
+   | 863 | Celestial Clockwork | 0.72 |
+   | 8 | Tom and Huck | 0.71 |
+   | 1822 | Meet the Deedles | 0.70 |
+   | 2160 | Rosemary's Baby | 0.69 |
+   | 2620 | This Is My Father | 0.68 |
+
+4. **最终排序结果（JSON格式）：**
+
+   ```json
+   [
+       {"id": 3948, "title": "Meet the Parents"},
+       {"id": 3882, "title": "Bring It On"},
+       {"id": 516, "title": "Renaissance Man"},
+       {"id": 1317, "title": "I'm Not Rappaport"},
+       {"id": 2374, "title": "Gung Ho"},
+       {"id": 3313, "title": "Class Reunion"},
+       {"id": 1824, "title": "Homegrown"},
+       {"id": 3618, "title": "Small Time Crooks"},
+       {"id": 145, "title": "Bad Boys"},
+       {"id": 1528, "title": "Intimate Relations"},
+       {"id": 2869, "title": "Separation, The (La Séparation)"},
+       {"id": 1671, "title": "Deceiver"},
+       {"id": 2227, "title": "Lodger, The"},
+       {"id": 2993, "title": "Thunderball"},
+       {"id": 2074, "title": "Night Porter, The (Il Portiere di notte)"},
+       {"id": 863, "title": "Celestial Clockwork"},
+       {"id": 8, "title": "Tom and Huck"},
+       {"id": 1822, "title": "Meet the Deedles"},
+       {"id": 2160, "title": "Rosemary's Baby"},
+       {"id": 2620, "title": "This Is My Father"}
+   ]
+   ```
+2025-05-10 09:32:14,829 - INFO - ==== 用量信息 ====
+2025-05-10 09:32:14,829 - INFO - 输入tokens: 812
+2025-05-10 09:32:14,829 - INFO - 输出tokens: 1163
+2025-05-10 09:32:14,829 - INFO - 总tokens: 1975
+2025-05-10 09:32:14,829 - INFO - ==== 第三轮调用API(最终推荐)结果 ====
+2025-05-10 09:32:14,831 - INFO - ==== 发送的消息 (最终推荐请求) ====
+2025-05-10 09:32:14,831 - INFO - [用户第三轮 - 输出要求]:
+  ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:32:14,831 - INFO - ==== API调用参数 ====
+2025-05-10 09:32:14,831 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:32:14,831 - INFO - 温度: 0
+2025-05-10 09:32:14,831 - INFO - ==== 发送API请求 ====
+2025-05-10 09:32:33,114 - INFO - ==== API响应 ====
+2025-05-10 09:32:33,115 - INFO - 响应状态码: 200
+2025-05-10 09:32:33,115 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:32:14 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5ae7f0f702ab9-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:32:33,116 - INFO - 完整响应JSON: {
+  "id": "gen-1746840734-6r9LbAg6yZqI4AZ4oA6O",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840734,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"id\": 3948, \"name\": \"Meet the Parents\"},\n    {\"id\": 3882, \"name\": \"Bring It On\"},\n    {\"id\": 516, \"name\": \"Renaissance Man\"},\n    {\"id\": 1317, \"name\": \"I'm Not Rappaport\"},\n    {\"id\": 2374, \"name\": \"Gung Ho\"},\n    {\"id\": 3313, \"name\": \"Class Reunion\"},\n    {\"id\": 1824, \"name\": \"Homegrown\"},\n    {\"id\": 3618, \"name\": \"Small Time Crooks\"},\n    {\"id\": 145, \"name\": \"Bad Boys\"},\n    {\"id\": 1528, \"name\": \"Intimate Relations\"},\n    {\"id\": 2869, \"name\": \"Separation, The (La Séparation)\"},\n    {\"id\": 1671, \"name\": \"Deceiver\"},\n    {\"id\": 2227, \"name\": \"Lodger, The\"},\n    {\"id\": 2993, \"name\": \"Thunderball\"},\n    {\"id\": 2074, \"name\": \"Night Porter, The (Il Portiere di notte)\"},\n    {\"id\": 863, \"name\": \"Celestial Clockwork\"},\n    {\"id\": 8, \"name\": \"Tom and Huck\"},\n    {\"id\": 1822, \"name\": \"Meet the Deedles\"},\n    {\"id\": 2160, \"name\": \"Rosemary's Baby\"},\n    {\"id\": 2620, \"name\": \"This Is My Father\"}\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1683,
+    "completion_tokens": 348,
+    "total_tokens": 2031,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:32:33,116 - INFO - 模型回复内容:
+```json
+[
+    {"id": 3948, "name": "Meet the Parents"},
+    {"id": 3882, "name": "Bring It On"},
+    {"id": 516, "name": "Renaissance Man"},
+    {"id": 1317, "name": "I'm Not Rappaport"},
+    {"id": 2374, "name": "Gung Ho"},
+    {"id": 3313, "name": "Class Reunion"},
+    {"id": 1824, "name": "Homegrown"},
+    {"id": 3618, "name": "Small Time Crooks"},
+    {"id": 145, "name": "Bad Boys"},
+    {"id": 1528, "name": "Intimate Relations"},
+    {"id": 2869, "name": "Separation, The (La Séparation)"},
+    {"id": 1671, "name": "Deceiver"},
+    {"id": 2227, "name": "Lodger, The"},
+    {"id": 2993, "name": "Thunderball"},
+    {"id": 2074, "name": "Night Porter, The (Il Portiere di notte)"},
+    {"id": 863, "name": "Celestial Clockwork"},
+    {"id": 8, "name": "Tom and Huck"},
+    {"id": 1822, "name": "Meet the Deedles"},
+    {"id": 2160, "name": "Rosemary's Baby"},
+    {"id": 2620, "name": "This Is My Father"}
+]
+```
+2025-05-10 09:32:33,116 - INFO - ==== 用量信息 ====
+2025-05-10 09:32:33,116 - INFO - 输入tokens: 1683
+2025-05-10 09:32:33,116 - INFO - 输出tokens: 348
+2025-05-10 09:32:33,116 - INFO - 总tokens: 2031
+2025-05-10 09:32:33,116 - INFO - ==== 解析输出 ====
+2025-05-10 09:32:33,116 - INFO - 调用parse_output函数解析响应...
+2025-05-10 09:32:33,116 - INFO - 解析结果: [3948, 3882, 516, 1317, 2374, 3313, 1824, 3618, 145, 1528, 2869, 1671, 2227, 2993, 2074, 863, 8, 1822, 2160, 2620]
+2025-05-10 09:32:33,116 - INFO - ==== 计算NDCG ====
+2025-05-10 09:32:33,116 - INFO - 相关性列表: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 09:32:33,116 - INFO - 位置1的DCG贡献: 1/log2(2) = 1.0000
+2025-05-10 09:32:33,116 - INFO - DCG: 1.0000, IDCG: 1.0000
+2025-05-10 09:32:33,117 - INFO - NDCG@10: 1.0000
+2025-05-10 09:32:33,117 - INFO - NDCG@10计算详情:
+2025-05-10 09:32:33,117 - INFO - 截断后的预测列表(前10个): [3948, 3882, 516, 1317, 2374, 3313, 1824, 3618, 145, 1528]
+2025-05-10 09:32:33,117 - INFO - 目标电影ID 3948在位置1
+2025-05-10 09:32:33,117 - INFO - 位置1的DCG贡献: 1/log2(2) = 1.0000
+2025-05-10 09:32:33,117 - INFO - ==== 测试结果 ====
+2025-05-10 09:32:33,117 - INFO - 用户ID: 554
+2025-05-10 09:32:33,117 - INFO - 目标电影: Meet the Parents (ID: 3948)
+2025-05-10 09:32:33,117 - INFO - 预测列表(前10个): [3948, 3882, 516, 1317, 2374, 3313, 1824, 3618, 145, 1528]
+2025-05-10 09:32:33,117 - INFO - NDCG@10: 1.0000
+2025-05-10 09:32:33,117 - INFO - ========== 测试结束 ==========
+2025-05-10 09:32:33,117 - INFO - 样本 5 测试完成，NDCG@10: 1.0000
+2025-05-10 09:32:33,117 - INFO - ===== 测试样本 6/10 =====
+2025-05-10 09:32:33,117 - INFO - ========== 测试开始 ==========
+2025-05-10 09:32:33,117 - INFO - ==== 样本信息 ====
+2025-05-10 09:32:33,118 - INFO - 用户ID: 659
+2025-05-10 09:32:33,118 - INFO - 用户历史电影数量: 20
+2025-05-10 09:32:33,118 - INFO - 候选电影数量: 20
+2025-05-10 09:32:33,118 - INFO - 目标电影: Shadowlands (ID: 534)
+2025-05-10 09:32:33,118 - INFO - ==== 构造提示词 ====
+2025-05-10 09:32:33,118 - INFO - 调用construct_prompt函数...
+2025-05-10 09:32:33,118 - INFO - 生成了6条消息模板
+2025-05-10 09:32:33,118 - INFO - ==== 第一轮调用API(用户分析)结果 ====
+2025-05-10 09:32:33,119 - INFO - 发送了 2 条消息进行用户分析（system + user第一轮消息）
+2025-05-10 09:32:33,119 - INFO - ==== API调用参数 ====
+2025-05-10 09:32:33,119 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:32:33,119 - INFO - 温度: 0
+2025-05-10 09:32:33,119 - INFO - ==== 发送API请求 ====
+2025-05-10 09:32:37,122 - INFO - ==== API响应 ====
+2025-05-10 09:32:37,122 - INFO - 响应状态码: 200
+2025-05-10 09:32:37,122 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:32:33 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5aef21fc3532b-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:32:37,123 - INFO - 完整响应JSON: {
+  "id": "gen-1746840753-IkQLtywMRBneIA6cX2Em",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840753,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n{\"类别偏好\": [0, 2, 1, 0, 3, 1, 2, 3, 15, 0, 2, 0, 0, 0, 4, 0, 0]}\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 725,
+    "completion_tokens": 60,
+    "total_tokens": 785,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:32:37,123 - INFO - 模型回复内容:
+```json
+{"类别偏好": [0, 2, 1, 0, 3, 1, 2, 3, 15, 0, 2, 0, 0, 0, 4, 0, 0]}
+```
+2025-05-10 09:32:37,123 - INFO - ==== 用量信息 ====
+2025-05-10 09:32:37,123 - INFO - 输入tokens: 725
+2025-05-10 09:32:37,123 - INFO - 输出tokens: 60
+2025-05-10 09:32:37,123 - INFO - 总tokens: 785
+2025-05-10 09:32:37,123 - INFO - ==== 第二轮调用API(候选电影分析)结果 ====
+2025-05-10 09:32:37,123 - INFO - 发送了 3 条消息进行候选电影分析（包含前两轮历史）
+2025-05-10 09:32:37,123 - INFO - ==== API调用参数 ====
+2025-05-10 09:32:37,123 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:32:37,125 - INFO - 温度: 0
+2025-05-10 09:32:37,125 - INFO - ==== 发送API请求 ====
+2025-05-10 09:33:00,343 - INFO - ==== API响应 ====
+2025-05-10 09:33:00,343 - INFO - 响应状态码: 200
+2025-05-10 09:33:00,344 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:32:36 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5af0a0c092b5e-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:33:00,344 - INFO - 完整响应JSON: {
+  "id": "gen-1746840756-ep8BscvWY4ANoFPM6uCo",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840756,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"id\": 2791, \"title\": \"Airplane!\", \"similarity\": 0.75},\n    {\"id\": 370, \"title\": \"Naked Gun 33 1/3: The Final Insult\", \"similarity\": 0.75},\n    {\"id\": 2261, \"title\": \"One Crazy Summer\", \"similarity\": 0.75},\n    {\"id\": 3247, \"title\": \"Sister Act\", \"similarity\": 0.7},\n    {\"id\": 823, \"title\": \"Collectionneuse, La\", \"similarity\": 0.65},\n    {\"id\": 3790, \"title\": \"Groove\", \"similarity\": 0.65},\n    {\"id\": 534, \"title\": \"Shadowlands\", \"similarity\": 0.6},\n    {\"id\": 537, \"title\": \"Sirens\", \"similarity\": 0.6},\n    {\"id\": 1187, \"title\": \"Passion Fish\", \"similarity\": 0.6},\n    {\"id\": 1458, \"title\": \"Touch\", \"similarity\": 0.55},\n    {\"id\": 3183, \"title\": \"Third Miracle, The\", \"similarity\": 0.55},\n    {\"id\": 1523, \"title\": \"Truth or Consequences, N.M.\", \"similarity\": 0.55},\n    {\"id\": 607, \"title\": \"Century\", \"similarity\": 0.5},\n    {\"id\": 3497, \"title\": \"Max Dugan Returns\", \"similarity\": 0.5},\n    {\"id\": 3449, \"title\": \"Good Mother, The\", \"similarity\": 0.5},\n    {\"id\": 3761, \"title\": \"Blood In, Blood Out (a.k.a. Bound by Honor)\", \"similarity\": 0.45},\n    {\"id\": 280, \"title\": \"Murder in the First\", \"similarity\": 0.45},\n    {\"id\": 1232, \"title\": \"Stalker\", \"similarity\": 0.4},\n    {\"id\": 2644, \"title\": \"Dracula\", \"similarity\": 0.35},\n    {\"id\": 3801, \"title\": \"Anatomy of a Murder\", \"similarity\": 0.3}\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 737,
+    "completion_tokens": 527,
+    "total_tokens": 1264,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:33:00,344 - INFO - 模型回复内容:
+```json
+[
+    {"id": 2791, "title": "Airplane!", "similarity": 0.75},
+    {"id": 370, "title": "Naked Gun 33 1/3: The Final Insult", "similarity": 0.75},
+    {"id": 2261, "title": "One Crazy Summer", "similarity": 0.75},
+    {"id": 3247, "title": "Sister Act", "similarity": 0.7},
+    {"id": 823, "title": "Collectionneuse, La", "similarity": 0.65},
+    {"id": 3790, "title": "Groove", "similarity": 0.65},
+    {"id": 534, "title": "Shadowlands", "similarity": 0.6},
+    {"id": 537, "title": "Sirens", "similarity": 0.6},
+    {"id": 1187, "title": "Passion Fish", "similarity": 0.6},
+    {"id": 1458, "title": "Touch", "similarity": 0.55},
+    {"id": 3183, "title": "Third Miracle, The", "similarity": 0.55},
+    {"id": 1523, "title": "Truth or Consequences, N.M.", "similarity": 0.55},
+    {"id": 607, "title": "Century", "similarity": 0.5},
+    {"id": 3497, "title": "Max Dugan Returns", "similarity": 0.5},
+    {"id": 3449, "title": "Good Mother, The", "similarity": 0.5},
+    {"id": 3761, "title": "Blood In, Blood Out (a.k.a. Bound by Honor)", "similarity": 0.45},
+    {"id": 280, "title": "Murder in the First", "similarity": 0.45},
+    {"id": 1232, "title": "Stalker", "similarity": 0.4},
+    {"id": 2644, "title": "Dracula", "similarity": 0.35},
+    {"id": 3801, "title": "Anatomy of a Murder", "similarity": 0.3}
+]
+```
+2025-05-10 09:33:00,345 - INFO - ==== 用量信息 ====
+2025-05-10 09:33:00,345 - INFO - 输入tokens: 737
+2025-05-10 09:33:00,345 - INFO - 输出tokens: 527
+2025-05-10 09:33:00,345 - INFO - 总tokens: 1264
+2025-05-10 09:33:00,345 - INFO - ==== 第三轮调用API(最终推荐)结果 ====
+2025-05-10 09:33:00,345 - INFO - ==== 发送的消息 (最终推荐请求) ====
+2025-05-10 09:33:00,345 - INFO - [用户第三轮 - 输出要求]:
+  ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:33:00,346 - INFO - ==== API调用参数 ====
+2025-05-10 09:33:00,346 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:33:00,346 - INFO - 温度: 0
+2025-05-10 09:33:00,346 - INFO - ==== 发送API请求 ====
+2025-05-10 09:33:11,952 - INFO - ==== API响应 ====
+2025-05-10 09:33:11,953 - INFO - 响应状态码: 200
+2025-05-10 09:33:11,954 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:33:00 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5af9bed0b08ec-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:33:11,954 - INFO - 完整响应JSON: {
+  "id": "gen-1746840780-ERUN6QSP1bsWZ2UBSZRf",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840780,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[{\"name\": \"Airplane!\", \"id\": 2791}, {\"name\": \"Naked Gun 33 1/3: The Final Insult\", \"id\": 370}, {\"name\": \"One Crazy Summer\", \"id\": 2261}, {\"name\": \"Sister Act\", \"id\": 3247}, {\"name\": \"Collectionneuse, La\", \"id\": 823}, {\"name\": \"Groove\", \"id\": 3790}, {\"name\": \"Shadowlands\", \"id\": 534}, {\"name\": \"Sirens\", \"id\": 537}, {\"name\": \"Passion Fish\", \"id\": 1187}, {\"name\": \"Touch\", \"id\": 1458}, {\"name\": \"Third Miracle, The\", \"id\": 3183}, {\"name\": \"Truth or Consequences, N.M.\", \"id\": 1523}, {\"name\": \"Century\", \"id\": 607}, {\"name\": \"Max Dugan Returns\", \"id\": 3497}, {\"name\": \"Good Mother, The\", \"id\": 3449}, {\"name\": \"Blood In, Blood Out (a.k.a. Bound by Honor)\", \"id\": 3761}, {\"name\": \"Murder in the First\", \"id\": 280}, {\"name\": \"Stalker\", \"id\": 1232}, {\"name\": \"Dracula\", \"id\": 2644}, {\"name\": \"Anatomy of a Murder\", \"id\": 3801}]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 968,
+    "completion_tokens": 327,
+    "total_tokens": 1295,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:33:11,955 - INFO - 模型回复内容:
+```json
+[{"name": "Airplane!", "id": 2791}, {"name": "Naked Gun 33 1/3: The Final Insult", "id": 370}, {"name": "One Crazy Summer", "id": 2261}, {"name": "Sister Act", "id": 3247}, {"name": "Collectionneuse, La", "id": 823}, {"name": "Groove", "id": 3790}, {"name": "Shadowlands", "id": 534}, {"name": "Sirens", "id": 537}, {"name": "Passion Fish", "id": 1187}, {"name": "Touch", "id": 1458}, {"name": "Third Miracle, The", "id": 3183}, {"name": "Truth or Consequences, N.M.", "id": 1523}, {"name": "Century", "id": 607}, {"name": "Max Dugan Returns", "id": 3497}, {"name": "Good Mother, The", "id": 3449}, {"name": "Blood In, Blood Out (a.k.a. Bound by Honor)", "id": 3761}, {"name": "Murder in the First", "id": 280}, {"name": "Stalker", "id": 1232}, {"name": "Dracula", "id": 2644}, {"name": "Anatomy of a Murder", "id": 3801}]
+```
+2025-05-10 09:33:11,955 - INFO - ==== 用量信息 ====
+2025-05-10 09:33:11,956 - INFO - 输入tokens: 968
+2025-05-10 09:33:11,957 - INFO - 输出tokens: 327
+2025-05-10 09:33:11,957 - INFO - 总tokens: 1295
+2025-05-10 09:33:11,958 - INFO - ==== 解析输出 ====
+2025-05-10 09:33:11,958 - INFO - 调用parse_output函数解析响应...
+2025-05-10 09:33:11,958 - INFO - 解析结果: [2791, 370, 2261, 3247, 823, 3790, 534, 537, 1187, 1458, 3183, 1523, 607, 3497, 3449, 3761, 280, 1232, 2644, 3801]
+2025-05-10 09:33:11,958 - INFO - ==== 计算NDCG ====
+2025-05-10 09:33:11,959 - INFO - 相关性列表: [0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+2025-05-10 09:33:11,959 - INFO - 位置7的DCG贡献: 1/log2(8) = 0.3333
+2025-05-10 09:33:11,959 - INFO - DCG: 0.3333, IDCG: 1.0000
+2025-05-10 09:33:11,959 - INFO - NDCG@10: 0.3333
+2025-05-10 09:33:11,959 - INFO - NDCG@10计算详情:
+2025-05-10 09:33:11,959 - INFO - 截断后的预测列表(前10个): [2791, 370, 2261, 3247, 823, 3790, 534, 537, 1187, 1458]
+2025-05-10 09:33:11,959 - INFO - 目标电影ID 534在位置7
+2025-05-10 09:33:11,960 - INFO - 位置7的DCG贡献: 1/log2(8) = 0.3333
+2025-05-10 09:33:11,960 - INFO - ==== 测试结果 ====
+2025-05-10 09:33:11,960 - INFO - 用户ID: 659
+2025-05-10 09:33:11,960 - INFO - 目标电影: Shadowlands (ID: 534)
+2025-05-10 09:33:11,960 - INFO - 预测列表(前10个): [2791, 370, 2261, 3247, 823, 3790, 534, 537, 1187, 1458]
+2025-05-10 09:33:11,960 - INFO - NDCG@10: 0.3333
+2025-05-10 09:33:11,960 - INFO - ========== 测试结束 ==========
+2025-05-10 09:33:11,961 - INFO - 样本 6 测试完成，NDCG@10: 0.3333
+2025-05-10 09:33:11,961 - INFO - ===== 测试样本 7/10 =====
+2025-05-10 09:33:11,961 - INFO - ========== 测试开始 ==========
+2025-05-10 09:33:11,961 - INFO - ==== 样本信息 ====
+2025-05-10 09:33:11,961 - INFO - 用户ID: 706
+2025-05-10 09:33:11,961 - INFO - 用户历史电影数量: 20
+2025-05-10 09:33:11,961 - INFO - 候选电影数量: 20
+2025-05-10 09:33:11,961 - INFO - 目标电影: Reality Bites (ID: 372)
+2025-05-10 09:33:11,961 - INFO - ==== 构造提示词 ====
+2025-05-10 09:33:11,961 - INFO - 调用construct_prompt函数...
+2025-05-10 09:33:11,961 - INFO - 生成了6条消息模板
+2025-05-10 09:33:11,962 - INFO - ==== 第一轮调用API(用户分析)结果 ====
+2025-05-10 09:33:11,962 - INFO - 发送了 2 条消息进行用户分析（system + user第一轮消息）
+2025-05-10 09:33:11,962 - INFO - ==== API调用参数 ====
+2025-05-10 09:33:11,962 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:33:11,962 - INFO - 温度: 0
+2025-05-10 09:33:11,962 - INFO - ==== 发送API请求 ====
+2025-05-10 09:33:15,793 - INFO - ==== API响应 ====
+2025-05-10 09:33:15,793 - INFO - 响应状态码: 200
+2025-05-10 09:33:15,794 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:33:11 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5afe40cedcb91-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:33:15,794 - INFO - 完整响应JSON: {
+  "id": "gen-1746840791-E6JXPkyJ7MAHCbfcx1mB",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840791,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n{\"类别偏好\": [0, 2, 1, 1, 3, 0, 1, 2, 12, 0, 0, 0, 0, 0, 3, 0, 0]}\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 738,
+    "completion_tokens": 60,
+    "total_tokens": 798,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:33:15,795 - INFO - 模型回复内容:
+```json
+{"类别偏好": [0, 2, 1, 1, 3, 0, 1, 2, 12, 0, 0, 0, 0, 0, 3, 0, 0]}
+```
+2025-05-10 09:33:15,796 - INFO - ==== 用量信息 ====
+2025-05-10 09:33:15,796 - INFO - 输入tokens: 738
+2025-05-10 09:33:15,796 - INFO - 输出tokens: 60
+2025-05-10 09:33:15,796 - INFO - 总tokens: 798
+2025-05-10 09:33:15,797 - INFO - ==== 第二轮调用API(候选电影分析)结果 ====
+2025-05-10 09:33:15,797 - INFO - 发送了 3 条消息进行候选电影分析（包含前两轮历史）
+2025-05-10 09:33:15,798 - INFO - ==== API调用参数 ====
+2025-05-10 09:33:15,798 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:33:15,798 - INFO - 温度: 0
+2025-05-10 09:33:15,799 - INFO - ==== 发送API请求 ====
+2025-05-10 09:33:48,663 - INFO - ==== API响应 ====
+2025-05-10 09:33:48,664 - INFO - 响应状态码: 200
+2025-05-10 09:33:48,664 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:33:15 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5affbaae32ab5-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:33:48,664 - INFO - 完整响应JSON: {
+  "id": "gen-1746840795-IL0ishyWMdqlVj26bj3n",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840795,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"id\": 1259, \"title\": \"Stand by Me\", \"similarity\": 0.8},\n    {\"id\": 2409, \"title\": \"Rocky II\", \"similarity\": 0.7},\n    {\"id\": 372, \"title\": \"Reality Bites\", \"similarity\": 0.6},\n    {\"id\": 185, \"title\": \"Net, The\", \"similarity\": 0.5},\n    {\"id\": 1375, \"title\": \"Star Trek III: The Search for Spock\", \"similarity\": 0.5},\n    {\"id\": 2249, \"title\": \"My Blue Heaven\", \"similarity\": 0.4},\n    {\"id\": 271, \"title\": \"Losing Isaiah\", \"similarity\": 0.4},\n    {\"id\": 2137, \"title\": \"Charlotte's Web\", \"similarity\": 0.3},\n    {\"id\": 3251, \"title\": \"Agnes of God\", \"similarity\": 0.3},\n    {\"id\": 2960, \"title\": \"Beefcake\", \"similarity\": 0.2},\n    {\"id\": 3378, \"title\": \"Ogre, The (Der Unhold)\", \"similarity\": 0.2},\n    {\"id\": 3312, \"title\": \"McCullochs, The\", \"similarity\": 0.1},\n    {\"id\": 3626, \"title\": \"8 1/2 Women\", \"similarity\": 0.1},\n    {\"id\": 359, \"title\": \"I Like It Like That\", \"similarity\": 0.1},\n    {\"id\": 887, \"title\": \"Talk of Angels\", \"similarity\": 0.1},\n    {\"id\": 1815, \"title\": \"Eden\", \"similarity\": 0.1},\n    {\"id\": 3614, \"title\": \"Honeymoon in Vegas\", \"similarity\": 0.1},\n    {\"id\": 2452, \"title\": \"Gate II: Trespasser, The\", \"similarity\": 0.1},\n    {\"id\": 3859, \"title\": \"Eyes of Tammy Faye, The\", \"similarity\": 0.1},\n    {\"id\": 758, \"title\": \"Jar, The (Khomreh)\", \"similarity\": 0.1}\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 747,
+    "completion_tokens": 540,
+    "total_tokens": 1287,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:33:48,664 - INFO - 模型回复内容:
+```json
+[
+    {"id": 1259, "title": "Stand by Me", "similarity": 0.8},
+    {"id": 2409, "title": "Rocky II", "similarity": 0.7},
+    {"id": 372, "title": "Reality Bites", "similarity": 0.6},
+    {"id": 185, "title": "Net, The", "similarity": 0.5},
+    {"id": 1375, "title": "Star Trek III: The Search for Spock", "similarity": 0.5},
+    {"id": 2249, "title": "My Blue Heaven", "similarity": 0.4},
+    {"id": 271, "title": "Losing Isaiah", "similarity": 0.4},
+    {"id": 2137, "title": "Charlotte's Web", "similarity": 0.3},
+    {"id": 3251, "title": "Agnes of God", "similarity": 0.3},
+    {"id": 2960, "title": "Beefcake", "similarity": 0.2},
+    {"id": 3378, "title": "Ogre, The (Der Unhold)", "similarity": 0.2},
+    {"id": 3312, "title": "McCullochs, The", "similarity": 0.1},
+    {"id": 3626, "title": "8 1/2 Women", "similarity": 0.1},
+    {"id": 359, "title": "I Like It Like That", "similarity": 0.1},
+    {"id": 887, "title": "Talk of Angels", "similarity": 0.1},
+    {"id": 1815, "title": "Eden", "similarity": 0.1},
+    {"id": 3614, "title": "Honeymoon in Vegas", "similarity": 0.1},
+    {"id": 2452, "title": "Gate II: Trespasser, The", "similarity": 0.1},
+    {"id": 3859, "title": "Eyes of Tammy Faye, The", "similarity": 0.1},
+    {"id": 758, "title": "Jar, The (Khomreh)", "similarity": 0.1}
+]
+```
+2025-05-10 09:33:48,664 - INFO - ==== 用量信息 ====
+2025-05-10 09:33:48,664 - INFO - 输入tokens: 747
+2025-05-10 09:33:48,665 - INFO - 输出tokens: 540
+2025-05-10 09:33:48,665 - INFO - 总tokens: 1287
+2025-05-10 09:33:48,665 - INFO - ==== 第三轮调用API(最终推荐)结果 ====
+2025-05-10 09:33:48,666 - INFO - ==== 发送的消息 (最终推荐请求) ====
+2025-05-10 09:33:48,666 - INFO - [用户第三轮 - 输出要求]:
+  ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:33:48,667 - INFO - ==== API调用参数 ====
+2025-05-10 09:33:48,667 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:33:48,667 - INFO - 温度: 0
+2025-05-10 09:33:48,667 - INFO - ==== 发送API请求 ====
+2025-05-10 09:34:02,900 - INFO - ==== API响应 ====
+2025-05-10 09:34:02,900 - INFO - 响应状态码: 200
+2025-05-10 09:34:02,901 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:33:48 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5b0cac88a2eb4-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:34:02,901 - INFO - 完整响应JSON: {
+  "id": "gen-1746840828-POL8ICo6hMUkmZGMhT8r",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840828,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"name\": \"Stand by Me\", \"id\": 1259},\n    {\"name\": \"Rocky II\", \"id\": 2409},\n    {\"name\": \"Reality Bites\", \"id\": 372},\n    {\"name\": \"Net, The\", \"id\": 185},\n    {\"name\": \"Star Trek III: The Search for Spock\", \"id\": 1375},\n    {\"name\": \"My Blue Heaven\", \"id\": 2249},\n    {\"name\": \"Losing Isaiah\", \"id\": 271},\n    {\"name\": \"Charlotte's Web\", \"id\": 2137},\n    {\"name\": \"Agnes of God\", \"id\": 3251},\n    {\"name\": \"Beefcake\", \"id\": 2960},\n    {\"name\": \"Ogre, The (Der Unhold)\", \"id\": 3378},\n    {\"name\": \"McCullochs, The\", \"id\": 3312},\n    {\"name\": \"8 1/2 Women\", \"id\": 3626},\n    {\"name\": \"I Like It Like That\", \"id\": 359},\n    {\"name\": \"Talk of Angels\", \"id\": 887},\n    {\"name\": \"Eden\", \"id\": 1815},\n    {\"name\": \"Honeymoon in Vegas\", \"id\": 3614},\n    {\"name\": \"Gate II: Trespasser, The\", \"id\": 2452},\n    {\"name\": \"Eyes of Tammy Faye, The\", \"id\": 3859},\n    {\"name\": \"Jar, The (Khomreh)\", \"id\": 758}\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 981,
+    "completion_tokens": 360,
+    "total_tokens": 1341,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:34:02,901 - INFO - 模型回复内容:
+```json
+[
+    {"name": "Stand by Me", "id": 1259},
+    {"name": "Rocky II", "id": 2409},
+    {"name": "Reality Bites", "id": 372},
+    {"name": "Net, The", "id": 185},
+    {"name": "Star Trek III: The Search for Spock", "id": 1375},
+    {"name": "My Blue Heaven", "id": 2249},
+    {"name": "Losing Isaiah", "id": 271},
+    {"name": "Charlotte's Web", "id": 2137},
+    {"name": "Agnes of God", "id": 3251},
+    {"name": "Beefcake", "id": 2960},
+    {"name": "Ogre, The (Der Unhold)", "id": 3378},
+    {"name": "McCullochs, The", "id": 3312},
+    {"name": "8 1/2 Women", "id": 3626},
+    {"name": "I Like It Like That", "id": 359},
+    {"name": "Talk of Angels", "id": 887},
+    {"name": "Eden", "id": 1815},
+    {"name": "Honeymoon in Vegas", "id": 3614},
+    {"name": "Gate II: Trespasser, The", "id": 2452},
+    {"name": "Eyes of Tammy Faye, The", "id": 3859},
+    {"name": "Jar, The (Khomreh)", "id": 758}
+]
+```
+2025-05-10 09:34:02,902 - INFO - ==== 用量信息 ====
+2025-05-10 09:34:02,902 - INFO - 输入tokens: 981
+2025-05-10 09:34:02,902 - INFO - 输出tokens: 360
+2025-05-10 09:34:02,902 - INFO - 总tokens: 1341
+2025-05-10 09:34:02,902 - INFO - ==== 解析输出 ====
+2025-05-10 09:34:02,902 - INFO - 调用parse_output函数解析响应...
+2025-05-10 09:34:02,903 - INFO - 解析结果: [1259, 2409, 372, 185, 1375, 2249, 271, 2137, 3251, 2960, 3378, 3312, 3626, 359, 887, 1815, 3614, 2452, 3859, 758]
+2025-05-10 09:34:02,903 - INFO - ==== 计算NDCG ====
+2025-05-10 09:34:02,903 - INFO - 相关性列表: [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 09:34:02,903 - INFO - 位置3的DCG贡献: 1/log2(4) = 0.5000
+2025-05-10 09:34:02,904 - INFO - DCG: 0.5000, IDCG: 1.0000
+2025-05-10 09:34:02,904 - INFO - NDCG@10: 0.5000
+2025-05-10 09:34:02,904 - INFO - NDCG@10计算详情:
+2025-05-10 09:34:02,904 - INFO - 截断后的预测列表(前10个): [1259, 2409, 372, 185, 1375, 2249, 271, 2137, 3251, 2960]
+2025-05-10 09:34:02,904 - INFO - 目标电影ID 372在位置3
+2025-05-10 09:34:02,904 - INFO - 位置3的DCG贡献: 1/log2(4) = 0.5000
+2025-05-10 09:34:02,904 - INFO - ==== 测试结果 ====
+2025-05-10 09:34:02,904 - INFO - 用户ID: 706
+2025-05-10 09:34:02,905 - INFO - 目标电影: Reality Bites (ID: 372)
+2025-05-10 09:34:02,905 - INFO - 预测列表(前10个): [1259, 2409, 372, 185, 1375, 2249, 271, 2137, 3251, 2960]
+2025-05-10 09:34:02,905 - INFO - NDCG@10: 0.5000
+2025-05-10 09:34:02,905 - INFO - ========== 测试结束 ==========
+2025-05-10 09:34:02,905 - INFO - 样本 7 测试完成，NDCG@10: 0.5000
+2025-05-10 09:34:02,905 - INFO - ===== 测试样本 8/10 =====
+2025-05-10 09:34:02,905 - INFO - ========== 测试开始 ==========
+2025-05-10 09:34:02,905 - INFO - ==== 样本信息 ====
+2025-05-10 09:34:02,905 - INFO - 用户ID: 729
+2025-05-10 09:34:02,906 - INFO - 用户历史电影数量: 20
+2025-05-10 09:34:02,906 - INFO - 候选电影数量: 20
+2025-05-10 09:34:02,906 - INFO - 目标电影: Talented Mr. Ripley, The (ID: 3176)
+2025-05-10 09:34:02,906 - INFO - ==== 构造提示词 ====
+2025-05-10 09:34:02,906 - INFO - 调用construct_prompt函数...
+2025-05-10 09:34:02,906 - INFO - 生成了6条消息模板
+2025-05-10 09:34:02,906 - INFO - ==== 第一轮调用API(用户分析)结果 ====
+2025-05-10 09:34:02,906 - INFO - 发送了 2 条消息进行用户分析（system + user第一轮消息）
+2025-05-10 09:34:02,906 - INFO - ==== API调用参数 ====
+2025-05-10 09:34:02,906 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:34:02,906 - INFO - 温度: 0
+2025-05-10 09:34:02,906 - INFO - ==== 发送API请求 ====
+2025-05-10 09:34:07,692 - INFO - ==== API响应 ====
+2025-05-10 09:34:07,692 - INFO - 响应状态码: 200
+2025-05-10 09:34:07,692 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:34:02 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5b12399e124e5-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:34:07,692 - INFO - 完整响应JSON: {
+  "id": "gen-1746840842-8USD61qsol3VgdCgfouN",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840843,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n{\n  \"类别偏好\": [\n    0, 2, 1, 1, 2, 6, 8, 5, 3, 1, 6, 1, 4, 3, 2, 0, 0\n  ]\n}\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 741,
+    "completion_tokens": 66,
+    "total_tokens": 807,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:34:07,692 - INFO - 模型回复内容:
+```json
+{
+  "类别偏好": [
+    0, 2, 1, 1, 2, 6, 8, 5, 3, 1, 6, 1, 4, 3, 2, 0, 0
+  ]
+}
+```
+2025-05-10 09:34:07,692 - INFO - ==== 用量信息 ====
+2025-05-10 09:34:07,692 - INFO - 输入tokens: 741
+2025-05-10 09:34:07,693 - INFO - 输出tokens: 66
+2025-05-10 09:34:07,693 - INFO - 总tokens: 807
+2025-05-10 09:34:07,693 - INFO - ==== 第二轮调用API(候选电影分析)结果 ====
+2025-05-10 09:34:07,693 - INFO - 发送了 3 条消息进行候选电影分析（包含前两轮历史）
+2025-05-10 09:34:07,694 - INFO - ==== API调用参数 ====
+2025-05-10 09:34:07,694 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:34:07,694 - INFO - 温度: 0
+2025-05-10 09:34:07,694 - INFO - ==== 发送API请求 ====
+2025-05-10 09:34:14,334 - INFO - ==== API响应 ====
+2025-05-10 09:34:14,334 - INFO - 响应状态码: 200
+2025-05-10 09:34:14,334 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:34:08 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5b147de92293b-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:34:14,334 - INFO - 完整响应JSON: {
+  "id": "gen-1746840848-If2NWyDel1XbOCNwvhUP",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840848,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n  2571,\n  3623,\n  1483,\n  3176,\n  249,\n  381,\n  2154,\n  2943,\n  1611,\n  3360,\n  2550,\n  2867,\n  3219,\n  1965,\n  3878,\n  146,\n  3590,\n  730,\n  803,\n  2129\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 746,
+    "completion_tokens": 82,
+    "total_tokens": 828,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:34:14,335 - INFO - 模型回复内容:
+```json
+[
+  2571,
+  3623,
+  1483,
+  3176,
+  249,
+  381,
+  2154,
+  2943,
+  1611,
+  3360,
+  2550,
+  2867,
+  3219,
+  1965,
+  3878,
+  146,
+  3590,
+  730,
+  803,
+  2129
+]
+```
+2025-05-10 09:34:14,335 - INFO - ==== 用量信息 ====
+2025-05-10 09:34:14,335 - INFO - 输入tokens: 746
+2025-05-10 09:34:14,335 - INFO - 输出tokens: 82
+2025-05-10 09:34:14,335 - INFO - 总tokens: 828
+2025-05-10 09:34:14,335 - INFO - ==== 第三轮调用API(最终推荐)结果 ====
+2025-05-10 09:34:14,335 - INFO - ==== 发送的消息 (最终推荐请求) ====
+2025-05-10 09:34:14,337 - INFO - [用户第三轮 - 输出要求]:
+  ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:34:14,337 - INFO - ==== API调用参数 ====
+2025-05-10 09:34:14,337 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:34:14,337 - INFO - 温度: 0
+2025-05-10 09:34:14,337 - INFO - ==== 发送API请求 ====
+2025-05-10 09:34:19,330 - INFO - ==== API响应 ====
+2025-05-10 09:34:19,330 - INFO - 响应状态码: 200
+2025-05-10 09:34:19,330 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:34:14 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5b16adc9f08ab-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:34:19,332 - INFO - 完整响应JSON: {
+  "id": "gen-1746840854-v0bp5bufnRQdKZr0xBEO",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840854,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[2571, 3623, 1483, 3176, 249, 381, 2154, 2943, 1611, 3360, 2550, 2867, 3219, 1965, 3878, 146, 3590, 730, 803, 2129]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 529,
+    "completion_tokens": 80,
+    "total_tokens": 609,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:34:19,332 - INFO - 模型回复内容:
+```json
+[2571, 3623, 1483, 3176, 249, 381, 2154, 2943, 1611, 3360, 2550, 2867, 3219, 1965, 3878, 146, 3590, 730, 803, 2129]
+```
+2025-05-10 09:34:19,332 - INFO - ==== 用量信息 ====
+2025-05-10 09:34:19,333 - INFO - 输入tokens: 529
+2025-05-10 09:34:19,333 - INFO - 输出tokens: 80
+2025-05-10 09:34:19,334 - INFO - 总tokens: 609
+2025-05-10 09:34:19,334 - INFO - ==== 解析输出 ====
+2025-05-10 09:34:19,335 - INFO - 调用parse_output函数解析响应...
+2025-05-10 09:34:19,335 - INFO - 解析结果: [2571, 3623, 1483, 3176, 249, 381, 2154, 2943, 1611, 3360, 2550, 2867, 3219, 1965, 3878, 146, 3590, 730, 803, 2129]
+2025-05-10 09:34:19,335 - INFO - ==== 计算NDCG ====
+2025-05-10 09:34:19,336 - INFO - 相关性列表: [0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+2025-05-10 09:34:19,336 - INFO - 位置4的DCG贡献: 1/log2(5) = 0.4307
+2025-05-10 09:34:19,337 - INFO - DCG: 0.4307, IDCG: 1.0000
+2025-05-10 09:34:19,337 - INFO - NDCG@10: 0.4307
+2025-05-10 09:34:19,337 - INFO - NDCG@10计算详情:
+2025-05-10 09:34:19,338 - INFO - 截断后的预测列表(前10个): [2571, 3623, 1483, 3176, 249, 381, 2154, 2943, 1611, 3360]
+2025-05-10 09:34:19,338 - INFO - 目标电影ID 3176在位置4
+2025-05-10 09:34:19,338 - INFO - 位置4的DCG贡献: 1/log2(5) = 0.4307
+2025-05-10 09:34:19,339 - INFO - ==== 测试结果 ====
+2025-05-10 09:34:19,339 - INFO - 用户ID: 729
+2025-05-10 09:34:19,339 - INFO - 目标电影: Talented Mr. Ripley, The (ID: 3176)
+2025-05-10 09:34:19,339 - INFO - 预测列表(前10个): [2571, 3623, 1483, 3176, 249, 381, 2154, 2943, 1611, 3360]
+2025-05-10 09:34:19,339 - INFO - NDCG@10: 0.4307
+2025-05-10 09:34:19,339 - INFO - ========== 测试结束 ==========
+2025-05-10 09:34:19,340 - INFO - 样本 8 测试完成，NDCG@10: 0.4307
+2025-05-10 09:34:19,340 - INFO - ===== 测试样本 9/10 =====
+2025-05-10 09:34:19,340 - INFO - ========== 测试开始 ==========
+2025-05-10 09:34:19,340 - INFO - ==== 样本信息 ====
+2025-05-10 09:34:19,340 - INFO - 用户ID: 738
+2025-05-10 09:34:19,340 - INFO - 用户历史电影数量: 20
+2025-05-10 09:34:19,340 - INFO - 候选电影数量: 20
+2025-05-10 09:34:19,340 - INFO - 目标电影: Dangerous Beauty (ID: 1758)
+2025-05-10 09:34:19,340 - INFO - ==== 构造提示词 ====
+2025-05-10 09:34:19,340 - INFO - 调用construct_prompt函数...
+2025-05-10 09:34:19,340 - INFO - 生成了6条消息模板
+2025-05-10 09:34:19,340 - INFO - ==== 第一轮调用API(用户分析)结果 ====
+2025-05-10 09:34:19,340 - INFO - 发送了 2 条消息进行用户分析（system + user第一轮消息）
+2025-05-10 09:34:19,341 - INFO - ==== API调用参数 ====
+2025-05-10 09:34:19,341 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:34:19,341 - INFO - 温度: 0
+2025-05-10 09:34:19,341 - INFO - ==== 发送API请求 ====
+2025-05-10 09:34:23,003 - INFO - ==== API响应 ====
+2025-05-10 09:34:23,003 - INFO - 响应状态码: 200
+2025-05-10 09:34:23,004 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:34:19 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5b18a3a1752d7-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:34:23,004 - INFO - 完整响应JSON: {
+  "id": "gen-1746840859-QtGwIzjIWHMAXsscsEUt",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840859,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n{\"类别偏好\": [0, 2, 0, 0, 1, 3, 8, 4, 6, 2, 2, 1, 1, 1, 3, 0, 0]}\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 726,
+    "completion_tokens": 60,
+    "total_tokens": 786,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:34:23,006 - INFO - 模型回复内容:
+```json
+{"类别偏好": [0, 2, 0, 0, 1, 3, 8, 4, 6, 2, 2, 1, 1, 1, 3, 0, 0]}
+```
+2025-05-10 09:34:23,006 - INFO - ==== 用量信息 ====
+2025-05-10 09:34:23,006 - INFO - 输入tokens: 726
+2025-05-10 09:34:23,008 - INFO - 输出tokens: 60
+2025-05-10 09:34:23,008 - INFO - 总tokens: 786
+2025-05-10 09:34:23,009 - INFO - ==== 第二轮调用API(候选电影分析)结果 ====
+2025-05-10 09:34:23,009 - INFO - 发送了 3 条消息进行候选电影分析（包含前两轮历史）
+2025-05-10 09:34:23,010 - INFO - ==== API调用参数 ====
+2025-05-10 09:34:23,010 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:34:23,010 - INFO - 温度: 0
+2025-05-10 09:34:23,010 - INFO - ==== 发送API请求 ====
+2025-05-10 09:34:34,277 - INFO - ==== API响应 ====
+2025-05-10 09:34:34,277 - INFO - 响应状态码: 200
+2025-05-10 09:34:34,277 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:34:22 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5b1a04fbb4896-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:34:34,277 - INFO - 完整响应JSON: {
+  "id": "gen-1746840862-z36CMqlt5Axjkp5Qo0qM",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840862,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"id\": 1858, \"similarity\": 8},\n    {\"id\": 3864, \"similarity\": 6},\n    {\"id\": 1343, \"similarity\": 6},\n    {\"id\": 3107, \"similarity\": 6},\n    {\"id\": 373, \"similarity\": 5},\n    {\"id\": 614, \"similarity\": 5},\n    {\"id\": 1053, \"similarity\": 5},\n    {\"id\": 1236, \"similarity\": 4},\n    {\"id\": 1758, \"similarity\": 4},\n    {\"id\": 3325, \"similarity\": 4},\n    {\"id\": 971, \"similarity\": 4},\n    {\"id\": 2507, \"similarity\": 4},\n    {\"id\": 2997, \"similarity\": 4},\n    {\"id\": 1024, \"similarity\": 3},\n    {\"id\": 2049, \"similarity\": 3},\n    {\"id\": 2566, \"similarity\": 3},\n    {\"id\": 1537, \"similarity\": 3},\n    {\"id\": 3672, \"similarity\": 3},\n    {\"id\": 3933, \"similarity\": 2},\n    {\"id\": 3145, \"similarity\": 2}\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 754,
+    "completion_tokens": 304,
+    "total_tokens": 1058,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:34:34,277 - INFO - 模型回复内容:
+```json
+[
+    {"id": 1858, "similarity": 8},
+    {"id": 3864, "similarity": 6},
+    {"id": 1343, "similarity": 6},
+    {"id": 3107, "similarity": 6},
+    {"id": 373, "similarity": 5},
+    {"id": 614, "similarity": 5},
+    {"id": 1053, "similarity": 5},
+    {"id": 1236, "similarity": 4},
+    {"id": 1758, "similarity": 4},
+    {"id": 3325, "similarity": 4},
+    {"id": 971, "similarity": 4},
+    {"id": 2507, "similarity": 4},
+    {"id": 2997, "similarity": 4},
+    {"id": 1024, "similarity": 3},
+    {"id": 2049, "similarity": 3},
+    {"id": 2566, "similarity": 3},
+    {"id": 1537, "similarity": 3},
+    {"id": 3672, "similarity": 3},
+    {"id": 3933, "similarity": 2},
+    {"id": 3145, "similarity": 2}
+]
+```
+2025-05-10 09:34:34,277 - INFO - ==== 用量信息 ====
+2025-05-10 09:34:34,277 - INFO - 输入tokens: 754
+2025-05-10 09:34:34,279 - INFO - 输出tokens: 304
+2025-05-10 09:34:34,279 - INFO - 总tokens: 1058
+2025-05-10 09:34:34,279 - INFO - ==== 第三轮调用API(最终推荐)结果 ====
+2025-05-10 09:34:34,280 - INFO - ==== 发送的消息 (最终推荐请求) ====
+2025-05-10 09:34:34,280 - INFO - [用户第三轮 - 输出要求]:
+  ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:34:34,280 - INFO - ==== API调用参数 ====
+2025-05-10 09:34:34,280 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:34:34,280 - INFO - 温度: 0
+2025-05-10 09:34:34,280 - INFO - ==== 发送API请求 ====
+2025-05-10 09:34:50,427 - INFO - ==== API响应 ====
+2025-05-10 09:34:50,427 - INFO - 响应状态码: 200
+2025-05-10 09:34:50,428 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:34:34 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5b1e6b8db5245-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:34:50,428 - INFO - 完整响应JSON: {
+  "id": "gen-1746840874-5AOJGmmlOEO3KQaDLwod",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840874,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"name\": \"The Shawshank Redemption\", \"id\": 1858},\n    {\"name\": \"The Godfather\", \"id\": 3864},\n    {\"name\": \"Pulp Fiction\", \"id\": 1343},\n    {\"name\": \"The Dark Knight\", \"id\": 3108},\n    {\"name\": \"Fight Club\", \"id\": 373},\n    {\"name\": \"Inception\", \"id\": 614},\n    {\"name\": \"The Matrix\", \"id\": 1053},\n    {\"name\": \"Goodfellas\", \"id\": 1236},\n    {\"name\": \"The Silence of the Lambs\", \"id\": 1758},\n    {\"name\": \"The Departed\", \"id\": 3325},\n    {\"name\": \"Se7en\", \"id\": 971},\n    {\"name\": \"The Usual Suspects\", \"id\": 2507},\n    {\"name\": \"The Prestige\", \"id\": 2997},\n    {\"name\": \"Memento\", \"id\": 1024},\n    {\"name\": \"Blade Runner\", \"id\": 2049},\n    {\"name\": \"The Green Mile\", \"id\": 2566},\n    {\"name\": \"American History X\", \"id\": 1537},\n    {\"name\": \"The Pianist\", \"id\": 3672},\n    {\"name\": \"The Sixth Sense\", \"id\": 3933},\n    {\"name\": \"The Truman Show\", \"id\": 3145}\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 745,
+    "completion_tokens": 330,
+    "total_tokens": 1075,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:34:50,429 - INFO - 模型回复内容:
+```json
+[
+    {"name": "The Shawshank Redemption", "id": 1858},
+    {"name": "The Godfather", "id": 3864},
+    {"name": "Pulp Fiction", "id": 1343},
+    {"name": "The Dark Knight", "id": 3108},
+    {"name": "Fight Club", "id": 373},
+    {"name": "Inception", "id": 614},
+    {"name": "The Matrix", "id": 1053},
+    {"name": "Goodfellas", "id": 1236},
+    {"name": "The Silence of the Lambs", "id": 1758},
+    {"name": "The Departed", "id": 3325},
+    {"name": "Se7en", "id": 971},
+    {"name": "The Usual Suspects", "id": 2507},
+    {"name": "The Prestige", "id": 2997},
+    {"name": "Memento", "id": 1024},
+    {"name": "Blade Runner", "id": 2049},
+    {"name": "The Green Mile", "id": 2566},
+    {"name": "American History X", "id": 1537},
+    {"name": "The Pianist", "id": 3672},
+    {"name": "The Sixth Sense", "id": 3933},
+    {"name": "The Truman Show", "id": 3145}
+]
+```
+2025-05-10 09:34:50,429 - INFO - ==== 用量信息 ====
+2025-05-10 09:34:50,429 - INFO - 输入tokens: 745
+2025-05-10 09:34:50,429 - INFO - 输出tokens: 330
+2025-05-10 09:34:50,430 - INFO - 总tokens: 1075
+2025-05-10 09:34:50,430 - INFO - ==== 解析输出 ====
+2025-05-10 09:34:50,431 - INFO - 调用parse_output函数解析响应...
+2025-05-10 09:34:50,431 - INFO - 解析结果: [1858, 3864, 1343, 3108, 373, 614, 1053, 1236, 1758, 3325, 971, 2507, 2997, 1024, 2049, 2566, 1537, 3672, 3933, 3145]
+2025-05-10 09:34:50,432 - INFO - ==== 计算NDCG ====
+2025-05-10 09:34:50,432 - INFO - 相关性列表: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0]
+2025-05-10 09:34:50,432 - INFO - 位置9的DCG贡献: 1/log2(10) = 0.3010
+2025-05-10 09:34:50,432 - INFO - DCG: 0.3010, IDCG: 1.0000
+2025-05-10 09:34:50,432 - INFO - NDCG@10: 0.3010
+2025-05-10 09:34:50,432 - INFO - NDCG@10计算详情:
+2025-05-10 09:34:50,432 - INFO - 截断后的预测列表(前10个): [1858, 3864, 1343, 3108, 373, 614, 1053, 1236, 1758, 3325]
+2025-05-10 09:34:50,432 - INFO - 目标电影ID 1758在位置9
+2025-05-10 09:34:50,432 - INFO - 位置9的DCG贡献: 1/log2(10) = 0.3010
+2025-05-10 09:34:50,432 - INFO - ==== 测试结果 ====
+2025-05-10 09:34:50,432 - INFO - 用户ID: 738
+2025-05-10 09:34:50,432 - INFO - 目标电影: Dangerous Beauty (ID: 1758)
+2025-05-10 09:34:50,432 - INFO - 预测列表(前10个): [1858, 3864, 1343, 3108, 373, 614, 1053, 1236, 1758, 3325]
+2025-05-10 09:34:50,432 - INFO - NDCG@10: 0.3010
+2025-05-10 09:34:50,432 - INFO - ========== 测试结束 ==========
+2025-05-10 09:34:50,432 - INFO - 样本 9 测试完成，NDCG@10: 0.3010
+2025-05-10 09:34:50,432 - INFO - ===== 测试样本 10/10 =====
+2025-05-10 09:34:50,432 - INFO - ========== 测试开始 ==========
+2025-05-10 09:34:50,432 - INFO - ==== 样本信息 ====
+2025-05-10 09:34:50,432 - INFO - 用户ID: 751
+2025-05-10 09:34:50,432 - INFO - 用户历史电影数量: 20
+2025-05-10 09:34:50,432 - INFO - 候选电影数量: 20
+2025-05-10 09:34:50,432 - INFO - 目标电影: Repo Man (ID: 1965)
+2025-05-10 09:34:50,432 - INFO - ==== 构造提示词 ====
+2025-05-10 09:34:50,432 - INFO - 调用construct_prompt函数...
+2025-05-10 09:34:50,432 - INFO - 生成了6条消息模板
+2025-05-10 09:34:50,432 - INFO - ==== 第一轮调用API(用户分析)结果 ====
+2025-05-10 09:34:50,432 - INFO - 发送了 2 条消息进行用户分析（system + user第一轮消息）
+2025-05-10 09:34:50,432 - INFO - ==== API调用参数 ====
+2025-05-10 09:34:50,432 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:34:50,432 - INFO - 温度: 0
+2025-05-10 09:34:50,432 - INFO - ==== 发送API请求 ====
+2025-05-10 09:34:55,774 - INFO - ==== API响应 ====
+2025-05-10 09:34:55,774 - INFO - 响应状态码: 200
+2025-05-10 09:34:55,775 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:34:50 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5b24b7964135e-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:34:55,775 - INFO - 完整响应JSON: {
+  "id": "gen-1746840890-knB9s3UaUcnWORJQEuD0",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840890,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n{\n  \"类别偏好\": [\n    1, 4, 1, 1, 3, 5, 5, 5, 7, 1, 4, 1, 2, 2, 2, 1, 0\n  ]\n}\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 735,
+    "completion_tokens": 66,
+    "total_tokens": 801,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:34:55,777 - INFO - 模型回复内容:
+```json
+{
+  "类别偏好": [
+    1, 4, 1, 1, 3, 5, 5, 5, 7, 1, 4, 1, 2, 2, 2, 1, 0
+  ]
+}
+```
+2025-05-10 09:34:55,777 - INFO - ==== 用量信息 ====
+2025-05-10 09:34:55,777 - INFO - 输入tokens: 735
+2025-05-10 09:34:55,778 - INFO - 输出tokens: 66
+2025-05-10 09:34:55,778 - INFO - 总tokens: 801
+2025-05-10 09:34:55,779 - INFO - ==== 第二轮调用API(候选电影分析)结果 ====
+2025-05-10 09:34:55,780 - INFO - 发送了 3 条消息进行候选电影分析（包含前两轮历史）
+2025-05-10 09:34:55,780 - INFO - ==== API调用参数 ====
+2025-05-10 09:34:55,781 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:34:55,781 - INFO - 温度: 0
+2025-05-10 09:34:55,781 - INFO - ==== 发送API请求 ====
+2025-05-10 09:35:55,698 - INFO - ==== API响应 ====
+2025-05-10 09:35:55,699 - INFO - 响应状态码: 200
+2025-05-10 09:35:55,699 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:34:55 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5b26cba437bcd-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:35:55,699 - INFO - 完整响应JSON: {
+  "id": "gen-1746840895-P1p1CakeQDNCWjbtj2is",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840895,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n  {\n    \"id\": 1880,\n    \"title\": \"Lawn Dogs\",\n    \"genres\": [\"Drama\"]\n  },\n  {\n    \"id\": 3258,\n    \"title\": \"Death Becomes Her\",\n    \"genres\": [\"Comedy\", \"Fantasy\"]\n  },\n  {\n    \"id\": 396,\n    \"title\": \"Fall Time\",\n    \"genres\": [\"Thriller\", \"Crime\"]\n  },\n  {\n    \"id\": 1103,\n    \"title\": \"Rebel Without a Cause\",\n    \"genres\": [\"Drama\"]\n  },\n  {\n    \"id\": 3710,\n    \"title\": \"Action Jackson\",\n    \"genres\": [\"Action\", \"Thriller\", \"Crime\"]\n  },\n  {\n    \"id\": 2210,\n    \"title\": \"Sabotage\",\n    \"genres\": [\"Thriller\", \"Crime\"]\n  },\n  {\n    \"id\": 1590,\n    \"title\": \"Event Horizon\",\n    \"genres\": [\"Horror\", \"Sci-Fi\"]\n  },\n  {\n    \"id\": 2637,\n    \"title\": \"Mummy's Hand, The\",\n    \"genres\": [\"Horror\"]\n  },\n  {\n    \"id\": 3695,\n    \"title\": \"Toxic Avenger Part III: The Last Temptation of Toxie, The\",\n    \"genres\": [\"Comedy\", \"Horror\"]\n  },\n  {\n    \"id\": 2318,\n    \"title\": \"Happiness\",\n    \"genres\": [\"Drama\"]\n  },\n  {\n    \"id\": 381,\n    \"title\": \"When a Man Loves a Woman\",\n    \"genres\": [\"Drama\", \"Romance\"]\n  },\n  {\n    \"id\": 3413,\n    \"title\": \"Impact\",\n    \"genres\": [\"Drama\"]\n  },\n  {\n    \"id\": 161,\n    \"title\": \"Crimson Tide\",\n    \"genres\": [\"Drama\", \"Thriller\", \"War\"]\n  },\n  {\n    \"id\": 2970,\n    \"title\": \"Fitzcarraldo\",\n    \"genres\": [\"Drama\", \"Adventure\"]\n  },\n  {\n    \"id\": 1965,\n    \"title\": \"Repo Man\",\n    \"genres\": [\"Comedy\", \"Sci-Fi\"]\n  },\n  {\n    \"id\": 3723,\n    \"title\": \"Hamlet\",\n    \"genres\": [\"Drama\"]\n  },\n  {\n    \"id\": 876,\n    \"title\": \"Police Story 4: Project S (Chao ji ji hua)\",\n    \"genres\": [\"Action\", \"Comedy\", \"Crime\"]\n  },\n  {\n    \"id\": 2144,\n    \"title\": \"Sixteen Candles\",\n    \"genres\": [\"Comedy\", \"Romance\"]\n  },\n  {\n    \"id\": 1251,\n    \"title\": \"8 1/2\",\n    \"genres\": [\"Drama\"]\n  },\n  {\n    \"id\": 3245,\n    \"title\": \"I Am Cuba (Soy Cuba/Ya Kuba)\",\n    \"genres\": [\"Drama\"]\n  }\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 758,
+    "completion_tokens": 705,
+    "total_tokens": 1463,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:35:55,700 - INFO - 模型回复内容:
+```json
+[
+  {
+    "id": 1880,
+    "title": "Lawn Dogs",
+    "genres": ["Drama"]
+  },
+  {
+    "id": 3258,
+    "title": "Death Becomes Her",
+    "genres": ["Comedy", "Fantasy"]
+  },
+  {
+    "id": 396,
+    "title": "Fall Time",
+    "genres": ["Thriller", "Crime"]
+  },
+  {
+    "id": 1103,
+    "title": "Rebel Without a Cause",
+    "genres": ["Drama"]
+  },
+  {
+    "id": 3710,
+    "title": "Action Jackson",
+    "genres": ["Action", "Thriller", "Crime"]
+  },
+  {
+    "id": 2210,
+    "title": "Sabotage",
+    "genres": ["Thriller", "Crime"]
+  },
+  {
+    "id": 1590,
+    "title": "Event Horizon",
+    "genres": ["Horror", "Sci-Fi"]
+  },
+  {
+    "id": 2637,
+    "title": "Mummy's Hand, The",
+    "genres": ["Horror"]
+  },
+  {
+    "id": 3695,
+    "title": "Toxic Avenger Part III: The Last Temptation of Toxie, The",
+    "genres": ["Comedy", "Horror"]
+  },
+  {
+    "id": 2318,
+    "title": "Happiness",
+    "genres": ["Drama"]
+  },
+  {
+    "id": 381,
+    "title": "When a Man Loves a Woman",
+    "genres": ["Drama", "Romance"]
+  },
+  {
+    "id": 3413,
+    "title": "Impact",
+    "genres": ["Drama"]
+  },
+  {
+    "id": 161,
+    "title": "Crimson Tide",
+    "genres": ["Drama", "Thriller", "War"]
+  },
+  {
+    "id": 2970,
+    "title": "Fitzcarraldo",
+    "genres": ["Drama", "Adventure"]
+  },
+  {
+    "id": 1965,
+    "title": "Repo Man",
+    "genres": ["Comedy", "Sci-Fi"]
+  },
+  {
+    "id": 3723,
+    "title": "Hamlet",
+    "genres": ["Drama"]
+  },
+  {
+    "id": 876,
+    "title": "Police Story 4: Project S (Chao ji ji hua)",
+    "genres": ["Action", "Comedy", "Crime"]
+  },
+  {
+    "id": 2144,
+    "title": "Sixteen Candles",
+    "genres": ["Comedy", "Romance"]
+  },
+  {
+    "id": 1251,
+    "title": "8 1/2",
+    "genres": ["Drama"]
+  },
+  {
+    "id": 3245,
+    "title": "I Am Cuba (Soy Cuba/Ya Kuba)",
+    "genres": ["Drama"]
+  }
+]
+```
+2025-05-10 09:35:55,701 - INFO - ==== 用量信息 ====
+2025-05-10 09:35:55,701 - INFO - 输入tokens: 758
+2025-05-10 09:35:55,702 - INFO - 输出tokens: 705
+2025-05-10 09:35:55,702 - INFO - 总tokens: 1463
+2025-05-10 09:35:55,702 - INFO - ==== 第三轮调用API(最终推荐)结果 ====
+2025-05-10 09:35:55,703 - INFO - ==== 发送的消息 (最终推荐请求) ====
+2025-05-10 09:35:55,703 - INFO - [用户第三轮 - 输出要求]:
+  ### Step 3: 推荐结果输出
+请根据以上分析，从候选电影中选出最终的推荐列表，按照匹配度从高到低排序，以 JSON 数组格式输出电影ID列表。
+
+要求：只输出JSON，不要添加任何解释。格式示例：[{"name": "电影1", "id": 123}, {"name": "电影2", "id": 456}]
+2025-05-10 09:35:55,703 - INFO - ==== API调用参数 ====
+2025-05-10 09:35:55,703 - INFO - 模型: deepseek/deepseek-chat-v3-0324:free
+2025-05-10 09:35:55,704 - INFO - 温度: 0
+2025-05-10 09:35:55,704 - INFO - ==== 发送API请求 ====
+2025-05-10 09:36:09,273 - INFO - ==== API响应 ====
+2025-05-10 09:36:09,273 - INFO - 响应状态码: 200
+2025-05-10 09:36:09,274 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 01:35:55 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d5b3e36bea2f2d-LAX', 'Content-Encoding': 'br'}
+2025-05-10 09:36:09,274 - INFO - 完整响应JSON: {
+  "id": "gen-1746840955-wxmunZrjls2k3fV0tzky",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat-v3-0324:free",
+  "object": "chat.completion",
+  "created": 1746840955,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n  {\"name\": \"Lawn Dogs\", \"id\": 1880},\n  {\"name\": \"When a Man Loves a Woman\", \"id\": 381},\n  {\"name\": \"Rebel Without a Cause\", \"id\": 1103},\n  {\"name\": \"Happiness\", \"id\": 2318},\n  {\"name\": \"Impact\", \"id\": 3413},\n  {\"name\": \"8 1/2\", \"id\": 1251},\n  {\"name\": \"I Am Cuba (Soy Cuba/Ya Kuba)\", \"id\": 3245},\n  {\"name\": \"Hamlet\", \"id\": 3723},\n  {\"name\": \"Crimson Tide\", \"id\": 161},\n  {\"name\": \"Fitzcarraldo\", \"id\": 2970},\n  {\"name\": \"Death Becomes Her\", \"id\": 3258},\n  {\"name\": \"Sixteen Candles\", \"id\": 2144},\n  {\"name\": \"Police Story 4: Project S (Chao ji ji hua)\", \"id\": 876},\n  {\"name\": \"Repo Man\", \"id\": 1965},\n  {\"name\": \"Fall Time\", \"id\": 396},\n  {\"name\": \"Action Jackson\", \"id\": 3710},\n  {\"name\": \"Sabotage\", \"id\": 2210},\n  {\"name\": \"Toxic Avenger Part III: The Last Temptation of Toxie, The\", \"id\": 3695},\n  {\"name\": \"Event Horizon\", \"id\": 1590},\n  {\"name\": \"Mummy's Hand, The\", \"id\": 2637}\n]\n```",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1152,
+    "completion_tokens": 364,
+    "total_tokens": 1516,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 09:36:09,275 - INFO - 模型回复内容:
+```json
+[
+  {"name": "Lawn Dogs", "id": 1880},
+  {"name": "When a Man Loves a Woman", "id": 381},
+  {"name": "Rebel Without a Cause", "id": 1103},
+  {"name": "Happiness", "id": 2318},
+  {"name": "Impact", "id": 3413},
+  {"name": "8 1/2", "id": 1251},
+  {"name": "I Am Cuba (Soy Cuba/Ya Kuba)", "id": 3245},
+  {"name": "Hamlet", "id": 3723},
+  {"name": "Crimson Tide", "id": 161},
+  {"name": "Fitzcarraldo", "id": 2970},
+  {"name": "Death Becomes Her", "id": 3258},
+  {"name": "Sixteen Candles", "id": 2144},
+  {"name": "Police Story 4: Project S (Chao ji ji hua)", "id": 876},
+  {"name": "Repo Man", "id": 1965},
+  {"name": "Fall Time", "id": 396},
+  {"name": "Action Jackson", "id": 3710},
+  {"name": "Sabotage", "id": 2210},
+  {"name": "Toxic Avenger Part III: The Last Temptation of Toxie, The", "id": 3695},
+  {"name": "Event Horizon", "id": 1590},
+  {"name": "Mummy's Hand, The", "id": 2637}
+]
+```
+2025-05-10 09:36:09,275 - INFO - ==== 用量信息 ====
+2025-05-10 09:36:09,275 - INFO - 输入tokens: 1152
+2025-05-10 09:36:09,275 - INFO - 输出tokens: 364
+2025-05-10 09:36:09,276 - INFO - 总tokens: 1516
+2025-05-10 09:36:09,276 - INFO - ==== 解析输出 ====
+2025-05-10 09:36:09,276 - INFO - 调用parse_output函数解析响应...
+2025-05-10 09:36:09,276 - INFO - 解析结果: [1880, 381, 1103, 2318, 3413, 1251, 3245, 3723, 161, 2970, 3258, 2144, 876, 1965, 396, 3710, 2210, 3695, 1590, 2637]
+2025-05-10 09:36:09,276 - INFO - ==== 计算NDCG ====
+2025-05-10 09:36:09,278 - INFO - 相关性列表: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 09:36:09,278 - INFO - 目标电影不在预测列表中，NDCG=0
+2025-05-10 09:36:09,278 - INFO - NDCG@10计算详情:
+2025-05-10 09:36:09,278 - INFO - 截断后的预测列表(前10个): [1880, 381, 1103, 2318, 3413, 1251, 3245, 3723, 161, 2970]
+2025-05-10 09:36:09,278 - INFO - 目标电影ID 1965不在前10个预测列表中
+2025-05-10 09:36:09,279 - INFO - ==== 测试结果 ====
+2025-05-10 09:36:09,279 - INFO - 用户ID: 751
+2025-05-10 09:36:09,279 - INFO - 目标电影: Repo Man (ID: 1965)
+2025-05-10 09:36:09,279 - INFO - 预测列表(前10个): [1880, 381, 1103, 2318, 3413, 1251, 3245, 3723, 161, 2970]
+2025-05-10 09:36:09,279 - INFO - NDCG@10: 0.0000
+2025-05-10 09:36:09,279 - INFO - ========== 测试结束 ==========
+2025-05-10 09:36:09,279 - INFO - 样本 10 测试完成，NDCG@10: 0.0000
+2025-05-10 09:36:09,280 - INFO - ===== 测试总结 =====
+2025-05-10 09:36:09,280 - INFO - 样本 1 NDCG@10: 0.5000
+2025-05-10 09:36:09,280 - INFO - 样本 2 NDCG@10: 0.6309
+2025-05-10 09:36:09,280 - INFO - 样本 3 NDCG@10: 1.0000
+2025-05-10 09:36:09,280 - INFO - 样本 4 NDCG@10: 0.3333
+2025-05-10 09:36:09,280 - INFO - 样本 5 NDCG@10: 1.0000
+2025-05-10 09:36:09,281 - INFO - 样本 6 NDCG@10: 0.3333
+2025-05-10 09:36:09,281 - INFO - 样本 7 NDCG@10: 0.5000
+2025-05-10 09:36:09,281 - INFO - 样本 8 NDCG@10: 0.4307
+2025-05-10 09:36:09,281 - INFO - 样本 9 NDCG@10: 0.3010
+2025-05-10 09:36:09,281 - INFO - 样本 10 NDCG@10: 0.0000
+2025-05-10 09:36:09,281 - INFO - 总计测试了 10 个样本
+2025-05-10 09:36:09,281 - INFO - 平均NDCG@10: 0.5029
+2025-05-10 09:36:09,281 - INFO - ==== 运行信息 ====
+2025-05-10 09:36:09,281 - INFO - 执行时间: 2025-05-10T01:36:09
+2025-05-10 09:36:09,281 - INFO - API密钥: sk-or-v1...f35d4e89
+2025-05-10 09:36:09,282 - INFO - API地址: https://openrouter.ai/api/v1/chat/completions

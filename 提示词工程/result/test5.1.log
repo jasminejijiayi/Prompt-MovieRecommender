@@ -1,0 +1,1918 @@
+2025-05-10 02:20:25,623 - INFO - 开始执行测试...
+2025-05-10 02:20:25,624 - INFO - 读取val.jsonl文件...
+2025-05-10 02:20:25,624 - INFO - 成功加载10个样本
+2025-05-10 02:20:25,624 - INFO - 将测试10个样本
+2025-05-10 02:20:25,624 - INFO - ===== 测试样本 1/10 =====
+2025-05-10 02:20:25,624 - INFO - ========== 测试开始 ==========
+2025-05-10 02:20:25,624 - INFO - ==== 样本信息 ====
+2025-05-10 02:20:25,624 - INFO - 用户ID: 405
+2025-05-10 02:20:25,625 - INFO - 用户历史电影数量: 20
+2025-05-10 02:20:25,625 - INFO - 候选电影数量: 20
+2025-05-10 02:20:25,625 - INFO - 目标电影: Artemisia (ID: 1695)
+2025-05-10 02:20:25,625 - INFO - ==== 构造提示词 ====
+2025-05-10 02:20:25,625 - INFO - 调用construct_prompt函数...
+2025-05-10 02:20:25,625 - INFO - 生成了2条消息
+2025-05-10 02:20:25,625 - INFO - ==== 发送的消息 ====
+2025-05-10 02:20:25,625 - INFO - [系统提示]:
+  你是一个智能电影推荐引擎，请根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。
+分析步骤：
+1. 从用户历史观影记录中分析每个电影风格类型
+2. 评估候选电影的风格类型
+3. 生成按推荐优先级排序的结果列表
+输出要求：
+- 最终输出为JSON格式的推荐列表
+- 每项包含电影名称和ID
+- 示例格式: [{"name": "电影1", "id": 123}]
+可用电影风格类别: 
+['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+2025-05-10 02:20:25,625 - INFO - [用户请求]:
+  用户观影历史: 
+- Splash (ID: 2100)
+- American Graffiti (ID: 3363)
+- My Best Friend's Wedding (ID: 1569)
+- Apollo 13 (ID: 150)
+- Fish Called Wanda, A (ID: 1079)
+- Absolute Power (ID: 1459)
+- Anna Karenina (ID: 1496)
+- Civil Action, A (ID: 2433)
+- Any Given Sunday (ID: 3173)
+- Mrs. Doubtfire (ID: 500)
+- Fugitive, The (ID: 457)
+- Green Mile, The (ID: 3147)
+- Leaving Las Vegas (ID: 25)
+- Money Pit, The (ID: 2375)
+- Renaissance Man (ID: 516)
+- Speechless (ID: 378)
+- Music of the Heart (ID: 2996)
+- Postino, Il (The Postman) (ID: 58)
+- Antonia's Line (Antonia) (ID: 82)
+- Belle de jour (ID: 154)
+
+候选电影列表: 
+- Cecil B. Demented (ID: 3858)
+- Following (ID: 2579)
+- Artemisia (ID: 1695)
+- Swept from the Sea (ID: 1656)
+- Black Tar Heroin: The Dark End of the Street (ID: 3303)
+- Inspector Gadget (ID: 2720)
+- Source, The (ID: 2813)
+- Mr. Magoo (ID: 1731)
+- Light of Day (ID: 2755)
+- Tales From the Crypt Presents: Demon Knight (ID: 328)
+- All Dogs Go to Heaven (ID: 2123)
+- Live Flesh (ID: 1844)
+- Draughtsman's Contract, The (ID: 3221)
+- Richard III (ID: 41)
+- Bell, Book and Candle (ID: 3516)
+- Max Dugan Returns (ID: 3497)
+- Fall Time (ID: 396)
+- Chinese Box (ID: 1829)
+- Vacation (ID: 2795)
+- On the Town (ID: 3606)
+
+请直接输出JSON格式的推荐结果，不要包含其他内容。
+2025-05-10 02:20:25,625 - INFO - ==== 调用API ====
+2025-05-10 02:20:25,625 - INFO - ==== API调用参数 ====
+2025-05-10 02:20:25,625 - INFO - 模型: deepseek/deepseek-chat:free
+2025-05-10 02:20:25,625 - INFO - 温度: 0
+2025-05-10 02:20:25,625 - INFO - ==== 发送的消息 ====
+2025-05-10 02:20:25,625 - INFO - 消息 1:
+2025-05-10 02:20:25,625 - INFO - 角色: system
+2025-05-10 02:20:25,625 - INFO - 内容: 你是一个智能电影推荐引擎，请根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。
+分析步骤：
+1. 从用户历史观影记录中分析每个电影风格类型
+2. 评估候选电影的风格类型
+3. 生成按推荐优先级排序的结果列表
+输出要求：
+- 最终输出为JSON格式的推荐列表
+- 每项包含电影名称和ID
+- 示例格式: [{"name": "电影1", "id": 123}]
+可用电影风格类别: 
+['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+2025-05-10 02:20:25,625 - INFO - 消息 2:
+2025-05-10 02:20:25,626 - INFO - 角色: user
+2025-05-10 02:20:25,626 - INFO - 内容: 用户观影历史: 
+- Splash (ID: 2100)
+- American Graffiti (ID: 3363)
+- My Best Friend's Wedding (ID: 1569)
+- Apollo 13 (ID: 150)
+- Fish Called Wanda, A (ID: 1079)
+- Absolute Power (ID: 1459)
+- Anna Karenina (ID: 1496)
+- Civil Action, A (ID: 2433)
+- Any Given Sunday (ID: 3173)
+- Mrs. Doubtfire (ID: 500)
+- Fugitive, The (ID: 457)
+- Green Mile, The (ID: 3147)
+- Leaving Las Vegas (ID: 25)
+- Money Pit, The (ID: 2375)
+- Renaissance Man (ID: 516)
+- Speechless (ID: 378)
+- Music of the Heart (ID: 2996)
+- Postino, Il (The Postman) (ID: 58)
+- Antonia's Line (Antonia) (ID: 82)
+- Belle de jour (ID: 154)
+
+候选电影列表: 
+- Cecil B. Demented (ID: 3858)
+- Following (ID: 2579)
+- Artemisia (ID: 1695)
+- Swept from the Sea (ID: 1656)
+- Black Tar Heroin: The Dark End of the Street (ID: 3303)
+- Inspector Gadget (ID: 2720)
+- Source, The (ID: 2813)
+- Mr. Magoo (ID: 1731)
+- Light of Day (ID: 2755)
+- Tales From the Crypt Presents: Demon Knight (ID: 328)
+- All Dogs Go to Heaven (ID: 2123)
+- Live Flesh (ID: 1844)
+- Draughtsman's Contract, The (ID: 3221)
+- Richard III (ID: 41)
+- Bell, Book and Candle (ID: 3516)
+- Max Dugan Returns (ID: 3497)
+- Fall Time (ID: 396)
+- Chinese Box (ID: 1829)
+- Vacation (ID: 2795)
+- On the Town (ID: 3606)
+
+请直接输出JSON格式的推荐结果，不要包含其他内容。
+2025-05-10 02:20:25,626 - INFO - ==== 发送API请求 ====
+2025-05-10 02:20:33,813 - INFO - ==== API响应 ====
+2025-05-10 02:20:33,814 - INFO - 响应状态码: 200
+2025-05-10 02:20:33,814 - INFO - 响应Headers: {'Date': 'Fri, 09 May 2025 18:20:26 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d335f67d5469ce-LAX', 'Content-Encoding': 'br'}
+2025-05-10 02:20:33,815 - INFO - 完整响应JSON: {
+  "id": "gen-1746814826-zogLZLqr536COVvnHYWb",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat:free",
+  "object": "chat.completion",
+  "created": 1746814826,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "[{\"name\": \"Cecil B. Demented\", \"id\": 3858}, {\"name\": \"Following\", \"id\": 2579}, {\"name\": \"Artemisia\", \"id\": 1695}, {\"name\": \"Swept from the Sea\", \"id\": 1656}, {\"name\": \"Black Tar Heroin: The Dark End of the Street\", \"id\": 3303}, {\"name\": \"Inspector Gadget\", \"id\": 2720}, {\"name\": \"Source, The\", \"id\": 2813}, {\"name\": \"Mr. Magoo\", \"id\": 1731}, {\"name\": \"Light of Day\", \"id\": 2755}, {\"name\": \"Tales From the Crypt Presents: Demon Knight\", \"id\": 328}, {\"name\": \"All Dogs Go to Heaven\", \"id\": 2123}, {\"name\": \"Live Flesh\", \"id\": 1844}, {\"name\": \"Draughtsman's Contract, The\", \"id\": 3221}, {\"name\": \"Richard III\", \"id\": 41}, {\"name\": \"Bell, Book and Candle\", \"id\": 3516}, {\"name\": \"Max Dugan Returns\", \"id\": 3497}, {\"name\": \"Fall Time\", \"id\": 396}, {\"name\": \"Chinese Box\", \"id\": 1829}, {\"name\": \"Vacation\", \"id\": 2795}, {\"name\": \"On the Town\", \"id\": 3606}]",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 717,
+    "completion_tokens": 328,
+    "total_tokens": 1045,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 02:20:33,816 - INFO - 模型回复内容:
+[{"name": "Cecil B. Demented", "id": 3858}, {"name": "Following", "id": 2579}, {"name": "Artemisia", "id": 1695}, {"name": "Swept from the Sea", "id": 1656}, {"name": "Black Tar Heroin: The Dark End of the Street", "id": 3303}, {"name": "Inspector Gadget", "id": 2720}, {"name": "Source, The", "id": 2813}, {"name": "Mr. Magoo", "id": 1731}, {"name": "Light of Day", "id": 2755}, {"name": "Tales From the Crypt Presents: Demon Knight", "id": 328}, {"name": "All Dogs Go to Heaven", "id": 2123}, {"name": "Live Flesh", "id": 1844}, {"name": "Draughtsman's Contract, The", "id": 3221}, {"name": "Richard III", "id": 41}, {"name": "Bell, Book and Candle", "id": 3516}, {"name": "Max Dugan Returns", "id": 3497}, {"name": "Fall Time", "id": 396}, {"name": "Chinese Box", "id": 1829}, {"name": "Vacation", "id": 2795}, {"name": "On the Town", "id": 3606}]
+2025-05-10 02:20:33,816 - INFO - ==== 用量信息 ====
+2025-05-10 02:20:33,817 - INFO - 输入tokens: 717
+2025-05-10 02:20:33,817 - INFO - 输出tokens: 328
+2025-05-10 02:20:33,817 - INFO - 总tokens: 1045
+2025-05-10 02:20:33,818 - INFO - ==== 解析输出 ====
+2025-05-10 02:20:33,818 - INFO - 调用parse_output函数解析响应...
+2025-05-10 02:20:33,819 - INFO - 解析结果: [3858, 2579, 1695, 1656, 3303, 2720, 2813, 1731, 2755, 328, 2123, 1844, 3221, 41, 3516, 3497, 396, 1829, 2795, 3606]
+2025-05-10 02:20:33,819 - INFO - ==== 计算NDCG ====
+2025-05-10 02:20:33,819 - INFO - 相关性列表: [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 02:20:33,821 - INFO - 位置3的DCG贡献: 1/log2(4) = 0.5000
+2025-05-10 02:20:33,821 - INFO - DCG: 0.5000, IDCG: 1.0000
+2025-05-10 02:20:33,821 - INFO - NDCG@10: 0.5000
+2025-05-10 02:20:33,821 - INFO - NDCG@10计算详情:
+2025-05-10 02:20:33,822 - INFO - 截断后的预测列表(前10个): [3858, 2579, 1695, 1656, 3303, 2720, 2813, 1731, 2755, 328]
+2025-05-10 02:20:33,822 - INFO - 目标电影ID 1695在位置3
+2025-05-10 02:20:33,822 - INFO - 位置3的DCG贡献: 1/log2(4) = 0.5000
+2025-05-10 02:20:33,822 - INFO - ==== 测试结果 ====
+2025-05-10 02:20:33,822 - INFO - 用户ID: 405
+2025-05-10 02:20:33,822 - INFO - 目标电影: Artemisia (ID: 1695)
+2025-05-10 02:20:33,822 - INFO - 预测列表(前10个): [3858, 2579, 1695, 1656, 3303, 2720, 2813, 1731, 2755, 328]
+2025-05-10 02:20:33,822 - INFO - NDCG@10: 0.5000
+2025-05-10 02:20:33,822 - INFO - ========== 测试结束 ==========
+2025-05-10 02:20:33,822 - INFO - 样本 1 测试完成，NDCG@10: 0.5000
+2025-05-10 02:20:33,822 - INFO - ===== 测试样本 2/10 =====
+2025-05-10 02:20:33,822 - INFO - ========== 测试开始 ==========
+2025-05-10 02:20:33,822 - INFO - ==== 样本信息 ====
+2025-05-10 02:20:33,822 - INFO - 用户ID: 475
+2025-05-10 02:20:33,822 - INFO - 用户历史电影数量: 20
+2025-05-10 02:20:33,823 - INFO - 候选电影数量: 20
+2025-05-10 02:20:33,823 - INFO - 目标电影: Up in Smoke (ID: 1194)
+2025-05-10 02:20:33,823 - INFO - ==== 构造提示词 ====
+2025-05-10 02:20:33,823 - INFO - 调用construct_prompt函数...
+2025-05-10 02:20:33,823 - INFO - 生成了2条消息
+2025-05-10 02:20:33,823 - INFO - ==== 发送的消息 ====
+2025-05-10 02:20:33,823 - INFO - [系统提示]:
+  你是一个智能电影推荐引擎，请根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。
+分析步骤：
+1. 从用户历史观影记录中分析每个电影风格类型
+2. 评估候选电影的风格类型
+3. 生成按推荐优先级排序的结果列表
+输出要求：
+- 最终输出为JSON格式的推荐列表
+- 每项包含电影名称和ID
+- 示例格式: [{"name": "电影1", "id": 123}]
+可用电影风格类别: 
+['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+2025-05-10 02:20:33,823 - INFO - [用户请求]:
+  用户观影历史: 
+- Meatballs Part II (ID: 3041)
+- Porky's II: The Next Day (ID: 3689)
+- Porky's Revenge (ID: 3690)
+- Police Academy 4: Citizens on Patrol (ID: 2381)
+- Police Academy 6: City Under Siege (ID: 2383)
+- Police Academy 5: Assignment: Miami Beach (ID: 2382)
+- Monty Python and the Holy Grail (ID: 1136)
+- Annie Hall (ID: 1230)
+- Harold and Maude (ID: 1235)
+- Young Frankenstein (ID: 1278)
+- Animal House (ID: 3421)
+- Monty Python's Life of Brian (ID: 1080)
+- Blazing Saddles (ID: 3671)
+- Kelly's Heroes (ID: 3836)
+- Jerk, The (ID: 2109)
+- Meatballs (ID: 3040)
+- Return of the Pink Panther, The (ID: 1125)
+- Everything You Always Wanted to Know About Sex (ID: 3812)
+- Grease (ID: 1380)
+- Apple Dumpling Gang, The (ID: 1007)
+
+候选电影列表: 
+- Top Hat (ID: 945)
+- Smoke (ID: 194)
+- Last Temptation of Christ, The (ID: 2022)
+- Girl on the Bridge, The (La Fille sur le Pont) (ID: 3822)
+- American Beauty (ID: 2858)
+- Outside Ozona (ID: 2438)
+- Sleepwalkers (ID: 3709)
+- Up in Smoke (ID: 1194)
+- Kingpin (ID: 785)
+- Ridicule (ID: 1365)
+- City of Lost Children, The (ID: 29)
+- Retroactive (ID: 3474)
+- Deer Hunter, The (ID: 1263)
+- 2010 (ID: 2311)
+- Great Race, The (ID: 1083)
+- Everest (ID: 1797)
+- Braddock: Missing in Action III (ID: 3768)
+- Late August, Early September (Fin août, début septembre) (ID: 2705)
+- Rent-A-Cop (ID: 3667)
+- Snowriders (ID: 1145)
+
+请直接输出JSON格式的推荐结果，不要包含其他内容。
+2025-05-10 02:20:33,824 - INFO - ==== 调用API ====
+2025-05-10 02:20:33,824 - INFO - ==== API调用参数 ====
+2025-05-10 02:20:33,824 - INFO - 模型: deepseek/deepseek-chat:free
+2025-05-10 02:20:33,824 - INFO - 温度: 0
+2025-05-10 02:20:33,824 - INFO - ==== 发送的消息 ====
+2025-05-10 02:20:33,824 - INFO - 消息 1:
+2025-05-10 02:20:33,824 - INFO - 角色: system
+2025-05-10 02:20:33,825 - INFO - 内容: 你是一个智能电影推荐引擎，请根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。
+分析步骤：
+1. 从用户历史观影记录中分析每个电影风格类型
+2. 评估候选电影的风格类型
+3. 生成按推荐优先级排序的结果列表
+输出要求：
+- 最终输出为JSON格式的推荐列表
+- 每项包含电影名称和ID
+- 示例格式: [{"name": "电影1", "id": 123}]
+可用电影风格类别: 
+['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+2025-05-10 02:20:33,825 - INFO - 消息 2:
+2025-05-10 02:20:33,825 - INFO - 角色: user
+2025-05-10 02:20:33,825 - INFO - 内容: 用户观影历史: 
+- Meatballs Part II (ID: 3041)
+- Porky's II: The Next Day (ID: 3689)
+- Porky's Revenge (ID: 3690)
+- Police Academy 4: Citizens on Patrol (ID: 2381)
+- Police Academy 6: City Under Siege (ID: 2383)
+- Police Academy 5: Assignment: Miami Beach (ID: 2382)
+- Monty Python and the Holy Grail (ID: 1136)
+- Annie Hall (ID: 1230)
+- Harold and Maude (ID: 1235)
+- Young Frankenstein (ID: 1278)
+- Animal House (ID: 3421)
+- Monty Python's Life of Brian (ID: 1080)
+- Blazing Saddles (ID: 3671)
+- Kelly's Heroes (ID: 3836)
+- Jerk, The (ID: 2109)
+- Meatballs (ID: 3040)
+- Return of the Pink Panther, The (ID: 1125)
+- Everything You Always Wanted to Know About Sex (ID: 3812)
+- Grease (ID: 1380)
+- Apple Dumpling Gang, The (ID: 1007)
+
+候选电影列表: 
+- Top Hat (ID: 945)
+- Smoke (ID: 194)
+- Last Temptation of Christ, The (ID: 2022)
+- Girl on the Bridge, The (La Fille sur le Pont) (ID: 3822)
+- American Beauty (ID: 2858)
+- Outside Ozona (ID: 2438)
+- Sleepwalkers (ID: 3709)
+- Up in Smoke (ID: 1194)
+- Kingpin (ID: 785)
+- Ridicule (ID: 1365)
+- City of Lost Children, The (ID: 29)
+- Retroactive (ID: 3474)
+- Deer Hunter, The (ID: 1263)
+- 2010 (ID: 2311)
+- Great Race, The (ID: 1083)
+- Everest (ID: 1797)
+- Braddock: Missing in Action III (ID: 3768)
+- Late August, Early September (Fin août, début septembre) (ID: 2705)
+- Rent-A-Cop (ID: 3667)
+- Snowriders (ID: 1145)
+
+请直接输出JSON格式的推荐结果，不要包含其他内容。
+2025-05-10 02:20:33,825 - INFO - ==== 发送API请求 ====
+2025-05-10 02:20:38,377 - INFO - ==== API响应 ====
+2025-05-10 02:20:38,377 - INFO - 响应状态码: 200
+2025-05-10 02:20:38,377 - INFO - 响应Headers: {'Date': 'Fri, 09 May 2025 18:20:34 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d3362ab9b57c9e-LAX', 'Content-Encoding': 'br'}
+2025-05-10 02:20:38,377 - INFO - 完整响应JSON: {
+  "id": "gen-1746814834-1W6RKAT7sRmv7JPieogf",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat:free",
+  "object": "chat.completion",
+  "created": 1746814834,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "[{\"name\": \"Top Hat\", \"id\": 945}, {\"name\": \"Smoke\", \"id\": 194}, {\"name\": \"Kingpin\", \"id\": 785}, {\"name\": \"Ridicule\", \"id\": 1365}, {\"name\": \"Great Race, The\", \"id\": 1083}, {\"name\": \"Up in Smoke\", \"id\": 1194}, {\"name\": \"Sleepwalkers\", \"id\": 3709}, {\"name\": \"City of Lost Children, The\", \"id\": 29}, {\"name\": \"Retroactive\", \"id\": 3474}, {\"name\": \"Snowriders\", \"id\": 1145}]",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 754,
+    "completion_tokens": 149,
+    "total_tokens": 903,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 02:20:38,377 - INFO - 模型回复内容:
+[{"name": "Top Hat", "id": 945}, {"name": "Smoke", "id": 194}, {"name": "Kingpin", "id": 785}, {"name": "Ridicule", "id": 1365}, {"name": "Great Race, The", "id": 1083}, {"name": "Up in Smoke", "id": 1194}, {"name": "Sleepwalkers", "id": 3709}, {"name": "City of Lost Children, The", "id": 29}, {"name": "Retroactive", "id": 3474}, {"name": "Snowriders", "id": 1145}]
+2025-05-10 02:20:38,377 - INFO - ==== 用量信息 ====
+2025-05-10 02:20:38,377 - INFO - 输入tokens: 754
+2025-05-10 02:20:38,377 - INFO - 输出tokens: 149
+2025-05-10 02:20:38,377 - INFO - 总tokens: 903
+2025-05-10 02:20:38,378 - INFO - ==== 解析输出 ====
+2025-05-10 02:20:38,378 - INFO - 调用parse_output函数解析响应...
+2025-05-10 02:20:38,378 - INFO - 解析结果: [945, 194, 785, 1365, 1083, 1194, 3709, 29, 3474, 1145]
+2025-05-10 02:20:38,378 - INFO - ==== 计算NDCG ====
+2025-05-10 02:20:38,378 - INFO - 相关性列表: [0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+2025-05-10 02:20:38,379 - INFO - 位置6的DCG贡献: 1/log2(7) = 0.3562
+2025-05-10 02:20:38,379 - INFO - DCG: 0.3562, IDCG: 1.0000
+2025-05-10 02:20:38,379 - INFO - NDCG@10: 0.3562
+2025-05-10 02:20:38,379 - INFO - NDCG@10计算详情:
+2025-05-10 02:20:38,379 - INFO - 截断后的预测列表(前10个): [945, 194, 785, 1365, 1083, 1194, 3709, 29, 3474, 1145]
+2025-05-10 02:20:38,379 - INFO - 目标电影ID 1194在位置6
+2025-05-10 02:20:38,380 - INFO - 位置6的DCG贡献: 1/log2(7) = 0.3562
+2025-05-10 02:20:38,380 - INFO - ==== 测试结果 ====
+2025-05-10 02:20:38,380 - INFO - 用户ID: 475
+2025-05-10 02:20:38,380 - INFO - 目标电影: Up in Smoke (ID: 1194)
+2025-05-10 02:20:38,380 - INFO - 预测列表(前10个): [945, 194, 785, 1365, 1083, 1194, 3709, 29, 3474, 1145]
+2025-05-10 02:20:38,380 - INFO - NDCG@10: 0.3562
+2025-05-10 02:20:38,380 - INFO - ========== 测试结束 ==========
+2025-05-10 02:20:38,380 - INFO - 样本 2 测试完成，NDCG@10: 0.3562
+2025-05-10 02:20:38,380 - INFO - ===== 测试样本 3/10 =====
+2025-05-10 02:20:38,380 - INFO - ========== 测试开始 ==========
+2025-05-10 02:20:38,380 - INFO - ==== 样本信息 ====
+2025-05-10 02:20:38,380 - INFO - 用户ID: 522
+2025-05-10 02:20:38,381 - INFO - 用户历史电影数量: 20
+2025-05-10 02:20:38,381 - INFO - 候选电影数量: 20
+2025-05-10 02:20:38,381 - INFO - 目标电影: Back to the Future Part II (ID: 2011)
+2025-05-10 02:20:38,381 - INFO - ==== 构造提示词 ====
+2025-05-10 02:20:38,381 - INFO - 调用construct_prompt函数...
+2025-05-10 02:20:38,381 - INFO - 生成了2条消息
+2025-05-10 02:20:38,381 - INFO - ==== 发送的消息 ====
+2025-05-10 02:20:38,381 - INFO - [系统提示]:
+  你是一个智能电影推荐引擎，请根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。
+分析步骤：
+1. 从用户历史观影记录中分析每个电影风格类型
+2. 评估候选电影的风格类型
+3. 生成按推荐优先级排序的结果列表
+输出要求：
+- 最终输出为JSON格式的推荐列表
+- 每项包含电影名称和ID
+- 示例格式: [{"name": "电影1", "id": 123}]
+可用电影风格类别: 
+['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+2025-05-10 02:20:38,381 - INFO - [用户请求]:
+  用户观影历史: 
+- Starman (ID: 3699)
+- Fly, The (ID: 2455)
+- Dark City (ID: 1748)
+- Predator (ID: 3527)
+- Fifth Element, The (ID: 1527)
+- Galaxy Quest (ID: 3175)
+- Men in Black (ID: 1580)
+- Robocop (ID: 2985)
+- Spaceballs (ID: 3033)
+- Moonraker (ID: 3638)
+- Forever Young (ID: 3269)
+- Stargate (ID: 316)
+- Strange Days (ID: 198)
+- Mad Max Beyond Thunderdome (ID: 3704)
+- Superman II (ID: 2641)
+- Body Snatchers (ID: 426)
+- Tron (ID: 2105)
+- X-Files: Fight the Future, The (ID: 1909)
+- Independence Day (ID4) (ID: 780)
+- Star Trek: Insurrection (ID: 2393)
+
+候选电影列表: 
+- Starman (ID: 3699)
+- Name of the Rose, The (ID: 2467)
+- Still Crazy (ID: 2482)
+- Broken Vessels (ID: 2703)
+- Shine (ID: 1357)
+- Better Off Dead... (ID: 1257)
+- American Strays (ID: 1102)
+- Message to Love: The Isle of Wight Festival (ID: 1420)
+- Black Beauty (ID: 421)
+- Back to the Future Part II (ID: 2011)
+- Remains of the Day, The (ID: 515)
+- Jennifer 8 (ID: 3557)
+- True Romance (ID: 555)
+- Bandits (ID: 2562)
+- Grosse Fatigue (ID: 1174)
+- Addicted to Love (ID: 1541)
+- Rent-a-Kid (ID: 310)
+- Conquest of the Planet of the Apes (ID: 2532)
+- Fausto (ID: 576)
+- Trouble in Paradise (ID: 3739)
+
+请直接输出JSON格式的推荐结果，不要包含其他内容。
+2025-05-10 02:20:38,381 - INFO - ==== 调用API ====
+2025-05-10 02:20:38,381 - INFO - ==== API调用参数 ====
+2025-05-10 02:20:38,382 - INFO - 模型: deepseek/deepseek-chat:free
+2025-05-10 02:20:38,382 - INFO - 温度: 0
+2025-05-10 02:20:38,382 - INFO - ==== 发送的消息 ====
+2025-05-10 02:20:38,382 - INFO - 消息 1:
+2025-05-10 02:20:38,382 - INFO - 角色: system
+2025-05-10 02:20:38,382 - INFO - 内容: 你是一个智能电影推荐引擎，请根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。
+分析步骤：
+1. 从用户历史观影记录中分析每个电影风格类型
+2. 评估候选电影的风格类型
+3. 生成按推荐优先级排序的结果列表
+输出要求：
+- 最终输出为JSON格式的推荐列表
+- 每项包含电影名称和ID
+- 示例格式: [{"name": "电影1", "id": 123}]
+可用电影风格类别: 
+['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+2025-05-10 02:20:38,382 - INFO - 消息 2:
+2025-05-10 02:20:38,382 - INFO - 角色: user
+2025-05-10 02:20:38,382 - INFO - 内容: 用户观影历史: 
+- Starman (ID: 3699)
+- Fly, The (ID: 2455)
+- Dark City (ID: 1748)
+- Predator (ID: 3527)
+- Fifth Element, The (ID: 1527)
+- Galaxy Quest (ID: 3175)
+- Men in Black (ID: 1580)
+- Robocop (ID: 2985)
+- Spaceballs (ID: 3033)
+- Moonraker (ID: 3638)
+- Forever Young (ID: 3269)
+- Stargate (ID: 316)
+- Strange Days (ID: 198)
+- Mad Max Beyond Thunderdome (ID: 3704)
+- Superman II (ID: 2641)
+- Body Snatchers (ID: 426)
+- Tron (ID: 2105)
+- X-Files: Fight the Future, The (ID: 1909)
+- Independence Day (ID4) (ID: 780)
+- Star Trek: Insurrection (ID: 2393)
+
+候选电影列表: 
+- Starman (ID: 3699)
+- Name of the Rose, The (ID: 2467)
+- Still Crazy (ID: 2482)
+- Broken Vessels (ID: 2703)
+- Shine (ID: 1357)
+- Better Off Dead... (ID: 1257)
+- American Strays (ID: 1102)
+- Message to Love: The Isle of Wight Festival (ID: 1420)
+- Black Beauty (ID: 421)
+- Back to the Future Part II (ID: 2011)
+- Remains of the Day, The (ID: 515)
+- Jennifer 8 (ID: 3557)
+- True Romance (ID: 555)
+- Bandits (ID: 2562)
+- Grosse Fatigue (ID: 1174)
+- Addicted to Love (ID: 1541)
+- Rent-a-Kid (ID: 310)
+- Conquest of the Planet of the Apes (ID: 2532)
+- Fausto (ID: 576)
+- Trouble in Paradise (ID: 3739)
+
+请直接输出JSON格式的推荐结果，不要包含其他内容。
+2025-05-10 02:20:38,382 - INFO - ==== 发送API请求 ====
+2025-05-10 02:20:41,551 - INFO - ==== API响应 ====
+2025-05-10 02:20:41,552 - INFO - 响应状态码: 200
+2025-05-10 02:20:41,552 - INFO - 响应Headers: {'Date': 'Fri, 09 May 2025 18:20:39 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d3364749212f1a-LAX', 'Content-Encoding': 'br'}
+2025-05-10 02:20:41,552 - INFO - 完整响应JSON: {
+  "id": "gen-1746814838-ZPkvPdoAH2ZUOL31mWn2",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat:free",
+  "object": "chat.completion",
+  "created": 1746814839,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "[{\"name\": \"Starman\", \"id\": 3699}, {\"name\": \"Back to the Future Part II\", \"id\": 2011}, {\"name\": \"True Romance\", \"id\": 555}, {\"name\": \"Conquest of the Planet of the Apes\", \"id\": 2532}, {\"name\": \"Trouble in Paradise\", \"id\": 3739}]",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 703,
+    "completion_tokens": 85,
+    "total_tokens": 788,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 02:20:41,552 - INFO - 模型回复内容:
+[{"name": "Starman", "id": 3699}, {"name": "Back to the Future Part II", "id": 2011}, {"name": "True Romance", "id": 555}, {"name": "Conquest of the Planet of the Apes", "id": 2532}, {"name": "Trouble in Paradise", "id": 3739}]
+2025-05-10 02:20:41,552 - INFO - ==== 用量信息 ====
+2025-05-10 02:20:41,552 - INFO - 输入tokens: 703
+2025-05-10 02:20:41,552 - INFO - 输出tokens: 85
+2025-05-10 02:20:41,552 - INFO - 总tokens: 788
+2025-05-10 02:20:41,552 - INFO - ==== 解析输出 ====
+2025-05-10 02:20:41,553 - INFO - 调用parse_output函数解析响应...
+2025-05-10 02:20:41,553 - INFO - 解析结果: [3699, 2011, 555, 2532, 3739]
+2025-05-10 02:20:41,553 - INFO - ==== 计算NDCG ====
+2025-05-10 02:20:41,553 - INFO - 相关性列表: [0, 1, 0, 0, 0]
+2025-05-10 02:20:41,554 - INFO - 位置2的DCG贡献: 1/log2(3) = 0.6309
+2025-05-10 02:20:41,554 - INFO - DCG: 0.6309, IDCG: 1.0000
+2025-05-10 02:20:41,554 - INFO - NDCG@10: 0.6309
+2025-05-10 02:20:41,554 - INFO - NDCG@10计算详情:
+2025-05-10 02:20:41,554 - INFO - 截断后的预测列表(前10个): [3699, 2011, 555, 2532, 3739]
+2025-05-10 02:20:41,554 - INFO - 目标电影ID 2011在位置2
+2025-05-10 02:20:41,554 - INFO - 位置2的DCG贡献: 1/log2(3) = 0.6309
+2025-05-10 02:20:41,554 - INFO - ==== 测试结果 ====
+2025-05-10 02:20:41,554 - INFO - 用户ID: 522
+2025-05-10 02:20:41,554 - INFO - 目标电影: Back to the Future Part II (ID: 2011)
+2025-05-10 02:20:41,554 - INFO - 预测列表(前10个): [3699, 2011, 555, 2532, 3739]
+2025-05-10 02:20:41,554 - INFO - NDCG@10: 0.6309
+2025-05-10 02:20:41,554 - INFO - ========== 测试结束 ==========
+2025-05-10 02:20:41,554 - INFO - 样本 3 测试完成，NDCG@10: 0.6309
+2025-05-10 02:20:41,554 - INFO - ===== 测试样本 4/10 =====
+2025-05-10 02:20:41,554 - INFO - ========== 测试开始 ==========
+2025-05-10 02:20:41,554 - INFO - ==== 样本信息 ====
+2025-05-10 02:20:41,555 - INFO - 用户ID: 549
+2025-05-10 02:20:41,555 - INFO - 用户历史电影数量: 20
+2025-05-10 02:20:41,555 - INFO - 候选电影数量: 20
+2025-05-10 02:20:41,555 - INFO - 目标电影: Autumn in New York (ID: 3824)
+2025-05-10 02:20:41,555 - INFO - ==== 构造提示词 ====
+2025-05-10 02:20:41,555 - INFO - 调用construct_prompt函数...
+2025-05-10 02:20:41,555 - INFO - 生成了2条消息
+2025-05-10 02:20:41,555 - INFO - ==== 发送的消息 ====
+2025-05-10 02:20:41,555 - INFO - [系统提示]:
+  你是一个智能电影推荐引擎，请根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。
+分析步骤：
+1. 从用户历史观影记录中分析每个电影风格类型
+2. 评估候选电影的风格类型
+3. 生成按推荐优先级排序的结果列表
+输出要求：
+- 最终输出为JSON格式的推荐列表
+- 每项包含电影名称和ID
+- 示例格式: [{"name": "电影1", "id": 123}]
+可用电影风格类别: 
+['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+2025-05-10 02:20:41,555 - INFO - [用户请求]:
+  用户观影历史: 
+- Trois (ID: 3291)
+- Where the Heart Is (ID: 3565)
+- Next Friday (ID: 3177)
+- Me, Myself and Irene (ID: 3752)
+- Loser (ID: 3616)
+- Nutty Professor II: The Klumps (ID: 3821)
+- Mission to Mars (ID: 3354)
+- Here on Earth (ID: 3453)
+- Hollow Man (ID: 3826)
+- Ready to Rumble (ID: 3511)
+- Screwed (ID: 3596)
+- Gladiator (ID: 3578)
+- Showgirls (ID: 193)
+- Supernova (ID: 3190)
+- American Psycho (ID: 3535)
+- Final Destination (ID: 3409)
+- Meet the Parents (ID: 3948)
+- Replacements, The (ID: 3861)
+- Duets (ID: 3901)
+- Big Momma's House (ID: 3646)
+
+候选电影列表: 
+- To Have, or Not (ID: 1555)
+- Picnic at Hanging Rock (ID: 1913)
+- Twin Town (ID: 1539)
+- Bronx Tale, A (ID: 428)
+- Naked Gun 33 1/3: The Final Insult (ID: 370)
+- Autumn in New York (ID: 3824)
+- Mrs. Winterbourne (ID: 691)
+- Favor, The (ID: 447)
+- Tomorrow Never Dies (ID: 1722)
+- King of Masks, The (Bian Lian) (ID: 2609)
+- Golden Bowl, The (ID: 3756)
+- Get Shorty (ID: 21)
+- Braddock: Missing in Action III (ID: 3768)
+- ...And Justice for All (ID: 3420)
+- Very Brady Sequel, A (ID: 818)
+- Kika (ID: 567)
+- Alien Nation (ID: 3701)
+- King Kong (ID: 2367)
+- Boomerang (ID: 122)
+- Dream With the Fishes (ID: 1563)
+
+请直接输出JSON格式的推荐结果，不要包含其他内容。
+2025-05-10 02:20:41,556 - INFO - ==== 调用API ====
+2025-05-10 02:20:41,556 - INFO - ==== API调用参数 ====
+2025-05-10 02:20:41,556 - INFO - 模型: deepseek/deepseek-chat:free
+2025-05-10 02:20:41,556 - INFO - 温度: 0
+2025-05-10 02:20:41,556 - INFO - ==== 发送的消息 ====
+2025-05-10 02:20:41,556 - INFO - 消息 1:
+2025-05-10 02:20:41,556 - INFO - 角色: system
+2025-05-10 02:20:41,556 - INFO - 内容: 你是一个智能电影推荐引擎，请根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。
+分析步骤：
+1. 从用户历史观影记录中分析每个电影风格类型
+2. 评估候选电影的风格类型
+3. 生成按推荐优先级排序的结果列表
+输出要求：
+- 最终输出为JSON格式的推荐列表
+- 每项包含电影名称和ID
+- 示例格式: [{"name": "电影1", "id": 123}]
+可用电影风格类别: 
+['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+2025-05-10 02:20:41,556 - INFO - 消息 2:
+2025-05-10 02:20:41,556 - INFO - 角色: user
+2025-05-10 02:20:41,556 - INFO - 内容: 用户观影历史: 
+- Trois (ID: 3291)
+- Where the Heart Is (ID: 3565)
+- Next Friday (ID: 3177)
+- Me, Myself and Irene (ID: 3752)
+- Loser (ID: 3616)
+- Nutty Professor II: The Klumps (ID: 3821)
+- Mission to Mars (ID: 3354)
+- Here on Earth (ID: 3453)
+- Hollow Man (ID: 3826)
+- Ready to Rumble (ID: 3511)
+- Screwed (ID: 3596)
+- Gladiator (ID: 3578)
+- Showgirls (ID: 193)
+- Supernova (ID: 3190)
+- American Psycho (ID: 3535)
+- Final Destination (ID: 3409)
+- Meet the Parents (ID: 3948)
+- Replacements, The (ID: 3861)
+- Duets (ID: 3901)
+- Big Momma's House (ID: 3646)
+
+候选电影列表: 
+- To Have, or Not (ID: 1555)
+- Picnic at Hanging Rock (ID: 1913)
+- Twin Town (ID: 1539)
+- Bronx Tale, A (ID: 428)
+- Naked Gun 33 1/3: The Final Insult (ID: 370)
+- Autumn in New York (ID: 3824)
+- Mrs. Winterbourne (ID: 691)
+- Favor, The (ID: 447)
+- Tomorrow Never Dies (ID: 1722)
+- King of Masks, The (Bian Lian) (ID: 2609)
+- Golden Bowl, The (ID: 3756)
+- Get Shorty (ID: 21)
+- Braddock: Missing in Action III (ID: 3768)
+- ...And Justice for All (ID: 3420)
+- Very Brady Sequel, A (ID: 818)
+- Kika (ID: 567)
+- Alien Nation (ID: 3701)
+- King Kong (ID: 2367)
+- Boomerang (ID: 122)
+- Dream With the Fishes (ID: 1563)
+
+请直接输出JSON格式的推荐结果，不要包含其他内容。
+2025-05-10 02:20:41,556 - INFO - ==== 发送API请求 ====
+2025-05-10 02:20:46,175 - INFO - ==== API响应 ====
+2025-05-10 02:20:46,175 - INFO - 响应状态码: 200
+2025-05-10 02:20:46,175 - INFO - 响应Headers: {'Date': 'Fri, 09 May 2025 18:20:42 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d3365abda808d8-LAX', 'Content-Encoding': 'br'}
+2025-05-10 02:20:46,175 - INFO - 完整响应JSON: {
+  "id": "gen-1746814842-zmeozkwDDr00GCX0ufvY",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat:free",
+  "object": "chat.completion",
+  "created": 1746814842,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "[{\"name\": \"Picnic at Hanging Rock\", \"id\": 1913}, {\"name\": \"Autumn in New York\", \"id\": 3824}, {\"name\": \"Mrs. Winterbourne\", \"id\": 691}, {\"name\": \"Tomorrow Never Dies\", \"id\": 1722}, {\"name\": \"King of Masks, The (Bian Lian)\", \"id\": 2609}, {\"name\": \"Golden Bowl, The\", \"id\": 3756}, {\"name\": \"Get Shorty\", \"id\": 21}, {\"name\": \"Boomerang\", \"id\": 122}, {\"name\": \"Dream With the Fishes\", \"id\": 1563}]",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 718,
+    "completion_tokens": 152,
+    "total_tokens": 870,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 02:20:46,176 - INFO - 模型回复内容:
+[{"name": "Picnic at Hanging Rock", "id": 1913}, {"name": "Autumn in New York", "id": 3824}, {"name": "Mrs. Winterbourne", "id": 691}, {"name": "Tomorrow Never Dies", "id": 1722}, {"name": "King of Masks, The (Bian Lian)", "id": 2609}, {"name": "Golden Bowl, The", "id": 3756}, {"name": "Get Shorty", "id": 21}, {"name": "Boomerang", "id": 122}, {"name": "Dream With the Fishes", "id": 1563}]
+2025-05-10 02:20:46,176 - INFO - ==== 用量信息 ====
+2025-05-10 02:20:46,176 - INFO - 输入tokens: 718
+2025-05-10 02:20:46,176 - INFO - 输出tokens: 152
+2025-05-10 02:20:46,177 - INFO - 总tokens: 870
+2025-05-10 02:20:46,177 - INFO - ==== 解析输出 ====
+2025-05-10 02:20:46,177 - INFO - 调用parse_output函数解析响应...
+2025-05-10 02:20:46,177 - INFO - 解析结果: [1913, 3824, 691, 1722, 2609, 3756, 21, 122, 1563]
+2025-05-10 02:20:46,177 - INFO - ==== 计算NDCG ====
+2025-05-10 02:20:46,177 - INFO - 相关性列表: [0, 1, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 02:20:46,177 - INFO - 位置2的DCG贡献: 1/log2(3) = 0.6309
+2025-05-10 02:20:46,177 - INFO - DCG: 0.6309, IDCG: 1.0000
+2025-05-10 02:20:46,177 - INFO - NDCG@10: 0.6309
+2025-05-10 02:20:46,177 - INFO - NDCG@10计算详情:
+2025-05-10 02:20:46,177 - INFO - 截断后的预测列表(前10个): [1913, 3824, 691, 1722, 2609, 3756, 21, 122, 1563]
+2025-05-10 02:20:46,177 - INFO - 目标电影ID 3824在位置2
+2025-05-10 02:20:46,177 - INFO - 位置2的DCG贡献: 1/log2(3) = 0.6309
+2025-05-10 02:20:46,177 - INFO - ==== 测试结果 ====
+2025-05-10 02:20:46,177 - INFO - 用户ID: 549
+2025-05-10 02:20:46,179 - INFO - 目标电影: Autumn in New York (ID: 3824)
+2025-05-10 02:20:46,179 - INFO - 预测列表(前10个): [1913, 3824, 691, 1722, 2609, 3756, 21, 122, 1563]
+2025-05-10 02:20:46,179 - INFO - NDCG@10: 0.6309
+2025-05-10 02:20:46,179 - INFO - ========== 测试结束 ==========
+2025-05-10 02:20:46,179 - INFO - 样本 4 测试完成，NDCG@10: 0.6309
+2025-05-10 02:20:46,179 - INFO - ===== 测试样本 5/10 =====
+2025-05-10 02:20:46,179 - INFO - ========== 测试开始 ==========
+2025-05-10 02:20:46,179 - INFO - ==== 样本信息 ====
+2025-05-10 02:20:46,179 - INFO - 用户ID: 554
+2025-05-10 02:20:46,179 - INFO - 用户历史电影数量: 20
+2025-05-10 02:20:46,179 - INFO - 候选电影数量: 20
+2025-05-10 02:20:46,179 - INFO - 目标电影: Meet the Parents (ID: 3948)
+2025-05-10 02:20:46,179 - INFO - ==== 构造提示词 ====
+2025-05-10 02:20:46,179 - INFO - 调用construct_prompt函数...
+2025-05-10 02:20:46,180 - INFO - 生成了2条消息
+2025-05-10 02:20:46,180 - INFO - ==== 发送的消息 ====
+2025-05-10 02:20:46,180 - INFO - [系统提示]:
+  你是一个智能电影推荐引擎，请根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。
+分析步骤：
+1. 从用户历史观影记录中分析每个电影风格类型
+2. 评估候选电影的风格类型
+3. 生成按推荐优先级排序的结果列表
+输出要求：
+- 最终输出为JSON格式的推荐列表
+- 每项包含电影名称和ID
+- 示例格式: [{"name": "电影1", "id": 123}]
+可用电影风格类别: 
+['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+2025-05-10 02:20:46,180 - INFO - [用户请求]:
+  用户观影历史: 
+- Fight Club (ID: 2959)
+- General's Daughter, The (ID: 2688)
+- Ghostbusters (ID: 2716)
+- Gladiator (ID: 3578)
+- Kingpin (ID: 785)
+- Little Voice (ID: 2390)
+- Mickey Blue Eyes (ID: 2805)
+- Magnolia (ID: 3160)
+- Mosquito Coast, The (ID: 2734)
+- Out of Africa (ID: 1959)
+- Patriot, The (ID: 3753)
+- Powder (ID: 24)
+- Snow Falling on Cedars (ID: 3185)
+- Shakespeare in Love (ID: 2396)
+- Runaway Bride (ID: 2724)
+- Sixth Sense, The (ID: 2762)
+- Talented Mr. Ripley, The (ID: 3176)
+- South Park: Bigger, Longer and Uncut (ID: 2700)
+- Summer of Sam (ID: 2702)
+- Thomas Crown Affair, The (ID: 2763)
+
+候选电影列表: 
+- Small Time Crooks (ID: 3618)
+- Renaissance Man (ID: 516)
+- Intimate Relations (ID: 1528)
+- Rosemary's Baby (ID: 2160)
+- Homegrown (ID: 1824)
+- Deceiver (ID: 1671)
+- Class Reunion (ID: 3313)
+- Tom and Huck (ID: 8)
+- Separation, The (La Séparation) (ID: 2869)
+- Bring It On (ID: 3882)
+- This Is My Father (ID: 2620)
+- Bad Boys (ID: 145)
+- I'm Not Rappaport (ID: 1317)
+- Gung Ho (ID: 2374)
+- Meet the Parents (ID: 3948)
+- Lodger, The (ID: 2227)
+- Celestial Clockwork (ID: 863)
+- Thunderball (ID: 2993)
+- Night Porter, The (Il Portiere di notte) (ID: 2074)
+- Meet the Deedles (ID: 1822)
+
+请直接输出JSON格式的推荐结果，不要包含其他内容。
+2025-05-10 02:20:46,180 - INFO - ==== 调用API ====
+2025-05-10 02:20:46,180 - INFO - ==== API调用参数 ====
+2025-05-10 02:20:46,180 - INFO - 模型: deepseek/deepseek-chat:free
+2025-05-10 02:20:46,180 - INFO - 温度: 0
+2025-05-10 02:20:46,181 - INFO - ==== 发送的消息 ====
+2025-05-10 02:20:46,181 - INFO - 消息 1:
+2025-05-10 02:20:46,181 - INFO - 角色: system
+2025-05-10 02:20:46,181 - INFO - 内容: 你是一个智能电影推荐引擎，请根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。
+分析步骤：
+1. 从用户历史观影记录中分析每个电影风格类型
+2. 评估候选电影的风格类型
+3. 生成按推荐优先级排序的结果列表
+输出要求：
+- 最终输出为JSON格式的推荐列表
+- 每项包含电影名称和ID
+- 示例格式: [{"name": "电影1", "id": 123}]
+可用电影风格类别: 
+['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+2025-05-10 02:20:46,181 - INFO - 消息 2:
+2025-05-10 02:20:46,181 - INFO - 角色: user
+2025-05-10 02:20:46,181 - INFO - 内容: 用户观影历史: 
+- Fight Club (ID: 2959)
+- General's Daughter, The (ID: 2688)
+- Ghostbusters (ID: 2716)
+- Gladiator (ID: 3578)
+- Kingpin (ID: 785)
+- Little Voice (ID: 2390)
+- Mickey Blue Eyes (ID: 2805)
+- Magnolia (ID: 3160)
+- Mosquito Coast, The (ID: 2734)
+- Out of Africa (ID: 1959)
+- Patriot, The (ID: 3753)
+- Powder (ID: 24)
+- Snow Falling on Cedars (ID: 3185)
+- Shakespeare in Love (ID: 2396)
+- Runaway Bride (ID: 2724)
+- Sixth Sense, The (ID: 2762)
+- Talented Mr. Ripley, The (ID: 3176)
+- South Park: Bigger, Longer and Uncut (ID: 2700)
+- Summer of Sam (ID: 2702)
+- Thomas Crown Affair, The (ID: 2763)
+
+候选电影列表: 
+- Small Time Crooks (ID: 3618)
+- Renaissance Man (ID: 516)
+- Intimate Relations (ID: 1528)
+- Rosemary's Baby (ID: 2160)
+- Homegrown (ID: 1824)
+- Deceiver (ID: 1671)
+- Class Reunion (ID: 3313)
+- Tom and Huck (ID: 8)
+- Separation, The (La Séparation) (ID: 2869)
+- Bring It On (ID: 3882)
+- This Is My Father (ID: 2620)
+- Bad Boys (ID: 145)
+- I'm Not Rappaport (ID: 1317)
+- Gung Ho (ID: 2374)
+- Meet the Parents (ID: 3948)
+- Lodger, The (ID: 2227)
+- Celestial Clockwork (ID: 863)
+- Thunderball (ID: 2993)
+- Night Porter, The (Il Portiere di notte) (ID: 2074)
+- Meet the Deedles (ID: 1822)
+
+请直接输出JSON格式的推荐结果，不要包含其他内容。
+2025-05-10 02:20:46,182 - INFO - ==== 发送API请求 ====
+2025-05-10 02:20:54,132 - INFO - ==== API响应 ====
+2025-05-10 02:20:54,132 - INFO - 响应状态码: 200
+2025-05-10 02:20:54,133 - INFO - 响应Headers: {'Date': 'Fri, 09 May 2025 18:20:46 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d336779a86f642-LAX', 'Content-Encoding': 'br'}
+2025-05-10 02:20:54,133 - INFO - 完整响应JSON: {
+  "id": "gen-1746814846-Nce25MPuC4wi8YEHb8fF",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat:free",
+  "object": "chat.completion",
+  "created": 1746814846,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "[{\"name\": \"Rosemary's Baby\", \"id\": 2160}, {\"name\": \"Night Porter, The (Il Portiere di notte)\", \"id\": 2074}, {\"name\": \"Lodger, The\", \"id\": 2227}, {\"name\": \"Celestial Clockwork\", \"id\": 863}, {\"name\": \"Thunderball\", \"id\": 2993}, {\"name\": \"Separation, The (La Séparation)\", \"id\": 2869}, {\"name\": \"Tom and Huck\", \"id\": 8}, {\"name\": \"Small Time Crooks\", \"id\": 3618}, {\"name\": \"Renaissance Man\", \"id\": 516}, {\"name\": \"Intimate Relations\", \"id\": 1528}, {\"name\": \"Homegrown\", \"id\": 1824}, {\"name\": \"Deceiver\", \"id\": 1671}, {\"name\": \"Class Reunion\", \"id\": 3313}, {\"name\": \"Bring It On\", \"id\": 3882}, {\"name\": \"This Is My Father\", \"id\": 2620}, {\"name\": \"Bad Boys\", \"id\": 145}, {\"name\": \"I'm Not Rappaport\", \"id\": 1317}, {\"name\": \"Gung Ho\", \"id\": 2374}, {\"name\": \"Meet the Parents\", \"id\": 3948}, {\"name\": \"Meet the Deedles\", \"id\": 1822}]",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 715,
+    "completion_tokens": 320,
+    "total_tokens": 1035,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 02:20:54,133 - INFO - 模型回复内容:
+[{"name": "Rosemary's Baby", "id": 2160}, {"name": "Night Porter, The (Il Portiere di notte)", "id": 2074}, {"name": "Lodger, The", "id": 2227}, {"name": "Celestial Clockwork", "id": 863}, {"name": "Thunderball", "id": 2993}, {"name": "Separation, The (La Séparation)", "id": 2869}, {"name": "Tom and Huck", "id": 8}, {"name": "Small Time Crooks", "id": 3618}, {"name": "Renaissance Man", "id": 516}, {"name": "Intimate Relations", "id": 1528}, {"name": "Homegrown", "id": 1824}, {"name": "Deceiver", "id": 1671}, {"name": "Class Reunion", "id": 3313}, {"name": "Bring It On", "id": 3882}, {"name": "This Is My Father", "id": 2620}, {"name": "Bad Boys", "id": 145}, {"name": "I'm Not Rappaport", "id": 1317}, {"name": "Gung Ho", "id": 2374}, {"name": "Meet the Parents", "id": 3948}, {"name": "Meet the Deedles", "id": 1822}]
+2025-05-10 02:20:54,134 - INFO - ==== 用量信息 ====
+2025-05-10 02:20:54,134 - INFO - 输入tokens: 715
+2025-05-10 02:20:54,134 - INFO - 输出tokens: 320
+2025-05-10 02:20:54,134 - INFO - 总tokens: 1035
+2025-05-10 02:20:54,134 - INFO - ==== 解析输出 ====
+2025-05-10 02:20:54,134 - INFO - 调用parse_output函数解析响应...
+2025-05-10 02:20:54,135 - INFO - 解析结果: [2160, 2074, 2227, 863, 2993, 2869, 8, 3618, 516, 1528, 1824, 1671, 3313, 3882, 2620, 145, 1317, 2374, 3948, 1822]
+2025-05-10 02:20:54,135 - INFO - ==== 计算NDCG ====
+2025-05-10 02:20:54,135 - INFO - 相关性列表: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 02:20:54,135 - INFO - 目标电影不在预测列表中，NDCG=0
+2025-05-10 02:20:54,135 - INFO - NDCG@10计算详情:
+2025-05-10 02:20:54,135 - INFO - 截断后的预测列表(前10个): [2160, 2074, 2227, 863, 2993, 2869, 8, 3618, 516, 1528]
+2025-05-10 02:20:54,135 - INFO - 目标电影ID 3948不在前10个预测列表中
+2025-05-10 02:20:54,135 - INFO - ==== 测试结果 ====
+2025-05-10 02:20:54,136 - INFO - 用户ID: 554
+2025-05-10 02:20:54,136 - INFO - 目标电影: Meet the Parents (ID: 3948)
+2025-05-10 02:20:54,136 - INFO - 预测列表(前10个): [2160, 2074, 2227, 863, 2993, 2869, 8, 3618, 516, 1528]
+2025-05-10 02:20:54,136 - INFO - NDCG@10: 0.0000
+2025-05-10 02:20:54,136 - INFO - ========== 测试结束 ==========
+2025-05-10 02:20:54,136 - INFO - 样本 5 测试完成，NDCG@10: 0.0000
+2025-05-10 02:20:54,136 - INFO - ===== 测试样本 6/10 =====
+2025-05-10 02:20:54,136 - INFO - ========== 测试开始 ==========
+2025-05-10 02:20:54,136 - INFO - ==== 样本信息 ====
+2025-05-10 02:20:54,136 - INFO - 用户ID: 659
+2025-05-10 02:20:54,136 - INFO - 用户历史电影数量: 20
+2025-05-10 02:20:54,137 - INFO - 候选电影数量: 20
+2025-05-10 02:20:54,137 - INFO - 目标电影: Shadowlands (ID: 534)
+2025-05-10 02:20:54,137 - INFO - ==== 构造提示词 ====
+2025-05-10 02:20:54,137 - INFO - 调用construct_prompt函数...
+2025-05-10 02:20:54,137 - INFO - 生成了2条消息
+2025-05-10 02:20:54,137 - INFO - ==== 发送的消息 ====
+2025-05-10 02:20:54,137 - INFO - [系统提示]:
+  你是一个智能电影推荐引擎，请根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。
+分析步骤：
+1. 从用户历史观影记录中分析每个电影风格类型
+2. 评估候选电影的风格类型
+3. 生成按推荐优先级排序的结果列表
+输出要求：
+- 最终输出为JSON格式的推荐列表
+- 每项包含电影名称和ID
+- 示例格式: [{"name": "电影1", "id": 123}]
+可用电影风格类别: 
+['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+2025-05-10 02:20:54,137 - INFO - [用户请求]:
+  用户观影历史: 
+- In the Name of the Father (ID: 475)
+- American History X (ID: 2329)
+- Dead Man Walking (ID: 36)
+- Thelma & Louise (ID: 3418)
+- Contact (ID: 1584)
+- Crimson Tide (ID: 161)
+- Babe (ID: 34)
+- Swing Kids (ID: 2106)
+- Miller's Crossing (ID: 1245)
+- Truman Show, The (ID: 1682)
+- American President, The (ID: 11)
+- Client, The (ID: 350)
+- Twelve Monkeys (ID: 32)
+- Thousand Acres, A (ID: 1624)
+- Of Mice and Men (ID: 3271)
+- Cider House Rules, The (ID: 3148)
+- Sliding Doors (ID: 1680)
+- Ever After: A Cinderella Story (ID: 2125)
+- Great Expectations (ID: 1735)
+- Philadelphia (ID: 508)
+
+候选电影列表: 
+- Touch (ID: 1458)
+- Sister Act (ID: 3247)
+- Dracula (ID: 2644)
+- Third Miracle, The (ID: 3183)
+- Airplane! (ID: 2791)
+- Collectionneuse, La (ID: 823)
+- Groove (ID: 3790)
+- Truth or Consequences, N.M. (ID: 1523)
+- Century (ID: 607)
+- Naked Gun 33 1/3: The Final Insult (ID: 370)
+- Max Dugan Returns (ID: 3497)
+- Shadowlands (ID: 534)
+- Good Mother, The (ID: 3449)
+- Blood In, Blood Out (a.k.a. Bound by Honor) (ID: 3761)
+- Murder in the First (ID: 280)
+- Stalker (ID: 1232)
+- One Crazy Summer (ID: 2261)
+- Sirens (ID: 537)
+- Passion Fish (ID: 1187)
+- Anatomy of a Murder (ID: 3801)
+
+请直接输出JSON格式的推荐结果，不要包含其他内容。
+2025-05-10 02:20:54,137 - INFO - ==== 调用API ====
+2025-05-10 02:20:54,138 - INFO - ==== API调用参数 ====
+2025-05-10 02:20:54,138 - INFO - 模型: deepseek/deepseek-chat:free
+2025-05-10 02:20:54,138 - INFO - 温度: 0
+2025-05-10 02:20:54,138 - INFO - ==== 发送的消息 ====
+2025-05-10 02:20:54,138 - INFO - 消息 1:
+2025-05-10 02:20:54,138 - INFO - 角色: system
+2025-05-10 02:20:54,138 - INFO - 内容: 你是一个智能电影推荐引擎，请根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。
+分析步骤：
+1. 从用户历史观影记录中分析每个电影风格类型
+2. 评估候选电影的风格类型
+3. 生成按推荐优先级排序的结果列表
+输出要求：
+- 最终输出为JSON格式的推荐列表
+- 每项包含电影名称和ID
+- 示例格式: [{"name": "电影1", "id": 123}]
+可用电影风格类别: 
+['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+2025-05-10 02:20:54,138 - INFO - 消息 2:
+2025-05-10 02:20:54,138 - INFO - 角色: user
+2025-05-10 02:20:54,138 - INFO - 内容: 用户观影历史: 
+- In the Name of the Father (ID: 475)
+- American History X (ID: 2329)
+- Dead Man Walking (ID: 36)
+- Thelma & Louise (ID: 3418)
+- Contact (ID: 1584)
+- Crimson Tide (ID: 161)
+- Babe (ID: 34)
+- Swing Kids (ID: 2106)
+- Miller's Crossing (ID: 1245)
+- Truman Show, The (ID: 1682)
+- American President, The (ID: 11)
+- Client, The (ID: 350)
+- Twelve Monkeys (ID: 32)
+- Thousand Acres, A (ID: 1624)
+- Of Mice and Men (ID: 3271)
+- Cider House Rules, The (ID: 3148)
+- Sliding Doors (ID: 1680)
+- Ever After: A Cinderella Story (ID: 2125)
+- Great Expectations (ID: 1735)
+- Philadelphia (ID: 508)
+
+候选电影列表: 
+- Touch (ID: 1458)
+- Sister Act (ID: 3247)
+- Dracula (ID: 2644)
+- Third Miracle, The (ID: 3183)
+- Airplane! (ID: 2791)
+- Collectionneuse, La (ID: 823)
+- Groove (ID: 3790)
+- Truth or Consequences, N.M. (ID: 1523)
+- Century (ID: 607)
+- Naked Gun 33 1/3: The Final Insult (ID: 370)
+- Max Dugan Returns (ID: 3497)
+- Shadowlands (ID: 534)
+- Good Mother, The (ID: 3449)
+- Blood In, Blood Out (a.k.a. Bound by Honor) (ID: 3761)
+- Murder in the First (ID: 280)
+- Stalker (ID: 1232)
+- One Crazy Summer (ID: 2261)
+- Sirens (ID: 537)
+- Passion Fish (ID: 1187)
+- Anatomy of a Murder (ID: 3801)
+
+请直接输出JSON格式的推荐结果，不要包含其他内容。
+2025-05-10 02:20:54,138 - INFO - ==== 发送API请求 ====
+2025-05-10 02:21:06,191 - INFO - ==== API响应 ====
+2025-05-10 02:21:06,191 - INFO - 响应状态码: 200
+2025-05-10 02:21:06,192 - INFO - 响应Headers: {'Date': 'Fri, 09 May 2025 18:20:55 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d336abeb8c7d71-LAX', 'Content-Encoding': 'br'}
+2025-05-10 02:21:06,192 - INFO - 完整响应JSON: {
+  "id": "gen-1746814855-L2iT0dxA4Nsc3UmLSuyz",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat:free",
+  "object": "chat.completion",
+  "created": 1746814855,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "[{\"name\": \"Murder in the First\", \"id\": 280}, {\"name\": \"Shadowlands\", \"id\": 534}, {\"name\": \"Third Miracle, The\", \"id\": 3183}, {\"name\": \"Good Mother, The\", \"id\": 3449}, {\"name\": \"Anatomy of a Murder\", \"id\": 3801}, {\"name\": \"Passion Fish\", \"id\": 1187}, {\"name\": \"Stalker\", \"id\": 1232}, {\"name\": \"Blood In, Blood Out (a.k.a. Bound by Honor)\", \"id\": 3761}, {\"name\": \"Touch\", \"id\": 1458}, {\"name\": \"Truth or Consequences, N.M.\", \"id\": 1523}]",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 705,
+    "completion_tokens": 166,
+    "total_tokens": 871,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 02:21:06,192 - INFO - 模型回复内容:
+[{"name": "Murder in the First", "id": 280}, {"name": "Shadowlands", "id": 534}, {"name": "Third Miracle, The", "id": 3183}, {"name": "Good Mother, The", "id": 3449}, {"name": "Anatomy of a Murder", "id": 3801}, {"name": "Passion Fish", "id": 1187}, {"name": "Stalker", "id": 1232}, {"name": "Blood In, Blood Out (a.k.a. Bound by Honor)", "id": 3761}, {"name": "Touch", "id": 1458}, {"name": "Truth or Consequences, N.M.", "id": 1523}]
+2025-05-10 02:21:06,192 - INFO - ==== 用量信息 ====
+2025-05-10 02:21:06,192 - INFO - 输入tokens: 705
+2025-05-10 02:21:06,193 - INFO - 输出tokens: 166
+2025-05-10 02:21:06,193 - INFO - 总tokens: 871
+2025-05-10 02:21:06,193 - INFO - ==== 解析输出 ====
+2025-05-10 02:21:06,194 - INFO - 调用parse_output函数解析响应...
+2025-05-10 02:21:06,194 - INFO - 解析结果: [280, 534, 3183, 3449, 3801, 1187, 1232, 3761, 1458, 1523]
+2025-05-10 02:21:06,194 - INFO - ==== 计算NDCG ====
+2025-05-10 02:21:06,195 - INFO - 相关性列表: [0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 02:21:06,195 - INFO - 位置2的DCG贡献: 1/log2(3) = 0.6309
+2025-05-10 02:21:06,195 - INFO - DCG: 0.6309, IDCG: 1.0000
+2025-05-10 02:21:06,195 - INFO - NDCG@10: 0.6309
+2025-05-10 02:21:06,195 - INFO - NDCG@10计算详情:
+2025-05-10 02:21:06,195 - INFO - 截断后的预测列表(前10个): [280, 534, 3183, 3449, 3801, 1187, 1232, 3761, 1458, 1523]
+2025-05-10 02:21:06,195 - INFO - 目标电影ID 534在位置2
+2025-05-10 02:21:06,195 - INFO - 位置2的DCG贡献: 1/log2(3) = 0.6309
+2025-05-10 02:21:06,195 - INFO - ==== 测试结果 ====
+2025-05-10 02:21:06,195 - INFO - 用户ID: 659
+2025-05-10 02:21:06,195 - INFO - 目标电影: Shadowlands (ID: 534)
+2025-05-10 02:21:06,195 - INFO - 预测列表(前10个): [280, 534, 3183, 3449, 3801, 1187, 1232, 3761, 1458, 1523]
+2025-05-10 02:21:06,195 - INFO - NDCG@10: 0.6309
+2025-05-10 02:21:06,195 - INFO - ========== 测试结束 ==========
+2025-05-10 02:21:06,195 - INFO - 样本 6 测试完成，NDCG@10: 0.6309
+2025-05-10 02:21:06,195 - INFO - ===== 测试样本 7/10 =====
+2025-05-10 02:21:06,195 - INFO - ========== 测试开始 ==========
+2025-05-10 02:21:06,195 - INFO - ==== 样本信息 ====
+2025-05-10 02:21:06,196 - INFO - 用户ID: 706
+2025-05-10 02:21:06,196 - INFO - 用户历史电影数量: 20
+2025-05-10 02:21:06,196 - INFO - 候选电影数量: 20
+2025-05-10 02:21:06,196 - INFO - 目标电影: Reality Bites (ID: 372)
+2025-05-10 02:21:06,196 - INFO - ==== 构造提示词 ====
+2025-05-10 02:21:06,196 - INFO - 调用construct_prompt函数...
+2025-05-10 02:21:06,196 - INFO - 生成了2条消息
+2025-05-10 02:21:06,196 - INFO - ==== 发送的消息 ====
+2025-05-10 02:21:06,196 - INFO - [系统提示]:
+  你是一个智能电影推荐引擎，请根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。
+分析步骤：
+1. 从用户历史观影记录中分析每个电影风格类型
+2. 评估候选电影的风格类型
+3. 生成按推荐优先级排序的结果列表
+输出要求：
+- 最终输出为JSON格式的推荐列表
+- 每项包含电影名称和ID
+- 示例格式: [{"name": "电影1", "id": 123}]
+可用电影风格类别: 
+['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+2025-05-10 02:21:06,196 - INFO - [用户请求]:
+  用户观影历史: 
+- Sweet and Lowdown (ID: 3129)
+- Dream With the Fishes (ID: 1563)
+- Tango (ID: 2573)
+- League of Their Own, A (ID: 3255)
+- Misérables, Les (ID: 73)
+- I Shot Andy Warhol (ID: 766)
+- Wings of the Dove, The (ID: 1683)
+- Death and the Maiden (ID: 229)
+- Hurricane, The (ID: 3178)
+- Crimson Tide (ID: 161)
+- Sleepers (ID: 1061)
+- Last Days of Disco, The (ID: 1836)
+- Spitfire Grill, The (ID: 848)
+- SLC Punk! (ID: 2596)
+- Love and Death on Long Island (ID: 1794)
+- Secret Garden, The (ID: 531)
+- Angels and Insects (ID: 85)
+- Little Women (ID: 261)
+- High Art (ID: 1897)
+- Cop Land (ID: 1589)
+
+候选电影列表: 
+- 8 1/2 Women (ID: 3626)
+- My Blue Heaven (ID: 2249)
+- Reality Bites (ID: 372)
+- Net, The (ID: 185)
+- Stand by Me (ID: 1259)
+- Ogre, The (Der Unhold) (ID: 3378)
+- McCullochs, The (ID: 3312)
+- Agnes of God (ID: 3251)
+- Beefcake (ID: 2960)
+- I Like It Like That (ID: 359)
+- Talk of Angels (ID: 887)
+- Eden (ID: 1815)
+- Honeymoon in Vegas (ID: 3614)
+- Gate II: Trespassers, The (ID: 2452)
+- Star Trek III: The Search for Spock (ID: 1375)
+- Rocky II (ID: 2409)
+- Losing Isaiah (ID: 271)
+- Charlotte's Web (ID: 2137)
+- Eyes of Tammy Faye, The (ID: 3859)
+- Jar, The (Khomreh) (ID: 758)
+
+请直接输出JSON格式的推荐结果，不要包含其他内容。
+2025-05-10 02:21:06,197 - INFO - ==== 调用API ====
+2025-05-10 02:21:06,197 - INFO - ==== API调用参数 ====
+2025-05-10 02:21:06,197 - INFO - 模型: deepseek/deepseek-chat:free
+2025-05-10 02:21:06,197 - INFO - 温度: 0
+2025-05-10 02:21:06,197 - INFO - ==== 发送的消息 ====
+2025-05-10 02:21:06,197 - INFO - 消息 1:
+2025-05-10 02:21:06,197 - INFO - 角色: system
+2025-05-10 02:21:06,197 - INFO - 内容: 你是一个智能电影推荐引擎，请根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。
+分析步骤：
+1. 从用户历史观影记录中分析每个电影风格类型
+2. 评估候选电影的风格类型
+3. 生成按推荐优先级排序的结果列表
+输出要求：
+- 最终输出为JSON格式的推荐列表
+- 每项包含电影名称和ID
+- 示例格式: [{"name": "电影1", "id": 123}]
+可用电影风格类别: 
+['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+2025-05-10 02:21:06,197 - INFO - 消息 2:
+2025-05-10 02:21:06,197 - INFO - 角色: user
+2025-05-10 02:21:06,198 - INFO - 内容: 用户观影历史: 
+- Sweet and Lowdown (ID: 3129)
+- Dream With the Fishes (ID: 1563)
+- Tango (ID: 2573)
+- League of Their Own, A (ID: 3255)
+- Misérables, Les (ID: 73)
+- I Shot Andy Warhol (ID: 766)
+- Wings of the Dove, The (ID: 1683)
+- Death and the Maiden (ID: 229)
+- Hurricane, The (ID: 3178)
+- Crimson Tide (ID: 161)
+- Sleepers (ID: 1061)
+- Last Days of Disco, The (ID: 1836)
+- Spitfire Grill, The (ID: 848)
+- SLC Punk! (ID: 2596)
+- Love and Death on Long Island (ID: 1794)
+- Secret Garden, The (ID: 531)
+- Angels and Insects (ID: 85)
+- Little Women (ID: 261)
+- High Art (ID: 1897)
+- Cop Land (ID: 1589)
+
+候选电影列表: 
+- 8 1/2 Women (ID: 3626)
+- My Blue Heaven (ID: 2249)
+- Reality Bites (ID: 372)
+- Net, The (ID: 185)
+- Stand by Me (ID: 1259)
+- Ogre, The (Der Unhold) (ID: 3378)
+- McCullochs, The (ID: 3312)
+- Agnes of God (ID: 3251)
+- Beefcake (ID: 2960)
+- I Like It Like That (ID: 359)
+- Talk of Angels (ID: 887)
+- Eden (ID: 1815)
+- Honeymoon in Vegas (ID: 3614)
+- Gate II: Trespassers, The (ID: 2452)
+- Star Trek III: The Search for Spock (ID: 1375)
+- Rocky II (ID: 2409)
+- Losing Isaiah (ID: 271)
+- Charlotte's Web (ID: 2137)
+- Eyes of Tammy Faye, The (ID: 3859)
+- Jar, The (Khomreh) (ID: 758)
+
+请直接输出JSON格式的推荐结果，不要包含其他内容。
+2025-05-10 02:21:06,198 - INFO - ==== 发送API请求 ====
+2025-05-10 02:21:10,343 - INFO - ==== API响应 ====
+2025-05-10 02:21:10,343 - INFO - 响应状态码: 200
+2025-05-10 02:21:10,343 - INFO - 响应Headers: {'Date': 'Fri, 09 May 2025 18:21:06 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d336f4dfcf69a9-LAX', 'Content-Encoding': 'br'}
+2025-05-10 02:21:10,343 - INFO - 完整响应JSON: {
+  "id": "gen-1746814866-ME1vafPw3eirp3D4EAGb",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat:free",
+  "object": "chat.completion",
+  "created": 1746814866,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "[{\"name\": \"My Blue Heaven\", \"id\": 2249}, {\"name\": \"Reality Bites\", \"id\": 372}, {\"name\": \"Stand by Me\", \"id\": 1259}, {\"name\": \"I Like It Like That\", \"id\": 359}, {\"name\": \"Talk of Angels\", \"id\": 887}, {\"name\": \"Eden\", \"id\": 1815}, {\"name\": \"Honeymoon in Vegas\", \"id\": 3614}, {\"name\": \"Charlotte's Web\", \"id\": 2137}, {\"name\": \"Eyes of Tammy Faye, The\", \"id\": 3859}]",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 728,
+    "completion_tokens": 144,
+    "total_tokens": 872,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 02:21:10,344 - INFO - 模型回复内容:
+[{"name": "My Blue Heaven", "id": 2249}, {"name": "Reality Bites", "id": 372}, {"name": "Stand by Me", "id": 1259}, {"name": "I Like It Like That", "id": 359}, {"name": "Talk of Angels", "id": 887}, {"name": "Eden", "id": 1815}, {"name": "Honeymoon in Vegas", "id": 3614}, {"name": "Charlotte's Web", "id": 2137}, {"name": "Eyes of Tammy Faye, The", "id": 3859}]
+2025-05-10 02:21:10,344 - INFO - ==== 用量信息 ====
+2025-05-10 02:21:10,344 - INFO - 输入tokens: 728
+2025-05-10 02:21:10,344 - INFO - 输出tokens: 144
+2025-05-10 02:21:10,344 - INFO - 总tokens: 872
+2025-05-10 02:21:10,344 - INFO - ==== 解析输出 ====
+2025-05-10 02:21:10,344 - INFO - 调用parse_output函数解析响应...
+2025-05-10 02:21:10,344 - INFO - 解析结果: [2249, 372, 1259, 359, 887, 1815, 3614, 2137, 3859]
+2025-05-10 02:21:10,344 - INFO - ==== 计算NDCG ====
+2025-05-10 02:21:10,344 - INFO - 相关性列表: [0, 1, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 02:21:10,344 - INFO - 位置2的DCG贡献: 1/log2(3) = 0.6309
+2025-05-10 02:21:10,346 - INFO - DCG: 0.6309, IDCG: 1.0000
+2025-05-10 02:21:10,346 - INFO - NDCG@10: 0.6309
+2025-05-10 02:21:10,346 - INFO - NDCG@10计算详情:
+2025-05-10 02:21:10,346 - INFO - 截断后的预测列表(前10个): [2249, 372, 1259, 359, 887, 1815, 3614, 2137, 3859]
+2025-05-10 02:21:10,346 - INFO - 目标电影ID 372在位置2
+2025-05-10 02:21:10,346 - INFO - 位置2的DCG贡献: 1/log2(3) = 0.6309
+2025-05-10 02:21:10,346 - INFO - ==== 测试结果 ====
+2025-05-10 02:21:10,346 - INFO - 用户ID: 706
+2025-05-10 02:21:10,346 - INFO - 目标电影: Reality Bites (ID: 372)
+2025-05-10 02:21:10,346 - INFO - 预测列表(前10个): [2249, 372, 1259, 359, 887, 1815, 3614, 2137, 3859]
+2025-05-10 02:21:10,346 - INFO - NDCG@10: 0.6309
+2025-05-10 02:21:10,346 - INFO - ========== 测试结束 ==========
+2025-05-10 02:21:10,346 - INFO - 样本 7 测试完成，NDCG@10: 0.6309
+2025-05-10 02:21:10,347 - INFO - ===== 测试样本 8/10 =====
+2025-05-10 02:21:10,347 - INFO - ========== 测试开始 ==========
+2025-05-10 02:21:10,347 - INFO - ==== 样本信息 ====
+2025-05-10 02:21:10,347 - INFO - 用户ID: 729
+2025-05-10 02:21:10,347 - INFO - 用户历史电影数量: 20
+2025-05-10 02:21:10,347 - INFO - 候选电影数量: 20
+2025-05-10 02:21:10,347 - INFO - 目标电影: Talented Mr. Ripley, The (ID: 3176)
+2025-05-10 02:21:10,347 - INFO - ==== 构造提示词 ====
+2025-05-10 02:21:10,347 - INFO - 调用construct_prompt函数...
+2025-05-10 02:21:10,347 - INFO - 生成了2条消息
+2025-05-10 02:21:10,348 - INFO - ==== 发送的消息 ====
+2025-05-10 02:21:10,348 - INFO - [系统提示]:
+  你是一个智能电影推荐引擎，请根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。
+分析步骤：
+1. 从用户历史观影记录中分析每个电影风格类型
+2. 评估候选电影的风格类型
+3. 生成按推荐优先级排序的结果列表
+输出要求：
+- 最终输出为JSON格式的推荐列表
+- 每项包含电影名称和ID
+- 示例格式: [{"name": "电影1", "id": 123}]
+可用电影风格类别: 
+['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+2025-05-10 02:21:10,348 - INFO - [用户请求]:
+  用户观影历史: 
+- Young Sherlock Holmes (ID: 2414)
+- Single White Female (ID: 3274)
+- Tron (ID: 2105)
+- Star Trek: Insurrection (ID: 2393)
+- Speed (ID: 377)
+- Star Trek III: The Search for Spock (ID: 1375)
+- Blade (ID: 2167)
+- Mission: Impossible 2 (ID: 3623)
+- Natural Born Killers (ID: 288)
+- Star Trek: The Motion Picture (ID: 1371)
+- Golden Voyage of Sinbad, The (ID: 3771)
+- Eraser (ID: 786)
+- Air Force One (ID: 1608)
+- Arachnophobia (ID: 2699)
+- Jewel of the Nile, The (ID: 2405)
+- Mummy, The (ID: 2617)
+- Godfather: Part III, The (ID: 2023)
+- Crow, The (ID: 353)
+- Dances with Wolves (ID: 590)
+- JFK (ID: 3386)
+
+候选电影列表: 
+- Saltmen of Tibet, The (ID: 2129)
+- Repo Man (ID: 1965)
+- Mission: Impossible 2 (ID: 3623)
+- Indochine (ID: 2943)
+- X: The Unknown (ID: 3878)
+- Walking and Talking (ID: 803)
+- My Own Private Idaho (ID: 1611)
+- Matrix, The (ID: 2571)
+- Amazing Panda Adventure, The (ID: 146)
+- Lords of Flatbush, The (ID: 3590)
+- Hoosiers (ID: 3360)
+- Haunting, The (ID: 2550)
+- Immortal Beloved (ID: 249)
+- When a Man Loves a Woman (ID: 381)
+- How Stella Got Her Groove Back (ID: 2154)
+- Crash (ID: 1483)
+- Low Life, The (ID: 730)
+- Fright Night (ID: 2867)
+- Talented Mr. Ripley, The (ID: 3176)
+- Pacific Heights (ID: 3219)
+
+请直接输出JSON格式的推荐结果，不要包含其他内容。
+2025-05-10 02:21:10,348 - INFO - ==== 调用API ====
+2025-05-10 02:21:10,348 - INFO - ==== API调用参数 ====
+2025-05-10 02:21:10,348 - INFO - 模型: deepseek/deepseek-chat:free
+2025-05-10 02:21:10,348 - INFO - 温度: 0
+2025-05-10 02:21:10,348 - INFO - ==== 发送的消息 ====
+2025-05-10 02:21:10,348 - INFO - 消息 1:
+2025-05-10 02:21:10,349 - INFO - 角色: system
+2025-05-10 02:21:10,349 - INFO - 内容: 你是一个智能电影推荐引擎，请根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。
+分析步骤：
+1. 从用户历史观影记录中分析每个电影风格类型
+2. 评估候选电影的风格类型
+3. 生成按推荐优先级排序的结果列表
+输出要求：
+- 最终输出为JSON格式的推荐列表
+- 每项包含电影名称和ID
+- 示例格式: [{"name": "电影1", "id": 123}]
+可用电影风格类别: 
+['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+2025-05-10 02:21:10,349 - INFO - 消息 2:
+2025-05-10 02:21:10,349 - INFO - 角色: user
+2025-05-10 02:21:10,349 - INFO - 内容: 用户观影历史: 
+- Young Sherlock Holmes (ID: 2414)
+- Single White Female (ID: 3274)
+- Tron (ID: 2105)
+- Star Trek: Insurrection (ID: 2393)
+- Speed (ID: 377)
+- Star Trek III: The Search for Spock (ID: 1375)
+- Blade (ID: 2167)
+- Mission: Impossible 2 (ID: 3623)
+- Natural Born Killers (ID: 288)
+- Star Trek: The Motion Picture (ID: 1371)
+- Golden Voyage of Sinbad, The (ID: 3771)
+- Eraser (ID: 786)
+- Air Force One (ID: 1608)
+- Arachnophobia (ID: 2699)
+- Jewel of the Nile, The (ID: 2405)
+- Mummy, The (ID: 2617)
+- Godfather: Part III, The (ID: 2023)
+- Crow, The (ID: 353)
+- Dances with Wolves (ID: 590)
+- JFK (ID: 3386)
+
+候选电影列表: 
+- Saltmen of Tibet, The (ID: 2129)
+- Repo Man (ID: 1965)
+- Mission: Impossible 2 (ID: 3623)
+- Indochine (ID: 2943)
+- X: The Unknown (ID: 3878)
+- Walking and Talking (ID: 803)
+- My Own Private Idaho (ID: 1611)
+- Matrix, The (ID: 2571)
+- Amazing Panda Adventure, The (ID: 146)
+- Lords of Flatbush, The (ID: 3590)
+- Hoosiers (ID: 3360)
+- Haunting, The (ID: 2550)
+- Immortal Beloved (ID: 249)
+- When a Man Loves a Woman (ID: 381)
+- How Stella Got Her Groove Back (ID: 2154)
+- Crash (ID: 1483)
+- Low Life, The (ID: 730)
+- Fright Night (ID: 2867)
+- Talented Mr. Ripley, The (ID: 3176)
+- Pacific Heights (ID: 3219)
+
+请直接输出JSON格式的推荐结果，不要包含其他内容。
+2025-05-10 02:21:10,349 - INFO - ==== 发送API请求 ====
+2025-05-10 02:21:17,148 - INFO - ==== API响应 ====
+2025-05-10 02:21:17,148 - INFO - 响应状态码: 200
+2025-05-10 02:21:17,148 - INFO - 响应Headers: {'Date': 'Fri, 09 May 2025 18:21:10 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d3370eabb20fb7-LAX', 'Content-Encoding': 'br'}
+2025-05-10 02:21:17,148 - INFO - 完整响应JSON: {
+  "id": "gen-1746814870-jRaPWt5pE2CdSsZuc9SX",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat:free",
+  "object": "chat.completion",
+  "created": 1746814871,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "[{\"name\": \"Mission: Impossible 2\", \"id\": 3623}, {\"name\": \"Matrix, The\", \"id\": 2571}, {\"name\": \"Talented Mr. Ripley, The\", \"id\": 3176}, {\"name\": \"Pacific Heights\", \"id\": 3219}, {\"name\": \"Haunting, The\", \"id\": 2550}, {\"name\": \"Fright Night\", \"id\": 2867}, {\"name\": \"Crash\", \"id\": 1483}, {\"name\": \"My Own Private Idaho\", \"id\": 1611}, {\"name\": \"Indochine\", \"id\": 2943}, {\"name\": \"Repoman\", \"id\": 1965}]",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 724,
+    "completion_tokens": 158,
+    "total_tokens": 882,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 02:21:17,148 - INFO - 模型回复内容:
+[{"name": "Mission: Impossible 2", "id": 3623}, {"name": "Matrix, The", "id": 2571}, {"name": "Talented Mr. Ripley, The", "id": 3176}, {"name": "Pacific Heights", "id": 3219}, {"name": "Haunting, The", "id": 2550}, {"name": "Fright Night", "id": 2867}, {"name": "Crash", "id": 1483}, {"name": "My Own Private Idaho", "id": 1611}, {"name": "Indochine", "id": 2943}, {"name": "Repoman", "id": 1965}]
+2025-05-10 02:21:17,148 - INFO - ==== 用量信息 ====
+2025-05-10 02:21:17,148 - INFO - 输入tokens: 724
+2025-05-10 02:21:17,150 - INFO - 输出tokens: 158
+2025-05-10 02:21:17,150 - INFO - 总tokens: 882
+2025-05-10 02:21:17,150 - INFO - ==== 解析输出 ====
+2025-05-10 02:21:17,150 - INFO - 调用parse_output函数解析响应...
+2025-05-10 02:21:17,150 - INFO - 解析结果: [3623, 2571, 3176, 3219, 2550, 2867, 1483, 1611, 2943, 1965]
+2025-05-10 02:21:17,150 - INFO - ==== 计算NDCG ====
+2025-05-10 02:21:17,150 - INFO - 相关性列表: [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 02:21:17,150 - INFO - 位置3的DCG贡献: 1/log2(4) = 0.5000
+2025-05-10 02:21:17,151 - INFO - DCG: 0.5000, IDCG: 1.0000
+2025-05-10 02:21:17,151 - INFO - NDCG@10: 0.5000
+2025-05-10 02:21:17,151 - INFO - NDCG@10计算详情:
+2025-05-10 02:21:17,151 - INFO - 截断后的预测列表(前10个): [3623, 2571, 3176, 3219, 2550, 2867, 1483, 1611, 2943, 1965]
+2025-05-10 02:21:17,151 - INFO - 目标电影ID 3176在位置3
+2025-05-10 02:21:17,151 - INFO - 位置3的DCG贡献: 1/log2(4) = 0.5000
+2025-05-10 02:21:17,151 - INFO - ==== 测试结果 ====
+2025-05-10 02:21:17,151 - INFO - 用户ID: 729
+2025-05-10 02:21:17,151 - INFO - 目标电影: Talented Mr. Ripley, The (ID: 3176)
+2025-05-10 02:21:17,151 - INFO - 预测列表(前10个): [3623, 2571, 3176, 3219, 2550, 2867, 1483, 1611, 2943, 1965]
+2025-05-10 02:21:17,151 - INFO - NDCG@10: 0.5000
+2025-05-10 02:21:17,151 - INFO - ========== 测试结束 ==========
+2025-05-10 02:21:17,151 - INFO - 样本 8 测试完成，NDCG@10: 0.5000
+2025-05-10 02:21:17,151 - INFO - ===== 测试样本 9/10 =====
+2025-05-10 02:21:17,151 - INFO - ========== 测试开始 ==========
+2025-05-10 02:21:17,151 - INFO - ==== 样本信息 ====
+2025-05-10 02:21:17,151 - INFO - 用户ID: 738
+2025-05-10 02:21:17,151 - INFO - 用户历史电影数量: 20
+2025-05-10 02:21:17,151 - INFO - 候选电影数量: 20
+2025-05-10 02:21:17,151 - INFO - 目标电影: Dangerous Beauty (ID: 1758)
+2025-05-10 02:21:17,151 - INFO - ==== 构造提示词 ====
+2025-05-10 02:21:17,151 - INFO - 调用construct_prompt函数...
+2025-05-10 02:21:17,151 - INFO - 生成了2条消息
+2025-05-10 02:21:17,152 - INFO - ==== 发送的消息 ====
+2025-05-10 02:21:17,152 - INFO - [系统提示]:
+  你是一个智能电影推荐引擎，请根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。
+分析步骤：
+1. 从用户历史观影记录中分析每个电影风格类型
+2. 评估候选电影的风格类型
+3. 生成按推荐优先级排序的结果列表
+输出要求：
+- 最终输出为JSON格式的推荐列表
+- 每项包含电影名称和ID
+- 示例格式: [{"name": "电影1", "id": 123}]
+可用电影风格类别: 
+['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+2025-05-10 02:21:17,152 - INFO - [用户请求]:
+  用户观影历史: 
+- Shanghai Noon (ID: 3624)
+- Frequency (ID: 3510)
+- Titus (ID: 3181)
+- Gladiator (ID: 3578)
+- Rules of Engagement (ID: 3513)
+- American Psycho (ID: 3535)
+- U-571 (ID: 3555)
+- Patriot, The (ID: 3753)
+- Gossip (ID: 3553)
+- Skulls, The (ID: 3484)
+- Mission to Mars (ID: 3354)
+- Remember the Titans (ID: 3916)
+- Erin Brockovich (ID: 3408)
+- Broken Hearts Club, The (ID: 3914)
+- Boiler Room (ID: 3298)
+- Gone in 60 Seconds (ID: 3717)
+- Shaft (ID: 3744)
+- Perfect Storm, The (ID: 3755)
+- Romeo Must Die (ID: 3452)
+- Highlander: Endgame (ID: 3889)
+
+候选电影列表: 
+- Trust (ID: 1236)
+- Mr. Nice Guy (ID: 1858)
+- Godzilla 2000 (Gojira ni-sen mireniamu) (ID: 3864)
+- Three Caballeros, The (ID: 1024)
+- Happiest Millionaire, The (ID: 2049)
+- Doug's 1st Movie (ID: 2566)
+- Dangerous Beauty (ID: 1758)
+- Killer Shrews, The (ID: 3933)
+- Next Best Thing, The (ID: 3325)
+- Cat on a Hot Tin Roof (ID: 971)
+- Cape Fear (ID: 1343)
+- Breakfast of Champions (ID: 2507)
+- Backdraft (ID: 3107)
+- Cradle Will Rock, The (ID: 3145)
+- Loaded (ID: 614)
+- Being John Malkovich (ID: 2997)
+- Red Rock West (ID: 373)
+- Shall We Dance? (Shall We Dansu?) (ID: 1537)
+- Benji (ID: 3672)
+- Normal Life (ID: 1053)
+
+请直接输出JSON格式的推荐结果，不要包含其他内容。
+2025-05-10 02:21:17,152 - INFO - ==== 调用API ====
+2025-05-10 02:21:17,152 - INFO - ==== API调用参数 ====
+2025-05-10 02:21:17,152 - INFO - 模型: deepseek/deepseek-chat:free
+2025-05-10 02:21:17,152 - INFO - 温度: 0
+2025-05-10 02:21:17,152 - INFO - ==== 发送的消息 ====
+2025-05-10 02:21:17,152 - INFO - 消息 1:
+2025-05-10 02:21:17,152 - INFO - 角色: system
+2025-05-10 02:21:17,152 - INFO - 内容: 你是一个智能电影推荐引擎，请根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。
+分析步骤：
+1. 从用户历史观影记录中分析每个电影风格类型
+2. 评估候选电影的风格类型
+3. 生成按推荐优先级排序的结果列表
+输出要求：
+- 最终输出为JSON格式的推荐列表
+- 每项包含电影名称和ID
+- 示例格式: [{"name": "电影1", "id": 123}]
+可用电影风格类别: 
+['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+2025-05-10 02:21:17,153 - INFO - 消息 2:
+2025-05-10 02:21:17,153 - INFO - 角色: user
+2025-05-10 02:21:17,153 - INFO - 内容: 用户观影历史: 
+- Shanghai Noon (ID: 3624)
+- Frequency (ID: 3510)
+- Titus (ID: 3181)
+- Gladiator (ID: 3578)
+- Rules of Engagement (ID: 3513)
+- American Psycho (ID: 3535)
+- U-571 (ID: 3555)
+- Patriot, The (ID: 3753)
+- Gossip (ID: 3553)
+- Skulls, The (ID: 3484)
+- Mission to Mars (ID: 3354)
+- Remember the Titans (ID: 3916)
+- Erin Brockovich (ID: 3408)
+- Broken Hearts Club, The (ID: 3914)
+- Boiler Room (ID: 3298)
+- Gone in 60 Seconds (ID: 3717)
+- Shaft (ID: 3744)
+- Perfect Storm, The (ID: 3755)
+- Romeo Must Die (ID: 3452)
+- Highlander: Endgame (ID: 3889)
+
+候选电影列表: 
+- Trust (ID: 1236)
+- Mr. Nice Guy (ID: 1858)
+- Godzilla 2000 (Gojira ni-sen mireniamu) (ID: 3864)
+- Three Caballeros, The (ID: 1024)
+- Happiest Millionaire, The (ID: 2049)
+- Doug's 1st Movie (ID: 2566)
+- Dangerous Beauty (ID: 1758)
+- Killer Shrews, The (ID: 3933)
+- Next Best Thing, The (ID: 3325)
+- Cat on a Hot Tin Roof (ID: 971)
+- Cape Fear (ID: 1343)
+- Breakfast of Champions (ID: 2507)
+- Backdraft (ID: 3107)
+- Cradle Will Rock, The (ID: 3145)
+- Loaded (ID: 614)
+- Being John Malkovich (ID: 2997)
+- Red Rock West (ID: 373)
+- Shall We Dance? (Shall We Dansu?) (ID: 1537)
+- Benji (ID: 3672)
+- Normal Life (ID: 1053)
+
+请直接输出JSON格式的推荐结果，不要包含其他内容。
+2025-05-10 02:21:17,153 - INFO - ==== 发送API请求 ====
+2025-05-10 02:21:24,467 - INFO - ==== API响应 ====
+2025-05-10 02:21:24,467 - INFO - 响应状态码: 200
+2025-05-10 02:21:24,467 - INFO - 响应Headers: {'Date': 'Fri, 09 May 2025 18:21:17 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d33739a8f40fd9-LAX', 'Content-Encoding': 'br'}
+2025-05-10 02:21:24,467 - INFO - 完整响应JSON: {
+  "id": "gen-1746814877-fLRbrSIW9xm9Sej8uvIs",
+  "provider": "Targon",
+  "model": "deepseek/deepseek-chat:free",
+  "object": "chat.completion",
+  "created": 1746814877,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "[{\"name\": \"Mr. Nice Guy\", \"id\": 1858}, {\"name\": \"Backdraft\", \"id\": 3107}, {\"name\": \"Cape Fear\", \"id\": 1343}, {\"name\": \"Red Rock West\", \"id\": 373}, {\"name\": \"Being John Malkovich\", \"id\": 2997}, {\"name\": \"Next Best Thing, The\", \"id\": 3325}, {\"name\": \"Dangerous Beauty\", \"id\": 1758}, {\"name\": \"Normal Life\", \"id\": 1053}, {\"name\": \"Shall We Dance? (Shall We Dansu?)\", \"id\": 1537}, {\"name\": \"Benji\", \"id\": 3672}]",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 723,
+    "completion_tokens": 164,
+    "total_tokens": 887,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 02:21:24,468 - INFO - 模型回复内容:
+[{"name": "Mr. Nice Guy", "id": 1858}, {"name": "Backdraft", "id": 3107}, {"name": "Cape Fear", "id": 1343}, {"name": "Red Rock West", "id": 373}, {"name": "Being John Malkovich", "id": 2997}, {"name": "Next Best Thing, The", "id": 3325}, {"name": "Dangerous Beauty", "id": 1758}, {"name": "Normal Life", "id": 1053}, {"name": "Shall We Dance? (Shall We Dansu?)", "id": 1537}, {"name": "Benji", "id": 3672}]
+2025-05-10 02:21:24,468 - INFO - ==== 用量信息 ====
+2025-05-10 02:21:24,468 - INFO - 输入tokens: 723
+2025-05-10 02:21:24,469 - INFO - 输出tokens: 164
+2025-05-10 02:21:24,469 - INFO - 总tokens: 887
+2025-05-10 02:21:24,469 - INFO - ==== 解析输出 ====
+2025-05-10 02:21:24,470 - INFO - 调用parse_output函数解析响应...
+2025-05-10 02:21:24,470 - INFO - 解析结果: [1858, 3107, 1343, 373, 2997, 3325, 1758, 1053, 1537, 3672]
+2025-05-10 02:21:24,471 - INFO - ==== 计算NDCG ====
+2025-05-10 02:21:24,471 - INFO - 相关性列表: [0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+2025-05-10 02:21:24,471 - INFO - 位置7的DCG贡献: 1/log2(8) = 0.3333
+2025-05-10 02:21:24,471 - INFO - DCG: 0.3333, IDCG: 1.0000
+2025-05-10 02:21:24,471 - INFO - NDCG@10: 0.3333
+2025-05-10 02:21:24,471 - INFO - NDCG@10计算详情:
+2025-05-10 02:21:24,471 - INFO - 截断后的预测列表(前10个): [1858, 3107, 1343, 373, 2997, 3325, 1758, 1053, 1537, 3672]
+2025-05-10 02:21:24,472 - INFO - 目标电影ID 1758在位置7
+2025-05-10 02:21:24,472 - INFO - 位置7的DCG贡献: 1/log2(8) = 0.3333
+2025-05-10 02:21:24,472 - INFO - ==== 测试结果 ====
+2025-05-10 02:21:24,472 - INFO - 用户ID: 738
+2025-05-10 02:21:24,472 - INFO - 目标电影: Dangerous Beauty (ID: 1758)
+2025-05-10 02:21:24,472 - INFO - 预测列表(前10个): [1858, 3107, 1343, 373, 2997, 3325, 1758, 1053, 1537, 3672]
+2025-05-10 02:21:24,473 - INFO - NDCG@10: 0.3333
+2025-05-10 02:21:24,473 - INFO - ========== 测试结束 ==========
+2025-05-10 02:21:24,473 - INFO - 样本 9 测试完成，NDCG@10: 0.3333
+2025-05-10 02:21:24,473 - INFO - ===== 测试样本 10/10 =====
+2025-05-10 02:21:24,473 - INFO - ========== 测试开始 ==========
+2025-05-10 02:21:24,473 - INFO - ==== 样本信息 ====
+2025-05-10 02:21:24,473 - INFO - 用户ID: 751
+2025-05-10 02:21:24,473 - INFO - 用户历史电影数量: 20
+2025-05-10 02:21:24,473 - INFO - 候选电影数量: 20
+2025-05-10 02:21:24,474 - INFO - 目标电影: Repo Man (ID: 1965)
+2025-05-10 02:21:24,474 - INFO - ==== 构造提示词 ====
+2025-05-10 02:21:24,474 - INFO - 调用construct_prompt函数...
+2025-05-10 02:21:24,475 - INFO - 生成了2条消息
+2025-05-10 02:21:24,475 - INFO - ==== 发送的消息 ====
+2025-05-10 02:21:24,475 - INFO - [系统提示]:
+  你是一个智能电影推荐引擎，请根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。
+分析步骤：
+1. 从用户历史观影记录中分析每个电影风格类型
+2. 评估候选电影的风格类型
+3. 生成按推荐优先级排序的结果列表
+输出要求：
+- 最终输出为JSON格式的推荐列表
+- 每项包含电影名称和ID
+- 示例格式: [{"name": "电影1", "id": 123}]
+可用电影风格类别: 
+['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+2025-05-10 02:21:24,475 - INFO - [用户请求]:
+  用户观影历史: 
+- One Crazy Summer (ID: 2261)
+- Raiders of the Lost Ark (ID: 1198)
+- Magnolia (ID: 3160)
+- Titan A.E. (ID: 3745)
+- Patriot, The (ID: 3753)
+- Stand by Me (ID: 1259)
+- Jurassic Park (ID: 480)
+- Airplane! (ID: 2791)
+- Hellraiser (ID: 3917)
+- Nikita (La Femme Nikita) (ID: 1249)
+- Terminator 2: Judgment Day (ID: 589)
+- Boogie Nights (ID: 1673)
+- After Life (ID: 2624)
+- Braveheart (ID: 110)
+- Edward Scissorhands (ID: 2291)
+- Rosemary's Baby (ID: 2160)
+- 28 Days (ID: 3534)
+- From Russia with Love (ID: 2948)
+- High Fidelity (ID: 3481)
+- Big Kahuna, The (ID: 3566)
+
+候选电影列表: 
+- Lawn Dogs (ID: 1880)
+- Death Becomes Her (ID: 3258)
+- Fall Time (ID: 396)
+- Rebel Without a Cause (ID: 1103)
+- Action Jackson (ID: 3710)
+- Sabotage (ID: 2210)
+- Event Horizon (ID: 1590)
+- Mummy's Hand, The (ID: 2637)
+- Toxic Avenger Part III: The Last Temptation of Toxie, The (ID: 3695)
+- Happiness (ID: 2318)
+- When a Man Loves a Woman (ID: 381)
+- Impact (ID: 3413)
+- Crimson Tide (ID: 161)
+- Fitzcarraldo (ID: 2970)
+- Repo Man (ID: 1965)
+- Hamlet (ID: 3723)
+- Police Story 4: Project S (Chao ji ji hua) (ID: 876)
+- Sixteen Candles (ID: 2144)
+- 8 1/2 (ID: 1251)
+- I Am Cuba (Soy Cuba/Ya Kuba) (ID: 3245)
+
+请直接输出JSON格式的推荐结果，不要包含其他内容。
+2025-05-10 02:21:24,475 - INFO - ==== 调用API ====
+2025-05-10 02:21:24,475 - INFO - ==== API调用参数 ====
+2025-05-10 02:21:24,475 - INFO - 模型: deepseek/deepseek-chat:free
+2025-05-10 02:21:24,475 - INFO - 温度: 0
+2025-05-10 02:21:24,475 - INFO - ==== 发送的消息 ====
+2025-05-10 02:21:24,475 - INFO - 消息 1:
+2025-05-10 02:21:24,475 - INFO - 角色: system
+2025-05-10 02:21:24,475 - INFO - 内容: 你是一个智能电影推荐引擎，请根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。
+分析步骤：
+1. 从用户历史观影记录中分析每个电影风格类型
+2. 评估候选电影的风格类型
+3. 生成按推荐优先级排序的结果列表
+输出要求：
+- 最终输出为JSON格式的推荐列表
+- 每项包含电影名称和ID
+- 示例格式: [{"name": "电影1", "id": 123}]
+可用电影风格类别: 
+['Animation', 'Comedy', "Children's", 'Musical', 'Romance', 'Adventure', 'Action', 'Thriller', 'Drama', 'War', 'Sci-Fi', 'Western', 'Fantasy', 'Horror', 'Crime', 'Film-Noir', 'Documentary']
+2025-05-10 02:21:24,475 - INFO - 消息 2:
+2025-05-10 02:21:24,475 - INFO - 角色: user
+2025-05-10 02:21:24,475 - INFO - 内容: 用户观影历史: 
+- One Crazy Summer (ID: 2261)
+- Raiders of the Lost Ark (ID: 1198)
+- Magnolia (ID: 3160)
+- Titan A.E. (ID: 3745)
+- Patriot, The (ID: 3753)
+- Stand by Me (ID: 1259)
+- Jurassic Park (ID: 480)
+- Airplane! (ID: 2791)
+- Hellraiser (ID: 3917)
+- Nikita (La Femme Nikita) (ID: 1249)
+- Terminator 2: Judgment Day (ID: 589)
+- Boogie Nights (ID: 1673)
+- After Life (ID: 2624)
+- Braveheart (ID: 110)
+- Edward Scissorhands (ID: 2291)
+- Rosemary's Baby (ID: 2160)
+- 28 Days (ID: 3534)
+- From Russia with Love (ID: 2948)
+- High Fidelity (ID: 3481)
+- Big Kahuna, The (ID: 3566)
+
+候选电影列表: 
+- Lawn Dogs (ID: 1880)
+- Death Becomes Her (ID: 3258)
+- Fall Time (ID: 396)
+- Rebel Without a Cause (ID: 1103)
+- Action Jackson (ID: 3710)
+- Sabotage (ID: 2210)
+- Event Horizon (ID: 1590)
+- Mummy's Hand, The (ID: 2637)
+- Toxic Avenger Part III: The Last Temptation of Toxie, The (ID: 3695)
+- Happiness (ID: 2318)
+- When a Man Loves a Woman (ID: 381)
+- Impact (ID: 3413)
+- Crimson Tide (ID: 161)
+- Fitzcarraldo (ID: 2970)
+- Repo Man (ID: 1965)
+- Hamlet (ID: 3723)
+- Police Story 4: Project S (Chao ji ji hua) (ID: 876)
+- Sixteen Candles (ID: 2144)
+- 8 1/2 (ID: 1251)
+- I Am Cuba (Soy Cuba/Ya Kuba) (ID: 3245)
+
+请直接输出JSON格式的推荐结果，不要包含其他内容。
+2025-05-10 02:21:24,475 - INFO - ==== 发送API请求 ====
+2025-05-10 02:21:30,069 - INFO - ==== API响应 ====
+2025-05-10 02:21:30,069 - INFO - 响应状态码: 200
+2025-05-10 02:21:30,069 - INFO - 响应Headers: {'Date': 'Fri, 09 May 2025 18:21:25 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-clerk-auth-message': 'Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid, token-carrier=header)', 'x-clerk-auth-reason': 'token-invalid', 'x-clerk-auth-status': 'signed-out', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '93d3376709781018-LAX', 'Content-Encoding': 'br'}
+2025-05-10 02:21:30,069 - INFO - 完整响应JSON: {
+  "id": "gen-1746814884-5lbzmRlLrxdzEG3lpijH",
+  "provider": "Chutes",
+  "model": "deepseek/deepseek-chat:free",
+  "object": "chat.completion",
+  "created": 1746814885,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "[{\"name\": \"Event Horizon\", \"id\": 1590}, {\"name\": \"Crimson Tide\", \"id\": 161}, {\"name\": \"Sabotage\", \"id\": 2210}, {\"name\": \"Action Jackson\", \"id\": 3710}, {\"name\": \"Police Story 4: Project S (Chao ji ji hua)\", \"id\": 876}, {\"name\": \"Mummy's Hand, The\", \"id\": 2637}, {\"name\": \"Toxic Avenger Part III: The Last Temptation of Toxie, The\", \"id\": 3695}, {\"name\": \"Impact\", \"id\": 3413}, {\"name\": \"Repo Man\", \"id\": 1965}, {\"name\": \"Fall Time\", \"id\": 396}]",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 730,
+    "completion_tokens": 172,
+    "total_tokens": 902,
+    "prompt_tokens_details": null
+  }
+}
+2025-05-10 02:21:30,070 - INFO - 模型回复内容:
+[{"name": "Event Horizon", "id": 1590}, {"name": "Crimson Tide", "id": 161}, {"name": "Sabotage", "id": 2210}, {"name": "Action Jackson", "id": 3710}, {"name": "Police Story 4: Project S (Chao ji ji hua)", "id": 876}, {"name": "Mummy's Hand, The", "id": 2637}, {"name": "Toxic Avenger Part III: The Last Temptation of Toxie, The", "id": 3695}, {"name": "Impact", "id": 3413}, {"name": "Repo Man", "id": 1965}, {"name": "Fall Time", "id": 396}]
+2025-05-10 02:21:30,070 - INFO - ==== 用量信息 ====
+2025-05-10 02:21:30,070 - INFO - 输入tokens: 730
+2025-05-10 02:21:30,070 - INFO - 输出tokens: 172
+2025-05-10 02:21:30,070 - INFO - 总tokens: 902
+2025-05-10 02:21:30,071 - INFO - ==== 解析输出 ====
+2025-05-10 02:21:30,071 - INFO - 调用parse_output函数解析响应...
+2025-05-10 02:21:30,072 - INFO - 解析结果: [1590, 161, 2210, 3710, 876, 2637, 3695, 3413, 1965, 396]
+2025-05-10 02:21:30,072 - INFO - ==== 计算NDCG ====
+2025-05-10 02:21:30,072 - INFO - 相关性列表: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0]
+2025-05-10 02:21:30,072 - INFO - 位置9的DCG贡献: 1/log2(10) = 0.3010
+2025-05-10 02:21:30,072 - INFO - DCG: 0.3010, IDCG: 1.0000
+2025-05-10 02:21:30,072 - INFO - NDCG@10: 0.3010
+2025-05-10 02:21:30,072 - INFO - NDCG@10计算详情:
+2025-05-10 02:21:30,073 - INFO - 截断后的预测列表(前10个): [1590, 161, 2210, 3710, 876, 2637, 3695, 3413, 1965, 396]
+2025-05-10 02:21:30,073 - INFO - 目标电影ID 1965在位置9
+2025-05-10 02:21:30,073 - INFO - 位置9的DCG贡献: 1/log2(10) = 0.3010
+2025-05-10 02:21:30,073 - INFO - ==== 测试结果 ====
+2025-05-10 02:21:30,073 - INFO - 用户ID: 751
+2025-05-10 02:21:30,073 - INFO - 目标电影: Repo Man (ID: 1965)
+2025-05-10 02:21:30,073 - INFO - 预测列表(前10个): [1590, 161, 2210, 3710, 876, 2637, 3695, 3413, 1965, 396]
+2025-05-10 02:21:30,073 - INFO - NDCG@10: 0.3010
+2025-05-10 02:21:30,074 - INFO - ========== 测试结束 ==========
+2025-05-10 02:21:30,074 - INFO - 样本 10 测试完成，NDCG@10: 0.3010
+2025-05-10 02:21:30,074 - INFO - ===== 测试总结 =====
+2025-05-10 02:21:30,074 - INFO - 样本 1 NDCG@10: 0.5000
+2025-05-10 02:21:30,074 - INFO - 样本 2 NDCG@10: 0.3562
+2025-05-10 02:21:30,074 - INFO - 样本 3 NDCG@10: 0.6309
+2025-05-10 02:21:30,074 - INFO - 样本 4 NDCG@10: 0.6309
+2025-05-10 02:21:30,074 - INFO - 样本 5 NDCG@10: 0.0000
+2025-05-10 02:21:30,074 - INFO - 样本 6 NDCG@10: 0.6309
+2025-05-10 02:21:30,074 - INFO - 样本 7 NDCG@10: 0.6309
+2025-05-10 02:21:30,074 - INFO - 样本 8 NDCG@10: 0.5000
+2025-05-10 02:21:30,075 - INFO - 样本 9 NDCG@10: 0.3333
+2025-05-10 02:21:30,075 - INFO - 样本 10 NDCG@10: 0.3010
+2025-05-10 02:21:30,075 - INFO - 总计测试了 10 个样本
+2025-05-10 02:21:30,075 - INFO - 平均NDCG@10: 0.4514
+2025-05-10 02:21:30,075 - INFO - ==== 运行信息 ====
+2025-05-10 02:21:30,075 - INFO - 执行时间: 2025-05-09T18:21:30
+2025-05-10 02:21:30,075 - INFO - API密钥: sk-or-v1...f35d4e89
+2025-05-10 02:21:30,075 - INFO - API地址: https://openrouter.ai/api/v1/chat/completions
