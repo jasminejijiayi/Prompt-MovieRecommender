@@ -1,0 +1,2435 @@
+2025-05-10 13:25:36,352 - INFO - 开始执行测试...
+2025-05-10 13:25:36,353 - INFO - 读取val.jsonl文件...
+2025-05-10 13:25:36,353 - INFO - 成功加载10个样本
+2025-05-10 13:25:36,353 - INFO - 将测试10个样本
+2025-05-10 13:25:36,353 - INFO - ===== 测试样本 1/10 =====
+2025-05-10 13:25:36,353 - INFO - ========== 测试开始 ==========
+2025-05-10 13:25:36,353 - INFO - ==== 样本信息 ====
+2025-05-10 13:25:36,353 - INFO - 用户ID: 405
+2025-05-10 13:25:36,354 - INFO - 用户历史电影数量: 20
+2025-05-10 13:25:36,354 - INFO - 候选电影数量: 20
+2025-05-10 13:25:36,354 - INFO - 目标电影: Artemisia (ID: 1695)
+2025-05-10 13:25:36,354 - INFO - ==== 构造提示词 ====
+2025-05-10 13:25:36,354 - INFO - 调用construct_prompt函数...
+2025-05-10 13:25:36,354 - INFO - 生成了4条消息
+2025-05-10 13:25:36,354 - INFO - ==== 发送的消息 ====
+2025-05-10 13:25:36,355 - INFO - [系统提示]:
+  # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，电影ID没有关联关系，需要你根据用户偏好的电影风格对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影名称和ID列表（JSON）。
+2025-05-10 13:25:36,355 - INFO - [用户请求]:
+  用户ID: example_user_123
+
+用户观看过的电影列表:
+- Liar Liar (ID: 123)
+- The Mask (ID: 456)
+- Mrs. Doubtfire (ID: 789)
+- Toy Story (ID: 246)
+- The Lion King (ID: 357)
+
+候选电影列表:
+- Ace Ventura: Pet Detective (ID: 111)
+- Forrest Gump (ID: 222) 
+- The Shawshank Redemption (ID: 333) 
+- Aladdin (ID: 444) 
+- Terminator 2: Judgment Day (ID: 555)
+2025-05-10 13:25:36,355 - INFO - ==== 调用API ====
+2025-05-10 13:25:36,355 - INFO - ==== API调用参数 ====
+2025-05-10 13:25:36,355 - INFO - 模型: Pro/deepseek-ai/DeepSeek-V3
+2025-05-10 13:25:36,355 - INFO - 温度: 0
+2025-05-10 13:25:36,355 - INFO - ==== 发送的消息 ====
+2025-05-10 13:25:36,355 - INFO - 消息 1:
+2025-05-10 13:25:36,355 - INFO - 角色: system
+2025-05-10 13:25:36,355 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，电影ID没有关联关系，需要你根据用户偏好的电影风格对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影名称和ID列表（JSON）。
+2025-05-10 13:25:36,355 - INFO - 消息 2:
+2025-05-10 13:25:36,355 - INFO - 角色: user
+2025-05-10 13:25:36,357 - INFO - 内容: 用户ID: example_user_123
+
+用户观看过的电影列表:
+- Liar Liar (ID: 123)
+- The Mask (ID: 456)
+- Mrs. Doubtfire (ID: 789)
+- Toy Story (ID: 246)
+- The Lion King (ID: 357)
+
+候选电影列表:
+- Ace Ventura: Pet Detective (ID: 111)
+- Forrest Gump (ID: 222) 
+- The Shawshank Redemption (ID: 333) 
+- Aladdin (ID: 444) 
+- Terminator 2: Judgment Day (ID: 555)
+2025-05-10 13:25:36,357 - INFO - 消息 3:
+2025-05-10 13:25:36,357 - INFO - 角色: assistant
+2025-05-10 13:25:36,357 - INFO - 内容: ### 分析用户观影风格偏好
+
+首先，我将分析每部电影的风格类别:
+
+| 电影 | 风格类别 |
+|------|------------|
+| Liar Liar | Comedy |
+| The Mask | Comedy |
+| Mrs. Doubtfire | Comedy |
+| Toy Story | Animation, Children's, Comedy |
+| The Lion King | Animation, Children's, Musical |
+
+用户明显偏好喜剧类(Comedy)电影，其次是动画(Animation)和儿童(Children's)类电影。
+
+### 分析候选电影和用户偏好的匹配度
+
+分析每部候选电影的风格类别:
+
+| 电影 | 风格类别 | 与用户偏好匹配 |
+|------|------------|------------|
+| Ace Ventura: Pet Detective | Comedy | 高  |
+| Forrest Gump | Comedy, Drama, Romance | 中  |
+| The Shawshank Redemption | Drama | 低  |
+| Aladdin | Animation, Children's, Comedy | 高  |
+| Terminator 2 | Action, Sci-Fi, Thriller | 低 |
+
+根据匹配程度去除匹配度低的候选电影，留下10个匹配度高和中的电影继续分析：
+
+1. Aladdin (ID: 444) 
+2. Ace Ventura: Pet Detective (ID: 111) -
+3. Forrest Gump (ID: 222) 
+4. The Shawshank Redemption (ID: 333)
+5. Terminator 2 (ID: 555) 
+
+在这10个电影里继续考虑电影的题材、主题、导演、演员等多个因素，找出最适合用户的电影，输出匹配度最高的电影名称和ID列表排序（JSON）[{"name": "Aladdin", "id": 444}]
+2025-05-10 13:25:36,357 - INFO - 消息 4:
+2025-05-10 13:25:36,357 - INFO - 角色: user
+2025-05-10 13:25:36,357 - INFO - 内容: 用户ID: 405
+
+用户观看过的电影列表:
+- Splash (ID: 2100)
+- American Graffiti (ID: 3363)
+- My Best Friend's Wedding (ID: 1569)
+- Apollo 13 (ID: 150)
+- Fish Called Wanda, A (ID: 1079)
+- Absolute Power (ID: 1459)
+- Anna Karenina (ID: 1496)
+- Civil Action, A (ID: 2433)
+- Any Given Sunday (ID: 3173)
+- Mrs. Doubtfire (ID: 500)
+- Fugitive, The (ID: 457)
+- Green Mile, The (ID: 3147)
+- Leaving Las Vegas (ID: 25)
+- Money Pit, The (ID: 2375)
+- Renaissance Man (ID: 516)
+- Speechless (ID: 378)
+- Music of the Heart (ID: 2996)
+- Postino, Il (The Postman) (ID: 58)
+- Antonia's Line (Antonia) (ID: 82)
+- Belle de jour (ID: 154)
+
+候选电影列表:
+- Cecil B. Demented (ID: 3858)
+- Following (ID: 2579)
+- Artemisia (ID: 1695)
+- Swept from the Sea (ID: 1656)
+- Black Tar Heroin: The Dark End of the Street (ID: 3303)
+- Inspector Gadget (ID: 2720)
+- Source, The (ID: 2813)
+- Mr. Magoo (ID: 1731)
+- Light of Day (ID: 2755)
+- Tales From the Crypt Presents: Demon Knight (ID: 328)
+- All Dogs Go to Heaven (ID: 2123)
+- Live Flesh (ID: 1844)
+- Draughtsman's Contract, The (ID: 3221)
+- Richard III (ID: 41)
+- Bell, Book and Candle (ID: 3516)
+- Max Dugan Returns (ID: 3497)
+- Fall Time (ID: 396)
+- Chinese Box (ID: 1829)
+- Vacation (ID: 2795)
+- On the Town (ID: 3606)
+
+电影风格类别参考: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+
+让我们一步步思考！请按照以下步骤进行分析：
+1. 分析每部电影属于哪些风格类别，并制作风格归属表格
+2. 用户的电影风格偏好分析
+3. 分析每部候选电影属于哪些风格类别，评估相似程度，去除相似度低的，只留下10个候选
+4. 考虑电影的题材、主题、导演、演员等多个因素，找出最适合用户的电影，输出匹配度由高到低的电影名称和ID列表排序（JSON）[{"name": "Aladdin", "id": 444}]
+2025-05-10 13:25:36,358 - INFO - ==== 发送API请求 ====
+2025-05-10 13:26:02,048 - INFO - ==== API响应 ====
+2025-05-10 13:26:02,049 - INFO - 响应状态码: 200
+2025-05-10 13:26:02,049 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 05:26:01 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '830', 'Connection': 'keep-alive'}
+2025-05-10 13:26:02,050 - INFO - 完整响应JSON: {
+  "id": "0196b8a7ee9d6a1d269b3a93a579472c",
+  "object": "chat.completion",
+  "created": 1746854736,
+  "model": "Pro/deepseek-ai/DeepSeek-V3",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"name\": \"Chinese Box\", \"id\": 1829},\n    {\"name\": \"Live Flesh\", \"id\": 1844},\n    {\"name\": \"Swept from the Sea\", \"id\": 1656},\n    {\"name\": \"Artemisia\", \"id\": 1695},\n    {\"name\": \"Bell, Book and Candle\", \"id\": 3516},\n    {\"name\": \"Max Dugan Returns\", \"id\": 3497},\n    {\"name\": \"On the Town\", \"id\": 3606},\n    {\"name\": \"Vacation\", \"id\": 2795},\n    {\"name\": \"Light of Day\", \"id\": 2755},\n    {\"name\": \"Following\", \"id\": 2579}\n]\n```"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1490,
+    "completion_tokens": 170,
+    "total_tokens": 1660
+  },
+  "system_fingerprint": ""
+}
+2025-05-10 13:26:02,051 - INFO - 模型回复内容:
+```json
+[
+    {"name": "Chinese Box", "id": 1829},
+    {"name": "Live Flesh", "id": 1844},
+    {"name": "Swept from the Sea", "id": 1656},
+    {"name": "Artemisia", "id": 1695},
+    {"name": "Bell, Book and Candle", "id": 3516},
+    {"name": "Max Dugan Returns", "id": 3497},
+    {"name": "On the Town", "id": 3606},
+    {"name": "Vacation", "id": 2795},
+    {"name": "Light of Day", "id": 2755},
+    {"name": "Following", "id": 2579}
+]
+```
+2025-05-10 13:26:02,052 - INFO - ==== 用量信息 ====
+2025-05-10 13:26:02,053 - INFO - 输入tokens: 1490
+2025-05-10 13:26:02,053 - INFO - 输出tokens: 170
+2025-05-10 13:26:02,054 - INFO - 总tokens: 1660
+2025-05-10 13:26:02,054 - INFO - ==== 解析输出 ====
+2025-05-10 13:26:02,054 - INFO - 调用parse_output函数解析响应...
+2025-05-10 13:26:02,056 - INFO - 解析结果: [1829, 1844, 1656, 1695, 3516, 3497, 3606, 2795, 2755, 2579]
+2025-05-10 13:26:02,056 - INFO - ==== 计算NDCG ====
+2025-05-10 13:26:02,057 - INFO - 相关性列表: [0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+2025-05-10 13:26:02,057 - INFO - 位置4的DCG贡献: 1/log2(5) = 0.4307
+2025-05-10 13:26:02,058 - INFO - DCG: 0.4307, IDCG: 1.0000
+2025-05-10 13:26:02,058 - INFO - NDCG@10: 0.4307
+2025-05-10 13:26:02,058 - INFO - NDCG@10计算详情:
+2025-05-10 13:26:02,059 - INFO - 截断后的预测列表(前10个): [1829, 1844, 1656, 1695, 3516, 3497, 3606, 2795, 2755, 2579]
+2025-05-10 13:26:02,059 - INFO - 目标电影ID 1695在位置4
+2025-05-10 13:26:02,060 - INFO - 位置4的DCG贡献: 1/log2(5) = 0.4307
+2025-05-10 13:26:02,060 - INFO - ==== 测试结果 ====
+2025-05-10 13:26:02,061 - INFO - 用户ID: 405
+2025-05-10 13:26:02,061 - INFO - 目标电影: Artemisia (ID: 1695)
+2025-05-10 13:26:02,061 - INFO - 预测列表(前10个): [1829, 1844, 1656, 1695, 3516, 3497, 3606, 2795, 2755, 2579]
+2025-05-10 13:26:02,061 - INFO - NDCG@10: 0.4307
+2025-05-10 13:26:02,062 - INFO - ========== 测试结束 ==========
+2025-05-10 13:26:02,062 - INFO - 样本 1 测试完成，NDCG@10: 0.4307
+2025-05-10 13:26:02,062 - INFO - ===== 测试样本 2/10 =====
+2025-05-10 13:26:02,062 - INFO - ========== 测试开始 ==========
+2025-05-10 13:26:02,063 - INFO - ==== 样本信息 ====
+2025-05-10 13:26:02,064 - INFO - 用户ID: 475
+2025-05-10 13:26:02,064 - INFO - 用户历史电影数量: 20
+2025-05-10 13:26:02,064 - INFO - 候选电影数量: 20
+2025-05-10 13:26:02,064 - INFO - 目标电影: Up in Smoke (ID: 1194)
+2025-05-10 13:26:02,064 - INFO - ==== 构造提示词 ====
+2025-05-10 13:26:02,064 - INFO - 调用construct_prompt函数...
+2025-05-10 13:26:02,064 - INFO - 生成了4条消息
+2025-05-10 13:26:02,065 - INFO - ==== 发送的消息 ====
+2025-05-10 13:26:02,065 - INFO - [系统提示]:
+  # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，电影ID没有关联关系，需要你根据用户偏好的电影风格对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影名称和ID列表（JSON）。
+2025-05-10 13:26:02,066 - INFO - [用户请求]:
+  用户ID: example_user_123
+
+用户观看过的电影列表:
+- Liar Liar (ID: 123)
+- The Mask (ID: 456)
+- Mrs. Doubtfire (ID: 789)
+- Toy Story (ID: 246)
+- The Lion King (ID: 357)
+
+候选电影列表:
+- Ace Ventura: Pet Detective (ID: 111)
+- Forrest Gump (ID: 222) 
+- The Shawshank Redemption (ID: 333) 
+- Aladdin (ID: 444) 
+- Terminator 2: Judgment Day (ID: 555)
+2025-05-10 13:26:02,066 - INFO - ==== 调用API ====
+2025-05-10 13:26:02,066 - INFO - ==== API调用参数 ====
+2025-05-10 13:26:02,067 - INFO - 模型: Pro/deepseek-ai/DeepSeek-V3
+2025-05-10 13:26:02,067 - INFO - 温度: 0
+2025-05-10 13:26:02,067 - INFO - ==== 发送的消息 ====
+2025-05-10 13:26:02,067 - INFO - 消息 1:
+2025-05-10 13:26:02,067 - INFO - 角色: system
+2025-05-10 13:26:02,067 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，电影ID没有关联关系，需要你根据用户偏好的电影风格对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影名称和ID列表（JSON）。
+2025-05-10 13:26:02,068 - INFO - 消息 2:
+2025-05-10 13:26:02,068 - INFO - 角色: user
+2025-05-10 13:26:02,068 - INFO - 内容: 用户ID: example_user_123
+
+用户观看过的电影列表:
+- Liar Liar (ID: 123)
+- The Mask (ID: 456)
+- Mrs. Doubtfire (ID: 789)
+- Toy Story (ID: 246)
+- The Lion King (ID: 357)
+
+候选电影列表:
+- Ace Ventura: Pet Detective (ID: 111)
+- Forrest Gump (ID: 222) 
+- The Shawshank Redemption (ID: 333) 
+- Aladdin (ID: 444) 
+- Terminator 2: Judgment Day (ID: 555)
+2025-05-10 13:26:02,068 - INFO - 消息 3:
+2025-05-10 13:26:02,068 - INFO - 角色: assistant
+2025-05-10 13:26:02,068 - INFO - 内容: ### 分析用户观影风格偏好
+
+首先，我将分析每部电影的风格类别:
+
+| 电影 | 风格类别 |
+|------|------------|
+| Liar Liar | Comedy |
+| The Mask | Comedy |
+| Mrs. Doubtfire | Comedy |
+| Toy Story | Animation, Children's, Comedy |
+| The Lion King | Animation, Children's, Musical |
+
+用户明显偏好喜剧类(Comedy)电影，其次是动画(Animation)和儿童(Children's)类电影。
+
+### 分析候选电影和用户偏好的匹配度
+
+分析每部候选电影的风格类别:
+
+| 电影 | 风格类别 | 与用户偏好匹配 |
+|------|------------|------------|
+| Ace Ventura: Pet Detective | Comedy | 高  |
+| Forrest Gump | Comedy, Drama, Romance | 中  |
+| The Shawshank Redemption | Drama | 低  |
+| Aladdin | Animation, Children's, Comedy | 高  |
+| Terminator 2 | Action, Sci-Fi, Thriller | 低 |
+
+根据匹配程度去除匹配度低的候选电影，留下10个匹配度高和中的电影继续分析：
+
+1. Aladdin (ID: 444) 
+2. Ace Ventura: Pet Detective (ID: 111) -
+3. Forrest Gump (ID: 222) 
+4. The Shawshank Redemption (ID: 333)
+5. Terminator 2 (ID: 555) 
+
+在这10个电影里继续考虑电影的题材、主题、导演、演员等多个因素，找出最适合用户的电影，输出匹配度最高的电影名称和ID列表排序（JSON）[{"name": "Aladdin", "id": 444}]
+2025-05-10 13:26:02,068 - INFO - 消息 4:
+2025-05-10 13:26:02,068 - INFO - 角色: user
+2025-05-10 13:26:02,069 - INFO - 内容: 用户ID: 475
+
+用户观看过的电影列表:
+- Meatballs Part II (ID: 3041)
+- Porky's II: The Next Day (ID: 3689)
+- Porky's Revenge (ID: 3690)
+- Police Academy 4: Citizens on Patrol (ID: 2381)
+- Police Academy 6: City Under Siege (ID: 2383)
+- Police Academy 5: Assignment: Miami Beach (ID: 2382)
+- Monty Python and the Holy Grail (ID: 1136)
+- Annie Hall (ID: 1230)
+- Harold and Maude (ID: 1235)
+- Young Frankenstein (ID: 1278)
+- Animal House (ID: 3421)
+- Monty Python's Life of Brian (ID: 1080)
+- Blazing Saddles (ID: 3671)
+- Kelly's Heroes (ID: 3836)
+- Jerk, The (ID: 2109)
+- Meatballs (ID: 3040)
+- Return of the Pink Panther, The (ID: 1125)
+- Everything You Always Wanted to Know About Sex (ID: 3812)
+- Grease (ID: 1380)
+- Apple Dumpling Gang, The (ID: 1007)
+
+候选电影列表:
+- Top Hat (ID: 945)
+- Smoke (ID: 194)
+- Last Temptation of Christ, The (ID: 2022)
+- Girl on the Bridge, The (La Fille sur le Pont) (ID: 3822)
+- American Beauty (ID: 2858)
+- Outside Ozona (ID: 2438)
+- Sleepwalkers (ID: 3709)
+- Up in Smoke (ID: 1194)
+- Kingpin (ID: 785)
+- Ridicule (ID: 1365)
+- City of Lost Children, The (ID: 29)
+- Retroactive (ID: 3474)
+- Deer Hunter, The (ID: 1263)
+- 2010 (ID: 2311)
+- Great Race, The (ID: 1083)
+- Everest (ID: 1797)
+- Braddock: Missing in Action III (ID: 3768)
+- Late August, Early September (Fin août, début septembre) (ID: 2705)
+- Rent-A-Cop (ID: 3667)
+- Snowriders (ID: 1145)
+
+电影风格类别参考: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+
+让我们一步步思考！请按照以下步骤进行分析：
+1. 分析每部电影属于哪些风格类别，并制作风格归属表格
+2. 用户的电影风格偏好分析
+3. 分析每部候选电影属于哪些风格类别，评估相似程度，去除相似度低的，只留下10个候选
+4. 考虑电影的题材、主题、导演、演员等多个因素，找出最适合用户的电影，输出匹配度由高到低的电影名称和ID列表排序（JSON）[{"name": "Aladdin", "id": 444}]
+2025-05-10 13:26:02,069 - INFO - ==== 发送API请求 ====
+2025-05-10 13:26:16,193 - INFO - ==== API响应 ====
+2025-05-10 13:26:16,194 - INFO - 响应状态码: 200
+2025-05-10 13:26:16,194 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 05:26:15 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '897', 'Connection': 'keep-alive'}
+2025-05-10 13:26:16,195 - INFO - 完整响应JSON: {
+  "id": "0196b8a852adad98aa95cfdcec55fa40",
+  "object": "chat.completion",
+  "created": 1746854761,
+  "model": "Pro/deepseek-ai/DeepSeek-V3",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"name\": \"Up in Smoke\", \"id\": 1194},\n    {\"name\": \"Kingpin\", \"id\": 785},\n    {\"name\": \"Great Race, The\", \"id\": 1083},\n    {\"name\": \"Top Hat\", \"id\": 945},\n    {\"name\": \"American Beauty\", \"id\": 2858},\n    {\"name\": \"Girl on the Bridge, The (La Fille sur le Pont)\", \"id\": 3822},\n    {\"name\": \"Ridicule\", \"id\": 1365},\n    {\"name\": \"Smoke\", \"id\": 194},\n    {\"name\": \"City of Lost Children, The\", \"id\": 29},\n    {\"name\": \"Late August, Early September (Fin août, début septembre)\", \"id\": 2705}\n]\n```"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1527,
+    "completion_tokens": 181,
+    "total_tokens": 1708
+  },
+  "system_fingerprint": ""
+}
+2025-05-10 13:26:16,195 - INFO - 模型回复内容:
+```json
+[
+    {"name": "Up in Smoke", "id": 1194},
+    {"name": "Kingpin", "id": 785},
+    {"name": "Great Race, The", "id": 1083},
+    {"name": "Top Hat", "id": 945},
+    {"name": "American Beauty", "id": 2858},
+    {"name": "Girl on the Bridge, The (La Fille sur le Pont)", "id": 3822},
+    {"name": "Ridicule", "id": 1365},
+    {"name": "Smoke", "id": 194},
+    {"name": "City of Lost Children, The", "id": 29},
+    {"name": "Late August, Early September (Fin août, début septembre)", "id": 2705}
+]
+```
+2025-05-10 13:26:16,196 - INFO - ==== 用量信息 ====
+2025-05-10 13:26:16,196 - INFO - 输入tokens: 1527
+2025-05-10 13:26:16,197 - INFO - 输出tokens: 181
+2025-05-10 13:26:16,197 - INFO - 总tokens: 1708
+2025-05-10 13:26:16,198 - INFO - ==== 解析输出 ====
+2025-05-10 13:26:16,198 - INFO - 调用parse_output函数解析响应...
+2025-05-10 13:26:16,199 - INFO - 解析结果: [1194, 785, 1083, 945, 2858, 3822, 1365, 194, 29, 2705]
+2025-05-10 13:26:16,199 - INFO - ==== 计算NDCG ====
+2025-05-10 13:26:16,199 - INFO - 相关性列表: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 13:26:16,200 - INFO - 位置1的DCG贡献: 1/log2(2) = 1.0000
+2025-05-10 13:26:16,200 - INFO - DCG: 1.0000, IDCG: 1.0000
+2025-05-10 13:26:16,200 - INFO - NDCG@10: 1.0000
+2025-05-10 13:26:16,202 - INFO - NDCG@10计算详情:
+2025-05-10 13:26:16,202 - INFO - 截断后的预测列表(前10个): [1194, 785, 1083, 945, 2858, 3822, 1365, 194, 29, 2705]
+2025-05-10 13:26:16,202 - INFO - 目标电影ID 1194在位置1
+2025-05-10 13:26:16,202 - INFO - 位置1的DCG贡献: 1/log2(2) = 1.0000
+2025-05-10 13:26:16,202 - INFO - ==== 测试结果 ====
+2025-05-10 13:26:16,202 - INFO - 用户ID: 475
+2025-05-10 13:26:16,203 - INFO - 目标电影: Up in Smoke (ID: 1194)
+2025-05-10 13:26:16,203 - INFO - 预测列表(前10个): [1194, 785, 1083, 945, 2858, 3822, 1365, 194, 29, 2705]
+2025-05-10 13:26:16,203 - INFO - NDCG@10: 1.0000
+2025-05-10 13:26:16,203 - INFO - ========== 测试结束 ==========
+2025-05-10 13:26:16,204 - INFO - 样本 2 测试完成，NDCG@10: 1.0000
+2025-05-10 13:26:16,204 - INFO - ===== 测试样本 3/10 =====
+2025-05-10 13:26:16,204 - INFO - ========== 测试开始 ==========
+2025-05-10 13:26:16,204 - INFO - ==== 样本信息 ====
+2025-05-10 13:26:16,204 - INFO - 用户ID: 522
+2025-05-10 13:26:16,204 - INFO - 用户历史电影数量: 20
+2025-05-10 13:26:16,204 - INFO - 候选电影数量: 20
+2025-05-10 13:26:16,204 - INFO - 目标电影: Back to the Future Part II (ID: 2011)
+2025-05-10 13:26:16,204 - INFO - ==== 构造提示词 ====
+2025-05-10 13:26:16,204 - INFO - 调用construct_prompt函数...
+2025-05-10 13:26:16,205 - INFO - 生成了4条消息
+2025-05-10 13:26:16,205 - INFO - ==== 发送的消息 ====
+2025-05-10 13:26:16,205 - INFO - [系统提示]:
+  # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，电影ID没有关联关系，需要你根据用户偏好的电影风格对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影名称和ID列表（JSON）。
+2025-05-10 13:26:16,205 - INFO - [用户请求]:
+  用户ID: example_user_123
+
+用户观看过的电影列表:
+- Liar Liar (ID: 123)
+- The Mask (ID: 456)
+- Mrs. Doubtfire (ID: 789)
+- Toy Story (ID: 246)
+- The Lion King (ID: 357)
+
+候选电影列表:
+- Ace Ventura: Pet Detective (ID: 111)
+- Forrest Gump (ID: 222) 
+- The Shawshank Redemption (ID: 333) 
+- Aladdin (ID: 444) 
+- Terminator 2: Judgment Day (ID: 555)
+2025-05-10 13:26:16,205 - INFO - ==== 调用API ====
+2025-05-10 13:26:16,205 - INFO - ==== API调用参数 ====
+2025-05-10 13:26:16,205 - INFO - 模型: Pro/deepseek-ai/DeepSeek-V3
+2025-05-10 13:26:16,206 - INFO - 温度: 0
+2025-05-10 13:26:16,206 - INFO - ==== 发送的消息 ====
+2025-05-10 13:26:16,206 - INFO - 消息 1:
+2025-05-10 13:26:16,206 - INFO - 角色: system
+2025-05-10 13:26:16,206 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，电影ID没有关联关系，需要你根据用户偏好的电影风格对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影名称和ID列表（JSON）。
+2025-05-10 13:26:16,207 - INFO - 消息 2:
+2025-05-10 13:26:16,207 - INFO - 角色: user
+2025-05-10 13:26:16,207 - INFO - 内容: 用户ID: example_user_123
+
+用户观看过的电影列表:
+- Liar Liar (ID: 123)
+- The Mask (ID: 456)
+- Mrs. Doubtfire (ID: 789)
+- Toy Story (ID: 246)
+- The Lion King (ID: 357)
+
+候选电影列表:
+- Ace Ventura: Pet Detective (ID: 111)
+- Forrest Gump (ID: 222) 
+- The Shawshank Redemption (ID: 333) 
+- Aladdin (ID: 444) 
+- Terminator 2: Judgment Day (ID: 555)
+2025-05-10 13:26:16,208 - INFO - 消息 3:
+2025-05-10 13:26:16,208 - INFO - 角色: assistant
+2025-05-10 13:26:16,208 - INFO - 内容: ### 分析用户观影风格偏好
+
+首先，我将分析每部电影的风格类别:
+
+| 电影 | 风格类别 |
+|------|------------|
+| Liar Liar | Comedy |
+| The Mask | Comedy |
+| Mrs. Doubtfire | Comedy |
+| Toy Story | Animation, Children's, Comedy |
+| The Lion King | Animation, Children's, Musical |
+
+用户明显偏好喜剧类(Comedy)电影，其次是动画(Animation)和儿童(Children's)类电影。
+
+### 分析候选电影和用户偏好的匹配度
+
+分析每部候选电影的风格类别:
+
+| 电影 | 风格类别 | 与用户偏好匹配 |
+|------|------------|------------|
+| Ace Ventura: Pet Detective | Comedy | 高  |
+| Forrest Gump | Comedy, Drama, Romance | 中  |
+| The Shawshank Redemption | Drama | 低  |
+| Aladdin | Animation, Children's, Comedy | 高  |
+| Terminator 2 | Action, Sci-Fi, Thriller | 低 |
+
+根据匹配程度去除匹配度低的候选电影，留下10个匹配度高和中的电影继续分析：
+
+1. Aladdin (ID: 444) 
+2. Ace Ventura: Pet Detective (ID: 111) -
+3. Forrest Gump (ID: 222) 
+4. The Shawshank Redemption (ID: 333)
+5. Terminator 2 (ID: 555) 
+
+在这10个电影里继续考虑电影的题材、主题、导演、演员等多个因素，找出最适合用户的电影，输出匹配度最高的电影名称和ID列表排序（JSON）[{"name": "Aladdin", "id": 444}]
+2025-05-10 13:26:16,208 - INFO - 消息 4:
+2025-05-10 13:26:16,208 - INFO - 角色: user
+2025-05-10 13:26:16,208 - INFO - 内容: 用户ID: 522
+
+用户观看过的电影列表:
+- Starman (ID: 3699)
+- Fly, The (ID: 2455)
+- Dark City (ID: 1748)
+- Predator (ID: 3527)
+- Fifth Element, The (ID: 1527)
+- Galaxy Quest (ID: 3175)
+- Men in Black (ID: 1580)
+- Robocop (ID: 2985)
+- Spaceballs (ID: 3033)
+- Moonraker (ID: 3638)
+- Forever Young (ID: 3269)
+- Stargate (ID: 316)
+- Strange Days (ID: 198)
+- Mad Max Beyond Thunderdome (ID: 3704)
+- Superman II (ID: 2641)
+- Body Snatchers (ID: 426)
+- Tron (ID: 2105)
+- X-Files: Fight the Future, The (ID: 1909)
+- Independence Day (ID4) (ID: 780)
+- Star Trek: Insurrection (ID: 2393)
+
+候选电影列表:
+- Starman (ID: 3699)
+- Name of the Rose, The (ID: 2467)
+- Still Crazy (ID: 2482)
+- Broken Vessels (ID: 2703)
+- Shine (ID: 1357)
+- Better Off Dead... (ID: 1257)
+- American Strays (ID: 1102)
+- Message to Love: The Isle of Wight Festival (ID: 1420)
+- Black Beauty (ID: 421)
+- Back to the Future Part II (ID: 2011)
+- Remains of the Day, The (ID: 515)
+- Jennifer 8 (ID: 3557)
+- True Romance (ID: 555)
+- Bandits (ID: 2562)
+- Grosse Fatigue (ID: 1174)
+- Addicted to Love (ID: 1541)
+- Rent-a-Kid (ID: 310)
+- Conquest of the Planet of the Apes (ID: 2532)
+- Fausto (ID: 576)
+- Trouble in Paradise (ID: 3739)
+
+电影风格类别参考: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+
+让我们一步步思考！请按照以下步骤进行分析：
+1. 分析每部电影属于哪些风格类别，并制作风格归属表格
+2. 用户的电影风格偏好分析
+3. 分析每部候选电影属于哪些风格类别，评估相似程度，去除相似度低的，只留下10个候选
+4. 考虑电影的题材、主题、导演、演员等多个因素，找出最适合用户的电影，输出匹配度由高到低的电影名称和ID列表排序（JSON）[{"name": "Aladdin", "id": 444}]
+2025-05-10 13:26:16,208 - INFO - ==== 发送API请求 ====
+2025-05-10 13:26:27,019 - INFO - ==== API响应 ====
+2025-05-10 13:26:27,019 - INFO - 响应状态码: 200
+2025-05-10 13:26:27,020 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 05:26:26 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '877', 'Connection': 'keep-alive'}
+2025-05-10 13:26:27,021 - INFO - 完整响应JSON: {
+  "id": "0196b8a88a8043faf564b5a1b28b589b",
+  "object": "chat.completion",
+  "created": 1746854775,
+  "model": "Pro/deepseek-ai/DeepSeek-V3",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"name\": \"Back to the Future Part II\", \"id\": 2011},\n    {\"name\": \"Conquest of the Planet of the Apes\", \"id\": 2532},\n    {\"name\": \"True Romance\", \"id\": 555},\n    {\"name\": \"Jennifer 8\", \"id\": 3557},\n    {\"name\": \"Bandits\", \"id\": 2562},\n    {\"name\": \"Addicted to Love\", \"id\": 1541},\n    {\"name\": \"American Strays\", \"id\": 1102},\n    {\"name\": \"Better Off Dead...\", \"id\": 1257},\n    {\"name\": \"Grosse Fatigue\", \"id\": 1174},\n    {\"name\": \"Remains of the Day, The\", \"id\": 515}\n]\n```"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1476,
+    "completion_tokens": 178,
+    "total_tokens": 1654
+  },
+  "system_fingerprint": ""
+}
+2025-05-10 13:26:27,021 - INFO - 模型回复内容:
+```json
+[
+    {"name": "Back to the Future Part II", "id": 2011},
+    {"name": "Conquest of the Planet of the Apes", "id": 2532},
+    {"name": "True Romance", "id": 555},
+    {"name": "Jennifer 8", "id": 3557},
+    {"name": "Bandits", "id": 2562},
+    {"name": "Addicted to Love", "id": 1541},
+    {"name": "American Strays", "id": 1102},
+    {"name": "Better Off Dead...", "id": 1257},
+    {"name": "Grosse Fatigue", "id": 1174},
+    {"name": "Remains of the Day, The", "id": 515}
+]
+```
+2025-05-10 13:26:27,022 - INFO - ==== 用量信息 ====
+2025-05-10 13:26:27,022 - INFO - 输入tokens: 1476
+2025-05-10 13:26:27,022 - INFO - 输出tokens: 178
+2025-05-10 13:26:27,022 - INFO - 总tokens: 1654
+2025-05-10 13:26:27,023 - INFO - ==== 解析输出 ====
+2025-05-10 13:26:27,023 - INFO - 调用parse_output函数解析响应...
+2025-05-10 13:26:27,023 - INFO - 解析结果: [2011, 2532, 555, 3557, 2562, 1541, 1102, 1257, 1174, 515]
+2025-05-10 13:26:27,023 - INFO - ==== 计算NDCG ====
+2025-05-10 13:26:27,023 - INFO - 相关性列表: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 13:26:27,025 - INFO - 位置1的DCG贡献: 1/log2(2) = 1.0000
+2025-05-10 13:26:27,025 - INFO - DCG: 1.0000, IDCG: 1.0000
+2025-05-10 13:26:27,025 - INFO - NDCG@10: 1.0000
+2025-05-10 13:26:27,025 - INFO - NDCG@10计算详情:
+2025-05-10 13:26:27,025 - INFO - 截断后的预测列表(前10个): [2011, 2532, 555, 3557, 2562, 1541, 1102, 1257, 1174, 515]
+2025-05-10 13:26:27,025 - INFO - 目标电影ID 2011在位置1
+2025-05-10 13:26:27,026 - INFO - 位置1的DCG贡献: 1/log2(2) = 1.0000
+2025-05-10 13:26:27,026 - INFO - ==== 测试结果 ====
+2025-05-10 13:26:27,026 - INFO - 用户ID: 522
+2025-05-10 13:26:27,026 - INFO - 目标电影: Back to the Future Part II (ID: 2011)
+2025-05-10 13:26:27,026 - INFO - 预测列表(前10个): [2011, 2532, 555, 3557, 2562, 1541, 1102, 1257, 1174, 515]
+2025-05-10 13:26:27,026 - INFO - NDCG@10: 1.0000
+2025-05-10 13:26:27,028 - INFO - ========== 测试结束 ==========
+2025-05-10 13:26:27,028 - INFO - 样本 3 测试完成，NDCG@10: 1.0000
+2025-05-10 13:26:27,028 - INFO - ===== 测试样本 4/10 =====
+2025-05-10 13:26:27,028 - INFO - ========== 测试开始 ==========
+2025-05-10 13:26:27,028 - INFO - ==== 样本信息 ====
+2025-05-10 13:26:27,029 - INFO - 用户ID: 549
+2025-05-10 13:26:27,029 - INFO - 用户历史电影数量: 20
+2025-05-10 13:26:27,029 - INFO - 候选电影数量: 20
+2025-05-10 13:26:27,029 - INFO - 目标电影: Autumn in New York (ID: 3824)
+2025-05-10 13:26:27,029 - INFO - ==== 构造提示词 ====
+2025-05-10 13:26:27,029 - INFO - 调用construct_prompt函数...
+2025-05-10 13:26:27,029 - INFO - 生成了4条消息
+2025-05-10 13:26:27,029 - INFO - ==== 发送的消息 ====
+2025-05-10 13:26:27,031 - INFO - [系统提示]:
+  # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，电影ID没有关联关系，需要你根据用户偏好的电影风格对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影名称和ID列表（JSON）。
+2025-05-10 13:26:27,031 - INFO - [用户请求]:
+  用户ID: example_user_123
+
+用户观看过的电影列表:
+- Liar Liar (ID: 123)
+- The Mask (ID: 456)
+- Mrs. Doubtfire (ID: 789)
+- Toy Story (ID: 246)
+- The Lion King (ID: 357)
+
+候选电影列表:
+- Ace Ventura: Pet Detective (ID: 111)
+- Forrest Gump (ID: 222) 
+- The Shawshank Redemption (ID: 333) 
+- Aladdin (ID: 444) 
+- Terminator 2: Judgment Day (ID: 555)
+2025-05-10 13:26:27,031 - INFO - ==== 调用API ====
+2025-05-10 13:26:27,031 - INFO - ==== API调用参数 ====
+2025-05-10 13:26:27,032 - INFO - 模型: Pro/deepseek-ai/DeepSeek-V3
+2025-05-10 13:26:27,032 - INFO - 温度: 0
+2025-05-10 13:26:27,032 - INFO - ==== 发送的消息 ====
+2025-05-10 13:26:27,032 - INFO - 消息 1:
+2025-05-10 13:26:27,032 - INFO - 角色: system
+2025-05-10 13:26:27,032 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，电影ID没有关联关系，需要你根据用户偏好的电影风格对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影名称和ID列表（JSON）。
+2025-05-10 13:26:27,033 - INFO - 消息 2:
+2025-05-10 13:26:27,033 - INFO - 角色: user
+2025-05-10 13:26:27,033 - INFO - 内容: 用户ID: example_user_123
+
+用户观看过的电影列表:
+- Liar Liar (ID: 123)
+- The Mask (ID: 456)
+- Mrs. Doubtfire (ID: 789)
+- Toy Story (ID: 246)
+- The Lion King (ID: 357)
+
+候选电影列表:
+- Ace Ventura: Pet Detective (ID: 111)
+- Forrest Gump (ID: 222) 
+- The Shawshank Redemption (ID: 333) 
+- Aladdin (ID: 444) 
+- Terminator 2: Judgment Day (ID: 555)
+2025-05-10 13:26:27,033 - INFO - 消息 3:
+2025-05-10 13:26:27,033 - INFO - 角色: assistant
+2025-05-10 13:26:27,033 - INFO - 内容: ### 分析用户观影风格偏好
+
+首先，我将分析每部电影的风格类别:
+
+| 电影 | 风格类别 |
+|------|------------|
+| Liar Liar | Comedy |
+| The Mask | Comedy |
+| Mrs. Doubtfire | Comedy |
+| Toy Story | Animation, Children's, Comedy |
+| The Lion King | Animation, Children's, Musical |
+
+用户明显偏好喜剧类(Comedy)电影，其次是动画(Animation)和儿童(Children's)类电影。
+
+### 分析候选电影和用户偏好的匹配度
+
+分析每部候选电影的风格类别:
+
+| 电影 | 风格类别 | 与用户偏好匹配 |
+|------|------------|------------|
+| Ace Ventura: Pet Detective | Comedy | 高  |
+| Forrest Gump | Comedy, Drama, Romance | 中  |
+| The Shawshank Redemption | Drama | 低  |
+| Aladdin | Animation, Children's, Comedy | 高  |
+| Terminator 2 | Action, Sci-Fi, Thriller | 低 |
+
+根据匹配程度去除匹配度低的候选电影，留下10个匹配度高和中的电影继续分析：
+
+1. Aladdin (ID: 444) 
+2. Ace Ventura: Pet Detective (ID: 111) -
+3. Forrest Gump (ID: 222) 
+4. The Shawshank Redemption (ID: 333)
+5. Terminator 2 (ID: 555) 
+
+在这10个电影里继续考虑电影的题材、主题、导演、演员等多个因素，找出最适合用户的电影，输出匹配度最高的电影名称和ID列表排序（JSON）[{"name": "Aladdin", "id": 444}]
+2025-05-10 13:26:27,033 - INFO - 消息 4:
+2025-05-10 13:26:27,033 - INFO - 角色: user
+2025-05-10 13:26:27,033 - INFO - 内容: 用户ID: 549
+
+用户观看过的电影列表:
+- Trois (ID: 3291)
+- Where the Heart Is (ID: 3565)
+- Next Friday (ID: 3177)
+- Me, Myself and Irene (ID: 3752)
+- Loser (ID: 3616)
+- Nutty Professor II: The Klumps (ID: 3821)
+- Mission to Mars (ID: 3354)
+- Here on Earth (ID: 3453)
+- Hollow Man (ID: 3826)
+- Ready to Rumble (ID: 3511)
+- Screwed (ID: 3596)
+- Gladiator (ID: 3578)
+- Showgirls (ID: 193)
+- Supernova (ID: 3190)
+- American Psycho (ID: 3535)
+- Final Destination (ID: 3409)
+- Meet the Parents (ID: 3948)
+- Replacements, The (ID: 3861)
+- Duets (ID: 3901)
+- Big Momma's House (ID: 3646)
+
+候选电影列表:
+- To Have, or Not (ID: 1555)
+- Picnic at Hanging Rock (ID: 1913)
+- Twin Town (ID: 1539)
+- Bronx Tale, A (ID: 428)
+- Naked Gun 33 1/3: The Final Insult (ID: 370)
+- Autumn in New York (ID: 3824)
+- Mrs. Winterbourne (ID: 691)
+- Favor, The (ID: 447)
+- Tomorrow Never Dies (ID: 1722)
+- King of Masks, The (Bian Lian) (ID: 2609)
+- Golden Bowl, The (ID: 3756)
+- Get Shorty (ID: 21)
+- Braddock: Missing in Action III (ID: 3768)
+- ...And Justice for All (ID: 3420)
+- Very Brady Sequel, A (ID: 818)
+- Kika (ID: 567)
+- Alien Nation (ID: 3701)
+- King Kong (ID: 2367)
+- Boomerang (ID: 122)
+- Dream With the Fishes (ID: 1563)
+
+电影风格类别参考: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+
+让我们一步步思考！请按照以下步骤进行分析：
+1. 分析每部电影属于哪些风格类别，并制作风格归属表格
+2. 用户的电影风格偏好分析
+3. 分析每部候选电影属于哪些风格类别，评估相似程度，去除相似度低的，只留下10个候选
+4. 考虑电影的题材、主题、导演、演员等多个因素，找出最适合用户的电影，输出匹配度由高到低的电影名称和ID列表排序（JSON）[{"name": "Aladdin", "id": 444}]
+2025-05-10 13:26:27,034 - INFO - ==== 发送API请求 ====
+2025-05-10 13:26:36,728 - INFO - ==== API响应 ====
+2025-05-10 13:26:36,729 - INFO - 响应状态码: 200
+2025-05-10 13:26:36,729 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 05:26:35 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '868', 'Connection': 'keep-alive'}
+2025-05-10 13:26:36,729 - INFO - 完整响应JSON: {
+  "id": "0196b8a8b495d748d3a282c8b2c22da9",
+  "object": "chat.completion",
+  "created": 1746854786,
+  "model": "Pro/deepseek-ai/DeepSeek-V3",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"name\": \"Naked Gun 33 1/3: The Final Insult\", \"id\": 370},\n    {\"name\": \"Get Shorty\", \"id\": 21},\n    {\"name\": \"Boomerang\", \"id\": 122},\n    {\"name\": \"Very Brady Sequel, A\", \"id\": 818},\n    {\"name\": \"Favor, The\", \"id\": 447},\n    {\"name\": \"Mrs. Winterbourne\", \"id\": 691},\n    {\"name\": \"Alien Nation\", \"id\": 3701},\n    {\"name\": \"Tomorrow Never Dies\", \"id\": 1722},\n    {\"name\": \"King Kong\", \"id\": 2367},\n    {\"name\": \"Braddock: Missing in Action III\", \"id\": 3768}\n]\n```"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1491,
+    "completion_tokens": 180,
+    "total_tokens": 1671
+  },
+  "system_fingerprint": ""
+}
+2025-05-10 13:26:36,729 - INFO - 模型回复内容:
+```json
+[
+    {"name": "Naked Gun 33 1/3: The Final Insult", "id": 370},
+    {"name": "Get Shorty", "id": 21},
+    {"name": "Boomerang", "id": 122},
+    {"name": "Very Brady Sequel, A", "id": 818},
+    {"name": "Favor, The", "id": 447},
+    {"name": "Mrs. Winterbourne", "id": 691},
+    {"name": "Alien Nation", "id": 3701},
+    {"name": "Tomorrow Never Dies", "id": 1722},
+    {"name": "King Kong", "id": 2367},
+    {"name": "Braddock: Missing in Action III", "id": 3768}
+]
+```
+2025-05-10 13:26:36,729 - INFO - ==== 用量信息 ====
+2025-05-10 13:26:36,730 - INFO - 输入tokens: 1491
+2025-05-10 13:26:36,730 - INFO - 输出tokens: 180
+2025-05-10 13:26:36,730 - INFO - 总tokens: 1671
+2025-05-10 13:26:36,730 - INFO - ==== 解析输出 ====
+2025-05-10 13:26:36,730 - INFO - 调用parse_output函数解析响应...
+2025-05-10 13:26:36,731 - INFO - 解析结果: [370, 21, 122, 818, 447, 691, 3701, 1722, 2367, 3768]
+2025-05-10 13:26:36,731 - INFO - ==== 计算NDCG ====
+2025-05-10 13:26:36,731 - INFO - 相关性列表: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 13:26:36,731 - INFO - 目标电影不在预测列表中，NDCG=0
+2025-05-10 13:26:36,731 - INFO - NDCG@10计算详情:
+2025-05-10 13:26:36,731 - INFO - 截断后的预测列表(前10个): [370, 21, 122, 818, 447, 691, 3701, 1722, 2367, 3768]
+2025-05-10 13:26:36,731 - INFO - 目标电影ID 3824不在前10个预测列表中
+2025-05-10 13:26:36,731 - INFO - ==== 测试结果 ====
+2025-05-10 13:26:36,731 - INFO - 用户ID: 549
+2025-05-10 13:26:36,732 - INFO - 目标电影: Autumn in New York (ID: 3824)
+2025-05-10 13:26:36,732 - INFO - 预测列表(前10个): [370, 21, 122, 818, 447, 691, 3701, 1722, 2367, 3768]
+2025-05-10 13:26:36,732 - INFO - NDCG@10: 0.0000
+2025-05-10 13:26:36,732 - INFO - ========== 测试结束 ==========
+2025-05-10 13:26:36,732 - INFO - 样本 4 测试完成，NDCG@10: 0.0000
+2025-05-10 13:26:36,732 - INFO - ===== 测试样本 5/10 =====
+2025-05-10 13:26:36,732 - INFO - ========== 测试开始 ==========
+2025-05-10 13:26:36,732 - INFO - ==== 样本信息 ====
+2025-05-10 13:26:36,732 - INFO - 用户ID: 554
+2025-05-10 13:26:36,732 - INFO - 用户历史电影数量: 20
+2025-05-10 13:26:36,733 - INFO - 候选电影数量: 20
+2025-05-10 13:26:36,733 - INFO - 目标电影: Meet the Parents (ID: 3948)
+2025-05-10 13:26:36,733 - INFO - ==== 构造提示词 ====
+2025-05-10 13:26:36,733 - INFO - 调用construct_prompt函数...
+2025-05-10 13:26:36,733 - INFO - 生成了4条消息
+2025-05-10 13:26:36,733 - INFO - ==== 发送的消息 ====
+2025-05-10 13:26:36,733 - INFO - [系统提示]:
+  # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，电影ID没有关联关系，需要你根据用户偏好的电影风格对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影名称和ID列表（JSON）。
+2025-05-10 13:26:36,733 - INFO - [用户请求]:
+  用户ID: example_user_123
+
+用户观看过的电影列表:
+- Liar Liar (ID: 123)
+- The Mask (ID: 456)
+- Mrs. Doubtfire (ID: 789)
+- Toy Story (ID: 246)
+- The Lion King (ID: 357)
+
+候选电影列表:
+- Ace Ventura: Pet Detective (ID: 111)
+- Forrest Gump (ID: 222) 
+- The Shawshank Redemption (ID: 333) 
+- Aladdin (ID: 444) 
+- Terminator 2: Judgment Day (ID: 555)
+2025-05-10 13:26:36,733 - INFO - ==== 调用API ====
+2025-05-10 13:26:36,733 - INFO - ==== API调用参数 ====
+2025-05-10 13:26:36,733 - INFO - 模型: Pro/deepseek-ai/DeepSeek-V3
+2025-05-10 13:26:36,734 - INFO - 温度: 0
+2025-05-10 13:26:36,734 - INFO - ==== 发送的消息 ====
+2025-05-10 13:26:36,734 - INFO - 消息 1:
+2025-05-10 13:26:36,734 - INFO - 角色: system
+2025-05-10 13:26:36,734 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，电影ID没有关联关系，需要你根据用户偏好的电影风格对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影名称和ID列表（JSON）。
+2025-05-10 13:26:36,734 - INFO - 消息 2:
+2025-05-10 13:26:36,735 - INFO - 角色: user
+2025-05-10 13:26:36,735 - INFO - 内容: 用户ID: example_user_123
+
+用户观看过的电影列表:
+- Liar Liar (ID: 123)
+- The Mask (ID: 456)
+- Mrs. Doubtfire (ID: 789)
+- Toy Story (ID: 246)
+- The Lion King (ID: 357)
+
+候选电影列表:
+- Ace Ventura: Pet Detective (ID: 111)
+- Forrest Gump (ID: 222) 
+- The Shawshank Redemption (ID: 333) 
+- Aladdin (ID: 444) 
+- Terminator 2: Judgment Day (ID: 555)
+2025-05-10 13:26:36,735 - INFO - 消息 3:
+2025-05-10 13:26:36,735 - INFO - 角色: assistant
+2025-05-10 13:26:36,735 - INFO - 内容: ### 分析用户观影风格偏好
+
+首先，我将分析每部电影的风格类别:
+
+| 电影 | 风格类别 |
+|------|------------|
+| Liar Liar | Comedy |
+| The Mask | Comedy |
+| Mrs. Doubtfire | Comedy |
+| Toy Story | Animation, Children's, Comedy |
+| The Lion King | Animation, Children's, Musical |
+
+用户明显偏好喜剧类(Comedy)电影，其次是动画(Animation)和儿童(Children's)类电影。
+
+### 分析候选电影和用户偏好的匹配度
+
+分析每部候选电影的风格类别:
+
+| 电影 | 风格类别 | 与用户偏好匹配 |
+|------|------------|------------|
+| Ace Ventura: Pet Detective | Comedy | 高  |
+| Forrest Gump | Comedy, Drama, Romance | 中  |
+| The Shawshank Redemption | Drama | 低  |
+| Aladdin | Animation, Children's, Comedy | 高  |
+| Terminator 2 | Action, Sci-Fi, Thriller | 低 |
+
+根据匹配程度去除匹配度低的候选电影，留下10个匹配度高和中的电影继续分析：
+
+1. Aladdin (ID: 444) 
+2. Ace Ventura: Pet Detective (ID: 111) -
+3. Forrest Gump (ID: 222) 
+4. The Shawshank Redemption (ID: 333)
+5. Terminator 2 (ID: 555) 
+
+在这10个电影里继续考虑电影的题材、主题、导演、演员等多个因素，找出最适合用户的电影，输出匹配度最高的电影名称和ID列表排序（JSON）[{"name": "Aladdin", "id": 444}]
+2025-05-10 13:26:36,735 - INFO - 消息 4:
+2025-05-10 13:26:36,735 - INFO - 角色: user
+2025-05-10 13:26:36,735 - INFO - 内容: 用户ID: 554
+
+用户观看过的电影列表:
+- Fight Club (ID: 2959)
+- General's Daughter, The (ID: 2688)
+- Ghostbusters (ID: 2716)
+- Gladiator (ID: 3578)
+- Kingpin (ID: 785)
+- Little Voice (ID: 2390)
+- Mickey Blue Eyes (ID: 2805)
+- Magnolia (ID: 3160)
+- Mosquito Coast, The (ID: 2734)
+- Out of Africa (ID: 1959)
+- Patriot, The (ID: 3753)
+- Powder (ID: 24)
+- Snow Falling on Cedars (ID: 3185)
+- Shakespeare in Love (ID: 2396)
+- Runaway Bride (ID: 2724)
+- Sixth Sense, The (ID: 2762)
+- Talented Mr. Ripley, The (ID: 3176)
+- South Park: Bigger, Longer and Uncut (ID: 2700)
+- Summer of Sam (ID: 2702)
+- Thomas Crown Affair, The (ID: 2763)
+
+候选电影列表:
+- Small Time Crooks (ID: 3618)
+- Renaissance Man (ID: 516)
+- Intimate Relations (ID: 1528)
+- Rosemary's Baby (ID: 2160)
+- Homegrown (ID: 1824)
+- Deceiver (ID: 1671)
+- Class Reunion (ID: 3313)
+- Tom and Huck (ID: 8)
+- Separation, The (La Séparation) (ID: 2869)
+- Bring It On (ID: 3882)
+- This Is My Father (ID: 2620)
+- Bad Boys (ID: 145)
+- I'm Not Rappaport (ID: 1317)
+- Gung Ho (ID: 2374)
+- Meet the Parents (ID: 3948)
+- Lodger, The (ID: 2227)
+- Celestial Clockwork (ID: 863)
+- Thunderball (ID: 2993)
+- Night Porter, The (Il Portiere di notte) (ID: 2074)
+- Meet the Deedles (ID: 1822)
+
+电影风格类别参考: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+
+让我们一步步思考！请按照以下步骤进行分析：
+1. 分析每部电影属于哪些风格类别，并制作风格归属表格
+2. 用户的电影风格偏好分析
+3. 分析每部候选电影属于哪些风格类别，评估相似程度，去除相似度低的，只留下10个候选
+4. 考虑电影的题材、主题、导演、演员等多个因素，找出最适合用户的电影，输出匹配度由高到低的电影名称和ID列表排序（JSON）[{"name": "Aladdin", "id": 444}]
+2025-05-10 13:26:36,737 - INFO - ==== 发送API请求 ====
+2025-05-10 13:26:45,058 - INFO - ==== API响应 ====
+2025-05-10 13:26:45,058 - INFO - 响应状态码: 200
+2025-05-10 13:26:45,058 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 05:26:44 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '820', 'Connection': 'keep-alive'}
+2025-05-10 13:26:45,058 - INFO - 完整响应JSON: {
+  "id": "0196b8a8da1c28f89091226d4c875d40",
+  "object": "chat.completion",
+  "created": 1746854796,
+  "model": "Pro/deepseek-ai/DeepSeek-V3",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"name\": \"Bad Boys\", \"id\": 145},\n    {\"name\": \"Meet the Parents\", \"id\": 3948},\n    {\"name\": \"Thunderball\", \"id\": 2993},\n    {\"name\": \"Small Time Crooks\", \"id\": 3618},\n    {\"name\": \"Bring It On\", \"id\": 3882},\n    {\"name\": \"Gung Ho\", \"id\": 2374},\n    {\"name\": \"Deceiver\", \"id\": 1671},\n    {\"name\": \"Rosemary's Baby\", \"id\": 2160},\n    {\"name\": \"The Lodger\", \"id\": 2227},\n    {\"name\": \"Renaissance Man\", \"id\": 516}\n]\n```"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1488,
+    "completion_tokens": 165,
+    "total_tokens": 1653
+  },
+  "system_fingerprint": ""
+}
+2025-05-10 13:26:45,059 - INFO - 模型回复内容:
+```json
+[
+    {"name": "Bad Boys", "id": 145},
+    {"name": "Meet the Parents", "id": 3948},
+    {"name": "Thunderball", "id": 2993},
+    {"name": "Small Time Crooks", "id": 3618},
+    {"name": "Bring It On", "id": 3882},
+    {"name": "Gung Ho", "id": 2374},
+    {"name": "Deceiver", "id": 1671},
+    {"name": "Rosemary's Baby", "id": 2160},
+    {"name": "The Lodger", "id": 2227},
+    {"name": "Renaissance Man", "id": 516}
+]
+```
+2025-05-10 13:26:45,059 - INFO - ==== 用量信息 ====
+2025-05-10 13:26:45,059 - INFO - 输入tokens: 1488
+2025-05-10 13:26:45,060 - INFO - 输出tokens: 165
+2025-05-10 13:26:45,060 - INFO - 总tokens: 1653
+2025-05-10 13:26:45,060 - INFO - ==== 解析输出 ====
+2025-05-10 13:26:45,060 - INFO - 调用parse_output函数解析响应...
+2025-05-10 13:26:45,060 - INFO - 解析结果: [145, 3948, 2993, 3618, 3882, 2374, 1671, 2160, 2227, 516]
+2025-05-10 13:26:45,060 - INFO - ==== 计算NDCG ====
+2025-05-10 13:26:45,060 - INFO - 相关性列表: [0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 13:26:45,060 - INFO - 位置2的DCG贡献: 1/log2(3) = 0.6309
+2025-05-10 13:26:45,061 - INFO - DCG: 0.6309, IDCG: 1.0000
+2025-05-10 13:26:45,061 - INFO - NDCG@10: 0.6309
+2025-05-10 13:26:45,061 - INFO - NDCG@10计算详情:
+2025-05-10 13:26:45,061 - INFO - 截断后的预测列表(前10个): [145, 3948, 2993, 3618, 3882, 2374, 1671, 2160, 2227, 516]
+2025-05-10 13:26:45,061 - INFO - 目标电影ID 3948在位置2
+2025-05-10 13:26:45,062 - INFO - 位置2的DCG贡献: 1/log2(3) = 0.6309
+2025-05-10 13:26:45,062 - INFO - ==== 测试结果 ====
+2025-05-10 13:26:45,062 - INFO - 用户ID: 554
+2025-05-10 13:26:45,062 - INFO - 目标电影: Meet the Parents (ID: 3948)
+2025-05-10 13:26:45,062 - INFO - 预测列表(前10个): [145, 3948, 2993, 3618, 3882, 2374, 1671, 2160, 2227, 516]
+2025-05-10 13:26:45,062 - INFO - NDCG@10: 0.6309
+2025-05-10 13:26:45,062 - INFO - ========== 测试结束 ==========
+2025-05-10 13:26:45,062 - INFO - 样本 5 测试完成，NDCG@10: 0.6309
+2025-05-10 13:26:45,062 - INFO - ===== 测试样本 6/10 =====
+2025-05-10 13:26:45,062 - INFO - ========== 测试开始 ==========
+2025-05-10 13:26:45,062 - INFO - ==== 样本信息 ====
+2025-05-10 13:26:45,062 - INFO - 用户ID: 659
+2025-05-10 13:26:45,062 - INFO - 用户历史电影数量: 20
+2025-05-10 13:26:45,062 - INFO - 候选电影数量: 20
+2025-05-10 13:26:45,062 - INFO - 目标电影: Shadowlands (ID: 534)
+2025-05-10 13:26:45,062 - INFO - ==== 构造提示词 ====
+2025-05-10 13:26:45,062 - INFO - 调用construct_prompt函数...
+2025-05-10 13:26:45,062 - INFO - 生成了4条消息
+2025-05-10 13:26:45,062 - INFO - ==== 发送的消息 ====
+2025-05-10 13:26:45,062 - INFO - [系统提示]:
+  # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，电影ID没有关联关系，需要你根据用户偏好的电影风格对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影名称和ID列表（JSON）。
+2025-05-10 13:26:45,063 - INFO - [用户请求]:
+  用户ID: example_user_123
+
+用户观看过的电影列表:
+- Liar Liar (ID: 123)
+- The Mask (ID: 456)
+- Mrs. Doubtfire (ID: 789)
+- Toy Story (ID: 246)
+- The Lion King (ID: 357)
+
+候选电影列表:
+- Ace Ventura: Pet Detective (ID: 111)
+- Forrest Gump (ID: 222) 
+- The Shawshank Redemption (ID: 333) 
+- Aladdin (ID: 444) 
+- Terminator 2: Judgment Day (ID: 555)
+2025-05-10 13:26:45,063 - INFO - ==== 调用API ====
+2025-05-10 13:26:45,063 - INFO - ==== API调用参数 ====
+2025-05-10 13:26:45,064 - INFO - 模型: Pro/deepseek-ai/DeepSeek-V3
+2025-05-10 13:26:45,064 - INFO - 温度: 0
+2025-05-10 13:26:45,064 - INFO - ==== 发送的消息 ====
+2025-05-10 13:26:45,064 - INFO - 消息 1:
+2025-05-10 13:26:45,064 - INFO - 角色: system
+2025-05-10 13:26:45,064 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，电影ID没有关联关系，需要你根据用户偏好的电影风格对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影名称和ID列表（JSON）。
+2025-05-10 13:26:45,064 - INFO - 消息 2:
+2025-05-10 13:26:45,064 - INFO - 角色: user
+2025-05-10 13:26:45,064 - INFO - 内容: 用户ID: example_user_123
+
+用户观看过的电影列表:
+- Liar Liar (ID: 123)
+- The Mask (ID: 456)
+- Mrs. Doubtfire (ID: 789)
+- Toy Story (ID: 246)
+- The Lion King (ID: 357)
+
+候选电影列表:
+- Ace Ventura: Pet Detective (ID: 111)
+- Forrest Gump (ID: 222) 
+- The Shawshank Redemption (ID: 333) 
+- Aladdin (ID: 444) 
+- Terminator 2: Judgment Day (ID: 555)
+2025-05-10 13:26:45,064 - INFO - 消息 3:
+2025-05-10 13:26:45,064 - INFO - 角色: assistant
+2025-05-10 13:26:45,065 - INFO - 内容: ### 分析用户观影风格偏好
+
+首先，我将分析每部电影的风格类别:
+
+| 电影 | 风格类别 |
+|------|------------|
+| Liar Liar | Comedy |
+| The Mask | Comedy |
+| Mrs. Doubtfire | Comedy |
+| Toy Story | Animation, Children's, Comedy |
+| The Lion King | Animation, Children's, Musical |
+
+用户明显偏好喜剧类(Comedy)电影，其次是动画(Animation)和儿童(Children's)类电影。
+
+### 分析候选电影和用户偏好的匹配度
+
+分析每部候选电影的风格类别:
+
+| 电影 | 风格类别 | 与用户偏好匹配 |
+|------|------------|------------|
+| Ace Ventura: Pet Detective | Comedy | 高  |
+| Forrest Gump | Comedy, Drama, Romance | 中  |
+| The Shawshank Redemption | Drama | 低  |
+| Aladdin | Animation, Children's, Comedy | 高  |
+| Terminator 2 | Action, Sci-Fi, Thriller | 低 |
+
+根据匹配程度去除匹配度低的候选电影，留下10个匹配度高和中的电影继续分析：
+
+1. Aladdin (ID: 444) 
+2. Ace Ventura: Pet Detective (ID: 111) -
+3. Forrest Gump (ID: 222) 
+4. The Shawshank Redemption (ID: 333)
+5. Terminator 2 (ID: 555) 
+
+在这10个电影里继续考虑电影的题材、主题、导演、演员等多个因素，找出最适合用户的电影，输出匹配度最高的电影名称和ID列表排序（JSON）[{"name": "Aladdin", "id": 444}]
+2025-05-10 13:26:45,065 - INFO - 消息 4:
+2025-05-10 13:26:45,065 - INFO - 角色: user
+2025-05-10 13:26:45,065 - INFO - 内容: 用户ID: 659
+
+用户观看过的电影列表:
+- In the Name of the Father (ID: 475)
+- American History X (ID: 2329)
+- Dead Man Walking (ID: 36)
+- Thelma & Louise (ID: 3418)
+- Contact (ID: 1584)
+- Crimson Tide (ID: 161)
+- Babe (ID: 34)
+- Swing Kids (ID: 2106)
+- Miller's Crossing (ID: 1245)
+- Truman Show, The (ID: 1682)
+- American President, The (ID: 11)
+- Client, The (ID: 350)
+- Twelve Monkeys (ID: 32)
+- Thousand Acres, A (ID: 1624)
+- Of Mice and Men (ID: 3271)
+- Cider House Rules, The (ID: 3148)
+- Sliding Doors (ID: 1680)
+- Ever After: A Cinderella Story (ID: 2125)
+- Great Expectations (ID: 1735)
+- Philadelphia (ID: 508)
+
+候选电影列表:
+- Touch (ID: 1458)
+- Sister Act (ID: 3247)
+- Dracula (ID: 2644)
+- Third Miracle, The (ID: 3183)
+- Airplane! (ID: 2791)
+- Collectionneuse, La (ID: 823)
+- Groove (ID: 3790)
+- Truth or Consequences, N.M. (ID: 1523)
+- Century (ID: 607)
+- Naked Gun 33 1/3: The Final Insult (ID: 370)
+- Max Dugan Returns (ID: 3497)
+- Shadowlands (ID: 534)
+- Good Mother, The (ID: 3449)
+- Blood In, Blood Out (a.k.a. Bound by Honor) (ID: 3761)
+- Murder in the First (ID: 280)
+- Stalker (ID: 1232)
+- One Crazy Summer (ID: 2261)
+- Sirens (ID: 537)
+- Passion Fish (ID: 1187)
+- Anatomy of a Murder (ID: 3801)
+
+电影风格类别参考: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+
+让我们一步步思考！请按照以下步骤进行分析：
+1. 分析每部电影属于哪些风格类别，并制作风格归属表格
+2. 用户的电影风格偏好分析
+3. 分析每部候选电影属于哪些风格类别，评估相似程度，去除相似度低的，只留下10个候选
+4. 考虑电影的题材、主题、导演、演员等多个因素，找出最适合用户的电影，输出匹配度由高到低的电影名称和ID列表排序（JSON）[{"name": "Aladdin", "id": 444}]
+2025-05-10 13:26:45,066 - INFO - ==== 发送API请求 ====
+2025-05-10 13:26:54,304 - INFO - ==== API响应 ====
+2025-05-10 13:26:54,304 - INFO - 响应状态码: 200
+2025-05-10 13:26:54,304 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 05:26:53 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '880', 'Connection': 'keep-alive'}
+2025-05-10 13:26:54,305 - INFO - 完整响应JSON: {
+  "id": "0196b8a8fa9fe8647786d906818e2d1b",
+  "object": "chat.completion",
+  "created": 1746854804,
+  "model": "Pro/deepseek-ai/DeepSeek-V3",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"name\": \"Shadowlands\", \"id\": 534},\n    {\"name\": \"Murder in the First\", \"id\": 280},\n    {\"name\": \"Third Miracle, The\", \"id\": 3183},\n    {\"name\": \"Good Mother, The\", \"id\": 3449},\n    {\"name\": \"Passion Fish\", \"id\": 1187},\n    {\"name\": \"Anatomy of a Murder\", \"id\": 3801},\n    {\"name\": \"Stalker\", \"id\": 1232},\n    {\"name\": \"Century\", \"id\": 607},\n    {\"name\": \"Blood In, Blood Out (a.k.a. Bound by Honor)\", \"id\": 3761},\n    {\"name\": \"Truth or Consequences, N.M.\", \"id\": 1523}\n]\n```"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1478,
+    "completion_tokens": 181,
+    "total_tokens": 1659
+  },
+  "system_fingerprint": ""
+}
+2025-05-10 13:26:54,305 - INFO - 模型回复内容:
+```json
+[
+    {"name": "Shadowlands", "id": 534},
+    {"name": "Murder in the First", "id": 280},
+    {"name": "Third Miracle, The", "id": 3183},
+    {"name": "Good Mother, The", "id": 3449},
+    {"name": "Passion Fish", "id": 1187},
+    {"name": "Anatomy of a Murder", "id": 3801},
+    {"name": "Stalker", "id": 1232},
+    {"name": "Century", "id": 607},
+    {"name": "Blood In, Blood Out (a.k.a. Bound by Honor)", "id": 3761},
+    {"name": "Truth or Consequences, N.M.", "id": 1523}
+]
+```
+2025-05-10 13:26:54,305 - INFO - ==== 用量信息 ====
+2025-05-10 13:26:54,305 - INFO - 输入tokens: 1478
+2025-05-10 13:26:54,305 - INFO - 输出tokens: 181
+2025-05-10 13:26:54,305 - INFO - 总tokens: 1659
+2025-05-10 13:26:54,306 - INFO - ==== 解析输出 ====
+2025-05-10 13:26:54,306 - INFO - 调用parse_output函数解析响应...
+2025-05-10 13:26:54,306 - INFO - 解析结果: [534, 280, 3183, 3449, 1187, 3801, 1232, 607, 3761, 1523]
+2025-05-10 13:26:54,306 - INFO - ==== 计算NDCG ====
+2025-05-10 13:26:54,306 - INFO - 相关性列表: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 13:26:54,306 - INFO - 位置1的DCG贡献: 1/log2(2) = 1.0000
+2025-05-10 13:26:54,306 - INFO - DCG: 1.0000, IDCG: 1.0000
+2025-05-10 13:26:54,306 - INFO - NDCG@10: 1.0000
+2025-05-10 13:26:54,306 - INFO - NDCG@10计算详情:
+2025-05-10 13:26:54,306 - INFO - 截断后的预测列表(前10个): [534, 280, 3183, 3449, 1187, 3801, 1232, 607, 3761, 1523]
+2025-05-10 13:26:54,306 - INFO - 目标电影ID 534在位置1
+2025-05-10 13:26:54,306 - INFO - 位置1的DCG贡献: 1/log2(2) = 1.0000
+2025-05-10 13:26:54,306 - INFO - ==== 测试结果 ====
+2025-05-10 13:26:54,306 - INFO - 用户ID: 659
+2025-05-10 13:26:54,306 - INFO - 目标电影: Shadowlands (ID: 534)
+2025-05-10 13:26:54,306 - INFO - 预测列表(前10个): [534, 280, 3183, 3449, 1187, 3801, 1232, 607, 3761, 1523]
+2025-05-10 13:26:54,306 - INFO - NDCG@10: 1.0000
+2025-05-10 13:26:54,306 - INFO - ========== 测试结束 ==========
+2025-05-10 13:26:54,306 - INFO - 样本 6 测试完成，NDCG@10: 1.0000
+2025-05-10 13:26:54,308 - INFO - ===== 测试样本 7/10 =====
+2025-05-10 13:26:54,308 - INFO - ========== 测试开始 ==========
+2025-05-10 13:26:54,308 - INFO - ==== 样本信息 ====
+2025-05-10 13:26:54,308 - INFO - 用户ID: 706
+2025-05-10 13:26:54,308 - INFO - 用户历史电影数量: 20
+2025-05-10 13:26:54,308 - INFO - 候选电影数量: 20
+2025-05-10 13:26:54,308 - INFO - 目标电影: Reality Bites (ID: 372)
+2025-05-10 13:26:54,308 - INFO - ==== 构造提示词 ====
+2025-05-10 13:26:54,308 - INFO - 调用construct_prompt函数...
+2025-05-10 13:26:54,308 - INFO - 生成了4条消息
+2025-05-10 13:26:54,308 - INFO - ==== 发送的消息 ====
+2025-05-10 13:26:54,308 - INFO - [系统提示]:
+  # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，电影ID没有关联关系，需要你根据用户偏好的电影风格对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影名称和ID列表（JSON）。
+2025-05-10 13:26:54,308 - INFO - [用户请求]:
+  用户ID: example_user_123
+
+用户观看过的电影列表:
+- Liar Liar (ID: 123)
+- The Mask (ID: 456)
+- Mrs. Doubtfire (ID: 789)
+- Toy Story (ID: 246)
+- The Lion King (ID: 357)
+
+候选电影列表:
+- Ace Ventura: Pet Detective (ID: 111)
+- Forrest Gump (ID: 222) 
+- The Shawshank Redemption (ID: 333) 
+- Aladdin (ID: 444) 
+- Terminator 2: Judgment Day (ID: 555)
+2025-05-10 13:26:54,308 - INFO - ==== 调用API ====
+2025-05-10 13:26:54,309 - INFO - ==== API调用参数 ====
+2025-05-10 13:26:54,309 - INFO - 模型: Pro/deepseek-ai/DeepSeek-V3
+2025-05-10 13:26:54,309 - INFO - 温度: 0
+2025-05-10 13:26:54,309 - INFO - ==== 发送的消息 ====
+2025-05-10 13:26:54,309 - INFO - 消息 1:
+2025-05-10 13:26:54,309 - INFO - 角色: system
+2025-05-10 13:26:54,309 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，电影ID没有关联关系，需要你根据用户偏好的电影风格对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影名称和ID列表（JSON）。
+2025-05-10 13:26:54,309 - INFO - 消息 2:
+2025-05-10 13:26:54,309 - INFO - 角色: user
+2025-05-10 13:26:54,309 - INFO - 内容: 用户ID: example_user_123
+
+用户观看过的电影列表:
+- Liar Liar (ID: 123)
+- The Mask (ID: 456)
+- Mrs. Doubtfire (ID: 789)
+- Toy Story (ID: 246)
+- The Lion King (ID: 357)
+
+候选电影列表:
+- Ace Ventura: Pet Detective (ID: 111)
+- Forrest Gump (ID: 222) 
+- The Shawshank Redemption (ID: 333) 
+- Aladdin (ID: 444) 
+- Terminator 2: Judgment Day (ID: 555)
+2025-05-10 13:26:54,309 - INFO - 消息 3:
+2025-05-10 13:26:54,309 - INFO - 角色: assistant
+2025-05-10 13:26:54,309 - INFO - 内容: ### 分析用户观影风格偏好
+
+首先，我将分析每部电影的风格类别:
+
+| 电影 | 风格类别 |
+|------|------------|
+| Liar Liar | Comedy |
+| The Mask | Comedy |
+| Mrs. Doubtfire | Comedy |
+| Toy Story | Animation, Children's, Comedy |
+| The Lion King | Animation, Children's, Musical |
+
+用户明显偏好喜剧类(Comedy)电影，其次是动画(Animation)和儿童(Children's)类电影。
+
+### 分析候选电影和用户偏好的匹配度
+
+分析每部候选电影的风格类别:
+
+| 电影 | 风格类别 | 与用户偏好匹配 |
+|------|------------|------------|
+| Ace Ventura: Pet Detective | Comedy | 高  |
+| Forrest Gump | Comedy, Drama, Romance | 中  |
+| The Shawshank Redemption | Drama | 低  |
+| Aladdin | Animation, Children's, Comedy | 高  |
+| Terminator 2 | Action, Sci-Fi, Thriller | 低 |
+
+根据匹配程度去除匹配度低的候选电影，留下10个匹配度高和中的电影继续分析：
+
+1. Aladdin (ID: 444) 
+2. Ace Ventura: Pet Detective (ID: 111) -
+3. Forrest Gump (ID: 222) 
+4. The Shawshank Redemption (ID: 333)
+5. Terminator 2 (ID: 555) 
+
+在这10个电影里继续考虑电影的题材、主题、导演、演员等多个因素，找出最适合用户的电影，输出匹配度最高的电影名称和ID列表排序（JSON）[{"name": "Aladdin", "id": 444}]
+2025-05-10 13:26:54,310 - INFO - 消息 4:
+2025-05-10 13:26:54,310 - INFO - 角色: user
+2025-05-10 13:26:54,310 - INFO - 内容: 用户ID: 706
+
+用户观看过的电影列表:
+- Sweet and Lowdown (ID: 3129)
+- Dream With the Fishes (ID: 1563)
+- Tango (ID: 2573)
+- League of Their Own, A (ID: 3255)
+- Misérables, Les (ID: 73)
+- I Shot Andy Warhol (ID: 766)
+- Wings of the Dove, The (ID: 1683)
+- Death and the Maiden (ID: 229)
+- Hurricane, The (ID: 3178)
+- Crimson Tide (ID: 161)
+- Sleepers (ID: 1061)
+- Last Days of Disco, The (ID: 1836)
+- Spitfire Grill, The (ID: 848)
+- SLC Punk! (ID: 2596)
+- Love and Death on Long Island (ID: 1794)
+- Secret Garden, The (ID: 531)
+- Angels and Insects (ID: 85)
+- Little Women (ID: 261)
+- High Art (ID: 1897)
+- Cop Land (ID: 1589)
+
+候选电影列表:
+- 8 1/2 Women (ID: 3626)
+- My Blue Heaven (ID: 2249)
+- Reality Bites (ID: 372)
+- Net, The (ID: 185)
+- Stand by Me (ID: 1259)
+- Ogre, The (Der Unhold) (ID: 3378)
+- McCullochs, The (ID: 3312)
+- Agnes of God (ID: 3251)
+- Beefcake (ID: 2960)
+- I Like It Like That (ID: 359)
+- Talk of Angels (ID: 887)
+- Eden (ID: 1815)
+- Honeymoon in Vegas (ID: 3614)
+- Gate II: Trespassers, The (ID: 2452)
+- Star Trek III: The Search for Spock (ID: 1375)
+- Rocky II (ID: 2409)
+- Losing Isaiah (ID: 271)
+- Charlotte's Web (ID: 2137)
+- Eyes of Tammy Faye, The (ID: 3859)
+- Jar, The (Khomreh) (ID: 758)
+
+电影风格类别参考: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+
+让我们一步步思考！请按照以下步骤进行分析：
+1. 分析每部电影属于哪些风格类别，并制作风格归属表格
+2. 用户的电影风格偏好分析
+3. 分析每部候选电影属于哪些风格类别，评估相似程度，去除相似度低的，只留下10个候选
+4. 考虑电影的题材、主题、导演、演员等多个因素，找出最适合用户的电影，输出匹配度由高到低的电影名称和ID列表排序（JSON）[{"name": "Aladdin", "id": 444}]
+2025-05-10 13:26:54,310 - INFO - ==== 发送API请求 ====
+2025-05-10 13:27:04,567 - INFO - ==== API响应 ====
+2025-05-10 13:27:04,567 - INFO - 响应状态码: 200
+2025-05-10 13:27:04,567 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 05:27:03 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '827', 'Connection': 'keep-alive'}
+2025-05-10 13:27:04,568 - INFO - 完整响应JSON: {
+  "id": "0196b8a91e91571bb74633041936d1be",
+  "object": "chat.completion",
+  "created": 1746854813,
+  "model": "Pro/deepseek-ai/DeepSeek-V3",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"name\": \"Talk of Angels\", \"id\": 887},\n    {\"name\": \"Eden\", \"id\": 1815},\n    {\"name\": \"Losing Isaiah\", \"id\": 271},\n    {\"name\": \"Agnes of God\", \"id\": 3251},\n    {\"name\": \"Reality Bites\", \"id\": 372},\n    {\"name\": \"Stand by Me\", \"id\": 1259},\n    {\"name\": \"I Like It Like That\", \"id\": 359},\n    {\"name\": \"Beefcake\", \"id\": 2960},\n    {\"name\": \"Ogre, The (Der Unhold)\", \"id\": 3378},\n    {\"name\": \"8 1/2 Women\", \"id\": 3626}\n]\n```"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1501,
+    "completion_tokens": 174,
+    "total_tokens": 1675
+  },
+  "system_fingerprint": ""
+}
+2025-05-10 13:27:04,568 - INFO - 模型回复内容:
+```json
+[
+    {"name": "Talk of Angels", "id": 887},
+    {"name": "Eden", "id": 1815},
+    {"name": "Losing Isaiah", "id": 271},
+    {"name": "Agnes of God", "id": 3251},
+    {"name": "Reality Bites", "id": 372},
+    {"name": "Stand by Me", "id": 1259},
+    {"name": "I Like It Like That", "id": 359},
+    {"name": "Beefcake", "id": 2960},
+    {"name": "Ogre, The (Der Unhold)", "id": 3378},
+    {"name": "8 1/2 Women", "id": 3626}
+]
+```
+2025-05-10 13:27:04,568 - INFO - ==== 用量信息 ====
+2025-05-10 13:27:04,568 - INFO - 输入tokens: 1501
+2025-05-10 13:27:04,569 - INFO - 输出tokens: 174
+2025-05-10 13:27:04,570 - INFO - 总tokens: 1675
+2025-05-10 13:27:04,570 - INFO - ==== 解析输出 ====
+2025-05-10 13:27:04,570 - INFO - 调用parse_output函数解析响应...
+2025-05-10 13:27:04,570 - INFO - 解析结果: [887, 1815, 271, 3251, 372, 1259, 359, 2960, 3378, 3626]
+2025-05-10 13:27:04,570 - INFO - ==== 计算NDCG ====
+2025-05-10 13:27:04,571 - INFO - 相关性列表: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+2025-05-10 13:27:04,571 - INFO - 位置5的DCG贡献: 1/log2(6) = 0.3869
+2025-05-10 13:27:04,571 - INFO - DCG: 0.3869, IDCG: 1.0000
+2025-05-10 13:27:04,571 - INFO - NDCG@10: 0.3869
+2025-05-10 13:27:04,571 - INFO - NDCG@10计算详情:
+2025-05-10 13:27:04,572 - INFO - 截断后的预测列表(前10个): [887, 1815, 271, 3251, 372, 1259, 359, 2960, 3378, 3626]
+2025-05-10 13:27:04,572 - INFO - 目标电影ID 372在位置5
+2025-05-10 13:27:04,572 - INFO - 位置5的DCG贡献: 1/log2(6) = 0.3869
+2025-05-10 13:27:04,572 - INFO - ==== 测试结果 ====
+2025-05-10 13:27:04,572 - INFO - 用户ID: 706
+2025-05-10 13:27:04,572 - INFO - 目标电影: Reality Bites (ID: 372)
+2025-05-10 13:27:04,572 - INFO - 预测列表(前10个): [887, 1815, 271, 3251, 372, 1259, 359, 2960, 3378, 3626]
+2025-05-10 13:27:04,572 - INFO - NDCG@10: 0.3869
+2025-05-10 13:27:04,574 - INFO - ========== 测试结束 ==========
+2025-05-10 13:27:04,574 - INFO - 样本 7 测试完成，NDCG@10: 0.3869
+2025-05-10 13:27:04,574 - INFO - ===== 测试样本 8/10 =====
+2025-05-10 13:27:04,574 - INFO - ========== 测试开始 ==========
+2025-05-10 13:27:04,574 - INFO - ==== 样本信息 ====
+2025-05-10 13:27:04,574 - INFO - 用户ID: 729
+2025-05-10 13:27:04,574 - INFO - 用户历史电影数量: 20
+2025-05-10 13:27:04,574 - INFO - 候选电影数量: 20
+2025-05-10 13:27:04,574 - INFO - 目标电影: Talented Mr. Ripley, The (ID: 3176)
+2025-05-10 13:27:04,575 - INFO - ==== 构造提示词 ====
+2025-05-10 13:27:04,575 - INFO - 调用construct_prompt函数...
+2025-05-10 13:27:04,575 - INFO - 生成了4条消息
+2025-05-10 13:27:04,575 - INFO - ==== 发送的消息 ====
+2025-05-10 13:27:04,575 - INFO - [系统提示]:
+  # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，电影ID没有关联关系，需要你根据用户偏好的电影风格对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影名称和ID列表（JSON）。
+2025-05-10 13:27:04,575 - INFO - [用户请求]:
+  用户ID: example_user_123
+
+用户观看过的电影列表:
+- Liar Liar (ID: 123)
+- The Mask (ID: 456)
+- Mrs. Doubtfire (ID: 789)
+- Toy Story (ID: 246)
+- The Lion King (ID: 357)
+
+候选电影列表:
+- Ace Ventura: Pet Detective (ID: 111)
+- Forrest Gump (ID: 222) 
+- The Shawshank Redemption (ID: 333) 
+- Aladdin (ID: 444) 
+- Terminator 2: Judgment Day (ID: 555)
+2025-05-10 13:27:04,575 - INFO - ==== 调用API ====
+2025-05-10 13:27:04,575 - INFO - ==== API调用参数 ====
+2025-05-10 13:27:04,575 - INFO - 模型: Pro/deepseek-ai/DeepSeek-V3
+2025-05-10 13:27:04,575 - INFO - 温度: 0
+2025-05-10 13:27:04,576 - INFO - ==== 发送的消息 ====
+2025-05-10 13:27:04,576 - INFO - 消息 1:
+2025-05-10 13:27:04,576 - INFO - 角色: system
+2025-05-10 13:27:04,576 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，电影ID没有关联关系，需要你根据用户偏好的电影风格对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影名称和ID列表（JSON）。
+2025-05-10 13:27:04,576 - INFO - 消息 2:
+2025-05-10 13:27:04,576 - INFO - 角色: user
+2025-05-10 13:27:04,576 - INFO - 内容: 用户ID: example_user_123
+
+用户观看过的电影列表:
+- Liar Liar (ID: 123)
+- The Mask (ID: 456)
+- Mrs. Doubtfire (ID: 789)
+- Toy Story (ID: 246)
+- The Lion King (ID: 357)
+
+候选电影列表:
+- Ace Ventura: Pet Detective (ID: 111)
+- Forrest Gump (ID: 222) 
+- The Shawshank Redemption (ID: 333) 
+- Aladdin (ID: 444) 
+- Terminator 2: Judgment Day (ID: 555)
+2025-05-10 13:27:04,576 - INFO - 消息 3:
+2025-05-10 13:27:04,577 - INFO - 角色: assistant
+2025-05-10 13:27:04,577 - INFO - 内容: ### 分析用户观影风格偏好
+
+首先，我将分析每部电影的风格类别:
+
+| 电影 | 风格类别 |
+|------|------------|
+| Liar Liar | Comedy |
+| The Mask | Comedy |
+| Mrs. Doubtfire | Comedy |
+| Toy Story | Animation, Children's, Comedy |
+| The Lion King | Animation, Children's, Musical |
+
+用户明显偏好喜剧类(Comedy)电影，其次是动画(Animation)和儿童(Children's)类电影。
+
+### 分析候选电影和用户偏好的匹配度
+
+分析每部候选电影的风格类别:
+
+| 电影 | 风格类别 | 与用户偏好匹配 |
+|------|------------|------------|
+| Ace Ventura: Pet Detective | Comedy | 高  |
+| Forrest Gump | Comedy, Drama, Romance | 中  |
+| The Shawshank Redemption | Drama | 低  |
+| Aladdin | Animation, Children's, Comedy | 高  |
+| Terminator 2 | Action, Sci-Fi, Thriller | 低 |
+
+根据匹配程度去除匹配度低的候选电影，留下10个匹配度高和中的电影继续分析：
+
+1. Aladdin (ID: 444) 
+2. Ace Ventura: Pet Detective (ID: 111) -
+3. Forrest Gump (ID: 222) 
+4. The Shawshank Redemption (ID: 333)
+5. Terminator 2 (ID: 555) 
+
+在这10个电影里继续考虑电影的题材、主题、导演、演员等多个因素，找出最适合用户的电影，输出匹配度最高的电影名称和ID列表排序（JSON）[{"name": "Aladdin", "id": 444}]
+2025-05-10 13:27:04,577 - INFO - 消息 4:
+2025-05-10 13:27:04,578 - INFO - 角色: user
+2025-05-10 13:27:04,578 - INFO - 内容: 用户ID: 729
+
+用户观看过的电影列表:
+- Young Sherlock Holmes (ID: 2414)
+- Single White Female (ID: 3274)
+- Tron (ID: 2105)
+- Star Trek: Insurrection (ID: 2393)
+- Speed (ID: 377)
+- Star Trek III: The Search for Spock (ID: 1375)
+- Blade (ID: 2167)
+- Mission: Impossible 2 (ID: 3623)
+- Natural Born Killers (ID: 288)
+- Star Trek: The Motion Picture (ID: 1371)
+- Golden Voyage of Sinbad, The (ID: 3771)
+- Eraser (ID: 786)
+- Air Force One (ID: 1608)
+- Arachnophobia (ID: 2699)
+- Jewel of the Nile, The (ID: 2405)
+- Mummy, The (ID: 2617)
+- Godfather: Part III, The (ID: 2023)
+- Crow, The (ID: 353)
+- Dances with Wolves (ID: 590)
+- JFK (ID: 3386)
+
+候选电影列表:
+- Saltmen of Tibet, The (ID: 2129)
+- Repo Man (ID: 1965)
+- Mission: Impossible 2 (ID: 3623)
+- Indochine (ID: 2943)
+- X: The Unknown (ID: 3878)
+- Walking and Talking (ID: 803)
+- My Own Private Idaho (ID: 1611)
+- Matrix, The (ID: 2571)
+- Amazing Panda Adventure, The (ID: 146)
+- Lords of Flatbush, The (ID: 3590)
+- Hoosiers (ID: 3360)
+- Haunting, The (ID: 2550)
+- Immortal Beloved (ID: 249)
+- When a Man Loves a Woman (ID: 381)
+- How Stella Got Her Groove Back (ID: 2154)
+- Crash (ID: 1483)
+- Low Life, The (ID: 730)
+- Fright Night (ID: 2867)
+- Talented Mr. Ripley, The (ID: 3176)
+- Pacific Heights (ID: 3219)
+
+电影风格类别参考: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+
+让我们一步步思考！请按照以下步骤进行分析：
+1. 分析每部电影属于哪些风格类别，并制作风格归属表格
+2. 用户的电影风格偏好分析
+3. 分析每部候选电影属于哪些风格类别，评估相似程度，去除相似度低的，只留下10个候选
+4. 考虑电影的题材、主题、导演、演员等多个因素，找出最适合用户的电影，输出匹配度由高到低的电影名称和ID列表排序（JSON）[{"name": "Aladdin", "id": 444}]
+2025-05-10 13:27:04,578 - INFO - ==== 发送API请求 ====
+2025-05-10 13:27:15,187 - INFO - ==== API响应 ====
+2025-05-10 13:27:15,187 - INFO - 响应状态码: 200
+2025-05-10 13:27:15,187 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 05:27:14 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '854', 'Connection': 'keep-alive'}
+2025-05-10 13:27:15,188 - INFO - 完整响应JSON: {
+  "id": "0196b8a9469ab736ae147daff9f39749",
+  "object": "chat.completion",
+  "created": 1746854824,
+  "model": "Pro/deepseek-ai/DeepSeek-V3",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"name\": \"Matrix, The\", \"id\": 2571},\n    {\"name\": \"Mission: Impossible 2\", \"id\": 3623},\n    {\"name\": \"Haunting, The\", \"id\": 2550},\n    {\"name\": \"Fright Night\", \"id\": 2867},\n    {\"name\": \"Crash\", \"id\": 1483},\n    {\"name\": \"Talented Mr. Ripley, The\", \"id\": 3176},\n    {\"name\": \"Pacific Heights\", \"id\": 3219},\n    {\"name\": \"X: The Unknown\", \"id\": 3878},\n    {\"name\": \"Repo Man\", \"id\": 1965},\n    {\"name\": \"Amazing Panda Adventure, The\", \"id\": 146}\n]\n```"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1497,
+    "completion_tokens": 175,
+    "total_tokens": 1672
+  },
+  "system_fingerprint": ""
+}
+2025-05-10 13:27:15,189 - INFO - 模型回复内容:
+```json
+[
+    {"name": "Matrix, The", "id": 2571},
+    {"name": "Mission: Impossible 2", "id": 3623},
+    {"name": "Haunting, The", "id": 2550},
+    {"name": "Fright Night", "id": 2867},
+    {"name": "Crash", "id": 1483},
+    {"name": "Talented Mr. Ripley, The", "id": 3176},
+    {"name": "Pacific Heights", "id": 3219},
+    {"name": "X: The Unknown", "id": 3878},
+    {"name": "Repo Man", "id": 1965},
+    {"name": "Amazing Panda Adventure, The", "id": 146}
+]
+```
+2025-05-10 13:27:15,189 - INFO - ==== 用量信息 ====
+2025-05-10 13:27:15,189 - INFO - 输入tokens: 1497
+2025-05-10 13:27:15,189 - INFO - 输出tokens: 175
+2025-05-10 13:27:15,189 - INFO - 总tokens: 1672
+2025-05-10 13:27:15,190 - INFO - ==== 解析输出 ====
+2025-05-10 13:27:15,190 - INFO - 调用parse_output函数解析响应...
+2025-05-10 13:27:15,192 - INFO - 解析结果: [2571, 3623, 2550, 2867, 1483, 3176, 3219, 3878, 1965, 146]
+2025-05-10 13:27:15,192 - INFO - ==== 计算NDCG ====
+2025-05-10 13:27:15,192 - INFO - 相关性列表: [0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+2025-05-10 13:27:15,193 - INFO - 位置6的DCG贡献: 1/log2(7) = 0.3562
+2025-05-10 13:27:15,193 - INFO - DCG: 0.3562, IDCG: 1.0000
+2025-05-10 13:27:15,193 - INFO - NDCG@10: 0.3562
+2025-05-10 13:27:15,193 - INFO - NDCG@10计算详情:
+2025-05-10 13:27:15,193 - INFO - 截断后的预测列表(前10个): [2571, 3623, 2550, 2867, 1483, 3176, 3219, 3878, 1965, 146]
+2025-05-10 13:27:15,193 - INFO - 目标电影ID 3176在位置6
+2025-05-10 13:27:15,193 - INFO - 位置6的DCG贡献: 1/log2(7) = 0.3562
+2025-05-10 13:27:15,193 - INFO - ==== 测试结果 ====
+2025-05-10 13:27:15,193 - INFO - 用户ID: 729
+2025-05-10 13:27:15,193 - INFO - 目标电影: Talented Mr. Ripley, The (ID: 3176)
+2025-05-10 13:27:15,193 - INFO - 预测列表(前10个): [2571, 3623, 2550, 2867, 1483, 3176, 3219, 3878, 1965, 146]
+2025-05-10 13:27:15,193 - INFO - NDCG@10: 0.3562
+2025-05-10 13:27:15,194 - INFO - ========== 测试结束 ==========
+2025-05-10 13:27:15,194 - INFO - 样本 8 测试完成，NDCG@10: 0.3562
+2025-05-10 13:27:15,194 - INFO - ===== 测试样本 9/10 =====
+2025-05-10 13:27:15,194 - INFO - ========== 测试开始 ==========
+2025-05-10 13:27:15,194 - INFO - ==== 样本信息 ====
+2025-05-10 13:27:15,195 - INFO - 用户ID: 738
+2025-05-10 13:27:15,195 - INFO - 用户历史电影数量: 20
+2025-05-10 13:27:15,195 - INFO - 候选电影数量: 20
+2025-05-10 13:27:15,195 - INFO - 目标电影: Dangerous Beauty (ID: 1758)
+2025-05-10 13:27:15,195 - INFO - ==== 构造提示词 ====
+2025-05-10 13:27:15,195 - INFO - 调用construct_prompt函数...
+2025-05-10 13:27:15,195 - INFO - 生成了4条消息
+2025-05-10 13:27:15,195 - INFO - ==== 发送的消息 ====
+2025-05-10 13:27:15,195 - INFO - [系统提示]:
+  # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，电影ID没有关联关系，需要你根据用户偏好的电影风格对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影名称和ID列表（JSON）。
+2025-05-10 13:27:15,196 - INFO - [用户请求]:
+  用户ID: example_user_123
+
+用户观看过的电影列表:
+- Liar Liar (ID: 123)
+- The Mask (ID: 456)
+- Mrs. Doubtfire (ID: 789)
+- Toy Story (ID: 246)
+- The Lion King (ID: 357)
+
+候选电影列表:
+- Ace Ventura: Pet Detective (ID: 111)
+- Forrest Gump (ID: 222) 
+- The Shawshank Redemption (ID: 333) 
+- Aladdin (ID: 444) 
+- Terminator 2: Judgment Day (ID: 555)
+2025-05-10 13:27:15,196 - INFO - ==== 调用API ====
+2025-05-10 13:27:15,196 - INFO - ==== API调用参数 ====
+2025-05-10 13:27:15,196 - INFO - 模型: Pro/deepseek-ai/DeepSeek-V3
+2025-05-10 13:27:15,196 - INFO - 温度: 0
+2025-05-10 13:27:15,196 - INFO - ==== 发送的消息 ====
+2025-05-10 13:27:15,196 - INFO - 消息 1:
+2025-05-10 13:27:15,196 - INFO - 角色: system
+2025-05-10 13:27:15,196 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，电影ID没有关联关系，需要你根据用户偏好的电影风格对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影名称和ID列表（JSON）。
+2025-05-10 13:27:15,197 - INFO - 消息 2:
+2025-05-10 13:27:15,197 - INFO - 角色: user
+2025-05-10 13:27:15,197 - INFO - 内容: 用户ID: example_user_123
+
+用户观看过的电影列表:
+- Liar Liar (ID: 123)
+- The Mask (ID: 456)
+- Mrs. Doubtfire (ID: 789)
+- Toy Story (ID: 246)
+- The Lion King (ID: 357)
+
+候选电影列表:
+- Ace Ventura: Pet Detective (ID: 111)
+- Forrest Gump (ID: 222) 
+- The Shawshank Redemption (ID: 333) 
+- Aladdin (ID: 444) 
+- Terminator 2: Judgment Day (ID: 555)
+2025-05-10 13:27:15,197 - INFO - 消息 3:
+2025-05-10 13:27:15,197 - INFO - 角色: assistant
+2025-05-10 13:27:15,197 - INFO - 内容: ### 分析用户观影风格偏好
+
+首先，我将分析每部电影的风格类别:
+
+| 电影 | 风格类别 |
+|------|------------|
+| Liar Liar | Comedy |
+| The Mask | Comedy |
+| Mrs. Doubtfire | Comedy |
+| Toy Story | Animation, Children's, Comedy |
+| The Lion King | Animation, Children's, Musical |
+
+用户明显偏好喜剧类(Comedy)电影，其次是动画(Animation)和儿童(Children's)类电影。
+
+### 分析候选电影和用户偏好的匹配度
+
+分析每部候选电影的风格类别:
+
+| 电影 | 风格类别 | 与用户偏好匹配 |
+|------|------------|------------|
+| Ace Ventura: Pet Detective | Comedy | 高  |
+| Forrest Gump | Comedy, Drama, Romance | 中  |
+| The Shawshank Redemption | Drama | 低  |
+| Aladdin | Animation, Children's, Comedy | 高  |
+| Terminator 2 | Action, Sci-Fi, Thriller | 低 |
+
+根据匹配程度去除匹配度低的候选电影，留下10个匹配度高和中的电影继续分析：
+
+1. Aladdin (ID: 444) 
+2. Ace Ventura: Pet Detective (ID: 111) -
+3. Forrest Gump (ID: 222) 
+4. The Shawshank Redemption (ID: 333)
+5. Terminator 2 (ID: 555) 
+
+在这10个电影里继续考虑电影的题材、主题、导演、演员等多个因素，找出最适合用户的电影，输出匹配度最高的电影名称和ID列表排序（JSON）[{"name": "Aladdin", "id": 444}]
+2025-05-10 13:27:15,197 - INFO - 消息 4:
+2025-05-10 13:27:15,197 - INFO - 角色: user
+2025-05-10 13:27:15,198 - INFO - 内容: 用户ID: 738
+
+用户观看过的电影列表:
+- Shanghai Noon (ID: 3624)
+- Frequency (ID: 3510)
+- Titus (ID: 3181)
+- Gladiator (ID: 3578)
+- Rules of Engagement (ID: 3513)
+- American Psycho (ID: 3535)
+- U-571 (ID: 3555)
+- Patriot, The (ID: 3753)
+- Gossip (ID: 3553)
+- Skulls, The (ID: 3484)
+- Mission to Mars (ID: 3354)
+- Remember the Titans (ID: 3916)
+- Erin Brockovich (ID: 3408)
+- Broken Hearts Club, The (ID: 3914)
+- Boiler Room (ID: 3298)
+- Gone in 60 Seconds (ID: 3717)
+- Shaft (ID: 3744)
+- Perfect Storm, The (ID: 3755)
+- Romeo Must Die (ID: 3452)
+- Highlander: Endgame (ID: 3889)
+
+候选电影列表:
+- Trust (ID: 1236)
+- Mr. Nice Guy (ID: 1858)
+- Godzilla 2000 (Gojira ni-sen mireniamu) (ID: 3864)
+- Three Caballeros, The (ID: 1024)
+- Happiest Millionaire, The (ID: 2049)
+- Doug's 1st Movie (ID: 2566)
+- Dangerous Beauty (ID: 1758)
+- Killer Shrews, The (ID: 3933)
+- Next Best Thing, The (ID: 3325)
+- Cat on a Hot Tin Roof (ID: 971)
+- Cape Fear (ID: 1343)
+- Breakfast of Champions (ID: 2507)
+- Backdraft (ID: 3107)
+- Cradle Will Rock, The (ID: 3145)
+- Loaded (ID: 614)
+- Being John Malkovich (ID: 2997)
+- Red Rock West (ID: 373)
+- Shall We Dance? (Shall We Dansu?) (ID: 1537)
+- Benji (ID: 3672)
+- Normal Life (ID: 1053)
+
+电影风格类别参考: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+
+让我们一步步思考！请按照以下步骤进行分析：
+1. 分析每部电影属于哪些风格类别，并制作风格归属表格
+2. 用户的电影风格偏好分析
+3. 分析每部候选电影属于哪些风格类别，评估相似程度，去除相似度低的，只留下10个候选
+4. 考虑电影的题材、主题、导演、演员等多个因素，找出最适合用户的电影，输出匹配度由高到低的电影名称和ID列表排序（JSON）[{"name": "Aladdin", "id": 444}]
+2025-05-10 13:27:15,198 - INFO - ==== 发送API请求 ====
+2025-05-10 13:27:40,556 - INFO - ==== API响应 ====
+2025-05-10 13:27:40,556 - INFO - 响应状态码: 200
+2025-05-10 13:27:40,556 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 05:27:39 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '823', 'Connection': 'keep-alive'}
+2025-05-10 13:27:40,556 - INFO - 完整响应JSON: {
+  "id": "0196b8a9702820dfc1d23c7cd13f9fd9",
+  "object": "chat.completion",
+  "created": 1746854834,
+  "model": "Pro/deepseek-ai/DeepSeek-V3",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"name\": \"Backdraft\", \"id\": 3107},\n    {\"name\": \"Cape Fear\", \"id\": 1343},\n    {\"name\": \"Red Rock West\", \"id\": 373},\n    {\"name\": \"Mr. Nice Guy\", \"id\": 1858},\n    {\"name\": \"Loaded\", \"id\": 614},\n    {\"name\": \"Normal Life\", \"id\": 1053},\n    {\"name\": \"Killer Shrews, The\", \"id\": 3933},\n    {\"name\": \"Trust\", \"id\": 1236},\n    {\"name\": \"Dangerous Beauty\", \"id\": 1758},\n    {\"name\": \"Breakfast of Champions\", \"id\": 2507}\n]\n```"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1496,
+    "completion_tokens": 167,
+    "total_tokens": 1663
+  },
+  "system_fingerprint": ""
+}
+2025-05-10 13:27:40,556 - INFO - 模型回复内容:
+```json
+[
+    {"name": "Backdraft", "id": 3107},
+    {"name": "Cape Fear", "id": 1343},
+    {"name": "Red Rock West", "id": 373},
+    {"name": "Mr. Nice Guy", "id": 1858},
+    {"name": "Loaded", "id": 614},
+    {"name": "Normal Life", "id": 1053},
+    {"name": "Killer Shrews, The", "id": 3933},
+    {"name": "Trust", "id": 1236},
+    {"name": "Dangerous Beauty", "id": 1758},
+    {"name": "Breakfast of Champions", "id": 2507}
+]
+```
+2025-05-10 13:27:40,558 - INFO - ==== 用量信息 ====
+2025-05-10 13:27:40,558 - INFO - 输入tokens: 1496
+2025-05-10 13:27:40,558 - INFO - 输出tokens: 167
+2025-05-10 13:27:40,558 - INFO - 总tokens: 1663
+2025-05-10 13:27:40,558 - INFO - ==== 解析输出 ====
+2025-05-10 13:27:40,559 - INFO - 调用parse_output函数解析响应...
+2025-05-10 13:27:40,559 - INFO - 解析结果: [3107, 1343, 373, 1858, 614, 1053, 3933, 1236, 1758, 2507]
+2025-05-10 13:27:40,559 - INFO - ==== 计算NDCG ====
+2025-05-10 13:27:40,559 - INFO - 相关性列表: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0]
+2025-05-10 13:27:40,559 - INFO - 位置9的DCG贡献: 1/log2(10) = 0.3010
+2025-05-10 13:27:40,559 - INFO - DCG: 0.3010, IDCG: 1.0000
+2025-05-10 13:27:40,559 - INFO - NDCG@10: 0.3010
+2025-05-10 13:27:40,559 - INFO - NDCG@10计算详情:
+2025-05-10 13:27:40,559 - INFO - 截断后的预测列表(前10个): [3107, 1343, 373, 1858, 614, 1053, 3933, 1236, 1758, 2507]
+2025-05-10 13:27:40,560 - INFO - 目标电影ID 1758在位置9
+2025-05-10 13:27:40,560 - INFO - 位置9的DCG贡献: 1/log2(10) = 0.3010
+2025-05-10 13:27:40,560 - INFO - ==== 测试结果 ====
+2025-05-10 13:27:40,560 - INFO - 用户ID: 738
+2025-05-10 13:27:40,560 - INFO - 目标电影: Dangerous Beauty (ID: 1758)
+2025-05-10 13:27:40,560 - INFO - 预测列表(前10个): [3107, 1343, 373, 1858, 614, 1053, 3933, 1236, 1758, 2507]
+2025-05-10 13:27:40,560 - INFO - NDCG@10: 0.3010
+2025-05-10 13:27:40,560 - INFO - ========== 测试结束 ==========
+2025-05-10 13:27:40,560 - INFO - 样本 9 测试完成，NDCG@10: 0.3010
+2025-05-10 13:27:40,560 - INFO - ===== 测试样本 10/10 =====
+2025-05-10 13:27:40,560 - INFO - ========== 测试开始 ==========
+2025-05-10 13:27:40,560 - INFO - ==== 样本信息 ====
+2025-05-10 13:27:40,560 - INFO - 用户ID: 751
+2025-05-10 13:27:40,560 - INFO - 用户历史电影数量: 20
+2025-05-10 13:27:40,561 - INFO - 候选电影数量: 20
+2025-05-10 13:27:40,561 - INFO - 目标电影: Repo Man (ID: 1965)
+2025-05-10 13:27:40,561 - INFO - ==== 构造提示词 ====
+2025-05-10 13:27:40,561 - INFO - 调用construct_prompt函数...
+2025-05-10 13:27:40,561 - INFO - 生成了4条消息
+2025-05-10 13:27:40,561 - INFO - ==== 发送的消息 ====
+2025-05-10 13:27:40,561 - INFO - [系统提示]:
+  # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，电影ID没有关联关系，需要你根据用户偏好的电影风格对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影名称和ID列表（JSON）。
+2025-05-10 13:27:40,561 - INFO - [用户请求]:
+  用户ID: example_user_123
+
+用户观看过的电影列表:
+- Liar Liar (ID: 123)
+- The Mask (ID: 456)
+- Mrs. Doubtfire (ID: 789)
+- Toy Story (ID: 246)
+- The Lion King (ID: 357)
+
+候选电影列表:
+- Ace Ventura: Pet Detective (ID: 111)
+- Forrest Gump (ID: 222) 
+- The Shawshank Redemption (ID: 333) 
+- Aladdin (ID: 444) 
+- Terminator 2: Judgment Day (ID: 555)
+2025-05-10 13:27:40,561 - INFO - ==== 调用API ====
+2025-05-10 13:27:40,561 - INFO - ==== API调用参数 ====
+2025-05-10 13:27:40,561 - INFO - 模型: Pro/deepseek-ai/DeepSeek-V3
+2025-05-10 13:27:40,562 - INFO - 温度: 0
+2025-05-10 13:27:40,562 - INFO - ==== 发送的消息 ====
+2025-05-10 13:27:40,562 - INFO - 消息 1:
+2025-05-10 13:27:40,562 - INFO - 角色: system
+2025-05-10 13:27:40,562 - INFO - 内容: # Role:
+你是一名电影推荐系统的重排助手。你的任务是根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。让我们一步步思考！
+# Profile:
+你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。
+# Background:
+用户提供了历史电影列表，以及候选电影列表，电影ID没有关联关系，需要你根据用户偏好的电影风格对候选电影进行排序。
+## Goals:
+1. 分析用户历史观影记录中的电影类别喜好。
+2. 评估每个候选电影与用户偏好的相似程度。
+3. 输出按相似度排序的最终推荐电影列表（JSON格式）。
+## Constraints:
+- 只考虑以下电影风格类别进行分析: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。
+## Workflows:
+1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。
+2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。
+3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影名称和ID列表（JSON）。
+2025-05-10 13:27:40,562 - INFO - 消息 2:
+2025-05-10 13:27:40,562 - INFO - 角色: user
+2025-05-10 13:27:40,562 - INFO - 内容: 用户ID: example_user_123
+
+用户观看过的电影列表:
+- Liar Liar (ID: 123)
+- The Mask (ID: 456)
+- Mrs. Doubtfire (ID: 789)
+- Toy Story (ID: 246)
+- The Lion King (ID: 357)
+
+候选电影列表:
+- Ace Ventura: Pet Detective (ID: 111)
+- Forrest Gump (ID: 222) 
+- The Shawshank Redemption (ID: 333) 
+- Aladdin (ID: 444) 
+- Terminator 2: Judgment Day (ID: 555)
+2025-05-10 13:27:40,562 - INFO - 消息 3:
+2025-05-10 13:27:40,562 - INFO - 角色: assistant
+2025-05-10 13:27:40,562 - INFO - 内容: ### 分析用户观影风格偏好
+
+首先，我将分析每部电影的风格类别:
+
+| 电影 | 风格类别 |
+|------|------------|
+| Liar Liar | Comedy |
+| The Mask | Comedy |
+| Mrs. Doubtfire | Comedy |
+| Toy Story | Animation, Children's, Comedy |
+| The Lion King | Animation, Children's, Musical |
+
+用户明显偏好喜剧类(Comedy)电影，其次是动画(Animation)和儿童(Children's)类电影。
+
+### 分析候选电影和用户偏好的匹配度
+
+分析每部候选电影的风格类别:
+
+| 电影 | 风格类别 | 与用户偏好匹配 |
+|------|------------|------------|
+| Ace Ventura: Pet Detective | Comedy | 高  |
+| Forrest Gump | Comedy, Drama, Romance | 中  |
+| The Shawshank Redemption | Drama | 低  |
+| Aladdin | Animation, Children's, Comedy | 高  |
+| Terminator 2 | Action, Sci-Fi, Thriller | 低 |
+
+根据匹配程度去除匹配度低的候选电影，留下10个匹配度高和中的电影继续分析：
+
+1. Aladdin (ID: 444) 
+2. Ace Ventura: Pet Detective (ID: 111) -
+3. Forrest Gump (ID: 222) 
+4. The Shawshank Redemption (ID: 333)
+5. Terminator 2 (ID: 555) 
+
+在这10个电影里继续考虑电影的题材、主题、导演、演员等多个因素，找出最适合用户的电影，输出匹配度最高的电影名称和ID列表排序（JSON）[{"name": "Aladdin", "id": 444}]
+2025-05-10 13:27:40,562 - INFO - 消息 4:
+2025-05-10 13:27:40,562 - INFO - 角色: user
+2025-05-10 13:27:40,562 - INFO - 内容: 用户ID: 751
+
+用户观看过的电影列表:
+- One Crazy Summer (ID: 2261)
+- Raiders of the Lost Ark (ID: 1198)
+- Magnolia (ID: 3160)
+- Titan A.E. (ID: 3745)
+- Patriot, The (ID: 3753)
+- Stand by Me (ID: 1259)
+- Jurassic Park (ID: 480)
+- Airplane! (ID: 2791)
+- Hellraiser (ID: 3917)
+- Nikita (La Femme Nikita) (ID: 1249)
+- Terminator 2: Judgment Day (ID: 589)
+- Boogie Nights (ID: 1673)
+- After Life (ID: 2624)
+- Braveheart (ID: 110)
+- Edward Scissorhands (ID: 2291)
+- Rosemary's Baby (ID: 2160)
+- 28 Days (ID: 3534)
+- From Russia with Love (ID: 2948)
+- High Fidelity (ID: 3481)
+- Big Kahuna, The (ID: 3566)
+
+候选电影列表:
+- Lawn Dogs (ID: 1880)
+- Death Becomes Her (ID: 3258)
+- Fall Time (ID: 396)
+- Rebel Without a Cause (ID: 1103)
+- Action Jackson (ID: 3710)
+- Sabotage (ID: 2210)
+- Event Horizon (ID: 1590)
+- Mummy's Hand, The (ID: 2637)
+- Toxic Avenger Part III: The Last Temptation of Toxie, The (ID: 3695)
+- Happiness (ID: 2318)
+- When a Man Loves a Woman (ID: 381)
+- Impact (ID: 3413)
+- Crimson Tide (ID: 161)
+- Fitzcarraldo (ID: 2970)
+- Repo Man (ID: 1965)
+- Hamlet (ID: 3723)
+- Police Story 4: Project S (Chao ji ji hua) (ID: 876)
+- Sixteen Candles (ID: 2144)
+- 8 1/2 (ID: 1251)
+- I Am Cuba (Soy Cuba/Ya Kuba) (ID: 3245)
+
+电影风格类别参考: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary
+
+让我们一步步思考！请按照以下步骤进行分析：
+1. 分析每部电影属于哪些风格类别，并制作风格归属表格
+2. 用户的电影风格偏好分析
+3. 分析每部候选电影属于哪些风格类别，评估相似程度，去除相似度低的，只留下10个候选
+4. 考虑电影的题材、主题、导演、演员等多个因素，找出最适合用户的电影，输出匹配度由高到低的电影名称和ID列表排序（JSON）[{"name": "Aladdin", "id": 444}]
+2025-05-10 13:27:40,563 - INFO - ==== 发送API请求 ====
+2025-05-10 13:27:58,134 - INFO - ==== API响应 ====
+2025-05-10 13:27:58,135 - INFO - 响应状态码: 200
+2025-05-10 13:27:58,136 - INFO - 响应Headers: {'Date': 'Sat, 10 May 2025 05:27:57 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '912', 'Connection': 'keep-alive'}
+2025-05-10 13:27:58,136 - INFO - 完整响应JSON: {
+  "id": "0196b8a9d36ead691b7f9ce07327d9c3",
+  "object": "chat.completion",
+  "created": 1746854860,
+  "model": "Pro/deepseek-ai/DeepSeek-V3",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n[\n    {\"name\": \"Event Horizon\", \"id\": 1590},\n    {\"name\": \"Crimson Tide\", \"id\": 161},\n    {\"name\": \"Sabotage\", \"id\": 2210},\n    {\"name\": \"Action Jackson\", \"id\": 3710},\n    {\"name\": \"Police Story 4: Project S (Chao ji ji hua)\", \"id\": 876},\n    {\"name\": \"Death Becomes Her\", \"id\": 3258},\n    {\"name\": \"Toxic Avenger Part III: The Last Temptation of Toxie, The\", \"id\": 3695},\n    {\"name\": \"Mummy's Hand, The\", \"id\": 2637},\n    {\"name\": \"Rebel Without a Cause\", \"id\": 1103},\n    {\"name\": \"Happiness\", \"id\": 2318}\n]\n```"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1503,
+    "completion_tokens": 193,
+    "total_tokens": 1696
+  },
+  "system_fingerprint": ""
+}
+2025-05-10 13:27:58,137 - INFO - 模型回复内容:
+```json
+[
+    {"name": "Event Horizon", "id": 1590},
+    {"name": "Crimson Tide", "id": 161},
+    {"name": "Sabotage", "id": 2210},
+    {"name": "Action Jackson", "id": 3710},
+    {"name": "Police Story 4: Project S (Chao ji ji hua)", "id": 876},
+    {"name": "Death Becomes Her", "id": 3258},
+    {"name": "Toxic Avenger Part III: The Last Temptation of Toxie, The", "id": 3695},
+    {"name": "Mummy's Hand, The", "id": 2637},
+    {"name": "Rebel Without a Cause", "id": 1103},
+    {"name": "Happiness", "id": 2318}
+]
+```
+2025-05-10 13:27:58,137 - INFO - ==== 用量信息 ====
+2025-05-10 13:27:58,137 - INFO - 输入tokens: 1503
+2025-05-10 13:27:58,137 - INFO - 输出tokens: 193
+2025-05-10 13:27:58,137 - INFO - 总tokens: 1696
+2025-05-10 13:27:58,138 - INFO - ==== 解析输出 ====
+2025-05-10 13:27:58,139 - INFO - 调用parse_output函数解析响应...
+2025-05-10 13:27:58,139 - INFO - 解析结果: [1590, 161, 2210, 3710, 876, 3258, 3695, 2637, 1103, 2318]
+2025-05-10 13:27:58,139 - INFO - ==== 计算NDCG ====
+2025-05-10 13:27:58,139 - INFO - 相关性列表: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-10 13:27:58,139 - INFO - 目标电影不在预测列表中，NDCG=0
+2025-05-10 13:27:58,139 - INFO - NDCG@10计算详情:
+2025-05-10 13:27:58,140 - INFO - 截断后的预测列表(前10个): [1590, 161, 2210, 3710, 876, 3258, 3695, 2637, 1103, 2318]
+2025-05-10 13:27:58,140 - INFO - 目标电影ID 1965不在前10个预测列表中
+2025-05-10 13:27:58,140 - INFO - ==== 测试结果 ====
+2025-05-10 13:27:58,140 - INFO - 用户ID: 751
+2025-05-10 13:27:58,140 - INFO - 目标电影: Repo Man (ID: 1965)
+2025-05-10 13:27:58,140 - INFO - 预测列表(前10个): [1590, 161, 2210, 3710, 876, 3258, 3695, 2637, 1103, 2318]
+2025-05-10 13:27:58,140 - INFO - NDCG@10: 0.0000
+2025-05-10 13:27:58,141 - INFO - ========== 测试结束 ==========
+2025-05-10 13:27:58,141 - INFO - 样本 10 测试完成，NDCG@10: 0.0000
+2025-05-10 13:27:58,141 - INFO - ===== 测试总结 =====
+2025-05-10 13:27:58,141 - INFO - 样本 1 NDCG@10: 0.4307
+2025-05-10 13:27:58,141 - INFO - 样本 2 NDCG@10: 1.0000
+2025-05-10 13:27:58,141 - INFO - 样本 3 NDCG@10: 1.0000
+2025-05-10 13:27:58,141 - INFO - 样本 4 NDCG@10: 0.0000
+2025-05-10 13:27:58,142 - INFO - 样本 5 NDCG@10: 0.6309
+2025-05-10 13:27:58,142 - INFO - 样本 6 NDCG@10: 1.0000
+2025-05-10 13:27:58,142 - INFO - 样本 7 NDCG@10: 0.3869
+2025-05-10 13:27:58,142 - INFO - 样本 8 NDCG@10: 0.3562
+2025-05-10 13:27:58,142 - INFO - 样本 9 NDCG@10: 0.3010
+2025-05-10 13:27:58,142 - INFO - 样本 10 NDCG@10: 0.0000
+2025-05-10 13:27:58,142 - INFO - 总计测试了 10 个样本
+2025-05-10 13:27:58,142 - INFO - 平均NDCG@10: 0.5106
+2025-05-10 13:27:58,142 - INFO - ==== 运行信息 ====
+2025-05-10 13:27:58,143 - INFO - 执行时间: 2025-05-10T05:27:58
+2025-05-10 13:27:58,143 - INFO - API密钥: sk-iryff...ftoeaxcw
+2025-05-10 13:27:58,143 - INFO - API地址: https://api.siliconflow.cn/v1/chat/completions
