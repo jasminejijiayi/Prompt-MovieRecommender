@@ -121,7 +121,7 @@ MovieID,MovieName,Genre
 121, Boys of St. Vincent, The (1993) ,Drama
 122,Boomerang (1992),Comedy|Romance
 123,Chungking Express (1994),Drama|Mystery|Romance
-124, Star Maker, The (Uomo delle stelle, L') (1995) ,Drama
+124, Star Maker, The (1995) ,Drama
 125,Flirting With Disaster (1996),Comedy
 126, NeverEnding Story III, The (1994) ,Adventure|Children's|Fantasy
 127, Silence of the Palace, The (Saimt el Qusur) (1994) ,Drama
@@ -196,7 +196,7 @@ MovieID,MovieName,Genre
 196,Species (1995),Horror|Sci-Fi
 197, Stars Fell on Henrietta, The (1995) ,Drama
 198,Strange Days (1995),Action|Crime|Sci-Fi
-199, Umbrellas of Cherbourg, The (Parapluies de Cherbourg, Les) (1964) ,Drama|Musical
+199, Umbrellas of Cherbourg, The (Parapluies de Cherbourg ,Drama|Musical
 200, Tie That Binds, The (1995) ,Thriller
 201,Three Wishes (1995),Drama
 202,Total Eclipse (1995),Drama|Romance
@@ -340,7 +340,7 @@ MovieID,MovieName,Genre
 342,Muriel's Wedding (1994),Comedy|Romance
 343, Baby-Sitters Club, The (1995) ,Children's
 344,Ace Ventura: Pet Detective (1994),Comedy
-345, Adventures of Priscilla, Queen of the Desert, The (1994) ,Comedy|Drama
+345, Adventures of Priscilla, Queen of the Desert,Comedy|Drama
 346,Backbeat (1993),Drama|Musical
 347,Bitter Moon (1992),Drama
 348,Bullets Over Broadway (1994),Comedy
@@ -358,7 +358,7 @@ MovieID,MovieName,Genre
 360,I Love Trouble (1994),Action|Comedy
 361,It Could Happen to You (1994),Drama|Romance
 362, Jungle Book, The (1994) ,Adventure|Children's|Romance
-363, Wonderful, Horrible Life of Leni Riefenstahl, The (Die Macht der Bilder) (1993) ,Documentary
+363, Wonderful, Horrible Life of Leni Riefenstahl, Documentary
 364, Lion King, The (1994) ,Animation|Children's|Musical
 365,Little Buddha (1993),Drama
 366,Wes Craven's New Nightmare (1994),Horror
@@ -463,7 +463,7 @@ MovieID,MovieName,Genre
 465,Heaven & Earth (1993),Action|Drama|War
 466,Hot Shots! Part Deux (1993),Action|Comedy|War
 467,Live Nude Girls (1995),Comedy
-468, Englishman Who Went Up a Hill, But Came Down a Mountain, The (1995) ,Comedy|Romance
+468, Englishman Who Went Up a Hill, But Came Down a Mountain ,Comedy|Romance
 469, House of the Spirits, The (1993) ,Drama|Romance
 470,House Party 3 (1994),Comedy
 471, Hudsucker Proxy, The (1994) ,Comedy|Romance
@@ -675,12 +675,12 @@ MovieID,MovieName,Genre
 680,Alphaville (1965),Sci-Fi
 681,Clean Slate (Coup de Torchon) (1981),Crime
 682,Tigrero: A Film That Was Never Made (1994),Documentary|Drama
-683, Eye of Vichy, The (Oeil de Vichy, L') (1993) ,Documentary
+683, Eye of Vichy, The  (1993) ,Documentary
 684,Windows (1980),Drama
 685,It's My Party (1995),Drama
 687,Country Life (1994),Drama|Romance
 688,Operation Dumbo Drop (1995),Action|Adventure|Comedy|War
-690, Promise, The (Versprechen, Das) (1994) ,Romance
+690, Promise, The (1994) ,Romance
 691,Mrs. Winterbourne (1996),Comedy|Romance
 692,Solo (1996),Action|Sci-Fi|Thriller
 693,Under the Domin Tree (Etz Hadomim Tafus) (1994),Drama
@@ -705,7 +705,7 @@ MovieID,MovieName,Genre
 712,Captives (1994),Drama
 713,Of Love and Shadows (1994),Drama
 714,Dead Man (1995),Western
-715, Horseman on the Roof, The (Hussard sur le toit, Le) (1995) ,Drama
+715, Horseman on the Roof, The (1995) ,Drama
 716,Switchblade Sisters (1975),Crime
 717,Mouth to Mouth (Boca a boca) (1995),Comedy
 718, Visitors, The (Les Visiteurs) (1993) ,Comedy|Sci-Fi
@@ -778,15 +778,15 @@ MovieID,MovieName,Genre
 786,Eraser (1996),Action|Thriller
 787, Gate of Heavenly Peace, The (1995) ,Documentary
 788, Nutty Professor, The (1996) ,Comedy|Fantasy|Romance|Sci-Fi
-789, I, Worst of All (Yo, la peor de todas) (1990) ,Drama
+789, I, Worst of All (1990) ,Drama
 790,An Unforgettable Summer (1994),Drama
-791, Last Klezmer: Leopold Kozlowski, His Life and Music, The (1995) ,Documentary
+791, Last Klezmer: Leopold Kozlowski, His Life and Music ,Documentary
 792, Hungarian Fairy Tale, A (1987) ,Fantasy
 793,My Life and Times With Antonin Artaud (En compagnie d'Antonin Artaud) (1993),Drama
 794,Midnight Dancers (Sibak) (1994),Comedy|Drama
 795,Somebody to Love (1994),Drama
 796, Very Natural Thing, A (1974) ,Drama
-797, Old Lady Who Walked in the Sea, The (Vieille qui marchait dans la mer, La) (1991) ,Comedy
+797, Old Lady Who Walked in the Sea, The (1991) ,Comedy
 798,Daylight (1996),Action|Adventure|Thriller
 799, Frighteners, The (1996) ,Comedy|Horror
 800,Lone Star (1996),Drama|Mystery
@@ -815,7 +815,7 @@ MovieID,MovieName,Genre
 824,Kaspar Hauser (1993),Drama
 825,Echte Kerle (1996),Comedy|Romance
 826,Diebinnen (1995),Drama
-827, Convent, The (Convento, O) (1995) ,Drama
+827, Convent, The (1995) ,Drama
 828, Adventures of Pinocchio, The (1996) ,Adventure|Children's
 829,Joe's Apartment (1996),Comedy|Musical
 830, First Wives Club, The (1996) ,Comedy
@@ -848,7 +848,7 @@ MovieID,MovieName,Genre
 857,Crows and Sparrows (1949),Drama
 858, Godfather, The (1972) ,Action|Crime|Drama
 859, Hippie Revolution, The (1996) ,Documentary
-860, Maybe, Maybe Not (Bewegte Mann, Der) (1994) ,Comedy
+860, Maybe, Maybe Not  (1994) ,Comedy
 861,Supercop (1992),Action|Thriller
 862,Manny & Lo (1996),Drama
 863,Celestial Clockwork (1994),Comedy
@@ -965,7 +965,7 @@ MovieID,MovieName,Genre
 975,Something to Sing About (1937),Comedy|Musical
 976, Farewell to Arms, A (1932) ,Romance|War
 977,Moonlight Murder (1936),Mystery
-978, Blue Angel, The (Blaue Engel, Der) (1930) ,Drama
+978, Blue Angel, The (1930) ,Drama
 979,Nothing Personal (1995),Drama|War
 980,In the Line of Duty 2 (1987),Action
 981,Dangerous Ground (1997),Drama
@@ -1133,18 +1133,18 @@ MovieID,MovieName,Genre
 1147,When We Were Kings (1996),Documentary
 1148, Wrong Trousers, The (1993) ,Animation|Comedy
 1149,JLG/JLG - autoportrait de d�cembre (1994),Documentary|Drama
-1150, Return of Martin Guerre, The (Retour de Martin Guerre, Le) (1982) ,Drama
+1150, Return of Martin Guerre, The (1982) ,Drama
 1151,Faust (1994),Animation|Comedy|Thriller
 1152,He Walked by Night (1948),Crime|Film-Noir|Thriller
 1153,Raw Deal (1948),Film-Noir
 1154,T-Men (1947),Film-Noir
 1155, Invitation, The (Zaproszenie) (1986) ,Drama
-1156, Children Are Watching us, The (Bambini ci guardano, I) (1942) ,Drama
+1156, Children Are Watching us, The (1942) ,Drama
 1157, Symphonie pastorale, La (1946) ,Drama
 1158,Here Comes Cookie (1935),Comedy
 1159,Love in Bloom (1935),Romance
 1160,Six of a Kind (1934),Comedy
-1161, Tin Drum, The (Blechtrommel, Die) (1979) ,Drama
+1161, Tin Drum, The  (1979) ,Drama
 1162, Ruling Class, The (1972) ,Comedy
 1163,Mina Tannenbaum (1994),Drama
 1164,Two or Three Things I Know About Her (1966),Drama
@@ -1168,7 +1168,7 @@ MovieID,MovieName,Genre
 1183, English Patient, The (1996) ,Drama|Romance|War
 1184,Mediterraneo (1991),Comedy|War
 1185,My Left Foot (1989),Drama
-1186, Sex, Lies, and Videotape (1989) ,Drama
+1186, Sex, Lies ,Drama
 1187,Passion Fish (1992),Drama
 1188,Strictly Ballroom (1992),Comedy|Romance
 1189, Thin Blue Line, The (1988) ,Documentary
@@ -1182,7 +1182,7 @@ MovieID,MovieName,Genre
 1198,Raiders of the Lost Ark (1981),Action|Adventure
 1199,Brazil (1985),Sci-Fi
 1200,Aliens (1986),Action|Sci-Fi|Thriller|War
-1201, Good, The Bad and The Ugly, The (1966) ,Action|Western
+1201, Good, The Bad and The Ugly ,Action|Western
 1202,Withnail and I (1987),Comedy
 1203,12 Angry Men (1957),Drama
 1204,Lawrence of Arabia (1962),Adventure|War
@@ -1217,7 +1217,7 @@ MovieID,MovieName,Genre
 1234, Sting, The (1973) ,Comedy|Crime
 1235,Harold and Maude (1971),Comedy
 1236,Trust (1990),Comedy|Drama
-1237, Seventh Seal, The (Sjunde inseglet, Det) (1957) ,Drama
+1237, Seventh Seal, The (1957) ,Drama
 1238,Local Hero (1983),Comedy
 1240, Terminator, The (1984) ,Action|Sci-Fi|Thriller
 1241,Braindead (1992),Comedy|Horror
@@ -2351,7 +2351,7 @@ MovieID,MovieName,Genre
 2418,Nothing in Common (1986),Comedy
 2419,Extremities (1986),Drama|Thriller
 2420, Karate Kid, The (1984) ,Drama
-2421, Karate Kid, Part II, The (1986) ,Action|Adventure|Drama
+2421, Karate Kid, Part II,Action|Adventure|Drama
 2422, Karate Kid III, The (1989) ,Action|Adventure|Drama
 2423,Christmas Vacation (1989),Comedy
 2424,You've Got Mail (1998),Comedy|Romance
@@ -2417,7 +2417,7 @@ MovieID,MovieName,Genre
 2484,Tinseltown (1998),Comedy
 2485,She's All That (1999),Comedy|Romance
 2486,24-hour Woman (1998),Drama
-2487, Blood, Guts, Bullets and Octane (1998) ,Action|Comedy
+2487, Blood, Guts,Action|Comedy
 2488,Peeping Tom (1960),Drama|Horror|Thriller
 2489,Spanish Fly (1998),Drama
 2490,Payback (1999),Action|Thriller
@@ -2635,7 +2635,7 @@ MovieID,MovieName,Genre
 2702,Summer of Sam (1999),Drama
 2703,Broken Vessels (1998),Drama
 2704, Lovers on the Bridge, The (Les Amants du Pont-Neuf) (1991) ,Drama|Romance
-2705, Late August, Early September (Fin ao�t, d�but septembre) (1998) ,Drama
+2705, Late August, Early September ,Drama
 2706,American Pie (1999),Comedy
 2707,Arlington Road (1999),Thriller
 2708, Autumn Tale, An (Conte d'automne) (1998) ,Romance
@@ -2753,7 +2753,7 @@ MovieID,MovieName,Genre
 2820,Hamlet (1964),Drama
 2821,Male and Female (1919),Adventure|Drama
 2822,Medicine Man (1992),Adventure|Romance
-2823, Spiders, The (Die Spinnen, 1. Teil: Der Goldene See) (1919) ,Action|Drama
+2823, Spiders, The  (1919) ,Action|Drama
 2824,On the Ropes (1999),Documentary
 2825,Rosie (1998),Drama
 2826, 13th Warrior, The (1999) ,Action|Horror|Thriller
@@ -2773,7 +2773,7 @@ MovieID,MovieName,Genre
 2840,Stigmata (1999),Thriller
 2841,Stir of Echoes (1999),Thriller
 2842,Best Laid Plans (1999),Crime|Drama
-2843, Black Cat, White Cat (Crna macka, beli macor) (1998) ,Comedy|Romance
+2843, Black Cat, White Cat(1998) ,Comedy|Romance
 2844, Minus Man, The (1999) ,Drama|Mystery
 2845,White Boys (1999),Drama
 2846, Adventures of Milo and Otis, The (1986) ,Children's
@@ -3157,7 +3157,7 @@ MovieID,MovieName,Genre
 3224,Woman in the Dunes (Suna no onna) (1964),Drama
 3225,Down to You (2000),Comedy|Romance
 3226,Hellhounds on My Trail (1999),Documentary
-3227, Not Love, Just Frenzy (M�s que amor, frenes�) (1996) ,Comedy|Drama|Thriller
+3227, Not Love, Just Frenzy,Comedy|Drama|Thriller
 3228,Wirey Spindell (1999),Comedy
 3229,Another Man's Poison (1952),Crime|Drama
 3230, Odessa File, The (1974) ,Thriller
@@ -3624,7 +3624,7 @@ MovieID,MovieName,Genre
 3691,Private School (1983),Comedy
 3692,Class of Nuke 'Em High (1986),Comedy|Horror
 3693, Toxic Avenger, The (1985) ,Comedy|Horror
-3694, Toxic Avenger, Part II, The (1989) ,Comedy|Horror
+3694, Toxic Avenger, Part II,Comedy|Horror
 3695, Toxic Avenger Part III: The Last Temptation of Toxie, The (1989) ,Comedy|Horror
 3696,Night of the Creeps (1986),Comedy|Horror|Sci-Fi
 3697,Predator 2 (1990),Action|Sci-Fi|Thriller
@@ -3849,7 +3849,7 @@ MovieID,MovieName,Genre
 3917,Hellraiser (1987),Horror
 3918,Hellbound: Hellraiser II (1988),Horror
 3919,Hellraiser III: Hell on Earth (1992),Horror
-3920, Faraway, So Close (In Weiter Ferne, So Nah!) (1993) ,Drama|Fantasy
+3920, Faraway, So Close(1993) ,Drama|Fantasy
 3921,Beach Party (1963),Comedy
 3922,Bikini Beach (1964),Comedy
 3923,Return of the Fly (1959),Horror|Sci-Fi
