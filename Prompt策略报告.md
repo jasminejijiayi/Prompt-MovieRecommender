@@ -192,102 +192,234 @@ LLM提示词采用OpenAI Chat API所需的消息列表格式，即由多个 `{"r
 - **System**：
 
   ```text
-       "# Role:\n"
-      "你是一名电影推荐系统的重排助手。你的任务是根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。让我们一步步思考！\n"
+        "# Role:\n"
+        "你是一名电影推荐系统的重排助手。你的任务是根据用户观影历史的风格类型，从候选电影中推荐最符合其偏好的作品，基于⽤⼾的历史⾏为序列预测⽤⼾的下⼀个⾏为，即越往后的电影信息风格对于候选电影影响更大。让我们一步步思考！\n"
 
-      "# Profile:\n"
-      "你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。\n"
+        "# Profile:\n"
+        "你具备电影类别分析和推荐能力，能够理解用户的喜好，并评估电影之间的相似度。\n"
 
-      "# Background:\n"
-      "用户提供了历史电影列表，以及候选电影列表，电影ID没有关联关系，需要你根据用户偏好的电影风格对候选电影进行排序。\n"
+        "# Background:\n"
+        "用户提供了历史电影列表，以及候选电影列表，电影ID没有关联关系，需要你根据用户偏好的电影风格对候选电影进行排序。\n"
 
-      "## Goals:\n"
-          "1. 分析用户历史观影记录中的电影类别喜好。\n"
-          "2. 评估每个候选电影与用户偏好的相似程度。\n"
-          "3. 输出按相似度排序的最终推荐电影列表（JSON格式）。\n"
+        "## Goals:\n"
+            "1. 分析用户历史观影记录中的电影类别喜好。\n"
+            "2. 评估每个候选电影与用户偏好的相似程度。\n"
+            "3. 输出按相似度排序的最终推荐电影列表（JSON格式）。\n"
 
-      "## Constraints:\n"
-          "- 只考虑以下电影风格类别进行分析: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary\n"
-          "- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。\n"
+        "## Constraints:\n"
+            "- 只考虑以下电影风格类别进行分析: Animation, Comedy, Children's, Musical, Romance, Adventure, Action, Thriller, Drama, War, Sci-Fi, Western, Fantasy, Horror, Crime, Film-Noir, Documentary\n"
+            "- 最终答案仅包含候选列表中的电影，且以JSON数组格式输出电影ID列表，不附加多余解释。\n"
 
-      "## Workflows:\n"
-          "1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。\n"
-          "2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。\n"
-          "3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影名称和ID列表（JSON）。"
+        "## Workflows:\n"
+            "1. **用户偏好分析**: 统计用户历史中各类别出现频次，识别用户最喜欢的类别。\n"
+            "2. **候选相似度评估**: 比较每个候选电影的类别与用户偏好类别的重合程度，判断匹配度（高/中/低）。\n"
+            "3. **结果输出**: 根据匹配度对候选电影进行排序，输出匹配度最高的电影名称和ID列表（JSON）。"
   ```
 - **User (Example)**：
   示例用户对话 (Few-shot example)
 
   ```text
-      "用户ID: example_user_123\n\n"
-      "用户观看过的电影列表:\n"
-      "- Liar Liar (ID: 123)\n"
-      "- The Mask (ID: 456)\n"
-      "- Mrs. Doubtfire (ID: 789)\n"
-      "- Toy Story (ID: 246)\n"
-      "- The Lion King (ID: 357)\n\n"
-      "候选电影列表:\n"
-      "- Ace Ventura: Pet Detective (ID: 111)\n"
-      "- Forrest Gump (ID: 222) \n"
-      "- The Shawshank Redemption (ID: 333) \n"
-      "- Aladdin (ID: 444) \n"
-      "- Terminator 2: Judgment Day (ID: 555) "
+        "用户ID: 659\n\n"
+        "用户观看过的电影列表:\n"
+        "- In the Name of the Father (ID: 475)\n"
+        "- American History X (ID: 2329)\n"
+        "- Dead Man Walking (ID: 36)\n"
+        "- Thelma & Louise (ID: 3418)\n"
+        "- Contact (ID: 1584)\n"
+        "- Crimson Tide (ID: 161)\n"
+        "- Babe (ID: 34)\n"
+        "- Swing Kids (ID: 2106)\n"
+        "- Miller's Crossing (ID: 1245)\n"
+        "- Truman Show, The (ID: 1682)\n"
+        "- The American President (ID: 11)\n"
+        "- The Client (ID: 350)\n"
+        "- Twelve Monkeys (ID: 32)\n"
+        "- A Thousand Acres (ID: 1624)\n"
+        "- Of Mice and Men (ID: 3271)\n"
+        "- The Cider House Rules (ID: 3148)\n"
+        "- Sliding Doors (ID: 1680)\n"
+        "- Ever After: A Cinderella Story (ID: 2125)\n"
+        "- Great Expectations (ID: 1735)\n"
+        "- Philadelphia (ID: 508)\n\n"
+
+        "候选电影列表:\n"
+        "- Touch (ID: 1458)\n"
+        "- Sister Act (ID: 3247)\n"
+        "- Dracula (ID: 2644)\n"
+        "- The Third Miracle (ID: 3183)\n"
+        "- Airplane! (ID: 2791)\n"
+        "- La Collectionneuse (ID: 823)\n"
+        "- Groove (ID: 3790)\n"
+        "- Truth or Consequences, N.M. (ID: 1523)\n"
+        "- Century (ID: 607)\n"
+        "- Naked Gun 33 1/3: The Final Insult (ID: 370)\n"
+        "- Max Dugan Returns (ID: 3497)\n"
+        "- Shadowlands (ID: 534)\n"
+        "- The Good Mother (ID: 3449)\n"
+        "- Blood In, Blood Out (a.k.a. Bound by Honor) (ID: 3761)\n"
+        "- Murder in the First (ID: 280)\n"
+        "- Stalker (ID: 1232)\n"
+        "- One Crazy Summer (ID: 2261)\n"
+        "- Sirens (ID: 537)\n"
+        "- Passion Fish (ID: 1187)\n"
+        "- Anatomy of a Murder (ID: 3801)\n\n"
   ```
 - **Assistant (Example)**：
   示例助手对话 (Few-shot example)
 
   ```text
-     "### 分析用户观影风格偏好\n\n"
-      "首先，我将分析每部电影的风格类别:\n\n"
-      "| 电影 | 风格类别 |\n"
-      "|------|------------|\n"
-      "| Liar Liar | Comedy |\n"
-      "| The Mask | Comedy |\n"
-      "| Mrs. Doubtfire | Comedy |\n"
-      "| Toy Story | Animation, Children's, Comedy |\n"
-      "| The Lion King | Animation, Children's, Musical |\n\n"
-      "用户明显偏好喜剧类(Comedy)电影，其次是动画(Animation)和儿童(Children's)类电影。\n\n"
-      "### 分析候选电影和用户偏好的匹配度\n\n"
-      "分析每部候选电影的风格类别:\n\n"
-      "| 电影 | 风格类别 | 与用户偏好匹配 |\n"
-      "|------|------------|------------|\n"
-      "| Ace Ventura: Pet Detective | Comedy | 高  |\n"
-      "| Forrest Gump | Comedy, Drama, Romance | 中  |\n"
-      "| The Shawshank Redemption | Drama | 低  |\n"
-      "| Aladdin | Animation, Children's, Comedy | 高  |\n"
-      "| Terminator 2 | Action, Sci-Fi, Thriller | 低 |\n\n"
-      "根据匹配程度去除匹配度低的候选电影，留下10个匹配度高和中的电影继续分析：\n\n"
-      "1. Aladdin (ID: 444) \n"
-      "2. Ace Ventura: Pet Detective (ID: 111) -\n"
-      "3. Forrest Gump (ID: 222) \n"
-      "4. The Shawshank Redemption (ID: 333)\n"
-      "5. Terminator 2 (ID: 555) \n\n"
-      "在这10个电影里继续考虑电影的题材、主题、导演、演员等多个因素，找出最适合用户的电影，输出匹配度最高的电影名称和ID列表排序（JSON）"
-      "[{\"name\": \"Aladdin\", \"id\": 444}]\n"
+       "首先，我将分析用户历史电影的风格类别:\n\n"        
+        "| 电影 | 风格类别 |\n"
+        "|------|------------|\n"
+	    "| In the Name of the Father | Drama |\n"
+	    "| American History X | Drama |\n"
+	    "| Dead Man Walking | Drama |\n"
+	    "| Thelma & Louise | Action, Drama |\n"
+	    "| Contact | Drama, Sci-Fi |\n"
+	    "| Crimson Tide | Drama, Thriller, War |\n"
+	    "| Babe | Children's, Comedy, Drama |\n"
+	    "| Swing Kids | Drama, War |\n"
+	    "| Miller's Crossing | Drama |\n"
+	    "| Truman Show, The | Drama |\n"
+	    "| The American President | Comedy, Drama, Romance |\n"
+	    "| The Client | Drama, Mystery, Thriller |\n"
+	    "| Twelve Monkeys | Drama, Sci-Fi |\n"
+	    "| A Thousand Acres | Drama |\n"
+	    "| Of Mice and Men | Drama |\n"
+	    "| The Cider House Rules | Drama |\n"
+	    "| Sliding Doors | Drama, Romance |\n"
+	    "| Ever After: A Cinderella Story | Drama, Romance |\n"
+	    "| Great Expectations | Drama, Romance |\n"
+	    "| Philadelphia | Drama |\n"
+        
+        "用户明显偏好剧情类(Drama)电影，其次是浪漫类(Romance)电影。喜剧类(Comedy)电影也有所偏好，但相比之下较少。用户对动作类(Action)和科幻类(Sci-Fi)电影也有一定兴趣。完全未出现动画类(Animation)、儿童类(Children's)、音乐类(Musical)、冒险类(Adventure)、战争类(War)、西部片(Western)、奇幻类(Fantasy)、恐怖类(Horror)、犯罪类(Crime)、黑色电影(Film-Noir)或纪录片类(Documentation)电影。"
+
+        
+        "接着分析每部候选电影的风格类别:\n\n"
+        
+        "| 电影 | 风格类别 | 与用户偏好匹配 |\n"
+        "|------|------------|------------|\n"
+        "| Touch | Romance | 高 |\n"
+        "| Sister Act | Comedy, Crime | 高 |\n"
+        "| Dracula | Horror | 低 |\n"
+        "| The Third Miracle | Drama | 高 |\n"
+        "| Airplane! | Comedy | 高 |\n"
+        "| La Collectionneuse | Drama | 高 |\n"
+        "| Groove | Drama | 高 |\n"
+        "| Truth or Consequences, N.M. | Action, Crime, Romance | 中 |\n"
+        "| Century | Drama | 高 |\n"
+        "| Naked Gun 33 1/3: The Final Insult | Comedy | 高 |\n"
+        "| Max Dugan Returns | Comedy | 高 |\n"
+        "| Shadowlands | Drama, Romance | 高 |\n"
+        "| The Good Mother | Drama | 高 |\n"
+        "| Blood In, Blood Out (a.k.a. Bound by Honor) | Crime, Drama | 中 |\n"
+        "| Murder in the First | Drama, Thriller | 中 |\n"
+        "| Stalker | Mystery, Sci-Fi | 低 |\n"
+        "| One Crazy Summer | Comedy | 高 |\n"
+        "| Sirens | Comedy, Drama | 高 |\n"
+        "| Passion Fish | Drama | 高 |\n"
+        "| Anatomy of a Murder | Drama, Mystery | 中 |\n\n"
+
+        
+        "根据匹配程度去除匹配度低的候选电影，留下所有匹配度高的电影继续分析：\n\n"
+        "1. Touch (ID: 1458) \n"
+        "2. Sister Act (ID: 3247) \n"
+        "3. Airplane! (ID: 2791) \n"
+        "4. La Collectionneuse (ID: 823) \n"
+        "5. Groove (ID: 3790) \n"
+        "6. Naked Gun 33 1/3: The Final Insult (ID: 370) \n"
+        "7. Max Dugan Returns (ID: 3497) \n"
+        "8. Shadowlands (ID: 534) \n"
+        "9. The Good Mother (ID: 3449) \n"
+        "10. One Crazy Summer (ID: 2261) \n"
+        "11. Sirens (ID: 537) \n"
+        "12. Passion Fish (ID: 1187) \n\n"
+
+        
+        "现在进入推荐的重排序阶段。请对剩余匹配度高的候选电影进行逐一评估，结合之前分析得到的用户偏好特点，深入比较每部电影与用户喜好的契合程度（考虑题材、主题、导演、演员等因素）。然后根据每部电影的匹配度高低进行排序，像推荐系统的精排过程一样将匹配度最高的电影排在前面。"
+        "首先，用户特别喜欢剧情片，所以带有Drama的电影应该优先考虑。然后是Romance和Comedy，尤其是当这些类型与Drama结合时可能更符合用户口味。另外，用户历史中有几部电影有喜剧元素，比如《Babe》和《The American President》，所以单独的喜剧可能也不错，但可能不如结合Drama的更好。\n"   
+        "现在逐一分析剩下的电影：\n"  
+  
+        "1. **Touch (Romance)**: 纯浪漫类型，用户历史中有几部浪漫电影，但通常与Drama结合，比如《Sliding Doors》、《Ever After》等。纯浪漫可能稍弱，但仍有高匹配，但可能不如带Drama的。\n"  
+        "2. **Sister Act (Comedy, Crime)**: 喜剧和犯罪。用户历史中没有犯罪类，但喜剧是用户喜欢的。不过犯罪类型可能不太符合用户习惯，但因为是高匹配，可能因为喜剧部分。但需要看其他因素，比如主演Whoopi Goldberg可能受欢迎，但不确定用户是否喜欢这种类型的喜剧。\n"  
+        "3. **Airplane! (Comedy)**: 纯喜剧，经典搞笑片。用户喜欢喜剧，但可能更偏好有Drama结合，不过如果是经典的喜剧可能还是不错的选择。\n"  
+        "4. **La Collectionneuse (Drama)**: 剧情片，导演Éric Rohmer，法国新浪潮，可能比较文艺。用户是否喜欢这种风格的？历史中多是美国剧情片，可能不太确定，但因为是Drama，可能还是优先。\n"  
+        "5. **Groove (Drama)**: 关于电子音乐派对的剧情片，可能比较年轻化。用户历史中没有音乐相关，但Drama是核心，所以可能合适。\n"  
+        "6. **Naked Gun 33 1/3 (Comedy)**: 恶搞喜剧，用户可能喜欢，但和Airplane!类似，是否更偏好有Drama的喜剧？\n"  
+        "7. **Max Dugan Returns (Comedy)**: 家庭喜剧，用户历史中有《Babe》是儿童和喜剧，可能适合，但需要看演员或导演是否有吸引力。\n"  
+        "8. **Shadowlands (Drama, Romance)**: 结合Drama和Romance，用户历史中有多部这种类型，比如《Ever After》、《Great Expectations》，所以可能非常契合。主演Anthony Hopkins和Debra Winger，可能加分。\n"  
+        "9. **The Good Mother (Drama)**: 纯剧情，涉及家庭纠纷，用户喜欢严肃剧情片，如《Philadelphia》，可能合适。\n"  
+        "10. **One Crazy Summer (Comedy)**: 青春喜剧，80年代风格，用户是否喜欢？可能不如其他喜剧，但仍有高匹配。\n"  
+        "11. **Sirens (Comedy, Drama)**: 喜剧和剧情，结合用户喜欢的两个类型，可能比纯喜剧更优先。导演John Duigan，主演Hugh Grant，可能吸引喜欢浪漫喜剧的用户。\n"  
+        "12. **Passion Fish (Drama)**: 女性主角的剧情片，涉及康复和人际关系，用户历史中有类似严肃题材，如《Dead Man Walking》，可能很契合。\n"  
+  
+        "接下来需要比较这些电影的题材和用户偏好的契合程度。用户明显偏好严肃的剧情片，尤其是带有情感深度或社会议题的，比如《Philadelphia》、《In the Name of the Father》。浪漫元素通常是作为次要类型出现，如《Sliding Doors》。喜剧方面，用户可能更喜欢有剧情深度的喜剧，比如《The American President》中的喜剧元素结合政治剧情。\n"  
+  
+        "所以，排名应该优先那些同时有Drama和Romance的电影，其次是纯Drama，然后是Drama加其他用户次要类型（如Comedy），最后是纯Comedy。\n\n"  
+  
+        "具体来看：\n"  
+  
+        "- **Shadowlands**（Drama, Romance）结合了两个用户喜欢的类型，且主题可能比较深刻，关于作家C.S. Lewis的爱情故事，适合喜欢情感深度的用户。\n"  
+        "- **Passion Fish**（Drama）涉及女性康复，可能情感丰富，符合用户偏好。\n"  
+        "- **The Good Mother**（Drama）严肃家庭剧情，类似用户看过的《Philadelphia》。\n"  
+        "- **Sirens**（Comedy, Drama）两者结合，可能更接近用户喜欢的类型。\n"  
+        "- **La Collectionneuse**（Drama）虽然法国文艺片，但用户是否喜欢？可能排名稍后。\n"  
+        "- **Groove**（Drama）年轻化，但不确定主题是否符合用户历史。\n"  
+        "- **Touch**（Romance）纯浪漫，可能不如结合Drama的。\n"  
+        "- **Sister Act**（Comedy, Crime）喜剧部分可能合适，但犯罪类型用户没看过。\n"  
+        "- **Airplane!**, **Naked Gun**, **Max Dugan Returns**, **One Crazy Summer**都是纯喜剧或主要喜剧，用户可能喜欢，但不如带Drama的优先。\n"  
+        "此外，演员和导演也可能影响。例如，Anthony Hopkins在《Shadowlands》中可能更具吸引力，而《Sirens》有Hugh Grant，用户是否喜欢浪漫喜剧的演员？《Airplane!》是经典，可能有广泛吸引力。\n"  
+  
+        "综合这些因素，可能的排序是：\n"  
+        "1. **Shadowlands**（Drama, Romance）\n"  
+        "2. **Passion Fish**（Drama）\n"  
+        "3. **The Good Mother**（Drama）\n"  
+        "4. **Sirens**（Comedy, Drama）\n"  
+        "5. **La Collectionneuse**（Drama）\n"  
+        "6. **Groove**（Drama）\n"  
+        "7. **Touch**（Romance）\n"  
+        "8. **Airplane!**（Comedy）\n"  
+        "9. **Sister Act**（Comedy, Crime）\n"  
+        "10. **Max Dugan Returns**（Comedy）\n"  
+        "11. **Naked Gun 33 1/3**（Comedy）\n"  
+        "12. **One Crazy Summer**（Comedy）\n"  
+        "但需要再检查是否有其他因素，比如上映时间、评分等，但用户没有提供这些信息，所以只能基于类型和主题。"
+        
+        "现在我要输出10个按匹配度从高到低排序的电影推荐 JSON 列表。"
+    '''[
+        {"name": "Shadowlands", "id": 534},
+        {"name": "Passion Fish", "id": 1187},
+        {"name": "The Good Mother", "id": 3449},
+        {"name": "Sirens", "id": 537},
+        {"name": "La Collectionneuse", "id": 823},
+        {"name": "Groove", "id": 3790},
+        {"name": "Touch", "id": 1458},
+        {"name": "Airplane!", "id": 2791},
+        {"name": "Sister Act", "id": 3247},
+        {"name": "Max Dugan Returns", "id": 3497}
+    ]'''
   ```
 - **User**：
   分析候选电影并与用户偏好匹配。
 
   ```text
-      # 用户基本信息
-      f"用户ID: {user_id}\n\n"
-      f"用户观看过的电影列表:\n{watched_movies_text}\n\n"
-      # 候选电影列表
-      f"候选电影列表:\n{candidate_movies_text}\n\n"
-      # 类别参考信息
-      f"电影风格类别参考: {', '.join(genres)}\n\n"
-      # 步骤引导
-      "让我们一步步思考！请按照以下步骤进行分析：\n"
-      "1. 分析每部电影属于哪些风格类别，并制作风格归属表格\n"
-      "2. 用户的电影风格偏好分析\n"
-      "3. 分析每部候选电影属于哪些风格类别，评估相似程度，去除相似度低的，只留下10个候选\n"
-      "4. 考虑电影的题材、主题、导演、演员等多个因素，找出最适合用户的电影，输出匹配度由高到低的电影名称和ID列表排序（JSON）"
-      "[{\"name\": \"Aladdin\", \"id\": 444}]\n"
+        f"用户ID: {user_id}\n\n"
+        f"用户观看过的电影列表:\n{watched_movies_text}\n\n"
+        f"候选电影列表:\n{candidate_movies_text}\n\n"
+        f"电影风格类别参考: {', '.join(genres)}\n\n"
+        
+        "让我们一步步思考！请按照以下步骤进行分析：\n"
+        "1. 分析每部电影属于哪些风格类别，并制作风格归属表格\n"
+        "2. 用户的电影风格偏好分析\n"
+        "3. 分析每部候选电影属于哪些风格类别，评估相似程度，去除相似度低的，只留下高候选\n"
+        "4. 现在进入推荐的重排序阶段。请对剩余的高候选电影进行逐一评估，结合之前分析得到的用户偏好特点，深入比较每部电影与用户喜好的契合程度（考虑题材、主题、导演、演员等因素）。然后根据每部电影的匹配度高低进行排序，像推荐系统的精排过程一样将匹配度最高的电影排在前面。\n"
+        "5. 请输出按匹配度从高到低排序的电影推荐 JSON 列表。\n"
+        "[{\"name\": \"Aladdin\", \"id\": 444}]\n"
   ```
 
 示例的选择需要代表性且清晰。我们构造了一个虚拟用户历史偏好明显的案例，例如用户看了多部喜剧片，候选列表里混合了喜剧和非喜剧电影，我们在示例回答中将喜剧类电影的ID放在前列并给出解释。这样模型可以从中学习到“依据类型匹配来排序”的思路。在示例输出部分，我们刻意采用严格的格式：最后答案部分就是纯粹的Python列表字符串。
 
-**实验结果**： 策略三取得了平均NDCG@10约 `0.5410`的成绩，相比策略二进一步提升了约4个百分点。这说明Few-shot示例提供的范例作用让模型对任务的理解和执行更加到位。一方面，模型几乎100%遵循了我们希望的格式输出列表，再也没有解析失败的情况；另一方面，推荐准确率也略有提升，我们推测这是因为示例教会了模型更好地将用户历史偏好映射到候选排序中。例如，在若干包含多类型混杂的候选列表里，策略三的模型能更可靠地把与用户偏好类型一致的影片排在前面。需要注意的是，`Few-shot`提示增加了提示长度，在OpenAI接口中意味着更多的token开销；但鉴于验证集每条样本调用都是独立的，对总消耗影响有限。此外，示例需要 carefully 构造，否则不恰当的示例可能误导模型。但在本次实验中，我们提供的示例在绝大多数情况下对模型起到了正向指导作用。
+**实验结果**： 策略三取得了平均NDCG@10约 `0.5779`的成绩，相比策略二进一步提升了约4个百分点。这说明Few-shot示例提供的范例作用让模型对任务的理解和执行更加到位。一方面，模型几乎100%遵循了我们希望的格式输出列表，再也没有解析失败的情况；另一方面，推荐准确率也略有提升，我们推测这是因为示例教会了模型更好地将用户历史偏好映射到候选排序中。例如，在若干包含多类型混杂的候选列表里，策略三的模型能更可靠地把与用户偏好类型一致的影片排在前面。需要注意的是，`Few-shot`提示增加了提示长度，在OpenAI接口中意味着更多的token开销；但鉴于验证集每条样本调用都是独立的，对总消耗影响有限。此外，示例需要 carefully 构造，否则不恰当的示例可能误导模型。但在本次实验中，我们提供的示例在绝大多数情况下对模型起到了正向指导作用。
 
 ---
 
@@ -299,7 +431,7 @@ LLM提示词采用OpenAI Chat API所需的消息列表格式，即由多个 `{"r
 | -------------------- | ---------- | -------- |
 | 策略一（直接指令）   | ≈ 0.4812 |   test1.log |
 | 策略二（思维链）     | ≈ 0.5029 |   test7.2.log |
-| 策略三（少样本示例） | ≈ 0.5410 |   test10.2.log |
+| 策略三（少样本示例） | ≈ 0.5779 |   test11.log |
 
 ---
 
@@ -319,13 +451,13 @@ LLM提示词采用OpenAI Chat API所需的消息列表格式，即由多个 `{"r
 
 ### Bonus：英文提示词效果分析
 
-作为额外实验，我们将最优的中文提示词策略（策略三）完全翻译为英文版本，并在相同测试集上进行了验证。结果显示英文提示取得了平均NDCG@10 `0.5857`的成绩，相比中文版本的 `0.5410`提升了约 `8.26%`。
+作为额外实验，我们将最优的中文提示词策略（策略三）完全翻译为英文版本，并在相同测试集上进行了验证。结果显示英文提示取得了平均NDCG@10 `0.5857`的成绩，相比中文版本的 `0.5779`提升了约 `1.35%`。
 
 #### 关键发现：
 
 1. **性能提升**：10个测试样本中有3个达到完美分数(NDCG@10=1.0)，表明英文提示在某些情况下能更准确地理解用户偏好
 2. **稳定性保持**：所有样本输出均符合JSON格式要求，解析成功率达100%
-3. **最佳案例**：样本2、3、6实现完美排序，样本5、7也获得较高分数(0.6309)
+3. **最佳案例**：样本3、5、6实现完美排序，样本7也获得较高分数(0.6309)
 
 #### 原因分析：
 
@@ -389,4 +521,4 @@ The question is...
 >
 > • 在掌握“足量上下文”标准后，再尝试“最小上下文”以（Lazy Prompting）确保产出质量。
 
-“懒惰提示”的命名灵感来自计算机科学中的“惰性求值”：只有在确实需要某个结果时才调用函数；同理，我们只在确有必要时向提示中逐步添补细节。该概念由 **aisuite** 合作者 Rohit Prasad 提出，并在实践中印证了其高效价值。
+“懒惰提示”的命名灵感来自计算机科学中的“惰性求值”：只有在确实需要某个结果时才调用函数；同理，我们只在确有必要时向提示中逐步添补细节。该概念由 **aisuite** 作者 Rohit Prasad 提出，并在实践中印证了其高效价值。
